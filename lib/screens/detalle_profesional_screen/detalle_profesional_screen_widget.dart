@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -20,6 +21,9 @@ class DetalleProfesionalScreenWidget extends StatefulWidget {
 
   final String? profesional;
   final int? usuarioalertaid;
+
+  static String routeName = 'detalle_profesionalScreen';
+  static String routePath = '/detalleProfesionalScreen';
 
   @override
   State<DetalleProfesionalScreenWidget> createState() =>
@@ -67,7 +71,7 @@ class _DetalleProfesionalScreenWidgetState
                 height: 50.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    FlutterFlowTheme.of(context).primaryBackground,
                   ),
                 ),
               ),
@@ -97,8 +101,8 @@ class _DetalleProfesionalScreenWidgetState
                 borderColor: Colors.transparent,
                 borderRadius: 8.0,
                 buttonSize: 40.0,
-                fillColor: const Color(0x004B39EF),
-                icon: const Icon(
+                fillColor: Color(0x004B39EF),
+                icon: Icon(
                   Icons.arrow_back,
                   color: Color(0xFF374151),
                   size: 24.0,
@@ -112,25 +116,25 @@ class _DetalleProfesionalScreenWidgetState
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Inter',
-                      color: const Color(0xFF374151),
+                      color: Color(0xFF374151),
                       fontSize: 20.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.w600,
                     ),
               ),
-              actions: const [],
+              actions: [],
               centerTitle: true,
               elevation: 2.0,
             ),
             body: SafeArea(
               top: true,
               child: Align(
-                alignment: const AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Container(
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxWidth: 600.0,
                   ),
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -140,7 +144,7 @@ class _DetalleProfesionalScreenWidgetState
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 15.0, 0.0, 0.0),
                                 child: Material(
                                   color: Colors.transparent,
@@ -156,7 +160,7 @@ class _DetalleProfesionalScreenWidgetState
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           8.0, 8.0, 8.0, 8.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -182,7 +186,7 @@ class _DetalleProfesionalScreenWidgetState
                                           Expanded(
                                             flex: 2,
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       15.0, 15.0, 0.0, 20.0),
                                               child: Column(
@@ -207,7 +211,7 @@ class _DetalleProfesionalScreenWidgetState
                                                               .override(
                                                                 fontFamily:
                                                                     'Inter',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF1F2A37),
                                                                 fontSize: 16.0,
                                                                 letterSpacing:
@@ -221,7 +225,7 @@ class _DetalleProfesionalScreenWidgetState
                                                       if (detalleProfesionalScreenProfessionalDetailsRow
                                                               ?.suscripcionActiva ??
                                                           true)
-                                                        const Icon(
+                                                        Icon(
                                                           Icons.verified,
                                                           color:
                                                               Color(0xFF3E9AF0),
@@ -229,7 +233,7 @@ class _DetalleProfesionalScreenWidgetState
                                                         ),
                                                     ],
                                                   ),
-                                                  const Divider(
+                                                  Divider(
                                                     thickness: 1.0,
                                                     color: Color(0xFFE5E7EB),
                                                   ),
@@ -246,7 +250,7 @@ class _DetalleProfesionalScreenWidgetState
                                                               .override(
                                                                 fontFamily:
                                                                     'Inter',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF4B5563),
                                                                 fontSize: 14.0,
                                                                 letterSpacing:
@@ -270,7 +274,7 @@ class _DetalleProfesionalScreenWidgetState
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 20.0, 20.0, 20.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -286,7 +290,7 @@ class _DetalleProfesionalScreenWidgetState
                                           fillColor:
                                               FlutterFlowTheme.of(context)
                                                   .primaryBackground,
-                                          icon: const Icon(
+                                          icon: Icon(
                                             Icons.people_alt,
                                             color: Color(0xFF1C2A3A),
                                             size: 30.0,
@@ -301,14 +305,14 @@ class _DetalleProfesionalScreenWidgetState
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Inter',
-                                                color: const Color(0xFF1C2A3A),
+                                                color: Color(0xFF1C2A3A),
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                               ),
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 4.0, 0.0, 0.0),
                                           child: Text(
                                             'chats',
@@ -316,7 +320,7 @@ class _DetalleProfesionalScreenWidgetState
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Inter',
-                                                  color: const Color(0xFF1C2A3A),
+                                                  color: Color(0xFF1C2A3A),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
                                                 ),
@@ -334,7 +338,7 @@ class _DetalleProfesionalScreenWidgetState
                                           fillColor:
                                               FlutterFlowTheme.of(context)
                                                   .primaryBackground,
-                                          icon: const FaIcon(
+                                          icon: FaIcon(
                                             FontAwesomeIcons.medal,
                                             color: Color(0xFF1C2A3A),
                                             size: 26.0,
@@ -349,14 +353,14 @@ class _DetalleProfesionalScreenWidgetState
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Inter',
-                                                color: const Color(0xFF1C2A3A),
+                                                color: Color(0xFF1C2A3A),
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                               ),
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 4.0, 0.0, 0.0),
                                           child: Text(
                                             'experiencia',
@@ -364,7 +368,7 @@ class _DetalleProfesionalScreenWidgetState
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Inter',
-                                                  color: const Color(0xFF1C2A3A),
+                                                  color: Color(0xFF1C2A3A),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
                                                 ),
@@ -382,7 +386,7 @@ class _DetalleProfesionalScreenWidgetState
                                           fillColor:
                                               FlutterFlowTheme.of(context)
                                                   .primaryBackground,
-                                          icon: const Icon(
+                                          icon: Icon(
                                             Icons.star_rounded,
                                             color: Color(0xFF1C2A3A),
                                             size: 26.0,
@@ -397,14 +401,14 @@ class _DetalleProfesionalScreenWidgetState
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Inter',
-                                                color: const Color(0xFF1C2A3A),
+                                                color: Color(0xFF1C2A3A),
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                               ),
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 4.0, 0.0, 0.0),
                                           child: Text(
                                             'rating',
@@ -412,7 +416,7 @@ class _DetalleProfesionalScreenWidgetState
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Inter',
-                                                  color: const Color(0xFF1C2A3A),
+                                                  color: Color(0xFF1C2A3A),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
                                                 ),
@@ -430,7 +434,7 @@ class _DetalleProfesionalScreenWidgetState
                                           fillColor:
                                               FlutterFlowTheme.of(context)
                                                   .primaryBackground,
-                                          icon: const Icon(
+                                          icon: Icon(
                                             Icons.comment_sharp,
                                             color: Color(0xFF1C2A3A),
                                             size: 26.0,
@@ -449,7 +453,7 @@ class _DetalleProfesionalScreenWidgetState
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Inter',
-                                                    color: const Color(0xFF1C2A3A),
+                                                    color: Color(0xFF1C2A3A),
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w600,
                                                   ),
@@ -458,7 +462,7 @@ class _DetalleProfesionalScreenWidgetState
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 4.0, 0.0, 0.0),
                                           child: Text(
                                             'reseñas',
@@ -466,7 +470,7 @@ class _DetalleProfesionalScreenWidgetState
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Inter',
-                                                  color: const Color(0xFF1C2A3A),
+                                                  color: Color(0xFF1C2A3A),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
                                                 ),
@@ -484,7 +488,7 @@ class _DetalleProfesionalScreenWidgetState
                                           ?.bestReviewClientNombre !=
                                       '')
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       15.0, 50.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -497,7 +501,7 @@ class _DetalleProfesionalScreenWidgetState
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Inter',
-                                              color: const Color(0xFF1F2A37),
+                                              color: Color(0xFF1F2A37),
                                               fontSize: 20.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
@@ -510,7 +514,7 @@ class _DetalleProfesionalScreenWidgetState
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
                                           context.pushNamed(
-                                            'reviews_complete',
+                                            ReviewsCompleteWidget.routeName,
                                             queryParameters: {
                                               'profesionalId': serializeParam(
                                                 detalleProfesionalScreenProfessionalDetailsRow
@@ -526,7 +530,7 @@ class _DetalleProfesionalScreenWidgetState
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Inter',
-                                                color: const Color(0xFF6B7280),
+                                                color: Color(0xFF6B7280),
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
                                               ),
@@ -542,18 +546,18 @@ class _DetalleProfesionalScreenWidgetState
                                           ?.bestReviewClientNombre !=
                                       '')
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 0.0),
                                   child: Container(
                                     height: 180.0,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Expanded(
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     15.0, 0.0, 15.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -562,7 +566,7 @@ class _DetalleProfesionalScreenWidgetState
                                                   width: 70.0,
                                                   height: 70.0,
                                                   clipBehavior: Clip.antiAlias,
-                                                  decoration: const BoxDecoration(
+                                                  decoration: BoxDecoration(
                                                     shape: BoxShape.circle,
                                                   ),
                                                   child: Image.network(
@@ -574,7 +578,7 @@ class _DetalleProfesionalScreenWidgetState
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(15.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Column(
@@ -590,7 +594,7 @@ class _DetalleProfesionalScreenWidgetState
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -611,7 +615,7 @@ class _DetalleProfesionalScreenWidgetState
                                                                           fontFamily:
                                                                               'Inter',
                                                                           color:
-                                                                              const Color(0xFF374151),
+                                                                              Color(0xFF374151),
                                                                           fontSize:
                                                                               16.0,
                                                                           letterSpacing:
@@ -628,7 +632,7 @@ class _DetalleProfesionalScreenWidgetState
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         5.0,
@@ -655,7 +659,7 @@ class _DetalleProfesionalScreenWidgetState
                                                                           fontFamily:
                                                                               'Inter',
                                                                           color:
-                                                                              const Color(0xFF6B7280),
+                                                                              Color(0xFF6B7280),
                                                                           fontSize:
                                                                               12.0,
                                                                           letterSpacing:
@@ -674,7 +678,7 @@ class _DetalleProfesionalScreenWidgetState
                                                                   itemBuilder:
                                                                       (context,
                                                                               index) =>
-                                                                          const Icon(
+                                                                          Icon(
                                                                     Icons
                                                                         .star_rounded,
                                                                     color: Color(
@@ -694,7 +698,7 @@ class _DetalleProfesionalScreenWidgetState
                                                                   itemCount: 5,
                                                                   itemSize:
                                                                       18.0,
-                                                                  glowColor: const Color(
+                                                                  glowColor: Color(
                                                                       0xFFFEB052),
                                                                 ),
                                                               ],
@@ -713,7 +717,7 @@ class _DetalleProfesionalScreenWidgetState
                                           flex: 3,
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     15.0, 10.0, 15.0, 10.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -733,7 +737,7 @@ class _DetalleProfesionalScreenWidgetState
                                                         .override(
                                                           fontFamily: 'Inter',
                                                           color:
-                                                              const Color(0xFF6B7280),
+                                                              Color(0xFF6B7280),
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
@@ -766,14 +770,14 @@ class _DetalleProfesionalScreenWidgetState
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 0.0, 20.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Expanded(
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 15.0, 0.0, 15.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
@@ -800,7 +804,7 @@ class _DetalleProfesionalScreenWidgetState
                                                 (_model.conversacionExistente)!
                                                     .isNotEmpty) {
                                               context.pushNamed(
-                                                'chatAlerta',
+                                                ChatAlertaWidget.routeName,
                                                 queryParameters: {
                                                   'conversationId':
                                                       serializeParam(
@@ -836,7 +840,7 @@ class _DetalleProfesionalScreenWidgetState
                                               });
 
                                               context.pushNamed(
-                                                'chatAlerta',
+                                                ChatAlertaWidget.routeName,
                                                 queryParameters: {
                                                   'conversationId':
                                                       serializeParam(
@@ -858,19 +862,19 @@ class _DetalleProfesionalScreenWidgetState
                                             safeSetState(() {});
                                           },
                                           text: 'Contactar',
-                                          icon: const Icon(
+                                          icon: Icon(
                                             Icons.chat,
                                             size: 15.0,
                                           ),
                                           options: FFButtonOptions(
                                             height: 48.0,
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 0.0, 16.0, 0.0),
                                             iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
-                                            color: const Color(0xFF1C2A3A),
+                                            color: Color(0xFF1C2A3A),
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .titleSmall
@@ -892,14 +896,14 @@ class _DetalleProfesionalScreenWidgetState
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 0.0, 20.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Expanded(
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             40.0, 0.0, 40.0, 15.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
@@ -918,16 +922,16 @@ class _DetalleProfesionalScreenWidgetState
                                               context: context,
                                               builder: (alertDialogContext) {
                                                 return AlertDialog(
-                                                  title: const Text(
+                                                  title: Text(
                                                       'Profesional descartado'),
-                                                  content: const Text(
+                                                  content: Text(
                                                       'El profesional ha sido descartado con éxito'),
                                                   actions: [
                                                     TextButton(
                                                       onPressed: () =>
                                                           Navigator.pop(
                                                               alertDialogContext),
-                                                      child: const Text('Ok'),
+                                                      child: Text('Ok'),
                                                     ),
                                                   ],
                                                 );
@@ -939,18 +943,18 @@ class _DetalleProfesionalScreenWidgetState
                                           options: FFButtonOptions(
                                             height: 40.0,
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 0.0, 16.0, 0.0),
                                             iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
-                                            color: const Color(0xFFFDE4E4),
+                                            color: Color(0xFFFDE4E4),
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .titleSmall
                                                     .override(
                                                       fontFamily: 'Inter',
-                                                      color: const Color(0xFFD9534F),
+                                                      color: Color(0xFFD9534F),
                                                       letterSpacing: 0.0,
                                                       fontWeight:
                                                           FontWeight.w500,

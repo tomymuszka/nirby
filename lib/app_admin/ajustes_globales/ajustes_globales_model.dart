@@ -30,6 +30,9 @@ class AjustesGlobalesModel extends FlutterFlowModel<AjustesGlobalesWidget> {
     return null;
   }
 
+  // Stores action output result for [Alert Dialog - Custom Dialog] action in Button widget.
+  bool? confirmacion;
+
   @override
   void initState(BuildContext context) {
     textController1Validator = _textController1Validator;

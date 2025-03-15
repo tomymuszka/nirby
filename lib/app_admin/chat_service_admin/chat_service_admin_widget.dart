@@ -2,8 +2,11 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'chat_service_admin_model.dart';
 export 'chat_service_admin_model.dart';
 
@@ -26,6 +29,9 @@ class ChatServiceAdminWidget extends StatefulWidget {
   final String? buyername;
   final String? buyerlastname;
 
+  static String routeName = 'chatServiceAdmin';
+  static String routePath = '/chatServiceAdmin';
+
   @override
   State<ChatServiceAdminWidget> createState() => _ChatServiceAdminWidgetState();
 }
@@ -39,6 +45,11 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ChatServiceAdminModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await action_blocks.checkConnection(context);
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -61,19 +72,27 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
         key: scaffoldKey,
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: const Color(0xFFF1F4F8),
+          backgroundColor: Color(0xFFF1F4F8),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
             borderRadius: 8.0,
             buttonSize: 40.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back,
               color: Color(0xFF374151),
               size: 24.0,
             ),
             onPressed: () async {
-              context.goNamed('chatsAdmin');
+              context.goNamed(
+                ChatsAdminWidget.routeName,
+                extra: <String, dynamic>{
+                  kTransitionInfoKey: TransitionInfo(
+                    hasTransition: true,
+                    transitionType: PageTransitionType.leftToRight,
+                  ),
+                },
+              );
             },
           ),
           title: Text(
@@ -81,42 +100,42 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Inter',
-                  color: const Color(0xFF374151),
+                  color: Color(0xFF374151),
                   fontSize: 20.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: const AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: 600.0,
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Expanded(
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
                         child: Container(
                           width: double.infinity,
                           height: 100.0,
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: SingleChildScrollView(
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       15.0, 0.0, 15.0, 0.0),
                                   child: FutureBuilder<List<ServiceChatRow>>(
                                     future: ServiceChatTable().querySingleRow(
@@ -136,7 +155,7 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                               valueColor:
                                                   AlwaysStoppedAnimation<Color>(
                                                 FlutterFlowTheme.of(context)
-                                                    .primary,
+                                                    .primaryBackground,
                                               ),
                                             ),
                                           ),
@@ -168,13 +187,13 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                           ),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 5.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(10.0, 10.0, 0.0,
                                                           10.0),
                                                   child: Row(
@@ -184,7 +203,7 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                                       Expanded(
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       15.0,
                                                                       0.0,
@@ -201,21 +220,61 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                                                 CrossAxisAlignment
                                                                     .start,
                                                             children: [
-                                                              Expanded(
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .start,
+                                                                children: [
+                                                                  Flexible(
+                                                                    child: Text(
+                                                                      'Profesional:  ${containerServiceChatRow?.professionalNombre} ${containerServiceChatRow?.professionalApellido}',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Inter',
+                                                                            color:
+                                                                                Color(0xFF4B5563),
+                                                                            fontSize:
+                                                                                16.0,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w500,
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                 child: Row(
                                                                   mainAxisSize:
                                                                       MainAxisSize
                                                                           .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .end,
                                                                   children: [
                                                                     Flexible(
                                                                       child:
                                                                           Text(
-                                                                        '${containerServiceChatRow?.professionalNombre} ${containerServiceChatRow?.professionalApellido}',
+                                                                        'Cliente:${widget.buyername} ${widget.buyerlastname}',
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Inter',
-                                                                              color: const Color(0xFF4B5563),
+                                                                              color: Color(0xFF4B5563),
                                                                               fontSize: 16.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
@@ -223,38 +282,6 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                                                       ),
                                                                     ),
                                                                   ],
-                                                                ),
-                                                              ),
-                                                              Expanded(
-                                                                child: Padding(
-                                                                  padding: const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          10.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child: Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Flexible(
-                                                                        child:
-                                                                            Text(
-                                                                          '${widget.buyername} ${widget.buyerlastname}',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .override(
-                                                                                fontFamily: 'Inter',
-                                                                                color: const Color(0xFF4B5563),
-                                                                                fontSize: 16.0,
-                                                                                letterSpacing: 0.0,
-                                                                                fontWeight: FontWeight.w500,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
                                                                 ),
                                                               ),
                                                             ],
@@ -274,18 +301,17 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                                       .alternate,
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          10.0, 0.0, 0.0, 0.0),
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(10.0, 10.0,
+                                                          10.0, 0.0),
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
                                                     children: [
                                                       Expanded(
-                                                        flex: 4,
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -304,14 +330,13 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                                                         ?.serviceTitle,
                                                                     '0',
                                                                   ),
-                                                                  maxLines: 3,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
                                                                       .override(
                                                                         fontFamily:
                                                                             'Inter',
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF1F2A37),
                                                                         fontSize:
                                                                             14.0,
@@ -329,7 +354,7 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                                       Flexible(
                                                         child: Align(
                                                           alignment:
-                                                              const AlignmentDirectional(
+                                                              AlignmentDirectional(
                                                                   1.0, 1.0),
                                                           child: Row(
                                                             mainAxisSize:
@@ -339,12 +364,12 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                                               Flexible(
                                                                 child: Align(
                                                                   alignment:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           1.0,
                                                                           1.0),
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             0.0,
@@ -369,7 +394,7 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                                                             fontFamily:
                                                                                 'Inter',
                                                                             color:
-                                                                                const Color(0xFF1F2A37),
+                                                                                Color(0xFF1F2A37),
                                                                             fontSize:
                                                                                 12.0,
                                                                             letterSpacing:
@@ -397,9 +422,9 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                   ),
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, -1.0),
+                                  alignment: AlignmentDirectional(0.0, -1.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 10.0, 0.0),
                                     child: FutureBuilder<List<ChatsRow>>(
                                       future: ChatsTable().queryRows(
@@ -433,33 +458,37 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                                     AlwaysStoppedAnimation<
                                                         Color>(
                                                   FlutterFlowTheme.of(context)
-                                                      .primary,
+                                                      .primaryBackground,
                                                 ),
                                               ),
                                             ),
                                           );
                                         }
-                                        List<ChatsRow> columnChatsRowList =
+                                        List<ChatsRow> listViewChatsRowList =
                                             snapshot.data!;
 
-                                        return Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: List.generate(
-                                              columnChatsRowList.length,
-                                              (columnIndex) {
-                                            final columnChatsRow =
-                                                columnChatsRowList[columnIndex];
+                                        return ListView.builder(
+                                          padding: EdgeInsets.zero,
+                                          shrinkWrap: true,
+                                          scrollDirection: Axis.vertical,
+                                          itemCount:
+                                              listViewChatsRowList.length,
+                                          itemBuilder:
+                                              (context, listViewIndex) {
+                                            final listViewChatsRow =
+                                                listViewChatsRowList[
+                                                    listViewIndex];
                                             return Builder(
                                               builder: (context) {
-                                                if (columnChatsRow.senderId ==
+                                                if (listViewChatsRow.senderId ==
                                                     widget.recipentId) {
                                                   return Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             1.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   10.0,
@@ -477,7 +506,7 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                                         decoration:
                                                             BoxDecoration(
                                                           color:
-                                                              const Color(0xFF3F3F3F),
+                                                              Color(0xFF3F3F3F),
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
@@ -485,7 +514,7 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                                         ),
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsets.all(
+                                                              EdgeInsets.all(
                                                                   8.0),
                                                           child: Column(
                                                             mainAxisSize:
@@ -494,11 +523,11 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                                             children: [
                                                               Align(
                                                                 alignment:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         -1.0,
                                                                         0.0),
                                                                 child: Text(
-                                                                  columnChatsRow
+                                                                  listViewChatsRow
                                                                       .text,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
@@ -515,13 +544,13 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                                               ),
                                                               Align(
                                                                 alignment:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         1.0,
                                                                         0.0),
                                                                 child: Text(
                                                                   dateTimeFormat(
                                                                     "relative",
-                                                                    columnChatsRow
+                                                                    listViewChatsRow
                                                                         .createdAt!,
                                                                     locale: FFLocalizations.of(context)
                                                                             .languageShortCode ??
@@ -550,11 +579,11 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                                 } else {
                                                   return Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             -1.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   10.0,
                                                                   10.0,
@@ -572,7 +601,7 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                                         decoration:
                                                             BoxDecoration(
                                                           color:
-                                                              const Color(0xFFF7F7F7),
+                                                              Color(0xFFF7F7F7),
                                                           borderRadius:
                                                               BorderRadius
                                                                   .circular(
@@ -580,7 +609,7 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                                         ),
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsets.all(
+                                                              EdgeInsets.all(
                                                                   8.0),
                                                           child: Column(
                                                             mainAxisSize:
@@ -589,11 +618,11 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                                             children: [
                                                               Align(
                                                                 alignment:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         -1.0,
                                                                         0.0),
                                                                 child: Text(
-                                                                  columnChatsRow
+                                                                  listViewChatsRow
                                                                       .text,
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
@@ -601,7 +630,7 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Inter',
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF333333),
                                                                         letterSpacing:
                                                                             0.0,
@@ -610,13 +639,13 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                                               ),
                                                               Align(
                                                                 alignment:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         1.0,
                                                                         0.0),
                                                                 child: Text(
                                                                   dateTimeFormat(
                                                                     "relative",
-                                                                    columnChatsRow
+                                                                    listViewChatsRow
                                                                         .createdAt!,
                                                                     locale: FFLocalizations.of(context)
                                                                             .languageShortCode ??
@@ -629,7 +658,7 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Inter',
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF333333),
                                                                         letterSpacing:
                                                                             0.0,
@@ -645,7 +674,7 @@ class _ChatServiceAdminWidgetState extends State<ChatServiceAdminWidget> {
                                                 }
                                               },
                                             );
-                                          }),
+                                          },
                                         );
                                       },
                                     ),

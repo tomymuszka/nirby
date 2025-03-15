@@ -2,12 +2,18 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/actions/actions.dart' as action_blocks;
+import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'notificacionesadmin_model.dart';
 export 'notificacionesadmin_model.dart';
 
 class NotificacionesadminWidget extends StatefulWidget {
   const NotificacionesadminWidget({super.key});
+
+  static String routeName = 'notificacionesadmin';
+  static String routePath = '/notificacionesadmin';
 
   @override
   State<NotificacionesadminWidget> createState() =>
@@ -23,6 +29,11 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => NotificacionesadminModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await action_blocks.checkConnection(context);
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -45,13 +56,13 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: const Color(0xFFF1F4F8),
+          backgroundColor: Color(0xFFF1F4F8),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
             borderRadius: 8.0,
             buttonSize: 40.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back,
               color: Color(0xFF374151),
               size: 24.0,
@@ -64,30 +75,30 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
             'Notificaciones',
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Inter',
-                  color: const Color(0xFF374151),
+                  color: Color(0xFF374151),
                   fontSize: 20.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
+            padding: EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 16.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   FFButtonWidget(
                     onPressed: () async {
-                      context.pushNamed('send_push');
+                      context.pushNamed(SendPushWidget.routeName);
                     },
                     text: 'Nueva Notificación',
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.add,
                       color: Colors.white,
                       size: 15.0,
@@ -96,10 +107,10 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: 50.0,
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: const Color(0xFF515EEB),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: Color(0xFF515EEB),
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Inter Tight',
@@ -123,7 +134,7 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 16.0, 16.0, 16.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -139,7 +150,7 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
                                         .headlineSmall
                                         .override(
                                           fontFamily: 'Inter Tight',
-                                          color: const Color(0xFF374151),
+                                          color: Color(0xFF374151),
                                           letterSpacing: 0.0,
                                         ),
                                   ),
@@ -163,7 +174,7 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Inter',
-                                    color: const Color(0xFF374151),
+                                    color: Color(0xFF374151),
                                     letterSpacing: 0.0,
                                   ),
                             ),
@@ -171,7 +182,7 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
                               thickness: 1.0,
                               color: FlutterFlowTheme.of(context).alternate,
                             ),
-                          ].divide(const SizedBox(height: 16.0)),
+                          ].divide(SizedBox(height: 16.0)),
                         ),
                       ),
                     ),
@@ -189,7 +200,7 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 16.0, 16.0, 16.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -204,7 +215,7 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
                                       .headlineSmall
                                       .override(
                                         fontFamily: 'Inter Tight',
-                                        color: const Color(0xFF374151),
+                                        color: Color(0xFF374151),
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -227,7 +238,7 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Inter',
-                                    color: const Color(0xFF374151),
+                                    color: Color(0xFF374151),
                                     letterSpacing: 0.0,
                                   ),
                             ),
@@ -235,7 +246,7 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
                               thickness: 1.0,
                               color: FlutterFlowTheme.of(context).alternate,
                             ),
-                          ].divide(const SizedBox(height: 16.0)),
+                          ].divide(SizedBox(height: 16.0)),
                         ),
                       ),
                     ),
@@ -253,7 +264,7 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 16.0, 16.0, 16.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -268,7 +279,7 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
                                       .headlineSmall
                                       .override(
                                         fontFamily: 'Inter Tight',
-                                        color: const Color(0xFF374151),
+                                        color: Color(0xFF374151),
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -291,7 +302,7 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Inter',
-                                    color: const Color(0xFF374151),
+                                    color: Color(0xFF374151),
                                     letterSpacing: 0.0,
                                   ),
                             ),
@@ -299,7 +310,7 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
                               thickness: 1.0,
                               color: FlutterFlowTheme.of(context).alternate,
                             ),
-                          ].divide(const SizedBox(height: 16.0)),
+                          ].divide(SizedBox(height: 16.0)),
                         ),
                       ),
                     ),
@@ -317,7 +328,7 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 16.0, 16.0, 16.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -332,7 +343,7 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
                                       .headlineSmall
                                       .override(
                                         fontFamily: 'Inter Tight',
-                                        color: const Color(0xFF374151),
+                                        color: Color(0xFF374151),
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -355,7 +366,7 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Inter',
-                                    color: const Color(0xFF374151),
+                                    color: Color(0xFF374151),
                                     letterSpacing: 0.0,
                                   ),
                             ),
@@ -363,7 +374,7 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
                               thickness: 1.0,
                               color: FlutterFlowTheme.of(context).alternate,
                             ),
-                          ].divide(const SizedBox(height: 16.0)),
+                          ].divide(SizedBox(height: 16.0)),
                         ),
                       ),
                     ),
@@ -381,7 +392,7 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
                         borderRadius: BorderRadius.circular(12.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 16.0, 16.0, 16.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -396,7 +407,7 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
                                       .headlineSmall
                                       .override(
                                         fontFamily: 'Inter Tight',
-                                        color: const Color(0xFF374151),
+                                        color: Color(0xFF374151),
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -419,7 +430,7 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Inter',
-                                    color: const Color(0xFF374151),
+                                    color: Color(0xFF374151),
                                     letterSpacing: 0.0,
                                   ),
                             ),
@@ -427,12 +438,12 @@ class _NotificacionesadminWidgetState extends State<NotificacionesadminWidget> {
                               thickness: 1.0,
                               color: FlutterFlowTheme.of(context).alternate,
                             ),
-                          ].divide(const SizedBox(height: 16.0)),
+                          ].divide(SizedBox(height: 16.0)),
                         ),
                       ),
                     ),
                   ),
-                ].divide(const SizedBox(height: 16.0)),
+                ].divide(SizedBox(height: 16.0)),
               ),
             ),
           ),

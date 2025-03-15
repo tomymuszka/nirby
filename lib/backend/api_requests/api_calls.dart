@@ -32,12 +32,12 @@ class SigninCall {
 
     final ffApiRequestBody = '''
 {
-  "emai": "$email",
-  "password": "$password"
+  "emai": "${email}",
+  "password": "${password}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'signin',
-      apiUrl: '$baseUrl/auth/v1/signup',
+      apiUrl: '${baseUrl}/auth/v1/signup',
       callType: ApiCallType.POST,
       headers: {
         'apikey':
@@ -70,12 +70,12 @@ class LoginCall {
 
     final ffApiRequestBody = '''
 {
-  "email": "$email",
-  "password": "$password"
+  "email": "${email}",
+  "password": "${password}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'login',
-      apiUrl: '$baseUrl/auth/v1/token?grant_type=password',
+      apiUrl: '${baseUrl}/auth/v1/token?grant_type=password',
       callType: ApiCallType.POST,
       headers: {
         'apikey':
@@ -103,7 +103,7 @@ class BuscarusuariosCall {
     return ApiManager.instance.makeApiCall(
       callName: 'buscarusuarios',
       apiUrl:
-          '$baseUrl/rest/v1/usuarios?or=(nombre.ilike.%$searchString%,apellido.ilike.%$searchString%)&select=id',
+          '${baseUrl}/rest/v1/usuarios?or=(nombre.ilike.%${searchString}%,apellido.ilike.%${searchString}%)&select=id',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -145,7 +145,7 @@ class ResetpasswordCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'resetpassword',
-      apiUrl: '$baseUrl/auth/v1/verify',
+      apiUrl: '${baseUrl}/auth/v1/verify',
       callType: ApiCallType.POST,
       headers: {
         'apikey':
@@ -173,7 +173,7 @@ class BuscarservicioCall {
     return ApiManager.instance.makeApiCall(
       callName: 'buscarservicio',
       apiUrl:
-          '$baseUrl/rest/v1/services?title=ilike.*%$searchString%&select=id',
+          '${baseUrl}/rest/v1/services?title=ilike.*%${searchString}%&select=id',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -223,27 +223,29 @@ class EdgeFunctionsGroup {
   static CreatesuscriptionCall createsuscriptionCall = CreatesuscriptionCall();
   static CancelsuscriptionCall cancelsuscriptionCall = CancelsuscriptionCall();
   static GetsuscCall getsuscCall = GetsuscCall();
+  static SearchpendingreviewsCall searchpendingreviewsCall =
+      SearchpendingreviewsCall();
 }
 
 class CreatesuscriptionCall {
   Future<ApiCallResponse> call({
-    double? amount,
-    int? frecuencia,
-    String? userId = '',
-    String? payerEmail = '',
+    double? amount = 30,
+    int? frecuencia = 12,
+    String? userId = 'hola',
+    String? payerEmail = 'test_user_132879330@testuser.com',
   }) async {
     final baseUrl = EdgeFunctionsGroup.getBaseUrl();
 
     final ffApiRequestBody = '''
 {
-  "amount": $amount,
-  "frecuencia": $frecuencia,
+  "amount": ${amount},
+  "frecuencia": ${frecuencia},
   "user_id": "${escapeStringForJson(userId)}",
   "payer_email": "${escapeStringForJson(payerEmail)}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'createsuscription',
-      apiUrl: '$baseUrl/crear_plan_suscripcion',
+      apiUrl: '${baseUrl}/crear_plan_suscripcion',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -284,7 +286,7 @@ class CancelsuscriptionCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'cancelsuscription',
-      apiUrl: '$baseUrl/cancel-suscription',
+      apiUrl: '${baseUrl}/cancel-suscription',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -312,7 +314,7 @@ class GetsuscCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'getsusc',
-      apiUrl: '$baseUrl/get_suscription',
+      apiUrl: '${baseUrl}/get_suscription',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -353,6 +355,34 @@ class GetsuscCall {
       ));
 }
 
+class SearchpendingreviewsCall {
+  Future<ApiCallResponse> call({
+    String? userId = '',
+  }) async {
+    final baseUrl = EdgeFunctionsGroup.getBaseUrl();
+
+    final ffApiRequestBody = '''
+{
+  "user_id": "${escapeStringForJson(userId)}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'searchpendingreviews',
+      apiUrl: '${baseUrl}/send-inapp',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      isStreamingApi: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 /// End edge functions Group Code
 
 /// Start Sendpulse Group Code
@@ -368,7 +398,7 @@ class AccesstokenCall {
   Future<ApiCallResponse> call() async {
     final baseUrl = SendpulseGroup.getBaseUrl();
 
-    const ffApiRequestBody = '''
+    final ffApiRequestBody = '''
 {
   "grant_type": "client_credentials",
   "client_id": "8150d10a47d10060fe4404337556b19c",
@@ -376,7 +406,7 @@ class AccesstokenCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'accesstoken',
-      apiUrl: '$baseUrl/oauth/access_token',
+      apiUrl: '${baseUrl}/oauth/access_token',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -423,10 +453,10 @@ class SendEmailCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'send email',
-      apiUrl: '$baseUrl/smtp/emails',
+      apiUrl: '${baseUrl}/smtp/emails',
       callType: ApiCallType.POST,
       headers: {
-        'Authorization': 'Bearer $accessToken',
+        'Authorization': 'Bearer ${accessToken}',
       },
       params: {},
       body: ffApiRequestBody,

@@ -46,7 +46,8 @@
     <string>La aplicación desea acceder a tu cámara para poder subir una foto de perfil o fotos de servicios.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
     <string>La aplicación desea acceder a tu galería para poder subir una foto de perfil o fotos de servicios.</string>
-
+	<key>PermissionGroupNotification</key>
+    <string>La aplicación desea enviarte notificaciones push opara que estes al tanto de todos los eventos.</string>
 
 
 	<key>UILaunchStoryboardName</key>

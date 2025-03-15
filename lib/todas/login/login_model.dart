@@ -1,4 +1,6 @@
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'login_widget.dart' show LoginWidget;
 import 'package:flutter/material.dart';
 
@@ -34,6 +36,8 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
 
   // Stores action output result for [Custom Action - getOneSignalPlayerId] action in Button widget.
   String? playerid;
+  // Stores action output result for [Backend Call - Query Rows] action in Button widget.
+  List<UsuariosRow>? user;
 
   @override
   void initState(BuildContext context) {

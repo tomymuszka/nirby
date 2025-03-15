@@ -1,5 +1,6 @@
 // Automatic FlutterFlow imports
 import '/backend/supabase/supabase.dart';
+import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'index.dart'; // Imports other custom actions
@@ -15,7 +16,6 @@ Future onesignal() async {
 
   OneSignal.initialize("39a43301-26c4-4991-b08f-7758d600b180");
 
-// The promptForPushNotificationsWithUserResponse function will show the iOS or Android push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission
   OneSignal.Notifications.requestPermission(true);
 }
 

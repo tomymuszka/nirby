@@ -48,7 +48,7 @@ class _EmptyListChatsClientWidgetState
           size: 72.0,
         ),
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
           child: Text(
             'No tenés chats',
             textAlign: TextAlign.center,
@@ -59,7 +59,7 @@ class _EmptyListChatsClientWidgetState
           ),
         ),
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
           child: Text(
             'Parace que todavía no has iniciado ningún chat.',
             textAlign: TextAlign.center,

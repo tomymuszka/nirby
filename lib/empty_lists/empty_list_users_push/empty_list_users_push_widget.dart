@@ -47,7 +47,7 @@ class _EmptyListUsersPushWidgetState extends State<EmptyListUsersPushWidget> {
           size: 72.0,
         ),
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
           child: Text(
             'No se encontraron usuarios',
             textAlign: TextAlign.center,

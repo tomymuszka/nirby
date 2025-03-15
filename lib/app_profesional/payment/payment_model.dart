@@ -5,18 +5,12 @@ import 'payment_widget.dart' show PaymentWidget;
 import 'package:flutter/material.dart';
 
 class PaymentModel extends FlutterFlowModel<PaymentWidget> {
-  ///  Local state fields for this page.
-
-  String? emailmppage;
-
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for Switch widget.
   bool? switchValue;
   // Stores action output result for [Backend Call - Query Rows] action in Button widget.
   List<UsuariosRow>? user;
-  // Stores action output result for [Alert Dialog - Custom Dialog] action in Button widget.
-  String? emailmp;
   // Stores action output result for [Backend Call - API (createsuscription)] action in Button widget.
   ApiCallResponse? crearsuscripcion;
 

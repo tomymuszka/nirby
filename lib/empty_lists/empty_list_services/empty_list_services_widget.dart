@@ -39,37 +39,40 @@ class _EmptyListServicesWidgetState extends State<EmptyListServicesWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        FaIcon(
-          FontAwesomeIcons.list,
-          color: FlutterFlowTheme.of(context).secondaryText,
-          size: 72.0,
-        ),
-        Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-          child: Text(
-            'No se encontraron servicios',
-            textAlign: TextAlign.center,
-            style: FlutterFlowTheme.of(context).headlineMedium.override(
-                  fontFamily: 'Inter Tight',
-                  letterSpacing: 0.0,
-                ),
+    return Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: [
+          FaIcon(
+            FontAwesomeIcons.list,
+            color: FlutterFlowTheme.of(context).secondaryText,
+            size: 72.0,
           ),
-        ),
-        Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
-          child: Text(
-            'Parace que no se encontraron servicios que coincidan con tu búsqueda.\n\nVolvé a probar con otros filtros.',
-            textAlign: TextAlign.center,
-            style: FlutterFlowTheme.of(context).labelMedium.override(
-                  fontFamily: 'Inter',
-                  letterSpacing: 0.0,
-                ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+            child: Text(
+              'No se encontraron servicios',
+              textAlign: TextAlign.center,
+              style: FlutterFlowTheme.of(context).headlineMedium.override(
+                    fontFamily: 'Inter Tight',
+                    letterSpacing: 0.0,
+                  ),
+            ),
           ),
-        ),
-      ],
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+            child: Text(
+              'Parace que no se encontraron servicios que coincidan con tu búsqueda.\n\nVolvé a probar con otros filtros.',
+              textAlign: TextAlign.center,
+              style: FlutterFlowTheme.of(context).labelMedium.override(
+                    fontFamily: 'Inter',
+                    letterSpacing: 0.0,
+                  ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

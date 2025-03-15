@@ -9,7 +9,7 @@ class GlobalesTable extends SupabaseTable<GlobalesRow> {
 }
 
 class GlobalesRow extends SupabaseDataRow {
-  GlobalesRow(super.data);
+  GlobalesRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => GlobalesTable();

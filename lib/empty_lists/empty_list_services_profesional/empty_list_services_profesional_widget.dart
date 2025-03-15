@@ -49,7 +49,7 @@ class _EmptyListServicesProfesionalWidgetState
           size: 72.0,
         ),
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
           child: Text(
             'No se encontraron servicios',
             textAlign: TextAlign.center,
@@ -60,7 +60,7 @@ class _EmptyListServicesProfesionalWidgetState
           ),
         ),
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
           child: Text(
             'Parace que todavía no creaste ningún servicio.\n\nCreá uno para que los usuarios te contacten.',
             textAlign: TextAlign.center,

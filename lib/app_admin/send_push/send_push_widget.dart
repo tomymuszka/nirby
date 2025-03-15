@@ -1,3 +1,4 @@
+import '';
 import '/backend/supabase/supabase.dart';
 import '/empty_lists/empty_list_users_push/empty_list_users_push_widget.dart';
 import '/flutter_flow/flutter_flow_checkbox_group.dart';
@@ -7,13 +8,18 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'send_push_model.dart';
 export 'send_push_model.dart';
 
 class SendPushWidget extends StatefulWidget {
   const SendPushWidget({super.key});
+
+  static String routeName = 'send_push';
+  static String routePath = '/sendPush';
 
   @override
   State<SendPushWidget> createState() => _SendPushWidgetState();
@@ -28,6 +34,11 @@ class _SendPushWidgetState extends State<SendPushWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SendPushModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await action_blocks.checkConnection(context);
+    });
 
     _model.tituloTextController ??= TextEditingController();
     _model.tituloFocusNode ??= FocusNode();
@@ -74,18 +85,18 @@ class _SendPushWidgetState extends State<SendPushWidget> {
             'Nueva Notificación',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Inter Tight',
-                  fontSize: 24.0,
+                  fontSize: 18.0,
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(15.0, 24.0, 15.0, 24.0),
+            padding: EdgeInsetsDirectional.fromSTEB(15.0, 24.0, 15.0, 24.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -104,7 +115,7 @@ class _SendPushWidgetState extends State<SendPushWidget> {
                         borderRadius: BorderRadius.circular(16.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             20.0, 20.0, 20.0, 20.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -141,28 +152,28 @@ class _SendPushWidgetState extends State<SendPushWidget> {
                                       letterSpacing: 0.0,
                                     ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0xFFE0E0E0),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
@@ -202,28 +213,28 @@ class _SendPushWidgetState extends State<SendPushWidget> {
                                       letterSpacing: 0.0,
                                     ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0xFFE0E0E0),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 errorBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
@@ -245,7 +256,7 @@ class _SendPushWidgetState extends State<SendPushWidget> {
                                   .descripcionTextControllerValidator
                                   .asValidator(context),
                             ),
-                          ].divide(const SizedBox(height: 16.0)),
+                          ].divide(SizedBox(height: 16.0)),
                         ),
                       ),
                     ),
@@ -264,7 +275,7 @@ class _SendPushWidgetState extends State<SendPushWidget> {
                         borderRadius: BorderRadius.circular(16.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             20.0, 20.0, 20.0, 20.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -283,16 +294,10 @@ class _SendPushWidgetState extends State<SendPushWidget> {
                             ),
                             FutureBuilder<List<UsuariosRow>>(
                               future: UsuariosTable().queryRows(
-                                queryFn: (q) => q
-                                    .eqOrNull(
-                                      'is_deleted',
-                                      false,
-                                    )
-                                    .not(
-                                      'player_id',
-                                      'is',
-                                      null,
-                                    ),
+                                queryFn: (q) => q.eqOrNull(
+                                  'is_deleted',
+                                  false,
+                                ),
                               ),
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
@@ -304,7 +309,8 @@ class _SendPushWidgetState extends State<SendPushWidget> {
                                       child: CircularProgressIndicator(
                                         valueColor:
                                             AlwaysStoppedAnimation<Color>(
-                                          FlutterFlowTheme.of(context).primary,
+                                          FlutterFlowTheme.of(context)
+                                              .primaryBackground,
                                         ),
                                       ),
                                     ),
@@ -320,12 +326,12 @@ class _SendPushWidgetState extends State<SendPushWidget> {
                                     color: Colors.white,
                                     borderRadius: BorderRadius.circular(8.0),
                                     border: Border.all(
-                                      color: const Color(0xFFE0E0E0),
+                                      color: Color(0xFFE0E0E0),
                                       width: 1.0,
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 16.0, 16.0, 16.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
@@ -389,13 +395,13 @@ class _SendPushWidgetState extends State<SendPushWidget> {
                                                       .secondaryText,
                                               size: 24.0,
                                             ),
-                                            fillColor: const Color(0xFFF2F3F4),
+                                            fillColor: Color(0xFFF2F3F4),
                                             elevation: 2.0,
                                             borderColor: Colors.transparent,
                                             borderWidth: 0.0,
                                             borderRadius: 8.0,
                                             margin:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 12.0, 0.0),
                                             hidesUnderline: true,
                                             isOverButton: false,
@@ -429,7 +435,7 @@ class _SendPushWidgetState extends State<SendPushWidget> {
                                             },
                                           ),
                                         ),
-                                      ].divide(const SizedBox(height: 12.0)),
+                                      ].divide(SizedBox(height: 12.0)),
                                     ),
                                   ),
                                 );
@@ -442,12 +448,12 @@ class _SendPushWidgetState extends State<SendPushWidget> {
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(8.0),
                                 border: Border.all(
-                                  color: const Color(0xFFE0E0E0),
+                                  color: Color(0xFFE0E0E0),
                                   width: 1.0,
                                 ),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 16.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
@@ -479,7 +485,7 @@ class _SendPushWidgetState extends State<SendPushWidget> {
                                       ],
                                     ),
                                     FlutterFlowCheckboxGroup(
-                                      options: const ['Verificados', 'Sin verificar'],
+                                      options: ['Verificados', 'Sin verificar'],
                                       onChanged: (val) async {
                                         safeSetState(() =>
                                             _model.verificadosValues = val);
@@ -529,7 +535,7 @@ class _SendPushWidgetState extends State<SendPushWidget> {
                                       ],
                                     ),
                                     FlutterFlowCheckboxGroup(
-                                      options: const [
+                                      options: [
                                         'Suscripción activa',
                                         'Suscripción no activa'
                                       ],
@@ -750,7 +756,7 @@ class _SendPushWidgetState extends State<SendPushWidget> {
                                                         onPressed: () =>
                                                             Navigator.pop(
                                                                 alertDialogContext),
-                                                        child: const Text('Ok'),
+                                                        child: Text('Ok'),
                                                       ),
                                                     ],
                                                   );
@@ -933,33 +939,33 @@ class _SendPushWidgetState extends State<SendPushWidget> {
                                             MediaQuery.sizeOf(context).width *
                                                 1.0,
                                         height: 40.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: Colors.white,
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleMedium
                                             .override(
                                               fontFamily: 'Inter Tight',
-                                              color: const Color(0xFF1C2A3A),
+                                              color: Color(0xFF1C2A3A),
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                             ),
                                         elevation: 3.0,
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Color(0xFF1C2A3A),
                                         ),
                                         borderRadius:
                                             BorderRadius.circular(28.0),
                                       ),
                                     ),
-                                  ].divide(const SizedBox(height: 16.0)),
+                                  ].divide(SizedBox(height: 16.0)),
                                 ),
                               ),
                             ),
-                          ].divide(const SizedBox(height: 16.0)),
+                          ].divide(SizedBox(height: 16.0)),
                         ),
                       ),
                     ),
@@ -978,7 +984,7 @@ class _SendPushWidgetState extends State<SendPushWidget> {
                         borderRadius: BorderRadius.circular(16.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             20.0, 20.0, 20.0, 20.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
@@ -1002,21 +1008,22 @@ class _SendPushWidgetState extends State<SendPushWidget> {
                                 color: Colors.white,
                                 borderRadius: BorderRadius.circular(8.0),
                                 border: Border.all(
-                                  color: const Color(0xFFE0E0E0),
+                                  color: Color(0xFFE0E0E0),
                                   width: 1.0,
                                 ),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 16.0, 16.0, 16.0),
                                 child: Builder(
                                   builder: (context) {
                                     final users = _model.usuarios.toList();
                                     if (users.isEmpty) {
-                                      return const EmptyListUsersPushWidget();
+                                      return EmptyListUsersPushWidget();
                                     }
 
                                     return SingleChildScrollView(
+                                      primary: false,
                                       child: Column(
                                         mainAxisSize: MainAxisSize.min,
                                         children: List.generate(users.length,
@@ -1049,7 +1056,7 @@ class _SendPushWidgetState extends State<SendPushWidget> {
                                                           ),
                                                     ),
                                                   ].divide(
-                                                      const SizedBox(width: 8.0)),
+                                                      SizedBox(width: 8.0)),
                                                 ),
                                               ),
                                               InkWell(
@@ -1073,7 +1080,7 @@ class _SendPushWidgetState extends State<SendPushWidget> {
                                               ),
                                             ],
                                           );
-                                        }).divide(const SizedBox(height: 12.0)),
+                                        }).divide(SizedBox(height: 12.0)),
                                       ),
                                     );
                                   },
@@ -1093,7 +1100,7 @@ class _SendPushWidgetState extends State<SendPushWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Inter',
-                                        color: const Color(0xFF1F2A37),
+                                        color: Color(0xFF1F2A37),
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.bold,
@@ -1101,56 +1108,22 @@ class _SendPushWidgetState extends State<SendPushWidget> {
                                 ),
                               ],
                             ),
-                          ].divide(const SizedBox(height: 16.0)),
+                          ].divide(SizedBox(height: 16.0)),
                         ),
                       ),
                     ),
                   ),
                   FFButtonWidget(
-                    onPressed: () async {
-                      _model.playerid = await UsuariosTable().queryRows(
-                        queryFn: (q) => q.inFilterOrNull(
-                          'id',
-                          _model.usuarios.map((e) => e.id).toList(),
-                        ),
-                      );
-                      await NotificationsTable().insert({
-                        'title': _model.tituloTextController.text,
-                        'content': _model.descripcionTextController.text,
-                        'player_id': _model.playerid
-                            ?.map((e) => e.playerId)
-                            .withoutNulls
-                            .toList(),
-                      });
-                      await showDialog(
-                        context: context,
-                        builder: (alertDialogContext) {
-                          return AlertDialog(
-                            title: const Text('Mensaje enviado'),
-                            content:
-                                const Text('La notificación fue enviada con éxito'),
-                            actions: [
-                              TextButton(
-                                onPressed: () =>
-                                    Navigator.pop(alertDialogContext),
-                                child: const Text('Ok'),
-                              ),
-                            ],
-                          );
-                        },
-                      );
-
-                      safeSetState(() {});
-                    },
+                    onPressed: () async {},
                     text: 'Enviar notificación',
                     options: FFButtonOptions(
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: 50.0,
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: const Color(0xFF1C2A3A),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: Color(0xFF1C2A3A),
                       textStyle:
                           FlutterFlowTheme.of(context).titleMedium.override(
                                 fontFamily: 'Inter Tight',
@@ -1161,7 +1134,7 @@ class _SendPushWidgetState extends State<SendPushWidget> {
                       borderRadius: BorderRadius.circular(28.0),
                     ),
                   ),
-                ].divide(const SizedBox(height: 24.0)),
+                ].divide(SizedBox(height: 24.0)),
               ),
             ),
           ),

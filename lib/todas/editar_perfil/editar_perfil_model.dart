@@ -1,4 +1,5 @@
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'editar_perfil_widget.dart' show EditarPerfilWidget;
 import 'package:flutter/material.dart';
 
@@ -85,10 +86,6 @@ class EditarPerfilModel extends FlutterFlowModel<EditarPerfilWidget> {
     return null;
   }
 
-  // State field(s) for email_mp widget.
-  FocusNode? emailMpFocusNode;
-  TextEditingController? emailMpTextController;
-  String? Function(BuildContext, String?)? emailMpTextControllerValidator;
   DateTime? datePicked;
 
   @override
@@ -121,8 +118,5 @@ class EditarPerfilModel extends FlutterFlowModel<EditarPerfilWidget> {
 
     anosexperienciaFocusNode?.dispose();
     anosexperienciaTextController?.dispose();
-
-    emailMpFocusNode?.dispose();
-    emailMpTextController?.dispose();
   }
 }

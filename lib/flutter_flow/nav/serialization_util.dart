@@ -168,8 +168,8 @@ dynamic deserializeParam<T>(
         return null;
       }
       return paramValues
-          .whereType<String>()
-          .map((p) => p)
+          .where((p) => p is String)
+          .map((p) => p as String)
           .map((p) => deserializeParam<T>(p, paramType, false))
           .where((p) => p != null)
           .map((p) => p! as T)
@@ -217,6 +217,8 @@ dynamic deserializeParam<T>(
             return ChatsRow(data);
           case UsuariosAnaliticasRow:
             return UsuariosAnaliticasRow(data);
+          case NotificationsUsersRow:
+            return NotificationsUsersRow(data);
           case ProfessionalDetailsRow:
             return ProfessionalDetailsRow(data);
           case ServicesRow:
@@ -245,18 +247,16 @@ dynamic deserializeParam<T>(
             return ServiceChatRow(data);
           case ServiceDetailsRow:
             return ServiceDetailsRow(data);
-          case ChatsFilteredRow:
-            return ChatsFilteredRow(data);
           case ProfessionalReviewSummaryRow:
             return ProfessionalReviewSummaryRow(data);
           case AnaliticasAdminRow:
             return AnaliticasAdminRow(data);
           case InterestedProfessionalsRow:
             return InterestedProfessionalsRow(data);
+          case UnseenMessagesCountRow:
+            return UnseenMessagesCountRow(data);
           case ReviewsRow:
             return ReviewsRow(data);
-          case NotificationsRow:
-            return NotificationsRow(data);
           case ConversationsRow:
             return ConversationsRow(data);
           default:

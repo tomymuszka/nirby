@@ -1,4 +1,3 @@
-import '/app_cliente/mercadopagoemail/mercadopagoemail_widget.dart';
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
@@ -6,12 +5,17 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/actions/actions.dart' as action_blocks;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'payment_model.dart';
 export 'payment_model.dart';
 
 class PaymentWidget extends StatefulWidget {
   const PaymentWidget({super.key});
+
+  static String routeName = 'payment';
+  static String routePath = '/payment';
 
   @override
   State<PaymentWidget> createState() => _PaymentWidgetState();
@@ -26,6 +30,11 @@ class _PaymentWidgetState extends State<PaymentWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PaymentModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await action_blocks.checkConnection(context);
+    });
 
     _model.switchValue = true;
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
@@ -58,7 +67,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                 height: 50.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    FlutterFlowTheme.of(context).primaryBackground,
                   ),
                 ),
               ),
@@ -96,29 +105,29 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                   context.safePop();
                 },
               ),
-              actions: const [],
+              actions: [],
               centerTitle: true,
               elevation: 0.0,
             ),
             body: SafeArea(
               top: true,
               child: Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Container(
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxWidth: 600.0,
                   ),
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
                     child: SingleChildScrollView(
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 8.0, 0.0, 0.0),
                             child: Text(
                               'Aboná tu suscripción',
@@ -131,14 +140,14 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 20.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 15.0, 0.0),
                                   child: Text(
                                     'Mensual',
@@ -158,12 +167,12 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                   },
                                   activeColor:
                                       FlutterFlowTheme.of(context).primary,
-                                  activeTrackColor: const Color(0xFF3D64FF),
+                                  activeTrackColor: Color(0xFF3D64FF),
                                   inactiveTrackColor: Colors.white,
-                                  inactiveThumbColor: const Color(0xFFBEBEBE),
+                                  inactiveThumbColor: Color(0xFFBEBEBE),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       15.0, 0.0, 0.0, 0.0),
                                   child: Text(
                                     'Anual',
@@ -179,7 +188,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 25.0, 20.0, 0.0),
                             child: Material(
                               color: Colors.transparent,
@@ -195,7 +204,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                   borderRadius: BorderRadius.circular(20.0),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       15.0, 20.0, 15.0, 30.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -222,27 +231,30 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                         ],
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 10.0, 0.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
                                               CrossAxisAlignment.end,
                                           children: [
-                                            Text(
-                                              '${_model.switchValue == true ? paymentGlobalesRow?.suscripcionAnual.toString() : paymentGlobalesRow?.suscripcionMensual.toString()} ARS',
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Inter',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primaryText,
-                                                    fontSize: 26.0,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
+                                            Flexible(
+                                              child: Text(
+                                                '${_model.switchValue == true ? paymentGlobalesRow?.suscripcionAnual.toString() : paymentGlobalesRow?.suscripcionMensual.toString()} ARS',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .primaryText,
+                                                          fontSize: 26.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                              ),
                                             ),
                                             Text(
                                               ' / ${_model.switchValue == true ? 'año' : 'mes'}',
@@ -267,12 +279,12 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 40.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
-                                                const Icon(
+                                                Icon(
                                                   Icons.check_circle,
                                                   color: Colors.green,
                                                   size: 24.0,
@@ -280,7 +292,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                 Flexible(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(15.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -307,14 +319,14 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 20.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
                                                   MainAxisAlignment.start,
                                               children: [
-                                                const Icon(
+                                                Icon(
                                                   Icons.check_circle,
                                                   color: Colors.green,
                                                   size: 24.0,
@@ -322,7 +334,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                 Expanded(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(15.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -344,7 +356,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                     ),
                                                   ),
                                                 ),
-                                                const Icon(
+                                                Icon(
                                                   Icons.verified,
                                                   color: Color(0xFF3E9AF0),
                                                   size: 24.0,
@@ -354,14 +366,14 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 20.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
                                                   MainAxisAlignment.start,
                                               children: [
-                                                const Icon(
+                                                Icon(
                                                   Icons.check_circle,
                                                   color: Colors.green,
                                                   size: 24.0,
@@ -369,49 +381,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                 Flexible(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(15.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      'Podrás compartir tu perfil por diferentes canales',
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily: 'Inter',
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .primaryText,
-                                                            fontSize: 14.0,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .normal,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 20.0, 0.0, 0.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.start,
-                                              children: [
-                                                const Icon(
-                                                  Icons.check_circle,
-                                                  color: Colors.green,
-                                                  size: 24.0,
-                                                ),
-                                                Flexible(
-                                                  child: Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(15.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -438,14 +408,14 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 20.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
                                                   MainAxisAlignment.start,
                                               children: [
-                                                const Icon(
+                                                Icon(
                                                   Icons.check_circle,
                                                   color: Colors.green,
                                                   size: 24.0,
@@ -453,7 +423,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                 Flexible(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(15.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -480,14 +450,14 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 20.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
                                                   MainAxisAlignment.start,
                                               children: [
-                                                const Icon(
+                                                Icon(
                                                   Icons.check_circle,
                                                   color: Colors.green,
                                                   size: 24.0,
@@ -495,7 +465,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                 Flexible(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(15.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -522,7 +492,7 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 70.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -530,221 +500,143 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                   MainAxisAlignment.start,
                                               children: [
                                                 Expanded(
-                                                  child: Builder(
-                                                    builder: (context) =>
-                                                        FFButtonWidget(
-                                                      onPressed: () async {
-                                                        _model.user =
-                                                            await UsuariosTable()
-                                                                .queryRows(
-                                                          queryFn: (q) =>
-                                                              q.eqOrNull(
-                                                            'id',
-                                                            currentUserUid,
-                                                          ),
-                                                        );
-                                                        if (_model
-                                                                    .user
-                                                                    ?.firstOrNull
-                                                                    ?.emailMercadopago !=
-                                                                null &&
-                                                            _model
-                                                                    .user
-                                                                    ?.firstOrNull
-                                                                    ?.emailMercadopago !=
-                                                                '') {
-                                                          _model.emailmppage =
-                                                              _model
-                                                                  .user
-                                                                  ?.firstOrNull
-                                                                  ?.emailMercadopago;
-                                                          safeSetState(() {});
+                                                  child: FFButtonWidget(
+                                                    onPressed: () async {
+                                                      _model.user =
+                                                          await UsuariosTable()
+                                                              .queryRows(
+                                                        queryFn: (q) =>
+                                                            q.eqOrNull(
+                                                          'id',
+                                                          currentUserUid,
+                                                        ),
+                                                      );
+                                                      _model.crearsuscripcion =
+                                                          await EdgeFunctionsGroup
+                                                              .createsuscriptionCall
+                                                              .call(
+                                                        amount: _model
+                                                                .switchValue!
+                                                            ? paymentGlobalesRow
+                                                                ?.suscripcionAnual
+                                                            : paymentGlobalesRow
+                                                                ?.suscripcionMensual,
+                                                        frecuencia:
+                                                            _model.switchValue!
+                                                                ? 12
+                                                                : 1,
+                                                        userId: currentUserUid,
+                                                        payerEmail: _model
+                                                            .user
+                                                            ?.firstOrNull
+                                                            ?.email,
+                                                      );
+
+                                                      if ((_model
+                                                              .crearsuscripcion
+                                                              ?.succeeded ??
+                                                          true)) {
+                                                        await launchURL(
+                                                            EdgeFunctionsGroup
+                                                                .createsuscriptionCall
+                                                                .initpoint(
+                                                          (_model.crearsuscripcion
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                        )!);
+                                                      } else {
+                                                        if (EdgeFunctionsGroup
+                                                                .createsuscriptionCall
+                                                                .errormessage(
+                                                              (_model.crearsuscripcion
+                                                                      ?.jsonBody ??
+                                                                  ''),
+                                                            ) ==
+                                                            'Invalid value for payer_email, must be a valid email address') {
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Problema con mercadopago'),
+                                                                content: Text(
+                                                                    'El email es inválido'),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
                                                         } else {
                                                           await showDialog(
                                                             context: context,
                                                             builder:
-                                                                (dialogContext) {
-                                                              return Dialog(
-                                                                elevation: 0,
-                                                                insetPadding:
-                                                                    EdgeInsets
-                                                                        .zero,
-                                                                backgroundColor:
-                                                                    Colors
-                                                                        .transparent,
-                                                                alignment: const AlignmentDirectional(
-                                                                        0.0,
-                                                                        0.0)
-                                                                    .resolve(
-                                                                        Directionality.of(
-                                                                            context)),
-                                                                child:
-                                                                    GestureDetector(
-                                                                  onTap: () {
-                                                                    FocusScope.of(
-                                                                            dialogContext)
-                                                                        .unfocus();
-                                                                    FocusManager
-                                                                        .instance
-                                                                        .primaryFocus
-                                                                        ?.unfocus();
-                                                                  },
-                                                                  child:
-                                                                      const MercadopagoemailWidget(),
-                                                                ),
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(
+                                                                    'Problema con mercadopago'),
+                                                                content: Text((_model
+                                                                        .crearsuscripcion
+                                                                        ?.bodyText ??
+                                                                    '')),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
                                                               );
                                                             },
-                                                          ).then((value) =>
-                                                              safeSetState(() =>
-                                                                  _model.emailmp =
-                                                                      value));
-
-                                                          _model.emailmppage =
-                                                              _model.emailmp;
-                                                          safeSetState(() {});
+                                                          );
                                                         }
+                                                      }
 
-                                                        await UsuariosTable()
-                                                            .update(
-                                                          data: {
-                                                            'email_mercadopago':
-                                                                _model
-                                                                    .emailmppage,
-                                                          },
-                                                          matchingRows:
-                                                              (rows) =>
-                                                                  rows.eqOrNull(
-                                                            'id',
-                                                            currentUserUid,
-                                                          ),
-                                                        );
-                                                        _model.crearsuscripcion =
-                                                            await EdgeFunctionsGroup
-                                                                .createsuscriptionCall
-                                                                .call(
-                                                          amount: _model
-                                                                  .switchValue!
-                                                              ? paymentGlobalesRow
-                                                                  ?.suscripcionAnual
-                                                              : paymentGlobalesRow
-                                                                  ?.suscripcionMensual,
-                                                          frecuencia: _model
-                                                                  .switchValue!
-                                                              ? 12
-                                                              : 1,
-                                                          userId:
-                                                              currentUserUid,
-                                                          payerEmail: _model
-                                                              .emailmppage,
-                                                        );
-
-                                                        if ((_model
-                                                                .crearsuscripcion
-                                                                ?.succeeded ??
-                                                            true)) {
-                                                          await launchURL(
-                                                              EdgeFunctionsGroup
-                                                                  .createsuscriptionCall
-                                                                  .initpoint(
-                                                            (_model.crearsuscripcion
-                                                                    ?.jsonBody ??
-                                                                ''),
-                                                          )!);
-                                                        } else {
-                                                          if (EdgeFunctionsGroup
-                                                                  .createsuscriptionCall
-                                                                  .errormessage(
-                                                                (_model.crearsuscripcion
-                                                                        ?.jsonBody ??
-                                                                    ''),
-                                                              ) ==
-                                                              'Invalid value for payer_email, must be a valid email address') {
-                                                            await showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (alertDialogContext) {
-                                                                return AlertDialog(
-                                                                  title: const Text(
-                                                                      'Problema con mercadopago'),
-                                                                  content: const Text(
-                                                                      'El email es inválido'),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed:
-                                                                          () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                      child: const Text(
-                                                                          'Ok'),
-                                                                    ),
-                                                                  ],
-                                                                );
-                                                              },
-                                                            );
-                                                          } else {
-                                                            await showDialog(
-                                                              context: context,
-                                                              builder:
-                                                                  (alertDialogContext) {
-                                                                return AlertDialog(
-                                                                  title: const Text(
-                                                                      'Problema con mercadopago'),
-                                                                  content: Text((_model
-                                                                          .crearsuscripcion
-                                                                          ?.bodyText ??
-                                                                      '')),
-                                                                  actions: [
-                                                                    TextButton(
-                                                                      onPressed:
-                                                                          () =>
-                                                                              Navigator.pop(alertDialogContext),
-                                                                      child: const Text(
-                                                                          'Ok'),
-                                                                    ),
-                                                                  ],
-                                                                );
-                                                              },
-                                                            );
-                                                          }
-                                                        }
-
-                                                        safeSetState(() {});
-                                                      },
-                                                      text: 'Suscribirme',
-                                                      options: FFButtonOptions(
-                                                        height: 40.0,
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    16.0,
+                                                      safeSetState(() {});
+                                                    },
+                                                    text: 'Suscribirme',
+                                                    options: FFButtonOptions(
+                                                      height: 40.0,
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  16.0,
+                                                                  0.0,
+                                                                  16.0,
+                                                                  0.0),
+                                                      iconPadding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      color: Color(0xFF1C2A3A),
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Inter',
+                                                                color: Colors
+                                                                    .white,
+                                                                letterSpacing:
                                                                     0.0,
-                                                                    16.0,
-                                                                    0.0),
-                                                        iconPadding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        color:
-                                                            const Color(0xFF1C2A3A),
-                                                        textStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .titleSmall
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Inter',
-                                                                  color: Colors
-                                                                      .white,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                ),
-                                                        elevation: 0.0,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
-                                                      ),
+                                                              ),
+                                                      elevation: 0.0,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
                                                     ),
                                                   ),
                                                 ),

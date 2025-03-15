@@ -10,7 +10,7 @@ class ConversationsTable extends SupabaseTable<ConversationsRow> {
 }
 
 class ConversationsRow extends SupabaseDataRow {
-  ConversationsRow(super.data);
+  ConversationsRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => ConversationsTable();
@@ -36,7 +36,7 @@ class ConversationsRow extends SupabaseDataRow {
 
   List<String> get conversationMembers =>
       getListField<String>('conversation_members');
-  set conversationMembers(List<String> value) =>
+  set conversationMembers(List<String>? value) =>
       setListField<String>('conversation_members', value);
 
   int? get servicio => getField<int>('servicio');

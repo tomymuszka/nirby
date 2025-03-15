@@ -1,5 +1,6 @@
-import '/app_cliente/contacted_professional_popup/contacted_professional_popup_widget.dart';
-import '/app_cliente/create_revirepopup/create_revirepopup_widget.dart';
+import '';
+import '/app_cliente/home/contacted_professional_popup/contacted_professional_popup_widget.dart';
+import '/app_cliente/home/create_revirepopup/create_revirepopup_widget.dart';
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
@@ -7,6 +8,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/todas/navbar/navbar_widget.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -17,6 +19,9 @@ export 'home_screen_model.dart';
 /// pagina de la home
 class HomeScreenWidget extends StatefulWidget {
   const HomeScreenWidget({super.key});
+
+  static String routeName = 'HomeScreen';
+  static String routePath = '/homeScreen';
 
   @override
   State<HomeScreenWidget> createState() => _HomeScreenWidgetState();
@@ -58,7 +63,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                 elevation: 0,
                 insetPadding: EdgeInsets.zero,
                 backgroundColor: Colors.transparent,
-                alignment: const AlignmentDirectional(0.0, 0.0)
+                alignment: AlignmentDirectional(0.0, 0.0)
                     .resolve(Directionality.of(context)),
                 child: GestureDetector(
                   onTap: () {
@@ -87,7 +92,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                   elevation: 0,
                   insetPadding: EdgeInsets.zero,
                   backgroundColor: Colors.transparent,
-                  alignment: const AlignmentDirectional(0.0, 0.0)
+                  alignment: AlignmentDirectional(0.0, 0.0)
                       .resolve(Directionality.of(context)),
                   child: GestureDetector(
                     onTap: () {
@@ -147,7 +152,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                   height: 50.0,
                   child: CircularProgressIndicator(
                     valueColor: AlwaysStoppedAnimation<Color>(
-                      FlutterFlowTheme.of(context).primary,
+                      FlutterFlowTheme.of(context).primaryBackground,
                     ),
                   ),
                 ),
@@ -171,15 +176,15 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
               body: SafeArea(
                 top: true,
                 child: Align(
-                  alignment: const AlignmentDirectional(0.0, -1.0),
+                  alignment: AlignmentDirectional(0.0, -1.0),
                   child: Container(
-                    constraints: const BoxConstraints(
+                    constraints: BoxConstraints(
                       maxWidth: 600.0,
                     ),
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -202,7 +207,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                       .primaryBackground,
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       15.0, 10.0, 15.0, 10.0),
                                               child: Row(
@@ -211,10 +216,10 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                   Expanded(
                                                     child: Container(
                                                       decoration:
-                                                          const BoxDecoration(),
+                                                          BoxDecoration(),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -251,7 +256,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                                             Color>(
                                                                       FlutterFlowTheme.of(
                                                                               context)
-                                                                          .primary,
+                                                                          .primaryBackground,
                                                                     ),
                                                                   ),
                                                                 ),
@@ -261,13 +266,13 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                                 textFieldServicesRowList =
                                                                 snapshot.data!;
 
-                                                            return SizedBox(
+                                                            return Container(
                                                               width: 80.0,
                                                               child:
                                                                   Autocomplete<
                                                                       String>(
                                                                 initialValue:
-                                                                    const TextEditingValue(),
+                                                                    TextEditingValue(),
                                                                 optionsBuilder:
                                                                     (textEditingValue) {
                                                                   if (textEditingValue
@@ -316,7 +321,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                                               0.0,
                                                                         ),
                                                                     textHighlightStyle:
-                                                                        const TextStyle(),
+                                                                        TextStyle(),
                                                                     elevation:
                                                                         4.0,
                                                                     optionBackgroundColor:
@@ -385,7 +390,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                                             fontFamily:
                                                                                 'Inter',
                                                                             color:
-                                                                                const Color(0xFF9CA3AF),
+                                                                                Color(0xFF9CA3AF),
                                                                             letterSpacing:
                                                                                 0.0,
                                                                           ),
@@ -404,7 +409,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                                       focusedBorder:
                                                                           OutlineInputBorder(
                                                                         borderSide:
-                                                                            const BorderSide(
+                                                                            BorderSide(
                                                                           color:
                                                                               Color(0x00000000),
                                                                           width:
@@ -470,7 +475,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 20.0, 0.0),
                                                     child:
@@ -481,21 +486,20 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                           FlutterFlowTheme.of(
                                                                   context)
                                                               .primaryBackground,
-                                                      icon: const Icon(
+                                                      icon: Icon(
                                                         Icons.search,
                                                         color:
                                                             Color(0xFF4B5563),
                                                         size: 24.0,
                                                       ),
                                                       onPressed: () async {
-                                                        var shouldSetState =
+                                                        var _shouldSetState =
                                                             false;
                                                         if (!(_model.textController
                                                                     .text !=
                                                                 '')) {
-                                                          if (shouldSetState) {
+                                                          if (_shouldSetState)
                                                             safeSetState(() {});
-                                                          }
                                                           return;
                                                         }
                                                         _model.servicioselected =
@@ -508,10 +512,11 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                                 .textFieldSelectedOption,
                                                           ),
                                                         );
-                                                        shouldSetState = true;
+                                                        _shouldSetState = true;
 
                                                         context.pushNamed(
-                                                          'servicio_detalle',
+                                                          ServicioDetalleWidget
+                                                              .routeName,
                                                           queryParameters: {
                                                             'service':
                                                                 serializeParam(
@@ -524,9 +529,8 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                           }.withoutNulls,
                                                         );
 
-                                                        if (shouldSetState) {
+                                                        if (_shouldSetState)
                                                           safeSetState(() {});
-                                                        }
                                                       },
                                                     ),
                                                   ),
@@ -537,14 +541,15 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                         FlutterFlowTheme.of(
                                                                 context)
                                                             .primaryBackground,
-                                                    icon: const Icon(
+                                                    icon: Icon(
                                                       Icons.notifications_sharp,
                                                       color: Color(0xFF4B5563),
                                                       size: 24.0,
                                                     ),
                                                     onPressed: () async {
                                                       context.pushNamed(
-                                                          'notification');
+                                                          NotificationWidget
+                                                              .routeName);
                                                     },
                                                   ),
                                                 ],
@@ -553,7 +558,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     15.0, 30.0, 15.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -574,7 +579,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Inter',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFFFF1F5B),
                                                                 fontSize: 30.0,
                                                                 letterSpacing:
@@ -593,7 +598,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Inter',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF3D64FF),
                                                                 fontSize: 30.0,
                                                                 letterSpacing:
@@ -619,7 +624,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     15.0, 20.0, 15.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -635,7 +640,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                       .override(
                                                         fontFamily: 'Inter',
                                                         color:
-                                                            const Color(0xFF1C2A3A),
+                                                            Color(0xFF1C2A3A),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -647,7 +652,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     15.0, 20.0, 0.0, 0.0),
                                             child: SingleChildScrollView(
                                               scrollDirection: Axis.horizontal,
@@ -658,7 +663,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 15.0, 0.0),
                                                     child: Container(
@@ -670,13 +675,13 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                             width: 62.0,
                                                             height: 62.0,
                                                             decoration:
-                                                                const BoxDecoration(
+                                                                BoxDecoration(
                                                               color: Color(
                                                                   0xFFD2691E),
                                                               shape: BoxShape
                                                                   .circle,
                                                             ),
-                                                            child: const Align(
+                                                            child: Align(
                                                               alignment:
                                                                   AlignmentDirectional(
                                                                       0.0, 0.0),
@@ -691,7 +696,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         8.0,
@@ -717,7 +722,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Inter',
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF4B5563),
                                                                         fontSize:
                                                                             12.0,
@@ -736,12 +741,12 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 15.0, 0.0),
                                                     child: Container(
                                                       decoration:
-                                                          const BoxDecoration(),
+                                                          BoxDecoration(),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -750,13 +755,13 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                             width: 62.0,
                                                             height: 62.0,
                                                             decoration:
-                                                                const BoxDecoration(
+                                                                BoxDecoration(
                                                               color: Color(
                                                                   0xFFA0522D),
                                                               shape: BoxShape
                                                                   .circle,
                                                             ),
-                                                            child: const Align(
+                                                            child: Align(
                                                               alignment:
                                                                   AlignmentDirectional(
                                                                       0.0, 0.0),
@@ -771,7 +776,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         8.0,
@@ -797,7 +802,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Inter',
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF4B5563),
                                                                         fontSize:
                                                                             12.0,
@@ -816,12 +821,12 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 15.0, 0.0),
                                                     child: Container(
                                                       decoration:
-                                                          const BoxDecoration(),
+                                                          BoxDecoration(),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -830,13 +835,13 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                             width: 62.0,
                                                             height: 62.0,
                                                             decoration:
-                                                                const BoxDecoration(
+                                                                BoxDecoration(
                                                               color: Color(
                                                                   0xFFFFD700),
                                                               shape: BoxShape
                                                                   .circle,
                                                             ),
-                                                            child: const Align(
+                                                            child: Align(
                                                               alignment:
                                                                   AlignmentDirectional(
                                                                       0.0, 0.0),
@@ -850,7 +855,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         8.0,
@@ -876,7 +881,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Inter',
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF4B5563),
                                                                         fontSize:
                                                                             12.0,
@@ -895,12 +900,12 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 15.0, 0.0),
                                                     child: Container(
                                                       decoration:
-                                                          const BoxDecoration(),
+                                                          BoxDecoration(),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -909,13 +914,13 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                             width: 62.0,
                                                             height: 62.0,
                                                             decoration:
-                                                                const BoxDecoration(
+                                                                BoxDecoration(
                                                               color: Color(
                                                                   0xFF4682B4),
                                                               shape: BoxShape
                                                                   .circle,
                                                             ),
-                                                            child: const Align(
+                                                            child: Align(
                                                               alignment:
                                                                   AlignmentDirectional(
                                                                       0.0, 0.0),
@@ -930,7 +935,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         8.0,
@@ -956,7 +961,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Inter',
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF4B5563),
                                                                         fontSize:
                                                                             12.0,
@@ -975,12 +980,12 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 15.0, 0.0),
                                                     child: Container(
                                                       decoration:
-                                                          const BoxDecoration(),
+                                                          BoxDecoration(),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -989,7 +994,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                             width: 62.0,
                                                             height: 62.0,
                                                             decoration:
-                                                                const BoxDecoration(
+                                                                BoxDecoration(
                                                               color: Color(
                                                                   0xFF87CEEB),
                                                               shape: BoxShape
@@ -998,7 +1003,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         8.0,
@@ -1024,7 +1029,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                                       .override(
                                                                         fontFamily:
                                                                             'Inter',
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF4B5563),
                                                                         fontSize:
                                                                             12.0,
@@ -1047,7 +1052,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     15.0, 10.0, 15.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -1063,7 +1068,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                       .override(
                                                         fontFamily: 'Inter',
                                                         color:
-                                                            const Color(0xFF1C2A3A),
+                                                            Color(0xFF1C2A3A),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -1075,7 +1080,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     15.0, 10.0, 15.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -1097,7 +1102,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     15.0, 20.0, 15.0, 0.0),
                                             child: InkWell(
                                               splashColor: Colors.transparent,
@@ -1110,7 +1115,8 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                 safeSetState(() {});
 
                                                 context.pushNamed(
-                                                    'crearAlertaDeServicio');
+                                                    CrearAlertaDeServicioWidget
+                                                        .routeName);
                                               },
                                               child: Material(
                                                 color: Colors.transparent,
@@ -1140,7 +1146,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                     children: [
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     20.0,
                                                                     0.0,
@@ -1154,7 +1160,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                                         context)
                                                                     .width >
                                                                 320.0)
-                                                              const Icon(
+                                                              Icon(
                                                                 Icons.add_alert,
                                                                 color: Color(
                                                                     0xFF3D64FF),
@@ -1162,7 +1168,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                               ),
                                                             Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           20.0,
                                                                           0.0,
@@ -1186,7 +1192,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                           ],
                                                         ),
                                                       ),
-                                                      const Padding(
+                                                      Padding(
                                                         padding:
                                                             EdgeInsetsDirectional
                                                                 .fromSTEB(
@@ -1210,7 +1216,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     15.0, 30.0, 15.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -1226,7 +1232,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                       .override(
                                                         fontFamily: 'Inter',
                                                         color:
-                                                            const Color(0xFF1C2A3A),
+                                                            Color(0xFF1C2A3A),
                                                         fontSize: 16.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -1238,7 +1244,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     15.0, 15.0, 15.0, 0.0),
                                             child: SingleChildScrollView(
                                               scrollDirection: Axis.horizontal,
@@ -1255,7 +1261,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   4.0,
                                                                   4.0,
@@ -1273,7 +1279,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -1296,7 +1302,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         8.0,
                                                                         0.0,
@@ -1335,12 +1341,12 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                               Flexible(
                                                                 child: Align(
                                                                   alignment:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           -1.0,
                                                                           0.0),
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             8.0,
                                                                             0.0,
@@ -1370,7 +1376,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                           Expanded(
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           8.0,
@@ -1384,7 +1390,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                                     CrossAxisAlignment
                                                                         .end,
                                                                 children: [
-                                                                  const Icon(
+                                                                  Icon(
                                                                     Icons.star,
                                                                     color: Color(
                                                                         0xFFFEB052),
@@ -1400,7 +1406,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                                             fontFamily:
                                                                                 'Inter',
                                                                             color:
-                                                                                const Color(0xFF4B5563),
+                                                                                Color(0xFF4B5563),
                                                                             fontSize:
                                                                                 14.0,
                                                                             letterSpacing:
@@ -1411,7 +1417,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             8.0,
                                                                             0.0,
@@ -1426,7 +1432,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                                             fontFamily:
                                                                                 'Inter',
                                                                             color:
-                                                                                const Color(0xFF6B7280),
+                                                                                Color(0xFF6B7280),
                                                                             fontSize:
                                                                                 12.0,
                                                                             letterSpacing:
@@ -1452,7 +1458,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   4.0,
                                                                   4.0,
@@ -1470,7 +1476,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -1493,7 +1499,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         8.0,
                                                                         0.0,
@@ -1532,12 +1538,12 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                               Flexible(
                                                                 child: Align(
                                                                   alignment:
-                                                                      const AlignmentDirectional(
+                                                                      AlignmentDirectional(
                                                                           -1.0,
                                                                           0.0),
                                                                   child:
                                                                       Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             8.0,
                                                                             0.0,
@@ -1567,7 +1573,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                           Expanded(
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           8.0,
@@ -1581,7 +1587,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                                     CrossAxisAlignment
                                                                         .end,
                                                                 children: [
-                                                                  const Icon(
+                                                                  Icon(
                                                                     Icons.star,
                                                                     color: Color(
                                                                         0xFFFEB052),
@@ -1597,7 +1603,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                                             fontFamily:
                                                                                 'Inter',
                                                                             color:
-                                                                                const Color(0xFF4B5563),
+                                                                                Color(0xFF4B5563),
                                                                             fontSize:
                                                                                 14.0,
                                                                             letterSpacing:
@@ -1608,7 +1614,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                                     ),
                                                                   ),
                                                                   Padding(
-                                                                    padding: const EdgeInsetsDirectional
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             8.0,
                                                                             0.0,
@@ -1623,7 +1629,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                                             fontFamily:
                                                                                 'Inter',
                                                                             color:
-                                                                                const Color(0xFF6B7280),
+                                                                                Color(0xFF6B7280),
                                                                             fontSize:
                                                                                 12.0,
                                                                             letterSpacing:
@@ -1660,7 +1666,10 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                             child: wrapWithModel(
                               model: _model.navbarModel,
                               updateCallback: () => safeSetState(() {}),
-                              child: const NavbarWidget(),
+                              child: NavbarWidget(
+                                admin: homeScreenUsuariosRow!.admin!,
+                                photo: homeScreenUsuariosRow.foto!,
+                              ),
                             ),
                           ),
                         ],

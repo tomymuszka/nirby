@@ -9,7 +9,7 @@ class UsuariosTable extends SupabaseTable<UsuariosRow> {
 }
 
 class UsuariosRow extends SupabaseDataRow {
-  UsuariosRow(super.data);
+  UsuariosRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => UsuariosTable();
@@ -83,9 +83,6 @@ class UsuariosRow extends SupabaseDataRow {
   String? get idsuscripcion => getField<String>('idsuscripcion');
   set idsuscripcion(String? value) => setField<String>('idsuscripcion', value);
 
-  String? get playerId => getField<String>('player_id');
-  set playerId(String? value) => setField<String>('player_id', value);
-
   bool get isDeleted => getField<bool>('is_deleted')!;
   set isDeleted(bool value) => setField<bool>('is_deleted', value);
 
@@ -101,7 +98,6 @@ class UsuariosRow extends SupabaseDataRow {
   bool? get emailconfirmado => getField<bool>('emailconfirmado');
   set emailconfirmado(bool? value) => setField<bool>('emailconfirmado', value);
 
-  String? get emailMercadopago => getField<String>('email_mercadopago');
-  set emailMercadopago(String? value) =>
-      setField<String>('email_mercadopago', value);
+  List<String> get playerId => getListField<String>('player_id');
+  set playerId(List<String>? value) => setListField<String>('player_id', value);
 }

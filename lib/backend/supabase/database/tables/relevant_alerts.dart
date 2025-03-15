@@ -10,7 +10,7 @@ class RelevantAlertsTable extends SupabaseTable<RelevantAlertsRow> {
 }
 
 class RelevantAlertsRow extends SupabaseDataRow {
-  RelevantAlertsRow(super.data);
+  RelevantAlertsRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => RelevantAlertsTable();

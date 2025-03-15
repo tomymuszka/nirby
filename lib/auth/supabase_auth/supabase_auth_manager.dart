@@ -27,7 +27,7 @@ class SupabaseAuthManager extends AuthManager with EmailSignInManager {
     } on AuthException {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
+        SnackBar(
             content: Text(
                 'Hubo un error al iniciar sesión. Por favor, volvé a probar.')),
       );
@@ -48,14 +48,15 @@ class SupabaseAuthManager extends AuthManager with EmailSignInManager {
     } on AuthException {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
+        SnackBar(
             content: Text(
                 'Hubo un error al iniciar sesión. Por favor, volvé a probar.')),
       );
       return;
     }
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Email change confirmation email sent')),
+      SnackBar(
+          content: Text('Se envió un mail para confirmar tu nuevo correo')),
     );
   }
 
@@ -73,14 +74,15 @@ class SupabaseAuthManager extends AuthManager with EmailSignInManager {
     } on AuthException {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
+        SnackBar(
             content: Text(
                 'Hubo un error al iniciar sesión. Por favor, volvé a probar.')),
       );
       return;
     }
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Password updated successfully')),
+      SnackBar(
+          content: Text('Se envió un mail para confirmar tu nuevo correo')),
     );
   }
 
@@ -96,14 +98,14 @@ class SupabaseAuthManager extends AuthManager with EmailSignInManager {
     } on AuthException {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
+        SnackBar(
             content: Text(
                 'Hubo un error al iniciar sesión. Por favor, volvé a probar.')),
       );
       return null;
     }
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
+      SnackBar(
           content: Text('El email para recuperar tu contraseña fue enviado')),
     );
   }

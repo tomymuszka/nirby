@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -22,6 +23,9 @@ class ChatServiceScreenWidget extends StatefulWidget {
   final int? conversationId;
   final String? recipentId;
   final int? serviceId;
+
+  static String routeName = 'chatServiceScreen';
+  static String routePath = '/chatServiceScreen';
 
   @override
   State<ChatServiceScreenWidget> createState() =>
@@ -88,19 +92,19 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
         key: scaffoldKey,
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: const Color(0xFFF1F4F8),
+          backgroundColor: Color(0xFFF1F4F8),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
             borderRadius: 8.0,
             buttonSize: 40.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back,
               color: Color(0xFF374151),
               size: 24.0,
             ),
             onPressed: () async {
-              context.goNamed('chats');
+              context.goNamed(HomeWidget.routeName);
             },
           ),
           title: Text(
@@ -108,44 +112,44 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Inter',
-                  color: const Color(0xFF374151),
+                  color: Color(0xFF374151),
                   fontSize: 20.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: const AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
-              constraints: const BoxConstraints(
+              constraints: BoxConstraints(
                 maxWidth: 600.0,
               ),
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Expanded(
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
                         child: Container(
                           width: double.infinity,
                           height: 100.0,
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: SingleChildScrollView(
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       15.0, 0.0, 15.0, 0.0),
                                   child: Material(
                                     color: Colors.transparent,
@@ -162,14 +166,14 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                             BorderRadius.circular(8.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 5.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 10.0, 0.0, 10.0),
                                                 child: Row(
@@ -181,7 +185,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                       height: 60.0,
                                                       clipBehavior:
                                                           Clip.antiAlias,
-                                                      decoration: const BoxDecoration(
+                                                      decoration: BoxDecoration(
                                                         shape: BoxShape.circle,
                                                       ),
                                                       child: Image.asset(
@@ -192,7 +196,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                     Expanded(
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     15.0,
                                                                     0.0,
@@ -224,7 +228,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                                             fontFamily:
                                                                                 'Inter',
                                                                             color:
-                                                                                const Color(0xFF4B5563),
+                                                                                Color(0xFF4B5563),
                                                                             fontSize:
                                                                                 16.0,
                                                                             letterSpacing:
@@ -256,7 +260,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                             ),
                                             Expanded(
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         10.0, 0.0, 0.0, 0.0),
                                                 child: Row(
@@ -267,7 +271,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                       flex: 4,
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -287,7 +291,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Inter',
-                                                                      color: const Color(
+                                                                      color: Color(
                                                                           0xFF1F2A37),
                                                                       fontSize:
                                                                           14.0,
@@ -306,7 +310,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                     Flexible(
                                                       child: Align(
                                                         alignment:
-                                                            const AlignmentDirectional(
+                                                            AlignmentDirectional(
                                                                 1.0, 1.0),
                                                         child: Row(
                                                           mainAxisSize:
@@ -315,11 +319,11 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                             Flexible(
                                                               child: Align(
                                                                 alignment:
-                                                                    const AlignmentDirectional(
+                                                                    AlignmentDirectional(
                                                                         1.0,
                                                                         1.0),
                                                                 child: Padding(
-                                                                  padding: const EdgeInsetsDirectional
+                                                                  padding: EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           0.0,
@@ -337,7 +341,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                                           fontFamily:
                                                                               'Inter',
                                                                           color:
-                                                                              const Color(0xFF1F2A37),
+                                                                              Color(0xFF1F2A37),
                                                                           fontSize:
                                                                               12.0,
                                                                           letterSpacing:
@@ -364,9 +368,9 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                   ),
                                 ),
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, -1.0),
+                                  alignment: AlignmentDirectional(0.0, -1.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 10.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -376,10 +380,10 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                             if (widget.conversationId !=
                                                 null) {
                                               return Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     1.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 10.0, 0.0, 0.0),
                                                   child: Container(
@@ -391,21 +395,21 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                               0.7,
                                                     ),
                                                     decoration: BoxDecoration(
-                                                      color: const Color(0xFF333333),
+                                                      color: Color(0xFF333333),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(8.0),
+                                                          EdgeInsets.all(8.0),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     -1.0, 0.0),
                                                             child: Text(
                                                               'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.',
@@ -424,7 +428,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     1.0, 0.0),
                                                             child: Text(
                                                               'Fecha y hora',
@@ -449,10 +453,10 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                               );
                                             } else {
                                               return Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 10.0, 0.0, 0.0),
                                                   child: Container(
@@ -464,21 +468,21 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                               0.7,
                                                     ),
                                                     decoration: BoxDecoration(
-                                                      color: const Color(0xFFF7F7F7),
+                                                      color: Color(0xFFF7F7F7),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(8.0),
+                                                          EdgeInsets.all(8.0),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     -1.0, 0.0),
                                                             child: Text(
                                                               'Hola! Como estás? Me interesa contratar tu servicio de manicura.',
@@ -488,7 +492,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Inter',
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFF333333),
                                                                     letterSpacing:
                                                                         0.0,
@@ -497,11 +501,11 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     1.0, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           8.0,
@@ -515,7 +519,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Inter',
-                                                                      color: const Color(
+                                                                      color: Color(
                                                                           0xFF333333),
                                                                       letterSpacing:
                                                                           0.0,
@@ -537,10 +541,10 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                             if (currentUserUid ==
                                                 currentUserUid) {
                                               return Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     1.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 10.0, 0.0, 0.0),
                                                   child: Container(
@@ -552,21 +556,21 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                               0.7,
                                                     ),
                                                     decoration: BoxDecoration(
-                                                      color: const Color(0xFF333333),
+                                                      color: Color(0xFF333333),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(8.0),
+                                                          EdgeInsets.all(8.0),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     -1.0, 0.0),
                                                             child: Text(
                                                               'Por supuesto! Que información necesitas?',
@@ -585,7 +589,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     1.0, 0.0),
                                                             child: Text(
                                                               '18 mins',
@@ -610,10 +614,10 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                               );
                                             } else {
                                               return Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 10.0, 0.0, 0.0),
                                                   child: Container(
@@ -625,21 +629,21 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                               0.7,
                                                     ),
                                                     decoration: BoxDecoration(
-                                                      color: const Color(0xFFF7F7F7),
+                                                      color: Color(0xFFF7F7F7),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(8.0),
+                                                          EdgeInsets.all(8.0),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     -1.0, 0.0),
                                                             child: Text(
                                                               'Hola! Como estás? Me interesa contratar tu servicio de manicura.',
@@ -649,7 +653,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Inter',
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFF333333),
                                                                     letterSpacing:
                                                                         0.0,
@@ -658,11 +662,11 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     1.0, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           8.0,
@@ -676,7 +680,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Inter',
-                                                                      color: const Color(
+                                                                      color: Color(
                                                                           0xFF333333),
                                                                       letterSpacing:
                                                                           0.0,
@@ -698,10 +702,10 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                             if (currentUserUid ==
                                                 currentUserUid) {
                                               return Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     1.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 10.0, 0.0, 0.0),
                                                   child: Container(
@@ -713,21 +717,21 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                               0.7,
                                                     ),
                                                     decoration: BoxDecoration(
-                                                      color: const Color(0xFF333333),
+                                                      color: Color(0xFF333333),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(8.0),
+                                                          EdgeInsets.all(8.0),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     -1.0, 0.0),
                                                             child: Text(
                                                               'Por supuesto! Que información necesitas?',
@@ -746,7 +750,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     1.0, 0.0),
                                                             child: Text(
                                                               '18 mins',
@@ -771,10 +775,10 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                               );
                                             } else {
                                               return Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 10.0, 0.0, 0.0),
                                                   child: Container(
@@ -786,21 +790,21 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                               0.7,
                                                     ),
                                                     decoration: BoxDecoration(
-                                                      color: const Color(0xFFF7F7F7),
+                                                      color: Color(0xFFF7F7F7),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(8.0),
+                                                          EdgeInsets.all(8.0),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     -1.0, 0.0),
                                                             child: Text(
                                                               'Incluye todos los colores?',
@@ -810,7 +814,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Inter',
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFF333333),
                                                                     letterSpacing:
                                                                         0.0,
@@ -819,11 +823,11 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     1.0, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           8.0,
@@ -837,7 +841,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Inter',
-                                                                      color: const Color(
+                                                                      color: Color(
                                                                           0xFF333333),
                                                                       letterSpacing:
                                                                           0.0,
@@ -859,10 +863,10 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                             if (currentUserUid ==
                                                 currentUserUid) {
                                               return Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     1.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 10.0, 0.0, 0.0),
                                                   child: Container(
@@ -874,21 +878,21 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                               0.7,
                                                     ),
                                                     decoration: BoxDecoration(
-                                                      color: const Color(0xFF333333),
+                                                      color: Color(0xFF333333),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(8.0),
+                                                          EdgeInsets.all(8.0),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     -1.0, 0.0),
                                                             child: Text(
                                                               'Asi es!',
@@ -907,7 +911,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     1.0, 0.0),
                                                             child: Text(
                                                               '14 mins',
@@ -932,10 +936,10 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                               );
                                             } else {
                                               return Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 10.0, 0.0, 0.0),
                                                   child: Container(
@@ -947,21 +951,21 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                               0.7,
                                                     ),
                                                     decoration: BoxDecoration(
-                                                      color: const Color(0xFFF7F7F7),
+                                                      color: Color(0xFFF7F7F7),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(8.0),
+                                                          EdgeInsets.all(8.0),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     -1.0, 0.0),
                                                             child: Text(
                                                               'Incluye todos los colores?',
@@ -971,7 +975,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Inter',
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFF333333),
                                                                     letterSpacing:
                                                                         0.0,
@@ -980,11 +984,11 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     1.0, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           8.0,
@@ -998,7 +1002,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Inter',
-                                                                      color: const Color(
+                                                                      color: Color(
                                                                           0xFF333333),
                                                                       letterSpacing:
                                                                           0.0,
@@ -1020,10 +1024,10 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                             if (currentUserUid ==
                                                 currentUserUid) {
                                               return Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     1.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 10.0, 0.0, 0.0),
                                                   child: Container(
@@ -1035,21 +1039,21 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                               0.7,
                                                     ),
                                                     decoration: BoxDecoration(
-                                                      color: const Color(0xFF333333),
+                                                      color: Color(0xFF333333),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(8.0),
+                                                          EdgeInsets.all(8.0),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     -1.0, 0.0),
                                                             child: Text(
                                                               'Asi es!',
@@ -1068,7 +1072,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     1.0, 0.0),
                                                             child: Text(
                                                               '18 mins',
@@ -1093,10 +1097,10 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                               );
                                             } else {
                                               return Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 10.0, 0.0, 0.0),
                                                   child: Container(
@@ -1108,21 +1112,21 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                               0.7,
                                                     ),
                                                     decoration: BoxDecoration(
-                                                      color: const Color(0xFFF7F7F7),
+                                                      color: Color(0xFFF7F7F7),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(8.0),
+                                                          EdgeInsets.all(8.0),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     -1.0, 0.0),
                                                             child: Text(
                                                               'Gracias. Puedo reservar para mañana a las 22hs?',
@@ -1132,7 +1136,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Inter',
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFF333333),
                                                                     letterSpacing:
                                                                         0.0,
@@ -1141,11 +1145,11 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     1.0, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           8.0,
@@ -1159,7 +1163,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Inter',
-                                                                      color: const Color(
+                                                                      color: Color(
                                                                           0xFF333333),
                                                                       letterSpacing:
                                                                           0.0,
@@ -1181,10 +1185,10 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                             if (currentUserUid ==
                                                 currentUserUid) {
                                               return Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     1.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 10.0, 0.0, 0.0),
                                                   child: Container(
@@ -1196,21 +1200,21 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                               0.7,
                                                     ),
                                                     decoration: BoxDecoration(
-                                                      color: const Color(0xFF333333),
+                                                      color: Color(0xFF333333),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(8.0),
+                                                          EdgeInsets.all(8.0),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     -1.0, 0.0),
                                                             child: Text(
                                                               'La reserva esta realizada. Te espero en Corrientes 8461 3D.',
@@ -1229,7 +1233,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     1.0, 0.0),
                                                             child: Text(
                                                               '10 mins',
@@ -1254,10 +1258,10 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                               );
                                             } else {
                                               return Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 10.0, 0.0, 0.0),
                                                   child: Container(
@@ -1269,21 +1273,21 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                               0.7,
                                                     ),
                                                     decoration: BoxDecoration(
-                                                      color: const Color(0xFFF7F7F7),
+                                                      color: Color(0xFFF7F7F7),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(8.0),
+                                                          EdgeInsets.all(8.0),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     -1.0, 0.0),
                                                             child: Text(
                                                               'Gracias. Puedo reservar para mañana a las 22hs?',
@@ -1293,7 +1297,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Inter',
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFF333333),
                                                                     letterSpacing:
                                                                         0.0,
@@ -1302,11 +1306,11 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     1.0, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           8.0,
@@ -1320,7 +1324,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Inter',
-                                                                      color: const Color(
+                                                                      color: Color(
                                                                           0xFF333333),
                                                                       letterSpacing:
                                                                           0.0,
@@ -1342,10 +1346,10 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                             if (currentUserUid ==
                                                 currentUserUid) {
                                               return Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     1.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 10.0, 0.0, 0.0),
                                                   child: Container(
@@ -1357,21 +1361,21 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                               0.7,
                                                     ),
                                                     decoration: BoxDecoration(
-                                                      color: const Color(0xFF333333),
+                                                      color: Color(0xFF333333),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(8.0),
+                                                          EdgeInsets.all(8.0),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     -1.0, 0.0),
                                                             child: Text(
                                                               'La reserva esta realizada. Te espero en Corrientes 8461 3D.',
@@ -1390,7 +1394,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     1.0, 0.0),
                                                             child: Text(
                                                               '18 mins',
@@ -1415,10 +1419,10 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                               );
                                             } else {
                                               return Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     -1.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 10.0, 0.0, 0.0),
                                                   child: Container(
@@ -1430,21 +1434,21 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                               0.7,
                                                     ),
                                                     decoration: BoxDecoration(
-                                                      color: const Color(0xFFF7F7F7),
+                                                      color: Color(0xFFF7F7F7),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               8.0),
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(8.0),
+                                                          EdgeInsets.all(8.0),
                                                       child: Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     -1.0, 0.0),
                                                             child: Text(
                                                               'Nos vemos mañana',
@@ -1454,7 +1458,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Inter',
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFF333333),
                                                                     letterSpacing:
                                                                         0.0,
@@ -1463,11 +1467,11 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                const AlignmentDirectional(
+                                                                AlignmentDirectional(
                                                                     1.0, 0.0),
                                                             child: Padding(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
+                                                                  EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           8.0,
@@ -1481,7 +1485,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                                                     .override(
                                                                       fontFamily:
                                                                           'Inter',
-                                                                      color: const Color(
+                                                                      color: Color(
                                                                           0xFF333333),
                                                                       letterSpacing:
                                                                           0.0,
@@ -1516,7 +1520,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                         height: 80.0,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).primaryBackground,
-                          boxShadow: const [
+                          boxShadow: [
                             BoxShadow(
                               blurRadius: 4.0,
                               color: Color(0x33000000),
@@ -1528,16 +1532,16 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                           ],
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               25.0, 0.0, 25.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 0.0, 15.0, 0.0),
-                                  child: SizedBox(
+                                  child: Container(
                                     width: 200.0,
                                     child: TextFormField(
                                       controller:
@@ -1545,7 +1549,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                       focusNode: _model.inputTextFocusNode,
                                       onChanged: (_) => EasyDebounce.debounce(
                                         '_model.inputTextTextController',
-                                        const Duration(milliseconds: 1000),
+                                        Duration(milliseconds: 1000),
                                         () => safeSetState(() {}),
                                       ),
                                       autofocus: false,
@@ -1565,11 +1569,11 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                             .labelMedium
                                             .override(
                                               fontFamily: 'Inter',
-                                              color: const Color(0xFFB1B7C0),
+                                              color: Color(0xFFB1B7C0),
                                               letterSpacing: 0.0,
                                             ),
                                         enabledBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0xFFB1B7C0),
                                             width: 1.0,
                                           ),
@@ -1577,7 +1581,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                                               BorderRadius.circular(8.0),
                                         ),
                                         focusedBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -1624,7 +1628,7 @@ class _ChatServiceScreenWidgetState extends State<ChatServiceScreenWidget> {
                               FlutterFlowIconButton(
                                 borderRadius: 8.0,
                                 buttonSize: 40.0,
-                                fillColor: const Color(0xFF3D64FF),
+                                fillColor: Color(0xFF3D64FF),
                                 icon: Icon(
                                   Icons.arrow_forward_ios_sharp,
                                   color: FlutterFlowTheme.of(context).info,

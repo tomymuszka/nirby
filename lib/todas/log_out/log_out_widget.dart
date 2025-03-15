@@ -2,6 +2,7 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'log_out_model.dart';
 export 'log_out_model.dart';
@@ -44,7 +45,7 @@ class _LogOutWidgetState extends State<LogOutWidget> {
       height: 200.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).primaryBackground,
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
           bottomRight: Radius.circular(0.0),
           topLeft: Radius.circular(50.0),
@@ -55,7 +56,7 @@ class _LogOutWidgetState extends State<LogOutWidget> {
         mainAxisSize: MainAxisSize.max,
         children: [
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -64,7 +65,7 @@ class _LogOutWidgetState extends State<LogOutWidget> {
                   'Cerrar sesión',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Inter',
-                        color: const Color(0xFF1C2A3A),
+                        color: Color(0xFF1C2A3A),
                         fontSize: 20.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.w600,
@@ -73,7 +74,7 @@ class _LogOutWidgetState extends State<LogOutWidget> {
               ],
             ),
           ),
-          const Divider(
+          Divider(
             thickness: 1.0,
             indent: 20.0,
             endIndent: 20.0,
@@ -89,7 +90,7 @@ class _LogOutWidgetState extends State<LogOutWidget> {
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Inter',
-                        color: const Color(0xFF6B7280),
+                        color: Color(0xFF6B7280),
                         fontSize: 16.0,
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.w600,
@@ -99,7 +100,7 @@ class _LogOutWidgetState extends State<LogOutWidget> {
             ],
           ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
             child: Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -113,13 +114,13 @@ class _LogOutWidgetState extends State<LogOutWidget> {
                     width: 140.0,
                     height: 40.0,
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: const Color(0xFFE5E7EB),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: Color(0xFFE5E7EB),
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Inter Tight',
-                          color: const Color(0xFF1C2A3A),
+                          color: Color(0xFF1C2A3A),
                           letterSpacing: 0.0,
                         ),
                     elevation: 0.0,
@@ -132,17 +133,17 @@ class _LogOutWidgetState extends State<LogOutWidget> {
                     await authManager.signOut();
                     GoRouter.of(context).clearRedirectLocation();
 
-                    context.goNamedAuth('login', context.mounted);
+                    context.goNamedAuth(LoginWidget.routeName, context.mounted);
                   },
                   text: 'Sí, cerrar sesión',
                   options: FFButtonOptions(
                     width: 140.0,
                     height: 40.0,
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                    color: const Color(0xFF1C2A3A),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                    color: Color(0xFF1C2A3A),
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Inter Tight',
                           color: Colors.white,

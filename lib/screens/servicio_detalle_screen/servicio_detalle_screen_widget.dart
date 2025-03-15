@@ -5,9 +5,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:share_plus/share_plus.dart';
 import 'servicio_detalle_screen_model.dart';
 export 'servicio_detalle_screen_model.dart';
 
@@ -18,6 +18,9 @@ class ServicioDetalleScreenWidget extends StatefulWidget {
   });
 
   final int? service;
+
+  static String routeName = 'servicio_detalleScreen';
+  static String routePath = '/servicioDetalleScreen';
 
   @override
   State<ServicioDetalleScreenWidget> createState() =>
@@ -65,7 +68,7 @@ class _ServicioDetalleScreenWidgetState
                 height: 50.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    FlutterFlowTheme.of(context).primaryBackground,
                   ),
                 ),
               ),
@@ -95,8 +98,8 @@ class _ServicioDetalleScreenWidgetState
                 borderColor: Colors.transparent,
                 borderRadius: 8.0,
                 buttonSize: 40.0,
-                fillColor: const Color(0x004B39EF),
-                icon: const Icon(
+                fillColor: Color(0x004B39EF),
+                icon: Icon(
                   Icons.arrow_back,
                   color: Color(0xFF374151),
                   size: 24.0,
@@ -110,49 +113,25 @@ class _ServicioDetalleScreenWidgetState
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Inter',
-                      color: const Color(0xFF374151),
+                      color: Color(0xFF374151),
                       fontSize: 20.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.w600,
                     ),
               ),
-              actions: [
-                Visibility(
-                  visible: servicioDetalleScreenServiceDetailCompleteRow
-                          ?.suscripcionActiva ??
-                      true,
-                  child: Builder(
-                    builder: (context) => FlutterFlowIconButton(
-                      borderRadius: 8.0,
-                      buttonSize: 40.0,
-                      fillColor: const Color(0x004B39EF),
-                      icon: const Icon(
-                        Icons.share,
-                        color: Color(0xFF374151),
-                        size: 24.0,
-                      ),
-                      onPressed: () async {
-                        await Share.share(
-                          'nirby://nirby.com/servicioDetalle',
-                          sharePositionOrigin: getWidgetBoundingBox(context),
-                        );
-                      },
-                    ),
-                  ),
-                ),
-              ],
+              actions: [],
               centerTitle: true,
               elevation: 2.0,
             ),
             body: SafeArea(
               top: true,
               child: Align(
-                alignment: const AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Container(
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxWidth: 600.0,
                   ),
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -162,7 +141,7 @@ class _ServicioDetalleScreenWidgetState
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 15.0, 0.0, 0.0),
                                 child: Material(
                                   color: Colors.transparent,
@@ -178,7 +157,7 @@ class _ServicioDetalleScreenWidgetState
                                       borderRadius: BorderRadius.circular(12.0),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           8.0, 8.0, 8.0, 8.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -204,7 +183,7 @@ class _ServicioDetalleScreenWidgetState
                                           Expanded(
                                             flex: 2,
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       15.0, 15.0, 0.0, 20.0),
                                               child: Column(
@@ -229,7 +208,7 @@ class _ServicioDetalleScreenWidgetState
                                                               .override(
                                                                 fontFamily:
                                                                     'Inter',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF1F2A37),
                                                                 fontSize: 16.0,
                                                                 letterSpacing:
@@ -243,7 +222,7 @@ class _ServicioDetalleScreenWidgetState
                                                       if (servicioDetalleScreenServiceDetailCompleteRow
                                                               ?.suscripcionActiva ??
                                                           true)
-                                                        const Icon(
+                                                        Icon(
                                                           Icons.verified,
                                                           color:
                                                               Color(0xFF3E9AF0),
@@ -251,7 +230,7 @@ class _ServicioDetalleScreenWidgetState
                                                         ),
                                                     ],
                                                   ),
-                                                  const Divider(
+                                                  Divider(
                                                     thickness: 1.0,
                                                     color: Color(0xFFE5E7EB),
                                                   ),
@@ -268,7 +247,7 @@ class _ServicioDetalleScreenWidgetState
                                                               .override(
                                                                 fontFamily:
                                                                     'Inter',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF4B5563),
                                                                 fontSize: 14.0,
                                                                 letterSpacing:
@@ -292,7 +271,7 @@ class _ServicioDetalleScreenWidgetState
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 20.0, 20.0, 20.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -308,7 +287,7 @@ class _ServicioDetalleScreenWidgetState
                                           fillColor:
                                               FlutterFlowTheme.of(context)
                                                   .primaryBackground,
-                                          icon: const Icon(
+                                          icon: Icon(
                                             Icons.people_alt,
                                             color: Color(0xFF1C2A3A),
                                             size: 30.0,
@@ -323,14 +302,14 @@ class _ServicioDetalleScreenWidgetState
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Inter',
-                                                color: const Color(0xFF1C2A3A),
+                                                color: Color(0xFF1C2A3A),
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                               ),
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 4.0, 0.0, 0.0),
                                           child: Text(
                                             'chats',
@@ -338,7 +317,7 @@ class _ServicioDetalleScreenWidgetState
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Inter',
-                                                  color: const Color(0xFF1C2A3A),
+                                                  color: Color(0xFF1C2A3A),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
                                                 ),
@@ -356,7 +335,7 @@ class _ServicioDetalleScreenWidgetState
                                           fillColor:
                                               FlutterFlowTheme.of(context)
                                                   .primaryBackground,
-                                          icon: const FaIcon(
+                                          icon: FaIcon(
                                             FontAwesomeIcons.medal,
                                             color: Color(0xFF1C2A3A),
                                             size: 26.0,
@@ -371,14 +350,14 @@ class _ServicioDetalleScreenWidgetState
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Inter',
-                                                color: const Color(0xFF1C2A3A),
+                                                color: Color(0xFF1C2A3A),
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                               ),
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 4.0, 0.0, 0.0),
                                           child: Text(
                                             'experiencia',
@@ -386,7 +365,7 @@ class _ServicioDetalleScreenWidgetState
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Inter',
-                                                  color: const Color(0xFF1C2A3A),
+                                                  color: Color(0xFF1C2A3A),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
                                                 ),
@@ -404,7 +383,7 @@ class _ServicioDetalleScreenWidgetState
                                           fillColor:
                                               FlutterFlowTheme.of(context)
                                                   .primaryBackground,
-                                          icon: const Icon(
+                                          icon: Icon(
                                             Icons.star_rounded,
                                             color: Color(0xFF1C2A3A),
                                             size: 26.0,
@@ -419,14 +398,14 @@ class _ServicioDetalleScreenWidgetState
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Inter',
-                                                color: const Color(0xFF1C2A3A),
+                                                color: Color(0xFF1C2A3A),
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                               ),
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 4.0, 0.0, 0.0),
                                           child: Text(
                                             'rating',
@@ -434,7 +413,7 @@ class _ServicioDetalleScreenWidgetState
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Inter',
-                                                  color: const Color(0xFF1C2A3A),
+                                                  color: Color(0xFF1C2A3A),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
                                                 ),
@@ -452,7 +431,7 @@ class _ServicioDetalleScreenWidgetState
                                           fillColor:
                                               FlutterFlowTheme.of(context)
                                                   .primaryBackground,
-                                          icon: const Icon(
+                                          icon: Icon(
                                             Icons.comment_sharp,
                                             color: Color(0xFF1C2A3A),
                                             size: 26.0,
@@ -471,7 +450,7 @@ class _ServicioDetalleScreenWidgetState
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Inter',
-                                                    color: const Color(0xFF1C2A3A),
+                                                    color: Color(0xFF1C2A3A),
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.w600,
                                                   ),
@@ -480,7 +459,7 @@ class _ServicioDetalleScreenWidgetState
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 4.0, 0.0, 0.0),
                                           child: Text(
                                             'reseñas',
@@ -488,7 +467,7 @@ class _ServicioDetalleScreenWidgetState
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Inter',
-                                                  color: const Color(0xFF1C2A3A),
+                                                  color: Color(0xFF1C2A3A),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.w600,
                                                 ),
@@ -500,7 +479,7 @@ class _ServicioDetalleScreenWidgetState
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     15.0, 25.0, 15.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -511,7 +490,7 @@ class _ServicioDetalleScreenWidgetState
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Inter',
-                                            color: const Color(0xFF1F2A37),
+                                            color: Color(0xFF1F2A37),
                                             fontSize: 20.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
@@ -521,7 +500,7 @@ class _ServicioDetalleScreenWidgetState
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     15.0, 8.0, 15.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -533,7 +512,7 @@ class _ServicioDetalleScreenWidgetState
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Inter',
-                                              color: const Color(0xFF1C2A3A),
+                                              color: Color(0xFF1C2A3A),
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
@@ -544,7 +523,7 @@ class _ServicioDetalleScreenWidgetState
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     15.0, 10.0, 15.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -556,7 +535,7 @@ class _ServicioDetalleScreenWidgetState
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Inter',
-                                              color: const Color(0xFF6B7280),
+                                              color: Color(0xFF6B7280),
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
                                             ),
@@ -566,7 +545,7 @@ class _ServicioDetalleScreenWidgetState
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     15.0, 8.0, 15.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -579,7 +558,7 @@ class _ServicioDetalleScreenWidgetState
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Inter',
-                                              color: const Color(0xFF1C2A3A),
+                                              color: Color(0xFF1C2A3A),
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
@@ -593,7 +572,7 @@ class _ServicioDetalleScreenWidgetState
                                       ?.atiendenUrgencias ??
                                   true)
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       15.0, 20.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -601,14 +580,14 @@ class _ServicioDetalleScreenWidgetState
                                       Container(
                                         height: 25.0,
                                         decoration: BoxDecoration(
-                                          color: const Color(0xFFE3F6E8),
+                                          color: Color(0xFFE3F6E8),
                                           borderRadius:
                                               BorderRadius.circular(8.0),
                                         ),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
-                                            const Padding(
+                                            Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       15.0, 0.0, 0.0, 0.0),
@@ -619,7 +598,7 @@ class _ServicioDetalleScreenWidgetState
                                               ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       10.0, 0.0, 15.0, 0.0),
                                               child: Text(
@@ -630,7 +609,7 @@ class _ServicioDetalleScreenWidgetState
                                                         .override(
                                                           fontFamily: 'Inter',
                                                           color:
-                                                              const Color(0xFF2B7A4B),
+                                                              Color(0xFF2B7A4B),
                                                           letterSpacing: 0.0,
                                                         ),
                                               ),
@@ -642,7 +621,7 @@ class _ServicioDetalleScreenWidgetState
                                   ),
                                 ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     15.0, 8.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -650,7 +629,7 @@ class _ServicioDetalleScreenWidgetState
                                     Container(
                                       height: 25.0,
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFFE3F2FD),
+                                        color: Color(0xFFE3F2FD),
                                         borderRadius:
                                             BorderRadius.circular(8.0),
                                       ),
@@ -659,7 +638,7 @@ class _ServicioDetalleScreenWidgetState
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     10.0, 0.0, 15.0, 0.0),
                                             child: Text(
                                               servicioDetalleScreenServiceDetailCompleteRow
@@ -674,7 +653,7 @@ class _ServicioDetalleScreenWidgetState
                                                       .override(
                                                         fontFamily: 'Inter',
                                                         color:
-                                                            const Color(0xFF1565C0),
+                                                            Color(0xFF1565C0),
                                                         letterSpacing: 0.0,
                                                       ),
                                             ),
@@ -686,7 +665,7 @@ class _ServicioDetalleScreenWidgetState
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     15.0, 25.0, 15.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -697,7 +676,7 @@ class _ServicioDetalleScreenWidgetState
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Inter',
-                                            color: const Color(0xFF1F2A37),
+                                            color: Color(0xFF1F2A37),
                                             fontSize: 20.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.w600,
@@ -707,7 +686,7 @@ class _ServicioDetalleScreenWidgetState
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     15.0, 10.0, 15.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -719,7 +698,7 @@ class _ServicioDetalleScreenWidgetState
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Inter',
-                                              color: const Color(0xFF6B7280),
+                                              color: Color(0xFF6B7280),
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w500,
                                             ),
@@ -732,7 +711,7 @@ class _ServicioDetalleScreenWidgetState
                                       ?.bestReviewStars !=
                                   null)
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       15.0, 25.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -745,7 +724,7 @@ class _ServicioDetalleScreenWidgetState
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Inter',
-                                              color: const Color(0xFF1F2A37),
+                                              color: Color(0xFF1F2A37),
                                               fontSize: 20.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
@@ -758,7 +737,7 @@ class _ServicioDetalleScreenWidgetState
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
                                           context.pushNamed(
-                                            'reviews_complete',
+                                            ReviewsCompleteWidget.routeName,
                                             queryParameters: {
                                               'profesionalId': serializeParam(
                                                 servicioDetalleScreenServiceDetailCompleteRow
@@ -774,7 +753,7 @@ class _ServicioDetalleScreenWidgetState
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Inter',
-                                                color: const Color(0xFF6B7280),
+                                                color: Color(0xFF6B7280),
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
                                               ),
@@ -787,10 +766,10 @@ class _ServicioDetalleScreenWidgetState
                                       ?.bestReviewStars !=
                                   null)
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 0.0),
                                   child: Container(
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                   ),
                                 ),
                             ],
@@ -808,18 +787,18 @@ class _ServicioDetalleScreenWidgetState
                                 .secondaryBackground,
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 0.0, 20.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Expanded(
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 15.0, 0.0, 15.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
-                                        var shouldSetState = false;
+                                        var _shouldSetState = false;
                                         if (servicioDetalleScreenServiceDetailCompleteRow
                                                 ?.professionalId ==
                                             currentUserUid) {
@@ -827,23 +806,22 @@ class _ServicioDetalleScreenWidgetState
                                             context: context,
                                             builder: (alertDialogContext) {
                                               return AlertDialog(
-                                                title: const Text('Mismo usuario'),
-                                                content: const Text(
+                                                title: Text('Mismo usuario'),
+                                                content: Text(
                                                     'No podés iniciar un chat con vos mismo'),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
                                                         Navigator.pop(
                                                             alertDialogContext),
-                                                    child: const Text('Ok'),
+                                                    child: Text('Ok'),
                                                   ),
                                                 ],
                                               );
                                             },
                                           );
-                                          if (shouldSetState) {
+                                          if (_shouldSetState)
                                             safeSetState(() {});
-                                          }
                                           return;
                                         }
                                         _model.conversacionExistente =
@@ -865,13 +843,13 @@ class _ServicioDetalleScreenWidgetState
                                                     ?.serviceId,
                                               ),
                                         );
-                                        shouldSetState = true;
+                                        _shouldSetState = true;
                                         if (_model.conversacionExistente !=
                                                 null &&
                                             (_model.conversacionExistente)!
                                                 .isNotEmpty) {
                                           context.pushNamed(
-                                            'chatService',
+                                            ChatServiceWidget.routeName,
                                             queryParameters: {
                                               'conversationId': serializeParam(
                                                 _model.conversacionExistente
@@ -907,10 +885,10 @@ class _ServicioDetalleScreenWidgetState
                                                 servicioDetalleScreenServiceDetailCompleteRow
                                                     ?.professionalId,
                                           });
-                                          shouldSetState = true;
+                                          _shouldSetState = true;
 
                                           context.pushNamed(
-                                            'chatService',
+                                            ChatServiceWidget.routeName,
                                             queryParameters: {
                                               'conversationId': serializeParam(
                                                 _model.conversation?.id,
@@ -930,19 +908,18 @@ class _ServicioDetalleScreenWidgetState
                                           );
                                         }
 
-                                        if (shouldSetState) {
+                                        if (_shouldSetState)
                                           safeSetState(() {});
-                                        }
                                       },
                                       text: 'Contactar',
                                       options: FFButtonOptions(
                                         height: 48.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 0.0, 16.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
-                                        color: const Color(0xFF1C2A3A),
+                                        color: Color(0xFF1C2A3A),
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(

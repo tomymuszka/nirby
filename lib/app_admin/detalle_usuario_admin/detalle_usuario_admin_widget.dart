@@ -2,9 +2,13 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/todas/delete_account/delete_account_widget.dart';
+import '/todas/delete_account_admin/delete_account_admin_widget.dart';
+import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'detalle_usuario_admin_model.dart';
 export 'detalle_usuario_admin_model.dart';
 
@@ -15,6 +19,9 @@ class DetalleUsuarioAdminWidget extends StatefulWidget {
   });
 
   final String? userId;
+
+  static String routeName = 'DetalleUsuarioAdmin';
+  static String routePath = '/detalleUsuarioAdmin';
 
   @override
   State<DetalleUsuarioAdminWidget> createState() =>
@@ -31,6 +38,11 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => DetalleUsuarioAdminModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await action_blocks.checkConnection(context);
+    });
 
     _model.tabBarController = TabController(
       vsync: this,
@@ -67,7 +79,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                 height: 50.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    FlutterFlowTheme.of(context).primaryBackground,
                   ),
                 ),
               ),
@@ -114,19 +126,19 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                       letterSpacing: 0.0,
                     ),
               ),
-              actions: const [],
+              actions: [],
               centerTitle: false,
               elevation: 0.0,
             ),
             body: SafeArea(
               top: true,
               child: Align(
-                alignment: const AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Container(
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxWidth: 600.0,
                   ),
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -134,7 +146,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                         Stack(
                           children: [
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 1.0),
+                              alignment: AlignmentDirectional(0.0, 1.0),
                               child: Material(
                                 color: Colors.transparent,
                                 elevation: 0.0,
@@ -153,7 +165,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(4.0),
+                                    padding: EdgeInsets.all(4.0),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(8.0),
                                       child: Image.network(
@@ -174,7 +186,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                           ],
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 0.0),
                           child: Text(
                             '${detalleUsuarioAdminUsuariosAnaliticasRow?.nombre} ${detalleUsuarioAdminUsuariosAnaliticasRow?.apellido}',
@@ -187,7 +199,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -199,15 +211,15 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                   color:
                                       detalleUsuarioAdminUsuariosAnaliticasRow!
                                               .verified!
-                                          ? const Color(0xFFE3F6E8)
-                                          : const Color(0xFFFDE4E4),
+                                          ? Color(0xFFE3F6E8)
+                                          : Color(0xFFFDE4E4),
                                   borderRadius: BorderRadius.circular(8.0),
                                   border: Border.all(
                                     color:
                                         detalleUsuarioAdminUsuariosAnaliticasRow
                                                 .verified!
-                                            ? const Color(0xFF2B7A4B)
-                                            : const Color(0xFFD9534F),
+                                            ? Color(0xFF2B7A4B)
+                                            : Color(0xFFD9534F),
                                   ),
                                 ),
                                 child: Row(
@@ -215,9 +227,9 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             15.0, 0.0, 15.0, 0.0),
                                         child: Text(
                                           detalleUsuarioAdminUsuariosAnaliticasRow
@@ -231,8 +243,8 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                 color:
                                                     detalleUsuarioAdminUsuariosAnaliticasRow
                                                             .verified!
-                                                        ? const Color(0xFF2B7A4B)
-                                                        : const Color(0xFFD9534F),
+                                                        ? Color(0xFF2B7A4B)
+                                                        : Color(0xFFD9534F),
                                                 letterSpacing: 0.0,
                                               ),
                                         ),
@@ -241,7 +253,56 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                   ],
                                 ),
                               ),
-                            ],
+                              if (detalleUsuarioAdminUsuariosAnaliticasRow
+                                      .emailconfirmado ??
+                                  true)
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    border: Border.all(
+                                      color: Color(0xFF2B7A4B),
+                                    ),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5.0, 2.0, 0.0, 2.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        FaIcon(
+                                          FontAwesomeIcons.check,
+                                          color: Color(0xFF28A745),
+                                          size: 14.0,
+                                        ),
+                                        Align(
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    15.0, 0.0, 15.0, 0.0),
+                                            child: Text(
+                                              'Email verificado',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        color:
+                                                            Color(0xFF28A745),
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                            ].divide(SizedBox(width: 30.0)),
                           ),
                         ),
                         if (detalleUsuarioAdminUsuariosAnaliticasRow.titulo !=
@@ -249,7 +310,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                             detalleUsuarioAdminUsuariosAnaliticasRow.titulo !=
                                 '')
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 4.0, 0.0, 0.0),
                             child: Text(
                               valueOrDefault<String>(
@@ -266,7 +327,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                             ),
                           ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 20.0, 16.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -285,7 +346,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               15.0, 10.0, 15.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -322,7 +383,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                       .override(
                                                         fontFamily: 'Inter',
                                                         color:
-                                                            const Color(0xFF757575),
+                                                            Color(0xFF757575),
                                                         fontSize: 14.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -335,7 +396,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                 Flexible(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 8.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -349,7 +410,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                           .bodyMedium
                                                           .override(
                                                             fontFamily: 'Inter',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF212121),
                                                             fontSize: 14.0,
                                                             letterSpacing: 0.0,
@@ -381,7 +442,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                       .override(
                                                         fontFamily: 'Inter',
                                                         color:
-                                                            const Color(0xFF757575),
+                                                            Color(0xFF757575),
                                                         fontSize: 14.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -394,7 +455,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                 Flexible(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 8.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -415,7 +476,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                           .bodyMedium
                                                           .override(
                                                             fontFamily: 'Inter',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF212121),
                                                             fontSize: 14.0,
                                                             letterSpacing: 0.0,
@@ -445,7 +506,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                               .telefono !=
                                           ''))
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -470,7 +531,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                         .override(
                                                           fontFamily: 'Inter',
                                                           color:
-                                                              const Color(0xFF757575),
+                                                              Color(0xFF757575),
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -483,7 +544,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                   Flexible(
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   8.0,
@@ -501,7 +562,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Inter',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFF212121),
                                                               fontSize: 14.0,
                                                               letterSpacing:
@@ -538,7 +599,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                         .override(
                                                           fontFamily: 'Inter',
                                                           color:
-                                                              const Color(0xFF757575),
+                                                              Color(0xFF757575),
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -551,7 +612,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                   Flexible(
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   8.0,
@@ -573,7 +634,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Inter',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFF212121),
                                                               fontSize: 14.0,
                                                               letterSpacing:
@@ -600,7 +661,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                           .suscripcionActiva !=
                                       null))
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -622,7 +683,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                         .override(
                                                           fontFamily: 'Inter',
                                                           color:
-                                                              const Color(0xFF757575),
+                                                              Color(0xFF757575),
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -635,7 +696,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                   Flexible(
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   8.0,
@@ -652,7 +713,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Inter',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFF212121),
                                                               fontSize: 14.0,
                                                               letterSpacing:
@@ -686,7 +747,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                         .override(
                                                           fontFamily: 'Inter',
                                                           color:
-                                                              const Color(0xFF757575),
+                                                              Color(0xFF757575),
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -699,7 +760,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                   Flexible(
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   8.0,
@@ -718,7 +779,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Inter',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFF212121),
                                                               fontSize: 14.0,
                                                               letterSpacing:
@@ -739,7 +800,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                   ),
                                 ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 40.0, 16.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -759,7 +820,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
@@ -770,7 +831,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                     if (detalleUsuarioAdminUsuariosAnaliticasRow
                                         .enVerificacion!) {
                                       context.pushNamed(
-                                        'Documentos',
+                                        DocumentosWidget.routeName,
                                         queryParameters: {
                                           'userid': serializeParam(
                                             widget.userId,
@@ -783,14 +844,14 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                         context: context,
                                         builder: (alertDialogContext) {
                                           return AlertDialog(
-                                            title: const Text('Faltan requisitos'),
-                                            content: const Text(
+                                            title: Text('Faltan requisitos'),
+                                            content: Text(
                                                 'El usuario no completo todos los requisitos'),
                                             actions: [
                                               TextButton(
                                                 onPressed: () => Navigator.pop(
                                                     alertDialogContext),
-                                                child: const Text('Ok'),
+                                                child: Text('Ok'),
                                               ),
                                             ],
                                           );
@@ -813,16 +874,16 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                             width: 100.0,
                                             height: 50.0,
                                             decoration: BoxDecoration(
-                                              color: const Color(0xFFF5F5F5),
+                                              color: Color(0xFFF5F5F5),
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               border: Border.all(
-                                                color: const Color(0xFF9E9E9E),
+                                                color: Color(0xFF9E9E9E),
                                                 width: 2.0,
                                               ),
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       20.0, 0.0, 20.0, 0.0),
                                               child: Row(
@@ -839,14 +900,14 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                         .override(
                                                           fontFamily: 'Inter',
                                                           color:
-                                                              const Color(0xFF424242),
+                                                              Color(0xFF424242),
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
                                                   ),
-                                                  const Icon(
+                                                  Icon(
                                                     Icons.keyboard_arrow_right,
                                                     color: Color(0xFF424242),
                                                     size: 24.0,
@@ -862,7 +923,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
@@ -871,7 +932,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
                                     context.pushNamed(
-                                      'reviews_complete',
+                                      ReviewsCompleteWidget.routeName,
                                       queryParameters: {
                                         'profesionalId': serializeParam(
                                           detalleUsuarioAdminUsuariosAnaliticasRow
@@ -900,12 +961,12 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               border: Border.all(
-                                                color: const Color(0xFF1976D2),
+                                                color: Color(0xFF1976D2),
                                                 width: 2.0,
                                               ),
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       20.0, 0.0, 20.0, 0.0),
                                               child: Row(
@@ -922,14 +983,14 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                         .override(
                                                           fontFamily: 'Inter',
                                                           color:
-                                                              const Color(0xFF1976D2),
+                                                              Color(0xFF1976D2),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
                                                   ),
-                                                  const Icon(
+                                                  Icon(
                                                     Icons.keyboard_arrow_right,
                                                     color: Color(0xFF1976D2),
                                                     size: 24.0,
@@ -945,7 +1006,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
@@ -968,7 +1029,16 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                           child: Padding(
                                             padding: MediaQuery.viewInsetsOf(
                                                 context),
-                                            child: const DeleteAccountWidget(),
+                                            child: DeleteAccountAdminWidget(
+                                              nombre:
+                                                  detalleUsuarioAdminUsuariosAnaliticasRow
+                                                      .nombre!,
+                                              apellido:
+                                                  detalleUsuarioAdminUsuariosAnaliticasRow
+                                                      .apellido!,
+                                              id: detalleUsuarioAdminUsuariosAnaliticasRow
+                                                  .usuarioId!,
+                                            ),
                                           ),
                                         );
                                       },
@@ -989,12 +1059,12 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                             width: 100.0,
                                             height: 50.0,
                                             decoration: BoxDecoration(
-                                              color: const Color(0xFFD32F2F),
+                                              color: Color(0xFFD32F2F),
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       20.0, 0.0, 20.0, 0.0),
                                               child: Row(
@@ -1017,7 +1087,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                               FontWeight.bold,
                                                         ),
                                                   ),
-                                                  const Icon(
+                                                  Icon(
                                                     Icons.keyboard_arrow_right,
                                                     color: Colors.white,
                                                     size: 24.0,
@@ -1033,7 +1103,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 40.0, 16.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -1057,12 +1127,12 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                 height: 600.0,
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
+                                      .primaryBackground,
                                 ),
                                 child: Column(
                                   children: [
                                     Align(
-                                      alignment: const Alignment(0.0, 0),
+                                      alignment: Alignment(0.0, 0),
                                       child: TabBar(
                                         labelColor: FlutterFlowTheme.of(context)
                                             .primaryText,
@@ -1085,7 +1155,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                         indicatorColor:
                                             FlutterFlowTheme.of(context)
                                                 .primary,
-                                        tabs: const [
+                                        tabs: [
                                           Tab(
                                             text: 'Comprador',
                                           ),
@@ -1107,7 +1177,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 10.0, 16.0, 0.0),
                                                 child: Row(
@@ -1136,7 +1206,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         20.0, 15.0, 20.0, 0.0),
                                                 child: Container(
@@ -1150,13 +1220,13 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                         BorderRadius.circular(
                                                             12.0),
                                                     border: Border.all(
-                                                      color: const Color(0xFF1976D2),
+                                                      color: Color(0xFF1976D2),
                                                       width: 2.0,
                                                     ),
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(20.0, 0.0,
                                                                 20.0, 0.0),
                                                     child: Row(
@@ -1187,7 +1257,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                                       .override(
                                                                         fontFamily:
                                                                             'Inter',
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF1976D2),
                                                                         fontSize:
                                                                             20.0,
@@ -1205,7 +1275,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                           flex: 4,
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
@@ -1232,7 +1302,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                                           fontFamily:
                                                                               'Inter',
                                                                           color:
-                                                                              const Color(0xFF1976D2),
+                                                                              Color(0xFF1976D2),
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
@@ -1250,7 +1320,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 10.0, 16.0, 0.0),
                                                 child: Row(
@@ -1279,7 +1349,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         20.0, 15.0, 20.0, 0.0),
                                                 child: Container(
@@ -1293,13 +1363,13 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                         BorderRadius.circular(
                                                             12.0),
                                                     border: Border.all(
-                                                      color: const Color(0xFF1976D2),
+                                                      color: Color(0xFF1976D2),
                                                       width: 2.0,
                                                     ),
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(20.0, 0.0,
                                                                 20.0, 0.0),
                                                     child: Row(
@@ -1330,7 +1400,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                                       .override(
                                                                         fontFamily:
                                                                             'Inter',
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF1976D2),
                                                                         fontSize:
                                                                             20.0,
@@ -1348,7 +1418,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                           flex: 4,
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
@@ -1375,7 +1445,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                                           fontFamily:
                                                                               'Inter',
                                                                           color:
-                                                                              const Color(0xFF1976D2),
+                                                                              Color(0xFF1976D2),
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
@@ -1393,7 +1463,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         20.0, 15.0, 20.0, 0.0),
                                                 child: Container(
@@ -1407,13 +1477,13 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                         BorderRadius.circular(
                                                             12.0),
                                                     border: Border.all(
-                                                      color: const Color(0xFF1976D2),
+                                                      color: Color(0xFF1976D2),
                                                       width: 2.0,
                                                     ),
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(20.0, 0.0,
                                                                 20.0, 0.0),
                                                     child: Row(
@@ -1444,7 +1514,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                                       .override(
                                                                         fontFamily:
                                                                             'Inter',
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF1976D2),
                                                                         fontSize:
                                                                             20.0,
@@ -1462,7 +1532,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                           flex: 4,
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
@@ -1489,7 +1559,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                                           fontFamily:
                                                                               'Inter',
                                                                           color:
-                                                                              const Color(0xFF1976D2),
+                                                                              Color(0xFF1976D2),
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
@@ -1507,7 +1577,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         20.0, 15.0, 20.0, 0.0),
                                                 child: Container(
@@ -1521,13 +1591,13 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                         BorderRadius.circular(
                                                             12.0),
                                                     border: Border.all(
-                                                      color: const Color(0xFF1976D2),
+                                                      color: Color(0xFF1976D2),
                                                       width: 2.0,
                                                     ),
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(20.0, 0.0,
                                                                 20.0, 0.0),
                                                     child: Row(
@@ -1558,7 +1628,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                                       .override(
                                                                         fontFamily:
                                                                             'Inter',
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF1976D2),
                                                                         fontSize:
                                                                             20.0,
@@ -1576,7 +1646,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                           flex: 4,
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
@@ -1603,7 +1673,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                                           fontFamily:
                                                                               'Inter',
                                                                           color:
-                                                                              const Color(0xFF1976D2),
+                                                                              Color(0xFF1976D2),
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
@@ -1626,7 +1696,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 10.0, 16.0, 0.0),
                                                 child: Row(
@@ -1655,7 +1725,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         20.0, 15.0, 20.0, 0.0),
                                                 child: Container(
@@ -1669,13 +1739,13 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                         BorderRadius.circular(
                                                             12.0),
                                                     border: Border.all(
-                                                      color: const Color(0xFF1976D2),
+                                                      color: Color(0xFF1976D2),
                                                       width: 2.0,
                                                     ),
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(20.0, 0.0,
                                                                 20.0, 0.0),
                                                     child: Row(
@@ -1706,7 +1776,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                                       .override(
                                                                         fontFamily:
                                                                             'Inter',
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF1976D2),
                                                                         fontSize:
                                                                             20.0,
@@ -1724,7 +1794,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                           flex: 4,
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
@@ -1751,7 +1821,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                                           fontFamily:
                                                                               'Inter',
                                                                           color:
-                                                                              const Color(0xFF1976D2),
+                                                                              Color(0xFF1976D2),
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
@@ -1769,7 +1839,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         20.0, 15.0, 20.0, 0.0),
                                                 child: Container(
@@ -1783,13 +1853,13 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                         BorderRadius.circular(
                                                             12.0),
                                                     border: Border.all(
-                                                      color: const Color(0xFF1976D2),
+                                                      color: Color(0xFF1976D2),
                                                       width: 2.0,
                                                     ),
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(20.0, 0.0,
                                                                 20.0, 0.0),
                                                     child: Row(
@@ -1820,7 +1890,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                                       .override(
                                                                         fontFamily:
                                                                             'Inter',
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF1976D2),
                                                                         fontSize:
                                                                             20.0,
@@ -1838,7 +1908,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                           flex: 4,
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
@@ -1865,7 +1935,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                                           fontFamily:
                                                                               'Inter',
                                                                           color:
-                                                                              const Color(0xFF1976D2),
+                                                                              Color(0xFF1976D2),
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
@@ -1883,7 +1953,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         20.0, 15.0, 20.0, 0.0),
                                                 child: Container(
@@ -1897,13 +1967,13 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                         BorderRadius.circular(
                                                             12.0),
                                                     border: Border.all(
-                                                      color: const Color(0xFF1976D2),
+                                                      color: Color(0xFF1976D2),
                                                       width: 2.0,
                                                     ),
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(20.0, 0.0,
                                                                 20.0, 0.0),
                                                     child: Row(
@@ -1934,7 +2004,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                                       .override(
                                                                         fontFamily:
                                                                             'Inter',
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF1976D2),
                                                                         fontSize:
                                                                             20.0,
@@ -1952,7 +2022,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                           flex: 4,
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
@@ -1979,7 +2049,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                                           fontFamily:
                                                                               'Inter',
                                                                           color:
-                                                                              const Color(0xFF1976D2),
+                                                                              Color(0xFF1976D2),
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
@@ -1997,7 +2067,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 10.0, 16.0, 0.0),
                                                 child: Row(
@@ -2026,7 +2096,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         20.0, 15.0, 20.0, 0.0),
                                                 child: Container(
@@ -2040,13 +2110,13 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                         BorderRadius.circular(
                                                             12.0),
                                                     border: Border.all(
-                                                      color: const Color(0xFF1976D2),
+                                                      color: Color(0xFF1976D2),
                                                       width: 2.0,
                                                     ),
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(20.0, 0.0,
                                                                 20.0, 0.0),
                                                     child: Row(
@@ -2077,7 +2147,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                                       .override(
                                                                         fontFamily:
                                                                             'Inter',
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF1976D2),
                                                                         fontSize:
                                                                             20.0,
@@ -2095,7 +2165,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                           flex: 4,
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
@@ -2122,7 +2192,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                                           fontFamily:
                                                                               'Inter',
                                                                           color:
-                                                                              const Color(0xFF1976D2),
+                                                                              Color(0xFF1976D2),
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
@@ -2140,7 +2210,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         20.0, 15.0, 20.0, 0.0),
                                                 child: Container(
@@ -2154,13 +2224,13 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                         BorderRadius.circular(
                                                             12.0),
                                                     border: Border.all(
-                                                      color: const Color(0xFF1976D2),
+                                                      color: Color(0xFF1976D2),
                                                       width: 2.0,
                                                     ),
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(20.0, 0.0,
                                                                 20.0, 0.0),
                                                     child: Row(
@@ -2191,7 +2261,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                                       .override(
                                                                         fontFamily:
                                                                             'Inter',
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF1976D2),
                                                                         fontSize:
                                                                             20.0,
@@ -2209,7 +2279,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                           flex: 4,
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
@@ -2236,7 +2306,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                                           fontFamily:
                                                                               'Inter',
                                                                           color:
-                                                                              const Color(0xFF1976D2),
+                                                                              Color(0xFF1976D2),
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:
@@ -2254,7 +2324,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         20.0, 15.0, 20.0, 0.0),
                                                 child: Container(
@@ -2268,13 +2338,13 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                         BorderRadius.circular(
                                                             12.0),
                                                     border: Border.all(
-                                                      color: const Color(0xFF1976D2),
+                                                      color: Color(0xFF1976D2),
                                                       width: 2.0,
                                                     ),
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(20.0, 0.0,
                                                                 20.0, 0.0),
                                                     child: Row(
@@ -2305,7 +2375,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                                       .override(
                                                                         fontFamily:
                                                                             'Inter',
-                                                                        color: const Color(
+                                                                        color: Color(
                                                                             0xFF1976D2),
                                                                         fontSize:
                                                                             20.0,
@@ -2323,7 +2393,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                           flex: 4,
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         10.0,
                                                                         0.0,
@@ -2350,7 +2420,7 @@ class _DetalleUsuarioAdminWidgetState extends State<DetalleUsuarioAdminWidget>
                                                                           fontFamily:
                                                                               'Inter',
                                                                           color:
-                                                                              const Color(0xFF1976D2),
+                                                                              Color(0xFF1976D2),
                                                                           letterSpacing:
                                                                               0.0,
                                                                           fontWeight:

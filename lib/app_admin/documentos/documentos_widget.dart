@@ -3,7 +3,9 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/actions/actions.dart' as action_blocks;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'documentos_model.dart';
 export 'documentos_model.dart';
 
@@ -14,6 +16,9 @@ class DocumentosWidget extends StatefulWidget {
   });
 
   final String? userid;
+
+  static String routeName = 'Documentos';
+  static String routePath = '/documentos';
 
   @override
   State<DocumentosWidget> createState() => _DocumentosWidgetState();
@@ -28,6 +33,11 @@ class _DocumentosWidgetState extends State<DocumentosWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => DocumentosModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await action_blocks.checkConnection(context);
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -59,7 +69,7 @@ class _DocumentosWidgetState extends State<DocumentosWidget> {
                 height: 50.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    FlutterFlowTheme.of(context).primaryBackground,
                   ),
                 ),
               ),
@@ -81,14 +91,14 @@ class _DocumentosWidgetState extends State<DocumentosWidget> {
             key: scaffoldKey,
             backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
             appBar: AppBar(
-              backgroundColor: const Color(0xFFF1F4F8),
+              backgroundColor: Color(0xFFF1F4F8),
               automaticallyImplyLeading: false,
               leading: FlutterFlowIconButton(
                 borderColor: Colors.transparent,
                 borderRadius: 30.0,
                 borderWidth: 1.0,
                 buttonSize: 60.0,
-                icon: const Icon(
+                icon: Icon(
                   Icons.arrow_back_rounded,
                   color: Color(0xFF212121),
                   size: 30.0,
@@ -101,31 +111,31 @@ class _DocumentosWidgetState extends State<DocumentosWidget> {
                 'Verificación de Identidad',
                 style: FlutterFlowTheme.of(context).headlineMedium.override(
                       fontFamily: 'Inter Tight',
-                      color: const Color(0xFF212121),
-                      fontSize: 22.0,
+                      color: Color(0xFF212121),
+                      fontSize: 18.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.bold,
                     ),
               ),
-              actions: const [],
+              actions: [],
               centerTitle: false,
               elevation: 2.0,
             ),
             body: SafeArea(
               top: true,
               child: Align(
-                alignment: const AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Container(
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxWidth: 600.0,
                   ),
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               15.0, 20.0, 15.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -138,7 +148,7 @@ class _DocumentosWidgetState extends State<DocumentosWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Inter',
-                                        color: const Color(0xFF616161),
+                                        color: Color(0xFF616161),
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.normal,
@@ -149,7 +159,7 @@ class _DocumentosWidgetState extends State<DocumentosWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               15.0, 20.0, 15.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -162,7 +172,7 @@ class _DocumentosWidgetState extends State<DocumentosWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Inter',
-                                        color: const Color(0xFF424242),
+                                        color: Color(0xFF424242),
                                         fontSize: 18.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
@@ -173,11 +183,11 @@ class _DocumentosWidgetState extends State<DocumentosWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 0.0),
                           child: Container(
                             decoration: BoxDecoration(
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0xFFE0E0E0),
@@ -189,7 +199,7 @@ class _DocumentosWidgetState extends State<DocumentosWidget> {
                               ],
                               borderRadius: BorderRadius.circular(8.0),
                               border: Border.all(
-                                color: const Color(0xFFBDBDBD),
+                                color: Color(0xFFBDBDBD),
                                 width: 2.0,
                               ),
                             ),
@@ -208,7 +218,7 @@ class _DocumentosWidgetState extends State<DocumentosWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               15.0, 20.0, 15.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -221,7 +231,7 @@ class _DocumentosWidgetState extends State<DocumentosWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Inter',
-                                        color: const Color(0xFF424242),
+                                        color: Color(0xFF424242),
                                         fontSize: 18.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
@@ -232,11 +242,11 @@ class _DocumentosWidgetState extends State<DocumentosWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 0.0),
                           child: Container(
                             decoration: BoxDecoration(
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0xFFE0E0E0),
@@ -248,7 +258,7 @@ class _DocumentosWidgetState extends State<DocumentosWidget> {
                               ],
                               borderRadius: BorderRadius.circular(8.0),
                               border: Border.all(
-                                color: const Color(0xFFBDBDBD),
+                                color: Color(0xFFBDBDBD),
                                 width: 2.0,
                               ),
                             ),
@@ -267,7 +277,7 @@ class _DocumentosWidgetState extends State<DocumentosWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               15.0, 20.0, 15.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -280,7 +290,7 @@ class _DocumentosWidgetState extends State<DocumentosWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Inter',
-                                        color: const Color(0xFF424242),
+                                        color: Color(0xFF424242),
                                         fontSize: 18.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
@@ -291,11 +301,11 @@ class _DocumentosWidgetState extends State<DocumentosWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 0.0),
                           child: Container(
                             decoration: BoxDecoration(
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   blurRadius: 4.0,
                                   color: Color(0xFFE0E0E0),
@@ -307,7 +317,7 @@ class _DocumentosWidgetState extends State<DocumentosWidget> {
                               ],
                               borderRadius: BorderRadius.circular(8.0),
                               border: Border.all(
-                                color: const Color(0xFFBDBDBD),
+                                color: Color(0xFFBDBDBD),
                                 width: 2.0,
                               ),
                             ),
@@ -327,7 +337,7 @@ class _DocumentosWidgetState extends State<DocumentosWidget> {
                         ),
                         if (documentosUsuariosRow?.verified == false)
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 15.0, 40.0, 15.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -350,10 +360,10 @@ class _DocumentosWidgetState extends State<DocumentosWidget> {
                                     text: 'Aprobar',
                                     options: FFButtonOptions(
                                       height: 40.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 16.0, 0.0),
                                       iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color: Colors.green,
                                       textStyle: FlutterFlowTheme.of(context)
@@ -365,7 +375,7 @@ class _DocumentosWidgetState extends State<DocumentosWidget> {
                                             fontWeight: FontWeight.w500,
                                           ),
                                       elevation: 4.0,
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         width: 1.0,
                                       ),
                                       borderRadius: BorderRadius.circular(8.0),
@@ -377,7 +387,7 @@ class _DocumentosWidgetState extends State<DocumentosWidget> {
                           ),
                         if (documentosUsuariosRow?.verified == false)
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 15.0, 20.0, 15.0, 30.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -401,12 +411,12 @@ class _DocumentosWidgetState extends State<DocumentosWidget> {
                                     text: 'Rechazar',
                                     options: FFButtonOptions(
                                       height: 40.0,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           16.0, 0.0, 16.0, 0.0),
                                       iconPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
-                                      color: const Color(0xFFD32F2F),
+                                      color: Color(0xFFD32F2F),
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall
                                           .override(

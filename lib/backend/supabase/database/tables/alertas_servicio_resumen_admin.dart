@@ -11,7 +11,7 @@ class AlertasServicioResumenAdminTable
 }
 
 class AlertasServicioResumenAdminRow extends SupabaseDataRow {
-  AlertasServicioResumenAdminRow(super.data);
+  AlertasServicioResumenAdminRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => AlertasServicioResumenAdminTable();

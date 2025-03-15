@@ -4,14 +4,21 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'login_model.dart';
 export 'login_model.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({super.key});
+
+  static String routeName = 'login';
+  static String routePath = '/login';
 
   @override
   State<LoginWidget> createState() => _LoginWidgetState();
@@ -29,6 +36,11 @@ class _LoginWidgetState extends State<LoginWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => LoginModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await action_blocks.checkConnection(context);
+    });
 
     _model.emailAddressTextController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
@@ -52,22 +64,22 @@ class _LoginWidgetState extends State<LoginWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 140.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 140.0),
+            end: Offset(0.0, 0.0),
           ),
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.9, 1.0),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.9, 1.0),
+            end: Offset(1.0, 1.0),
           ),
           TiltEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(-0.349, 0),
-            end: const Offset(0, 0),
+            begin: Offset(-0.349, 0),
+            end: Offset(0, 0),
           ),
         ],
       ),
@@ -95,7 +107,7 @@ class _LoginWidgetState extends State<LoginWidget>
         backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
         body: Container(
           height: double.infinity,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: [Color(0xFF515EEB), Color(0xFFC1358D)],
               stops: [0.0, 1.0],
@@ -103,21 +115,21 @@ class _LoginWidgetState extends State<LoginWidget>
               end: AlignmentDirectional(-0.87, 1.0),
             ),
           ),
-          alignment: const AlignmentDirectional(0.0, -1.0),
+          alignment: AlignmentDirectional(0.0, -1.0),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 70.0, 0.0, 32.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 70.0, 0.0, 32.0),
                   child: Container(
                     width: 200.0,
                     height: 70.0,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(16.0),
                     ),
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Text(
                       'Nirby',
                       style: FlutterFlowTheme.of(context).displaySmall.override(
@@ -129,15 +141,15 @@ class _LoginWidgetState extends State<LoginWidget>
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: EdgeInsets.all(16.0),
                   child: Container(
                     width: double.infinity,
-                    constraints: const BoxConstraints(
+                    constraints: BoxConstraints(
                       maxWidth: 570.0,
                     ),
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).primaryBackground,
-                      boxShadow: const [
+                      boxShadow: [
                         BoxShadow(
                           blurRadius: 4.0,
                           color: Color(0x33000000),
@@ -150,12 +162,12 @@ class _LoginWidgetState extends State<LoginWidget>
                       borderRadius: BorderRadius.circular(12.0),
                     ),
                     child: Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Form(
                         key: _model.formKey,
                         autovalidateMode: AutovalidateMode.disabled,
                         child: Padding(
-                          padding: const EdgeInsets.all(32.0),
+                          padding: EdgeInsets.all(32.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.center,
@@ -171,7 +183,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                     ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 24.0),
                                 child: Text(
                                   'Completá tu información debajo para acceder a la aplicación',
@@ -185,16 +197,16 @@ class _LoginWidgetState extends State<LoginWidget>
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 16.0),
-                                child: SizedBox(
+                                child: Container(
                                   width: double.infinity,
                                   child: TextFormField(
                                     controller:
                                         _model.emailAddressTextController,
                                     focusNode: _model.emailAddressFocusNode,
                                     autofocus: false,
-                                    autofillHints: const [AutofillHints.email],
+                                    autofillHints: [AutofillHints.email],
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText: 'Email',
@@ -258,15 +270,15 @@ class _LoginWidgetState extends State<LoginWidget>
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 16.0),
-                                child: SizedBox(
+                                child: Container(
                                   width: double.infinity,
                                   child: TextFormField(
                                     controller: _model.passwordTextController,
                                     focusNode: _model.passwordFocusNode,
                                     autofocus: false,
-                                    autofillHints: const [AutofillHints.password],
+                                    autofillHints: [AutofillHints.password],
                                     obscureText: !_model.passwordVisibility,
                                     decoration: InputDecoration(
                                       labelText: 'Contraseña',
@@ -345,7 +357,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 10.0, 0.0, 16.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
@@ -355,6 +367,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                       return;
                                     }
                                     FFAppState().modovendedor = false;
+                                    FFAppState().PaginaSeleccionada = 'Home';
                                     safeSetState(() {});
                                     _model.playerid =
                                         await actions.getOneSignalPlayerId();
@@ -370,18 +383,31 @@ class _LoginWidgetState extends State<LoginWidget>
                                       return;
                                     }
 
-                                    await UsuariosTable().update(
-                                      data: {
-                                        'player_id': _model.playerid,
-                                      },
-                                      matchingRows: (rows) => rows.eqOrNull(
+                                    _model.user =
+                                        await UsuariosTable().queryRows(
+                                      queryFn: (q) => q.eqOrNull(
                                         'id',
                                         currentUserUid,
                                       ),
                                     );
+                                    if (!_model.user!.firstOrNull!.playerId
+                                        .contains(_model.playerid)) {
+                                      await UsuariosTable().update(
+                                        data: {
+                                          'player_id': functions.additemtoarray(
+                                              _model.user?.firstOrNull?.playerId
+                                                  .toList(),
+                                              _model.playerid),
+                                        },
+                                        matchingRows: (rows) => rows.eqOrNull(
+                                          'id',
+                                          currentUserUid,
+                                        ),
+                                      );
+                                    }
 
                                     context.pushNamedAuth(
-                                        'Home', context.mounted);
+                                        HomeWidget.routeName, context.mounted);
 
                                     safeSetState(() {});
                                   },
@@ -389,11 +415,11 @@ class _LoginWidgetState extends State<LoginWidget>
                                   options: FFButtonOptions(
                                     width: double.infinity,
                                     height: 44.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    color: const Color(0xFF515EEB),
+                                    color: Color(0xFF515EEB),
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(
@@ -402,7 +428,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                           letterSpacing: 0.0,
                                         ),
                                     elevation: 3.0,
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Colors.transparent,
                                       width: 1.0,
                                     ),
@@ -411,7 +437,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 5.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -423,8 +449,9 @@ class _LoginWidgetState extends State<LoginWidget>
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        context
-                                            .pushNamed('olvidastecontrasena');
+                                        context.pushNamed(
+                                            OlvidastecontrasenaWidget
+                                                .routeName);
                                       },
                                       child: Text(
                                         'Olvidaste tu contraseña?',
@@ -432,7 +459,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Inter',
-                                              color: const Color(0xFF57636C),
+                                              color: Color(0xFF57636C),
                                               letterSpacing: 0.0,
                                             ),
                                       ),
@@ -443,7 +470,7 @@ class _LoginWidgetState extends State<LoginWidget>
 
                               // You will have to add an action on this rich text to go to your login page.
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 20.0, 0.0, 12.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
@@ -451,14 +478,14 @@ class _LoginWidgetState extends State<LoginWidget>
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    context.pushNamed('signin');
+                                    context.pushNamed(SigninWidget.routeName);
                                   },
                                   child: RichText(
                                     textScaler:
                                         MediaQuery.of(context).textScaler,
                                     text: TextSpan(
                                       children: [
-                                        const TextSpan(
+                                        TextSpan(
                                           text: 'No tenés una cuenta?  ',
                                           style: TextStyle(),
                                         ),

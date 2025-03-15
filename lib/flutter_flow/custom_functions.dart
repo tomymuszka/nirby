@@ -159,3 +159,49 @@ DateTime? timebefore(
 
   return inputDate.subtract(Duration(hours: inputTime));
 }
+
+List<String>? additemtoarray(
+  List<String>? list,
+  String? item,
+) {
+  // add the item to the list
+  // add the item to the list
+  if (list == null) {
+    list = [];
+  }
+  list.add(item ?? '');
+  return list;
+}
+
+bool? isWordInString(
+  String? word,
+  String? string,
+) {
+  // if the word is in the string, return true. else false
+  if (word == null || string == null) {
+    return null;
+  }
+
+  return string.contains(word);
+}
+
+int? getNumbersFromString(String? input) {
+  // get a number from a string
+  // get a number from a string
+  // get a number from a string
+  if (input == null) {
+    return null;
+  }
+
+  // Regular expression to match numbers in a string
+  RegExp regExp = RegExp(r'\d+');
+  // Find the first match in the input string
+  Match? match = regExp.firstMatch(input);
+  // If a match is found, extract the number and parse it to an integer
+  if (match != null) {
+    String numberString = match.group(0)!;
+    return int.parse(numberString);
+  }
+
+  return null;
+}

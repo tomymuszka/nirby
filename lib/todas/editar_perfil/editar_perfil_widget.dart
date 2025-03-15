@@ -1,11 +1,14 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/informationaldialogo_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import '/actions/actions.dart' as action_blocks;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 import 'editar_perfil_model.dart';
 export 'editar_perfil_model.dart';
@@ -13,6 +16,9 @@ export 'editar_perfil_model.dart';
 /// Pagina del registro de los datos personales del usuario
 class EditarPerfilWidget extends StatefulWidget {
   const EditarPerfilWidget({super.key});
+
+  static String routeName = 'editar_perfil';
+  static String routePath = '/editarPerfil';
 
   @override
   State<EditarPerfilWidget> createState() => _EditarPerfilWidgetState();
@@ -28,6 +34,11 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
     super.initState();
     _model = createModel(context, () => EditarPerfilModel());
 
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await action_blocks.checkConnection(context);
+    });
+
     _model.nombreFocusNode ??= FocusNode();
 
     _model.apellidoFocusNode ??= FocusNode();
@@ -39,8 +50,6 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
     _model.titleFocusNode ??= FocusNode();
 
     _model.anosexperienciaFocusNode ??= FocusNode();
-
-    _model.emailMpFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -74,7 +83,7 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                 height: 50.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    FlutterFlowTheme.of(context).primaryBackground,
                   ),
                 ),
               ),
@@ -98,19 +107,19 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
             body: SafeArea(
               top: true,
               child: Align(
-                alignment: const AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Container(
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxWidth: 600.0,
                   ),
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: SingleChildScrollView(
                     primary: false,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 40.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -118,8 +127,8 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                               FlutterFlowIconButton(
                                 borderRadius: 8.0,
                                 buttonSize: 40.0,
-                                fillColor: const Color(0x004B39EF),
-                                icon: const Icon(
+                                fillColor: Color(0x004B39EF),
+                                icon: Icon(
                                   Icons.arrow_back,
                                   color: Color(0xFF292D32),
                                   size: 24.0,
@@ -129,7 +138,7 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                 },
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     20.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   'Editar perfil',
@@ -137,7 +146,7 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Inter',
-                                        color: const Color(0xFF374151),
+                                        color: Color(0xFF374151),
                                         fontSize: 20.0,
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w600,
@@ -148,7 +157,7 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               15.0, 15.0, 15.0, 0.0),
                           child: Container(
                             decoration: BoxDecoration(
@@ -160,7 +169,7 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       20.0, 20.0, 0.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
@@ -188,7 +197,7 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                               MainAxisAlignment.end,
                                           children: [
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(8.0, 0.0, 0.0, 0.0),
                                               child: InkWell(
                                                 splashColor: Colors.transparent,
@@ -283,7 +292,7 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                                   crossAxisAlignment:
                                                       CrossAxisAlignment.end,
                                                   children: [
-                                                    const Icon(
+                                                    Icon(
                                                       Icons.edit,
                                                       color: Color(0xFFFF1F5B),
                                                       size: 24.0,
@@ -291,7 +300,7 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                                     Flexible(
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     4.0,
                                                                     0.0,
@@ -329,7 +338,7 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                   key: _model.formKey,
                                   autovalidateMode: AutovalidateMode.disabled,
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         15.0, 20.0, 15.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -363,11 +372,11 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                                     .bodyMedium
                                                     .override(
                                                       fontFamily: 'Inter',
-                                                      color: const Color(0xFF9CA3AF),
+                                                      color: Color(0xFF9CA3AF),
                                                       letterSpacing: 0.0,
                                                     ),
                                             enabledBorder: OutlineInputBorder(
-                                              borderSide: const BorderSide(
+                                              borderSide: BorderSide(
                                                 color: Color(0xFFD1D5DB),
                                                 width: 1.0,
                                               ),
@@ -431,7 +440,7 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 15.0, 0.0, 0.0),
                                           child: TextFormField(
                                             controller: _model
@@ -463,11 +472,11 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                                       .override(
                                                         fontFamily: 'Inter',
                                                         color:
-                                                            const Color(0xFF9CA3AF),
+                                                            Color(0xFF9CA3AF),
                                                         letterSpacing: 0.0,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0xFFD1D5DB),
                                                   width: 1.0,
                                                 ),
@@ -532,7 +541,7 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 15.0, 0.0, 0.0),
                                           child: TextFormField(
                                             controller:
@@ -564,11 +573,11 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                                       .override(
                                                         fontFamily: 'Inter',
                                                         color:
-                                                            const Color(0xFF9CA3AF),
+                                                            Color(0xFF9CA3AF),
                                                         letterSpacing: 0.0,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0xFFD1D5DB),
                                                   width: 1.0,
                                                 ),
@@ -634,7 +643,7 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 15.0, 0.0, 0.0),
                                           child: TextFormField(
                                             controller:
@@ -665,11 +674,11 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                                       .override(
                                                         fontFamily: 'Inter',
                                                         color:
-                                                            const Color(0xFF9CA3AF),
+                                                            Color(0xFF9CA3AF),
                                                         letterSpacing: 0.0,
                                                       ),
                                               enabledBorder: OutlineInputBorder(
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0xFFD1D5DB),
                                                   width: 1.0,
                                                 ),
@@ -734,7 +743,7 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                                 '')
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 15.0, 0.0, 0.0),
                                             child: TextFormField(
                                               controller:
@@ -768,12 +777,12 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                                         .override(
                                                           fontFamily: 'Inter',
                                                           color:
-                                                              const Color(0xFF9CA3AF),
+                                                              Color(0xFF9CA3AF),
                                                           letterSpacing: 0.0,
                                                         ),
                                                 enabledBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0xFFD1D5DB),
                                                     width: 1.0,
                                                   ),
@@ -848,7 +857,7 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                             '0')
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 15.0, 0.0, 0.0),
                                             child: TextFormField(
                                               controller: _model
@@ -884,12 +893,12 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                                         .override(
                                                           fontFamily: 'Inter',
                                                           color:
-                                                              const Color(0xFF9CA3AF),
+                                                              Color(0xFF9CA3AF),
                                                           letterSpacing: 0.0,
                                                         ),
                                                 enabledBorder:
                                                     OutlineInputBorder(
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Color(0xFFD1D5DB),
                                                     width: 1.0,
                                                   ),
@@ -961,130 +970,11 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                             ),
                                           ),
                                         if (editarPerfilUsuariosRow
-                                                    ?.emailMercadopago !=
-                                                null &&
-                                            editarPerfilUsuariosRow
-                                                    ?.emailMercadopago !=
-                                                '')
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 15.0, 0.0, 0.0),
-                                            child: TextFormField(
-                                              controller: _model
-                                                      .emailMpTextController ??=
-                                                  TextEditingController(
-                                                text: editarPerfilUsuariosRow
-                                                    ?.emailMercadopago,
-                                              ),
-                                              focusNode:
-                                                  _model.emailMpFocusNode,
-                                              autofocus: false,
-                                              textCapitalization:
-                                                  TextCapitalization.none,
-                                              obscureText: false,
-                                              decoration: InputDecoration(
-                                                isDense: false,
-                                                labelText:
-                                                    'Email de mercadopago',
-                                                labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Inter',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                alignLabelWithHint: false,
-                                                hintText:
-                                                    'Profesor de educación física',
-                                                hintStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Inter',
-                                                          color:
-                                                              const Color(0xFF9CA3AF),
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                                enabledBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: const BorderSide(
-                                                    color: Color(0xFFD1D5DB),
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                focusedBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .primary,
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                errorBorder: OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .error,
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                focusedErrorBorder:
-                                                    OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .error,
-                                                    width: 1.0,
-                                                  ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                ),
-                                                filled: true,
-                                                fillColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Inter',
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                              maxLength: 2,
-                                              buildCounter: (context,
-                                                      {required currentLength,
-                                                      required isFocused,
-                                                      maxLength}) =>
-                                                  null,
-                                              keyboardType:
-                                                  TextInputType.number,
-                                              cursorColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              validator: _model
-                                                  .emailMpTextControllerValidator
-                                                  .asValidator(context),
-                                            ),
-                                          ),
-                                        if (editarPerfilUsuariosRow
                                                 ?.fechaNacimiento !=
                                             null)
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 15.0, 0.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -1107,11 +997,11 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                             null)
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 5.0, 0.0, 20.0),
                                             child: FFButtonWidget(
                                               onPressed: () async {
-                                                final datePickedDate =
+                                                final _datePickedDate =
                                                     await showDatePicker(
                                                   context: context,
                                                   initialDate:
@@ -1169,14 +1059,20 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                                   },
                                                 );
 
-                                                if (datePickedDate != null) {
+                                                if (_datePickedDate != null) {
                                                   safeSetState(() {
                                                     _model.datePicked =
                                                         DateTime(
-                                                      datePickedDate.year,
-                                                      datePickedDate.month,
-                                                      datePickedDate.day,
+                                                      _datePickedDate.year,
+                                                      _datePickedDate.month,
+                                                      _datePickedDate.day,
                                                     );
+                                                  });
+                                                } else if (_model.datePicked !=
+                                                    null) {
+                                                  safeSetState(() {
+                                                    _model.datePicked =
+                                                        getCurrentTimestamp;
                                                   });
                                                 }
                                                 if (_model.datePicked != null) {
@@ -1195,18 +1091,18 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                                 ),
                                                 'Fecha de nacimiento',
                                               ),
-                                              icon: const Icon(
+                                              icon: Icon(
                                                 Icons.date_range,
                                                 size: 15.0,
                                               ),
                                               options: FFButtonOptions(
                                                 width: double.infinity,
                                                 height: 48.0,
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         16.0, 0.0, 16.0, 0.0),
                                                 iconPadding:
-                                                    const EdgeInsetsDirectional
+                                                    EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             0.0, 0.0, 0.0, 0.0),
                                                 color:
@@ -1218,14 +1114,14 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                                         .override(
                                                           fontFamily: 'Inter',
                                                           color:
-                                                              const Color(0xFF9CA3AF),
+                                                              Color(0xFF9CA3AF),
                                                           fontSize: 14.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.normal,
                                                         ),
                                                 elevation: 0.0,
-                                                borderSide: const BorderSide(
+                                                borderSide: BorderSide(
                                                   color: Color(0xFFD1D5DB),
                                                   width: 1.0,
                                                 ),
@@ -1239,154 +1135,168 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       15.0, 10.0, 15.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Flexible(
-                                        child: FFButtonWidget(
-                                          onPressed: () async {
-                                            if (_model.formKey.currentState ==
-                                                    null ||
-                                                !_model.formKey.currentState!
-                                                    .validate()) {
-                                              return;
-                                            }
-                                            if (_model
-                                                    .emailTextController.text ==
-                                                editarPerfilUsuariosRow
-                                                    ?.email) {
-                                              await UsuariosTable().update(
-                                                data: {
-                                                  'nombre': _model
-                                                      .nombreTextController
-                                                      .text,
-                                                  'apellido': _model
-                                                      .apellidoTextController
-                                                      .text,
-                                                  'documento': _model
-                                                      .dniTextController.text,
-                                                  'fecha_nacimiento':
-                                                      supaSerialize<DateTime>(
-                                                          FFAppState()
-                                                              .fechaNacimiento),
-                                                  'titulo': _model
-                                                      .titleTextController.text,
-                                                  'foto': FFAppState().foto,
-                                                  'anosexperiencia':
-                                                      int.tryParse(_model
-                                                          .anosexperienciaTextController
-                                                          .text),
-                                                  'email_mercadopago': _model
-                                                      .emailMpTextController
-                                                      .text,
-                                                },
-                                                matchingRows: (rows) =>
-                                                    rows.eqOrNull(
-                                                  'id',
-                                                  currentUserUid,
-                                                ),
-                                              );
-                                            } else {
-                                              await UsuariosTable().update(
-                                                data: {
-                                                  'nombre': _model
-                                                      .nombreTextController
-                                                      .text,
-                                                  'apellido': _model
-                                                      .apellidoTextController
-                                                      .text,
-                                                  'documento': _model
-                                                      .dniTextController.text,
-                                                  'fecha_nacimiento':
-                                                      supaSerialize<DateTime>(
-                                                          FFAppState()
-                                                              .fechaNacimiento),
-                                                  'titulo': _model
-                                                      .titleTextController.text,
-                                                  'foto': FFAppState().foto,
-                                                  'anosexperiencia':
-                                                      int.tryParse(_model
-                                                          .anosexperienciaTextController
-                                                          .text),
-                                                  'email_mercadopago': _model
-                                                      .emailMpTextController
-                                                      .text,
-                                                },
-                                                matchingRows: (rows) =>
-                                                    rows.eqOrNull(
-                                                  'id',
-                                                  currentUserUid,
-                                                ),
-                                              );
-                                              if (_model.emailTextController
-                                                  .text.isEmpty) {
-                                                ScaffoldMessenger.of(context)
-                                                    .showSnackBar(
-                                                  const SnackBar(
-                                                    content: Text(
-                                                      'El email es necesario',
-                                                    ),
-                                                  ),
-                                                );
+                                        child: Builder(
+                                          builder: (context) => FFButtonWidget(
+                                            onPressed: () async {
+                                              if (_model.formKey.currentState ==
+                                                      null ||
+                                                  !_model.formKey.currentState!
+                                                      .validate()) {
                                                 return;
                                               }
-
-                                              await authManager.updateEmail(
-                                                email: _model
-                                                    .emailTextController.text,
-                                                context: context,
-                                              );
-                                              safeSetState(() {});
-
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title:
-                                                        const Text('Cambio de email'),
-                                                    content: Text(
-                                                        'Se ha enviado un correo electrónico a ${_model.emailTextController.text}. Por favor, confirma tu dirección de correo para completar el cambio.'),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: const Text('Ok'),
+                                              if (_model.emailTextController
+                                                      .text ==
+                                                  editarPerfilUsuariosRow
+                                                      ?.email) {
+                                                await UsuariosTable().update(
+                                                  data: {
+                                                    'nombre': _model
+                                                        .nombreTextController
+                                                        .text,
+                                                    'apellido': _model
+                                                        .apellidoTextController
+                                                        .text,
+                                                    'documento': _model
+                                                        .dniTextController.text,
+                                                    'fecha_nacimiento':
+                                                        supaSerialize<DateTime>(
+                                                            FFAppState()
+                                                                .fechaNacimiento),
+                                                    'titulo': _model
+                                                        .titleTextController
+                                                        .text,
+                                                    'foto': FFAppState().foto,
+                                                    'anosexperiencia':
+                                                        int.tryParse(_model
+                                                            .anosexperienciaTextController
+                                                            .text),
+                                                  },
+                                                  matchingRows: (rows) =>
+                                                      rows.eqOrNull(
+                                                    'id',
+                                                    currentUserUid,
+                                                  ),
+                                                );
+                                              } else {
+                                                await UsuariosTable().update(
+                                                  data: {
+                                                    'nombre': _model
+                                                        .nombreTextController
+                                                        .text,
+                                                    'apellido': _model
+                                                        .apellidoTextController
+                                                        .text,
+                                                    'documento': _model
+                                                        .dniTextController.text,
+                                                    'fecha_nacimiento':
+                                                        supaSerialize<DateTime>(
+                                                            FFAppState()
+                                                                .fechaNacimiento),
+                                                    'titulo': _model
+                                                        .titleTextController
+                                                        .text,
+                                                    'foto': FFAppState().foto,
+                                                    'anosexperiencia':
+                                                        int.tryParse(_model
+                                                            .anosexperienciaTextController
+                                                            .text),
+                                                  },
+                                                  matchingRows: (rows) =>
+                                                      rows.eqOrNull(
+                                                    'id',
+                                                    currentUserUid,
+                                                  ),
+                                                );
+                                                if (_model.emailTextController
+                                                    .text.isEmpty) {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    SnackBar(
+                                                      content: Text(
+                                                        'El email es necesario',
                                                       ),
-                                                    ],
-                                                  );
-                                                },
-                                              );
-                                            }
-
-                                            context.safePop();
-                                          },
-                                          text: 'Guardar cambios',
-                                          options: FFButtonOptions(
-                                            width: double.infinity,
-                                            height: 45.0,
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    16.0, 0.0, 16.0, 0.0),
-                                            iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: const Color(0xFF1C2A3A),
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily: 'Inter',
-                                                      color: Colors.white,
-                                                      letterSpacing: 0.0,
-                                                      fontWeight:
-                                                          FontWeight.w500,
                                                     ),
-                                            elevation: 0.0,
-                                            borderRadius:
-                                                BorderRadius.circular(55.0),
+                                                  );
+                                                  return;
+                                                }
+
+                                                await authManager.updateEmail(
+                                                  email: _model
+                                                      .emailTextController.text,
+                                                  context: context,
+                                                );
+                                                safeSetState(() {});
+
+                                                await showDialog(
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: GestureDetector(
+                                                        onTap: () {
+                                                          FocusScope.of(
+                                                                  dialogContext)
+                                                              .unfocus();
+                                                          FocusManager.instance
+                                                              .primaryFocus
+                                                              ?.unfocus();
+                                                        },
+                                                        child:
+                                                            InformationaldialogoWidget(
+                                                          titulo:
+                                                              'Cambio de email',
+                                                          cuerpo:
+                                                              'Se ha enviado un correo electrónico a ${_model.emailTextController.text}. Por favor, confirma tu dirección de correo para completar el cambio.',
+                                                          buttonstring: 'Ok',
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                              }
+
+                                              context.safePop();
+                                            },
+                                            text: 'Guardar cambios',
+                                            options: FFButtonOptions(
+                                              width: double.infinity,
+                                              height: 45.0,
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      16.0, 0.0, 16.0, 0.0),
+                                              iconPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color: Color(0xFF1C2A3A),
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        color: Colors.white,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                              elevation: 0.0,
+                                              borderRadius:
+                                                  BorderRadius.circular(55.0),
+                                            ),
                                           ),
                                         ),
                                       ),

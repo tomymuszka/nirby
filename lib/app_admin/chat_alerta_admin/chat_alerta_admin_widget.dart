@@ -2,8 +2,11 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'chat_alerta_admin_model.dart';
 export 'chat_alerta_admin_model.dart';
 
@@ -22,6 +25,9 @@ class ChatAlertaAdminWidget extends StatefulWidget {
   final int? alertaId;
   final String? senderid;
 
+  static String routeName = 'chatAlertaAdmin';
+  static String routePath = '/chatAlertaAdmin';
+
   @override
   State<ChatAlertaAdminWidget> createState() => _ChatAlertaAdminWidgetState();
 }
@@ -35,6 +41,11 @@ class _ChatAlertaAdminWidgetState extends State<ChatAlertaAdminWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ChatAlertaAdminModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await action_blocks.checkConnection(context);
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -57,19 +68,27 @@ class _ChatAlertaAdminWidgetState extends State<ChatAlertaAdminWidget> {
         key: scaffoldKey,
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: const Color(0xFFF1F4F8),
+          backgroundColor: Color(0xFFF1F4F8),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
             borderRadius: 8.0,
             buttonSize: 40.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back,
               color: Color(0xFF374151),
               size: 24.0,
             ),
             onPressed: () async {
-              context.goNamed('chatsAdmin');
+              context.goNamed(
+                ChatsAdminWidget.routeName,
+                extra: <String, dynamic>{
+                  kTransitionInfoKey: TransitionInfo(
+                    hasTransition: true,
+                    transitionType: PageTransitionType.leftToRight,
+                  ),
+                },
+              );
             },
           ),
           title: Text(
@@ -77,44 +96,44 @@ class _ChatAlertaAdminWidgetState extends State<ChatAlertaAdminWidget> {
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Inter',
-                  color: const Color(0xFF374151),
+                  color: Color(0xFF374151),
                   fontSize: 20.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: const AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
-              constraints: const BoxConstraints(
+              constraints: BoxConstraints(
                 maxWidth: 600.0,
               ),
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Expanded(
                       child: Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
                         child: Container(
                           width: double.infinity,
                           height: 100.0,
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: SingleChildScrollView(
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       15.0, 0.0, 15.0, 0.0),
                                   child: FutureBuilder<
                                       List<AlertConversationDetailsRow>>(
@@ -141,7 +160,7 @@ class _ChatAlertaAdminWidgetState extends State<ChatAlertaAdminWidget> {
                                               valueColor:
                                                   AlwaysStoppedAnimation<Color>(
                                                 FlutterFlowTheme.of(context)
-                                                    .primary,
+                                                    .primaryBackground,
                                               ),
                                             ),
                                           ),
@@ -174,13 +193,13 @@ class _ChatAlertaAdminWidgetState extends State<ChatAlertaAdminWidget> {
                                           ),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 10.0, 0.0, 10.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           10.0, 0.0, 0.0, 10.0),
                                                   child: Row(
@@ -190,7 +209,7 @@ class _ChatAlertaAdminWidgetState extends State<ChatAlertaAdminWidget> {
                                                       Expanded(
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       15.0,
                                                                       0.0,
@@ -207,7 +226,44 @@ class _ChatAlertaAdminWidgetState extends State<ChatAlertaAdminWidget> {
                                                                 CrossAxisAlignment
                                                                     .start,
                                                             children: [
-                                                              Expanded(
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .end,
+                                                                children: [
+                                                                  Flexible(
+                                                                    child: Text(
+                                                                      'Vendedor: ${containerAlertConversationDetailsRow?.sellerNombre} ${containerAlertConversationDetailsRow?.sellerApellido}',
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Inter',
+                                                                            color:
+                                                                                Color(0xFF4B5563),
+                                                                            fontSize:
+                                                                                14.0,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                            fontWeight:
+                                                                                FontWeight.w500,
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            5.0,
+                                                                            0.0,
+                                                                            0.0),
                                                                 child: Row(
                                                                   mainAxisSize:
                                                                       MainAxisSize
@@ -216,12 +272,12 @@ class _ChatAlertaAdminWidgetState extends State<ChatAlertaAdminWidget> {
                                                                     Flexible(
                                                                       child:
                                                                           Text(
-                                                                        'Vendedor: ${containerAlertConversationDetailsRow?.sellerNombre} ${containerAlertConversationDetailsRow?.sellerApellido}',
+                                                                        'Comprador: ${containerAlertConversationDetailsRow?.buyerNombre} ${containerAlertConversationDetailsRow?.buyerApellido}',
                                                                         style: FlutterFlowTheme.of(context)
                                                                             .bodyMedium
                                                                             .override(
                                                                               fontFamily: 'Inter',
-                                                                              color: const Color(0xFF4B5563),
+                                                                              color: Color(0xFF4B5563),
                                                                               fontSize: 14.0,
                                                                               letterSpacing: 0.0,
                                                                               fontWeight: FontWeight.w500,
@@ -229,38 +285,6 @@ class _ChatAlertaAdminWidgetState extends State<ChatAlertaAdminWidget> {
                                                                       ),
                                                                     ),
                                                                   ],
-                                                                ),
-                                                              ),
-                                                              Expanded(
-                                                                child: Padding(
-                                                                  padding: const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          5.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                                  child: Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    children: [
-                                                                      Flexible(
-                                                                        child:
-                                                                            Text(
-                                                                          'Comprador: ${containerAlertConversationDetailsRow?.buyerNombre} ${containerAlertConversationDetailsRow?.buyerApellido}',
-                                                                          style: FlutterFlowTheme.of(context)
-                                                                              .bodyMedium
-                                                                              .override(
-                                                                                fontFamily: 'Inter',
-                                                                                color: const Color(0xFF4B5563),
-                                                                                fontSize: 14.0,
-                                                                                letterSpacing: 0.0,
-                                                                                fontWeight: FontWeight.w500,
-                                                                              ),
-                                                                        ),
-                                                                      ),
-                                                                    ],
-                                                                  ),
                                                                 ),
                                                               ),
                                                             ],
@@ -280,7 +304,7 @@ class _ChatAlertaAdminWidgetState extends State<ChatAlertaAdminWidget> {
                                                       .alternate,
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(10.0, 10.0,
                                                           10.0, 0.0),
                                                   child: Row(
@@ -302,7 +326,7 @@ class _ChatAlertaAdminWidgetState extends State<ChatAlertaAdminWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Inter',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF1F2A37),
                                                                 fontSize: 14.0,
                                                                 letterSpacing:
@@ -324,260 +348,268 @@ class _ChatAlertaAdminWidgetState extends State<ChatAlertaAdminWidget> {
                                     },
                                   ),
                                 ),
-                                Align(
-                                  alignment: const AlignmentDirectional(0.0, -1.0),
-                                  child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 10.0, 0.0),
-                                    child: FutureBuilder<List<ChatsRow>>(
-                                      future: ChatsTable().queryRows(
-                                        queryFn: (q) => q
-                                            .inFilterOrNull(
-                                              'sender_id',
-                                              functions.fromlistreturnarray(
-                                                  widget.recipentId,
-                                                  widget.senderid),
-                                            )
-                                            .eqOrNull(
-                                              'conversation_id',
-                                              widget.conversationId,
-                                            )
-                                            .eqOrNull(
-                                              'is_deleted',
-                                              false,
-                                            )
-                                            .order('created_at',
-                                                ascending: true),
-                                      ),
-                                      builder: (context, snapshot) {
-                                        // Customize what your widget looks like when it's loading.
-                                        if (!snapshot.hasData) {
-                                          return Center(
-                                            child: SizedBox(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              child: CircularProgressIndicator(
-                                                valueColor:
-                                                    AlwaysStoppedAnimation<
-                                                        Color>(
-                                                  FlutterFlowTheme.of(context)
-                                                      .primary,
+                                ListView(
+                                  padding: EdgeInsets.zero,
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.vertical,
+                                  children: [
+                                    Align(
+                                      alignment:
+                                          AlignmentDirectional(0.0, -1.0),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 10.0, 0.0),
+                                        child: FutureBuilder<List<ChatsRow>>(
+                                          future: ChatsTable().queryRows(
+                                            queryFn: (q) => q
+                                                .inFilterOrNull(
+                                                  'sender_id',
+                                                  functions.fromlistreturnarray(
+                                                      widget.recipentId,
+                                                      widget.senderid),
+                                                )
+                                                .eqOrNull(
+                                                  'conversation_id',
+                                                  widget.conversationId,
+                                                )
+                                                .eqOrNull(
+                                                  'is_deleted',
+                                                  false,
+                                                )
+                                                .order('created_at',
+                                                    ascending: true),
+                                          ),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 50.0,
+                                                  height: 50.0,
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                    valueColor:
+                                                        AlwaysStoppedAnimation<
+                                                            Color>(
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryBackground,
+                                                    ),
+                                                  ),
                                                 ),
-                                              ),
-                                            ),
-                                          );
-                                        }
-                                        List<ChatsRow> columnChatsRowList =
-                                            snapshot.data!;
+                                              );
+                                            }
+                                            List<ChatsRow> columnChatsRowList =
+                                                snapshot.data!;
 
-                                        return Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: List.generate(
-                                              columnChatsRowList.length,
-                                              (columnIndex) {
-                                            final columnChatsRow =
-                                                columnChatsRowList[columnIndex];
-                                            return Builder(
-                                              builder: (context) {
-                                                if (columnChatsRow.senderId ==
-                                                    widget.recipentId) {
-                                                  return Align(
-                                                    alignment:
-                                                        const AlignmentDirectional(
-                                                            1.0, 0.0),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  10.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Container(
-                                                        constraints:
-                                                            BoxConstraints(
-                                                          maxWidth:
-                                                              MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .width *
-                                                                  0.7,
-                                                        ),
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color:
-                                                              const Color(0xFF3F3F3F),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                        ),
+                                            return Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: List.generate(
+                                                  columnChatsRowList.length,
+                                                  (columnIndex) {
+                                                final columnChatsRow =
+                                                    columnChatsRowList[
+                                                        columnIndex];
+                                                return Builder(
+                                                  builder: (context) {
+                                                    if (columnChatsRow
+                                                            .senderId ==
+                                                        widget.recipentId) {
+                                                      return Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                1.0, 0.0),
                                                         child: Padding(
                                                           padding:
-                                                              const EdgeInsets.all(
-                                                                  8.0),
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Align(
-                                                                alignment:
-                                                                    const AlignmentDirectional(
-                                                                        -1.0,
-                                                                        0.0),
-                                                                child: Text(
-                                                                  columnChatsRow
-                                                                      .text,
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Inter',
-                                                                        color: Colors
-                                                                            .white,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                              Align(
-                                                                alignment:
-                                                                    const AlignmentDirectional(
-                                                                        1.0,
-                                                                        0.0),
-                                                                child: Text(
-                                                                  dateTimeFormat(
-                                                                    "relative",
-                                                                    columnChatsRow
-                                                                        .createdAt!,
-                                                                    locale: FFLocalizations.of(context)
-                                                                            .languageShortCode ??
-                                                                        FFLocalizations.of(context)
-                                                                            .languageCode,
-                                                                  ),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Inter',
-                                                                        color: Colors
-                                                                            .white,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  );
-                                                } else {
-                                                  return Align(
-                                                    alignment:
-                                                        const AlignmentDirectional(
-                                                            -1.0, 0.0),
-                                                    child: Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  10.0,
-                                                                  10.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Container(
-                                                        constraints:
-                                                            BoxConstraints(
-                                                          maxWidth:
-                                                              MediaQuery.sizeOf(
-                                                                          context)
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      10.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Container(
+                                                            constraints:
+                                                                BoxConstraints(
+                                                              maxWidth: MediaQuery
+                                                                          .sizeOf(
+                                                                              context)
                                                                       .width *
                                                                   0.7,
-                                                        ),
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color:
-                                                              const Color(0xFFF7F7F7),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                        ),
-                                                        child: Padding(
-                                                          padding:
-                                                              const EdgeInsets.all(
-                                                                  8.0),
-                                                          child: Column(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Align(
-                                                                alignment:
-                                                                    const AlignmentDirectional(
-                                                                        -1.0,
-                                                                        0.0),
-                                                                child: Text(
-                                                                  columnChatsRow
-                                                                      .text,
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Inter',
-                                                                        color: const Color(
-                                                                            0xFF333333),
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                      ),
-                                                                ),
-                                                              ),
-                                                              Align(
-                                                                alignment:
-                                                                    const AlignmentDirectional(
-                                                                        1.0,
-                                                                        0.0),
-                                                                child: Text(
-                                                                  dateTimeFormat(
-                                                                    "relative",
-                                                                    columnChatsRow
-                                                                        .createdAt!,
-                                                                    locale: FFLocalizations.of(context)
-                                                                            .languageShortCode ??
-                                                                        FFLocalizations.of(context)
-                                                                            .languageCode,
+                                                            ),
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: Color(
+                                                                  0xFF3F3F3F),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                            ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .all(8.0),
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Align(
+                                                                    alignment:
+                                                                        AlignmentDirectional(
+                                                                            -1.0,
+                                                                            0.0),
+                                                                    child: Text(
+                                                                      columnChatsRow
+                                                                          .text,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Inter',
+                                                                            color:
+                                                                                Colors.white,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                          ),
+                                                                    ),
                                                                   ),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Inter',
-                                                                        color: const Color(
-                                                                            0xFF333333),
-                                                                        letterSpacing:
-                                                                            0.0,
+                                                                  Align(
+                                                                    alignment:
+                                                                        AlignmentDirectional(
+                                                                            1.0,
+                                                                            0.0),
+                                                                    child: Text(
+                                                                      dateTimeFormat(
+                                                                        "relative",
+                                                                        columnChatsRow
+                                                                            .createdAt!,
+                                                                        locale: FFLocalizations.of(context).languageShortCode ??
+                                                                            FFLocalizations.of(context).languageCode,
                                                                       ),
-                                                                ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Inter',
+                                                                            color:
+                                                                                Colors.white,
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                ],
                                                               ),
-                                                            ],
+                                                            ),
                                                           ),
                                                         ),
-                                                      ),
-                                                    ),
-                                                  );
-                                                }
-                                              },
+                                                      );
+                                                    } else {
+                                                      return Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                -1.0, 0.0),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      10.0,
+                                                                      10.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Container(
+                                                            constraints:
+                                                                BoxConstraints(
+                                                              maxWidth: MediaQuery
+                                                                          .sizeOf(
+                                                                              context)
+                                                                      .width *
+                                                                  0.7,
+                                                            ),
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: Color(
+                                                                  0xFFF7F7F7),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          8.0),
+                                                            ),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsets
+                                                                      .all(8.0),
+                                                              child: Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  Align(
+                                                                    alignment:
+                                                                        AlignmentDirectional(
+                                                                            -1.0,
+                                                                            0.0),
+                                                                    child: Text(
+                                                                      columnChatsRow
+                                                                          .text,
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Inter',
+                                                                            color:
+                                                                                Color(0xFF333333),
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                  Align(
+                                                                    alignment:
+                                                                        AlignmentDirectional(
+                                                                            1.0,
+                                                                            0.0),
+                                                                    child: Text(
+                                                                      dateTimeFormat(
+                                                                        "relative",
+                                                                        columnChatsRow
+                                                                            .createdAt!,
+                                                                        locale: FFLocalizations.of(context).languageShortCode ??
+                                                                            FFLocalizations.of(context).languageCode,
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Inter',
+                                                                            color:
+                                                                                Color(0xFF333333),
+                                                                            letterSpacing:
+                                                                                0.0,
+                                                                          ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }
+                                                  },
+                                                );
+                                              }),
                                             );
-                                          }),
-                                        );
-                                      },
+                                          },
+                                        ),
+                                      ),
                                     ),
-                                  ),
+                                  ],
                                 ),
                               ],
                             ),

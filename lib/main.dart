@@ -32,13 +32,11 @@ void main() async {
 
   runApp(ChangeNotifierProvider(
     create: (context) => appState,
-    child: const MyApp(),
+    child: MyApp(),
   ));
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   State<MyApp> createState() => _MyAppState();
@@ -62,6 +60,11 @@ class _MyAppState extends State<MyApp> {
         : _router.routerDelegate.currentConfiguration;
     return matchList.uri.toString();
   }
+
+  List<String> getRouteStack() =>
+      _router.routerDelegate.currentConfiguration.matches
+          .map((e) => getRoute(e))
+          .toList();
 
   late Stream<BaseAuthUser> userStream;
 
@@ -94,8 +97,9 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       title: 'Nirby',
-      localizationsDelegates: const [
+      localizationsDelegates: [
         FFLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
