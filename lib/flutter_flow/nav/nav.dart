@@ -6,8 +6,9 @@ import 'package:provider/provider.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
-import '/index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+
+import '/index.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -75,22 +76,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const HomeWidget() : const Onboarding01Widget(),
+          appStateNotifier.loggedIn ? HomeWidget() : Onboarding01Widget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const HomeWidget() : const Onboarding01Widget(),
+              appStateNotifier.loggedIn ? HomeWidget() : Onboarding01Widget(),
         ),
         FFRoute(
-          name: 'signin1',
-          path: '/signin1',
-          builder: (context, params) => const Signin1Widget(),
+          name: Signin1Widget.routeName,
+          path: Signin1Widget.routePath,
+          builder: (context, params) => Signin1Widget(),
         ),
         FFRoute(
-          name: 'servicios',
-          path: '/servicios',
+          name: ServiciosWidget.routeName,
+          path: ServiciosWidget.routePath,
           builder: (context, params) => ServiciosWidget(
             categoriaid: params.getParam(
               'categoriaid',
@@ -99,8 +100,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'servicio_detalle',
-          path: '/servicioDetalle',
+          name: ServicioDetalleWidget.routeName,
+          path: ServicioDetalleWidget.routePath,
           builder: (context, params) => ServicioDetalleWidget(
             service: params.getParam(
               'service',
@@ -109,13 +110,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'profile',
-          path: '/profile',
-          builder: (context, params) => const ProfileWidget(),
-        ),
-        FFRoute(
-          name: 'chatService',
-          path: '/chatService',
+          name: ChatServiceWidget.routeName,
+          path: ChatServiceWidget.routePath,
           builder: (context, params) => ChatServiceWidget(
             conversationId: params.getParam(
               'conversationId',
@@ -132,28 +128,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'chats',
-          path: '/chats',
-          builder: (context, params) => const ChatsWidget(),
+          name: LoginWidget.routeName,
+          path: LoginWidget.routePath,
+          builder: (context, params) => LoginWidget(),
         ),
         FFRoute(
-          name: 'login',
-          path: '/login',
-          builder: (context, params) => const LoginWidget(),
+          name: SigninWidget.routeName,
+          path: SigninWidget.routePath,
+          builder: (context, params) => SigninWidget(),
         ),
         FFRoute(
-          name: 'signin',
-          path: '/signin',
-          builder: (context, params) => const SigninWidget(),
+          name: OlvidastecontrasenaWidget.routeName,
+          path: OlvidastecontrasenaWidget.routePath,
+          builder: (context, params) => OlvidastecontrasenaWidget(),
         ),
         FFRoute(
-          name: 'olvidastecontrasena',
-          path: '/olvidastecontrasena',
-          builder: (context, params) => const OlvidastecontrasenaWidget(),
-        ),
-        FFRoute(
-          name: 'reviews_complete',
-          path: '/reviewsComplete',
+          name: ReviewsCompleteWidget.routeName,
+          path: ReviewsCompleteWidget.routePath,
           builder: (context, params) => ReviewsCompleteWidget(
             profesionalId: params.getParam(
               'profesionalId',
@@ -162,73 +153,68 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'editar_perfil',
-          path: '/editarPerfil',
-          builder: (context, params) => const EditarPerfilWidget(),
+          name: EditarPerfilWidget.routeName,
+          path: EditarPerfilWidget.routePath,
+          builder: (context, params) => EditarPerfilWidget(),
         ),
         FFRoute(
-          name: 'notification',
-          path: '/notification',
-          builder: (context, params) => const NotificationWidget(),
+          name: NotificationWidget.routeName,
+          path: NotificationWidget.routePath,
+          builder: (context, params) => NotificationWidget(),
         ),
         FFRoute(
-          name: 'Onboarding01',
-          path: '/onboarding01',
-          builder: (context, params) => const Onboarding01Widget(),
+          name: Onboarding01Widget.routeName,
+          path: Onboarding01Widget.routePath,
+          builder: (context, params) => Onboarding01Widget(),
         ),
         FFRoute(
-          name: 'Onboarding02',
-          path: '/onboarding02',
-          builder: (context, params) => const Onboarding02Widget(),
+          name: Onboarding02Widget.routeName,
+          path: Onboarding02Widget.routePath,
+          builder: (context, params) => Onboarding02Widget(),
         ),
         FFRoute(
-          name: 'serviciosList',
-          path: '/serviciosprofesional',
-          builder: (context, params) => const ServiciosListWidget(),
+          name: CrearservicioWidget.routeName,
+          path: CrearservicioWidget.routePath,
+          builder: (context, params) => CrearservicioWidget(),
         ),
         FFRoute(
-          name: 'crearservicio',
-          path: '/crearservicio',
-          builder: (context, params) => const CrearservicioWidget(),
+          name: CompleteprofileWidget.routeName,
+          path: CompleteprofileWidget.routePath,
+          builder: (context, params) => CompleteprofileWidget(),
         ),
         FFRoute(
-          name: 'informacioprofesional',
-          path: '/informacioprofesional',
-          builder: (context, params) => const InformacioprofesionalWidget(),
+          name: HomeWidget.routeName,
+          path: HomeWidget.routePath,
+          builder: (context, params) => HomeWidget(),
         ),
         FFRoute(
-          name: 'Home',
-          path: '/home',
-          builder: (context, params) => const HomeWidget(),
+          name: VeridyIdentityWidget.routeName,
+          path: VeridyIdentityWidget.routePath,
+          builder: (context, params) => VeridyIdentityWidget(),
         ),
         FFRoute(
-          name: 'veridyIdentity',
-          path: '/veridyIdentity',
-          builder: (context, params) => const VeridyIdentityWidget(),
+          name: SubirfotopersonalWidget.routeName,
+          path: SubirfotopersonalWidget.routePath,
+          builder: (context, params) => SubirfotopersonalWidget(),
         ),
         FFRoute(
-          name: 'subirfotopersonal',
-          path: '/subirfotopersonal',
-          builder: (context, params) => const SubirfotopersonalWidget(),
+          name: SubirfotoDNIWidget.routeName,
+          path: SubirfotoDNIWidget.routePath,
+          builder: (context, params) => SubirfotoDNIWidget(),
         ),
         FFRoute(
-          name: 'subirfotoDNI',
-          path: '/subirfotoDNI',
-          builder: (context, params) => const SubirfotoDNIWidget(),
+          name: CrearAlertaDeServicioWidget.routeName,
+          path: CrearAlertaDeServicioWidget.routePath,
+          builder: (context, params) => CrearAlertaDeServicioWidget(),
         ),
         FFRoute(
-          name: 'crearAlertaDeServicio',
-          path: '/crearAlertaDeServicio',
-          builder: (context, params) => const CrearAlertaDeServicioWidget(),
+          name: PaymentWidget.routeName,
+          path: PaymentWidget.routePath,
+          builder: (context, params) => PaymentWidget(),
         ),
         FFRoute(
-          name: 'payment',
-          path: '/payment',
-          builder: (context, params) => const PaymentWidget(),
-        ),
-        FFRoute(
-          name: 'editarservicio',
-          path: '/editarservicio',
+          name: EditarservicioWidget.routeName,
+          path: EditarservicioWidget.routePath,
           builder: (context, params) => EditarservicioWidget(
             idservicio: params.getParam(
               'idservicio',
@@ -237,23 +223,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'terminos_condiciones',
-          path: '/terminosCondiciones',
-          builder: (context, params) => const TerminosCondicionesWidget(),
+          name: TerminosCondicionesWidget.routeName,
+          path: TerminosCondicionesWidget.routePath,
+          builder: (context, params) => TerminosCondicionesWidget(),
         ),
         FFRoute(
-          name: 'detalleAlertaServicio',
-          path: '/detalleAlertaServicio',
+          name: DetalleAlertaServicioWidget.routeName,
+          path: DetalleAlertaServicioWidget.routePath,
           builder: (context, params) => DetalleAlertaServicioWidget(
             id: params.getParam(
               'id',
               ParamType.int,
             ),
+            comesfromnotifications: params.getParam(
+              'comesfromnotifications',
+              ParamType.bool,
+            ),
           ),
         ),
         FFRoute(
-          name: 'editarAlertaDeServicio',
-          path: '/editarAlertaDeServicio',
+          name: EditarAlertaDeServicioWidget.routeName,
+          path: EditarAlertaDeServicioWidget.routePath,
           builder: (context, params) => EditarAlertaDeServicioWidget(
             id: params.getParam(
               'id',
@@ -266,8 +256,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'alertasDeServicioProfesionales',
-          path: '/alertasDeServicioProfesionales',
+          name: AlertasDeServicioProfesionalesWidget.routeName,
+          path: AlertasDeServicioProfesionalesWidget.routePath,
           builder: (context, params) => AlertasDeServicioProfesionalesWidget(
             idalerta: params.getParam(
               'idalerta',
@@ -276,8 +266,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'detalle_profesional',
-          path: '/detalleProfesional',
+          name: DetalleProfesionalWidget.routeName,
+          path: DetalleProfesionalWidget.routePath,
           builder: (context, params) => DetalleProfesionalWidget(
             profesional: params.getParam(
               'profesional',
@@ -287,16 +277,15 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'usuarioalertaid',
               ParamType.int,
             ),
+            alertaid: params.getParam(
+              'alertaid',
+              ParamType.int,
+            ),
           ),
         ),
         FFRoute(
-          name: 'alertasDeServicioHistoria',
-          path: '/alertasDeServicioHistoria',
-          builder: (context, params) => const AlertasDeServicioHistoriaWidget(),
-        ),
-        FFRoute(
-          name: 'chatAlerta',
-          path: '/chatAlerta',
+          name: ChatAlertaWidget.routeName,
+          path: ChatAlertaWidget.routePath,
           builder: (context, params) => ChatAlertaWidget(
             conversationId: params.getParam(
               'conversationId',
@@ -313,23 +302,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'categorias_profesional',
-          path: '/categoriasProfesional',
-          builder: (context, params) => const CategoriasProfesionalWidget(),
+          name: CategoriasProfesionalWidget.routeName,
+          path: CategoriasProfesionalWidget.routePath,
+          builder: (context, params) => CategoriasProfesionalWidget(),
         ),
         FFRoute(
-          name: 'verifyinprocess',
-          path: '/verifyinprocess',
-          builder: (context, params) => const VerifyinprocessWidget(),
+          name: VerifyinprocessWidget.routeName,
+          path: VerifyinprocessWidget.routePath,
+          builder: (context, params) => VerifyinprocessWidget(),
         ),
         FFRoute(
-          name: 'users',
-          path: '/users',
-          builder: (context, params) => const UsersWidget(),
+          name: UsersWidget.routeName,
+          path: UsersWidget.routePath,
+          builder: (context, params) => UsersWidget(),
         ),
         FFRoute(
-          name: 'DetalleUsuarioAdmin',
-          path: '/detalleUsuarioAdmin',
+          name: DetalleUsuarioAdminWidget.routeName,
+          path: DetalleUsuarioAdminWidget.routePath,
           builder: (context, params) => DetalleUsuarioAdminWidget(
             userId: params.getParam(
               'userId',
@@ -338,8 +327,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'Documentos',
-          path: '/documentos',
+          name: DocumentosWidget.routeName,
+          path: DocumentosWidget.routePath,
           builder: (context, params) => DocumentosWidget(
             userid: params.getParam(
               'userid',
@@ -348,18 +337,18 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'ajustes_globales',
-          path: '/ajustesGlobales',
-          builder: (context, params) => const AjustesGlobalesWidget(),
+          name: AjustesGlobalesWidget.routeName,
+          path: AjustesGlobalesWidget.routePath,
+          builder: (context, params) => AjustesGlobalesWidget(),
         ),
         FFRoute(
-          name: 'alertas_de_servicio',
-          path: '/alertasDeServicio',
-          builder: (context, params) => const AlertasDeServicioWidget(),
+          name: AlertasDeServicioWidget.routeName,
+          path: AlertasDeServicioWidget.routePath,
+          builder: (context, params) => AlertasDeServicioWidget(),
         ),
         FFRoute(
-          name: 'detalleAlertaServicioAdmin',
-          path: '/detalleAlertaServicioAdmin',
+          name: DetalleAlertaServicioAdminWidget.routeName,
+          path: DetalleAlertaServicioAdminWidget.routePath,
           builder: (context, params) => DetalleAlertaServicioAdminWidget(
             id: params.getParam(
               'id',
@@ -368,13 +357,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'chatsAdmin',
-          path: '/chatsAdmin',
-          builder: (context, params) => const ChatsAdminWidget(),
+          name: ChatsAdminWidget.routeName,
+          path: ChatsAdminWidget.routePath,
+          builder: (context, params) => ChatsAdminWidget(),
         ),
         FFRoute(
-          name: 'chatAlertaAdmin',
-          path: '/chatAlertaAdmin',
+          name: ChatAlertaAdminWidget.routeName,
+          path: ChatAlertaAdminWidget.routePath,
           builder: (context, params) => ChatAlertaAdminWidget(
             conversationId: params.getParam(
               'conversationId',
@@ -395,8 +384,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'chatServiceAdmin',
-          path: '/chatServiceAdmin',
+          name: ChatServiceAdminWidget.routeName,
+          path: ChatServiceAdminWidget.routePath,
           builder: (context, params) => ChatServiceAdminWidget(
             conversationId: params.getParam(
               'conversationId',
@@ -425,8 +414,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'active_suscription',
-          path: '/activeSuscription',
+          name: ActiveSuscriptionWidget.routeName,
+          path: ActiveSuscriptionWidget.routePath,
           builder: (context, params) => ActiveSuscriptionWidget(
             amount: params.getParam(
               'amount',
@@ -447,38 +436,38 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'send_push',
-          path: '/sendPush',
-          builder: (context, params) => const SendPushWidget(),
+          name: SendPushWidget.routeName,
+          path: SendPushWidget.routePath,
+          builder: (context, params) => SendPushWidget(),
         ),
         FFRoute(
-          name: 'notificacionesadmin',
-          path: '/notificacionesadmin',
-          builder: (context, params) => const NotificacionesadminWidget(),
+          name: NotificacionesadminWidget.routeName,
+          path: NotificacionesadminWidget.routePath,
+          builder: (context, params) => NotificacionesadminWidget(),
         ),
         FFRoute(
-          name: 'passwordreset',
-          path: '/passwordreset',
-          builder: (context, params) => const PasswordresetWidget(),
+          name: PasswordresetWidget.routeName,
+          path: PasswordresetWidget.routePath,
+          builder: (context, params) => PasswordresetWidget(),
         ),
         FFRoute(
-          name: 'congrats',
-          path: '/congrats',
-          builder: (context, params) => const CongratsWidget(),
+          name: CongratsWidget.routeName,
+          path: CongratsWidget.routePath,
+          builder: (context, params) => CongratsWidget(),
         ),
         FFRoute(
-          name: 'emailpasswordsent',
-          path: '/emailpasswordsent',
-          builder: (context, params) => const EmailpasswordsentWidget(),
+          name: EmailpasswordsentWidget.routeName,
+          path: EmailpasswordsentWidget.routePath,
+          builder: (context, params) => EmailpasswordsentWidget(),
         ),
         FFRoute(
-          name: 'HomeScreen',
-          path: '/homeScreen',
-          builder: (context, params) => const HomeScreenWidget(),
+          name: HomeScreenWidget.routeName,
+          path: HomeScreenWidget.routePath,
+          builder: (context, params) => HomeScreenWidget(),
         ),
         FFRoute(
-          name: 'serviciosScreen',
-          path: '/serviciosScreen',
+          name: ServiciosScreenWidget.routeName,
+          path: ServiciosScreenWidget.routePath,
           builder: (context, params) => ServiciosScreenWidget(
             categoriaid: params.getParam(
               'categoriaid',
@@ -487,8 +476,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'detalle_profesionalScreen',
-          path: '/detalleProfesionalScreen',
+          name: DetalleProfesionalScreenWidget.routeName,
+          path: DetalleProfesionalScreenWidget.routePath,
           builder: (context, params) => DetalleProfesionalScreenWidget(
             profesional: params.getParam(
               'profesional',
@@ -501,8 +490,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'servicio_detalleScreen',
-          path: '/servicioDetalleScreen',
+          name: ServicioDetalleScreenWidget.routeName,
+          path: ServicioDetalleScreenWidget.routePath,
           builder: (context, params) => ServicioDetalleScreenWidget(
             service: params.getParam(
               'service',
@@ -511,8 +500,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'chatServiceScreen',
-          path: '/chatServiceScreen',
+          name: ChatServiceScreenWidget.routeName,
+          path: ChatServiceScreenWidget.routePath,
           builder: (context, params) => ChatServiceScreenWidget(
             conversationId: params.getParam(
               'conversationId',
@@ -529,9 +518,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           ),
         ),
         FFRoute(
-          name: 'crearAlertaDeServicioScreen',
-          path: '/crearAlertaDeServicioScreen',
-          builder: (context, params) => const CrearAlertaDeServicioScreenWidget(),
+          name: CrearAlertaDeServicioScreenWidget.routeName,
+          path: CrearAlertaDeServicioScreenWidget.routePath,
+          builder: (context, params) => CrearAlertaDeServicioScreenWidget(),
+        ),
+        FFRoute(
+          name: ReturnappWidget.routeName,
+          path: ReturnappWidget.routePath,
+          builder: (context, params) => ReturnappWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -765,7 +759,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

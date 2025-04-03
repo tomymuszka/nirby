@@ -1,10 +1,13 @@
 import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/actions/actions.dart' as action_blocks;
+import '/index.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'onboarding02_model.dart';
@@ -12,6 +15,9 @@ export 'onboarding02_model.dart';
 
 class Onboarding02Widget extends StatefulWidget {
   const Onboarding02Widget({super.key});
+
+  static String routeName = 'Onboarding02';
+  static String routePath = '/onboarding02';
 
   @override
   State<Onboarding02Widget> createState() => _Onboarding02WidgetState();
@@ -30,6 +36,11 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
     super.initState();
     _model = createModel(context, () => Onboarding02Model());
 
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await action_blocks.checkConnection(context);
+    });
+
     animationsMap.addAll({
       'containerOnPageLoadAnimation': AnimationInfo(
         loop: true,
@@ -40,15 +51,15 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
             curve: Curves.easeOut,
             delay: 0.0.ms,
             duration: 3200.0.ms,
-            begin: const Offset(0.0, -80.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, -80.0),
+            end: Offset(0.0, 0.0),
           ),
           MoveEffect(
             curve: Curves.easeInOut,
             delay: 3200.0.ms,
             duration: 3200.0.ms,
-            begin: const Offset(0.0, 0.0),
-            end: const Offset(0.0, -80.0),
+            begin: Offset(0.0, 0.0),
+            end: Offset(0.0, -80.0),
           ),
         ],
       ),
@@ -67,15 +78,15 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 20.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 20.0),
+            end: Offset(0.0, 0.0),
           ),
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.9, 0.9),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.9, 0.9),
+            end: Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -94,15 +105,15 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
             curve: Curves.easeInOut,
             delay: 300.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 20.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 20.0),
+            end: Offset(0.0, 0.0),
           ),
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 300.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.9, 0.9),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.9, 0.9),
+            end: Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -121,15 +132,15 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 20.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 20.0),
+            end: Offset(0.0, 0.0),
           ),
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.9, 0.9),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.9, 0.9),
+            end: Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -148,15 +159,15 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
             curve: Curves.easeInOut,
             delay: 300.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 20.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 20.0),
+            end: Offset(0.0, 0.0),
           ),
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 300.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.9, 0.9),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.9, 0.9),
+            end: Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -175,15 +186,15 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 20.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 20.0),
+            end: Offset(0.0, 0.0),
           ),
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.9, 0.9),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.9, 0.9),
+            end: Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -202,15 +213,15 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
             curve: Curves.easeInOut,
             delay: 300.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.0, 20.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 20.0),
+            end: Offset(0.0, 0.0),
           ),
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 300.0.ms,
             duration: 300.0.ms,
-            begin: const Offset(0.9, 0.9),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(0.9, 0.9),
+            end: Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -260,7 +271,7 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
                         child: MasonryGridView.builder(
                           physics: const NeverScrollableScrollPhysics(),
                           gridDelegate:
-                              const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                              SliverSimpleGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 3,
                           ),
                           crossAxisSpacing: 10.0,
@@ -269,7 +280,7 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
                           itemBuilder: (context, index) {
                             return [
                               () => ClipRRect(
-                                    borderRadius: const BorderRadius.only(
+                                    borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(0.0),
                                       bottomRight: Radius.circular(16.0),
                                       topLeft: Radius.circular(0.0),
@@ -292,7 +303,7 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
                                     ),
                                   ),
                               () => ClipRRect(
-                                    borderRadius: const BorderRadius.only(
+                                    borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(0.0),
                                       bottomRight: Radius.circular(16.0),
                                       topLeft: Radius.circular(0.0),
@@ -306,7 +317,7 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
                                     ),
                                   ),
                               () => ClipRRect(
-                                    borderRadius: const BorderRadius.only(
+                                    borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(16.0),
                                       bottomRight: Radius.circular(0.0),
                                       topLeft: Radius.circular(16.0),
@@ -338,7 +349,7 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
                                     ),
                                   ),
                               () => ClipRRect(
-                                    borderRadius: const BorderRadius.only(
+                                    borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(16.0),
                                       bottomRight: Radius.circular(0.0),
                                       topLeft: Radius.circular(16.0),
@@ -370,7 +381,7 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
                                     ),
                                   ),
                               () => ClipRRect(
-                                    borderRadius: const BorderRadius.only(
+                                    borderRadius: BorderRadius.only(
                                       bottomLeft: Radius.circular(16.0),
                                       bottomRight: Radius.circular(0.0),
                                       topLeft: Radius.circular(16.0),
@@ -402,10 +413,10 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Container(
                   width: double.infinity,
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxWidth: 670.0,
                   ),
                   decoration: BoxDecoration(
@@ -414,13 +425,13 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      SizedBox(
+                      Container(
                         width: double.infinity,
                         height: 230.0,
                         child: Stack(
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 50.0),
                               child: PageView(
                                 controller: _model.pageViewController ??=
@@ -428,7 +439,7 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
                                 scrollDirection: Axis.horizontal,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         48.0, 0.0, 48.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -450,10 +461,10 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
                                             'textOnPageLoadAnimation1']!),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 16.0, 0.0, 0.0),
                                           child: Text(
-                                            'Descubrí expertos en servicio para el hogar y la familia a solo un click. Navegá por un catálogo de profesionales verificados.',
+                                            'Descubrí expertos en servicios para el hogar y la familia a solo un click. Navegá por un catálogo de profesionales verificados.',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .labelLarge
@@ -469,7 +480,7 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         48.0, 0.0, 48.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -491,7 +502,7 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
                                             'textOnPageLoadAnimation3']!),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 16.0, 0.0, 0.0),
                                           child: Text(
                                             'Generá alertas y recibí las propuestas en tiempo real para elegir la opción que más te guste.',
@@ -510,7 +521,7 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         48.0, 0.0, 48.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -532,7 +543,7 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
                                             'textOnPageLoadAnimation5']!),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 16.0, 0.0, 0.0),
                                           child: Text(
                                             'Al finalizar cada experiencia dejá tus reseñas y comentarios para ayudar a otros usuarios como vos.',
@@ -553,9 +564,9 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 1.0),
+                              alignment: AlignmentDirectional(0.0, 1.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 10.0),
                                 child:
                                     smooth_page_indicator.SmoothPageIndicator(
@@ -567,7 +578,7 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
                                     await _model.pageViewController!
                                         .animateToPage(
                                       i,
-                                      duration: const Duration(milliseconds: 500),
+                                      duration: Duration(milliseconds: 500),
                                       curve: Curves.ease,
                                     );
                                     safeSetState(() {});
@@ -592,15 +603,15 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 12.0, 16.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
                             if (_model.puedePasar == true) {
-                              context.pushNamed('signin');
+                              context.pushNamed(SigninWidget.routeName);
                             } else {
                               await _model.pageViewController?.nextPage(
-                                duration: const Duration(milliseconds: 300),
+                                duration: Duration(milliseconds: 300),
                                 curve: Curves.ease,
                               );
                               if (_model.pageViewCurrentIndex == 2) {
@@ -613,11 +624,11 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
                           options: FFButtonOptions(
                             width: double.infinity,
                             height: 60.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: const Color(0xFF1C2A3A),
+                            color: Color(0xFF1C2A3A),
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleMedium
                                 .override(
@@ -627,7 +638,7 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
                                   letterSpacing: 0.0,
                                 ),
                             elevation: 4.0,
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
@@ -638,19 +649,19 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 12.0, 16.0, 44.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            context.pushNamed('signin');
+                            context.pushNamed(SigninWidget.routeName);
                           },
                           text: 'Saltear',
                           options: FFButtonOptions(
                             width: double.infinity,
                             height: 60.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
@@ -658,11 +669,11 @@ class _Onboarding02WidgetState extends State<Onboarding02Widget>
                                 .titleLarge
                                 .override(
                                   fontFamily: 'Inter Tight',
-                                  color: const Color(0xFF6B7280),
+                                  color: Color(0xFF6B7280),
                                   letterSpacing: 0.0,
                                 ),
                             elevation: 0.0,
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),

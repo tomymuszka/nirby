@@ -40,6 +40,7 @@ class SendPushModel extends FlutterFlowModel<SendPushWidget> {
 
   ///  State fields for stateful widgets in this page.
 
+  final formKey = GlobalKey<FormState>();
   // State field(s) for titulo widget.
   FocusNode? tituloFocusNode;
   TextEditingController? tituloTextController;
@@ -96,8 +97,6 @@ class SendPushModel extends FlutterFlowModel<SendPushWidget> {
   List<UsuariosRow>? usuarios11;
   // Stores action output result for [Backend Call - Query Rows] action in Button widget.
   List<UsuariosRow>? usuarios12;
-  // Stores action output result for [Backend Call - Query Rows] action in Button widget.
-  List<UsuariosRow>? playerid;
 
   @override
   void initState(BuildContext context) {}

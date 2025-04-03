@@ -1,55 +1,50 @@
 // Export pages
 export '/todas/signin1/signin1_widget.dart' show Signin1Widget;
-export '/app_cliente/servicios/servicios_widget.dart' show ServiciosWidget;
-export '/app_cliente/servicio_detalle/servicio_detalle_widget.dart'
+export '/app_cliente/servicios/servicios/servicios_widget.dart'
+    show ServiciosWidget;
+export '/app_cliente/servicios/servicio_detalle/servicio_detalle_widget.dart'
     show ServicioDetalleWidget;
-export '/todas/profile/profile_widget.dart' show ProfileWidget;
 export '/todas/chat_service/chat_service_widget.dart' show ChatServiceWidget;
-export '/todas/chats/chats_widget.dart' show ChatsWidget;
 export '/todas/login/login_widget.dart' show LoginWidget;
 export '/todas/signin/signin_widget.dart' show SigninWidget;
 export '/todas/olvidastecontrasena/olvidastecontrasena_widget.dart'
     show OlvidastecontrasenaWidget;
-export '/app_cliente/reviews_complete/reviews_complete_widget.dart'
+export '/app_cliente/servicios/reviews_complete/reviews_complete_widget.dart'
     show ReviewsCompleteWidget;
 export '/todas/editar_perfil/editar_perfil_widget.dart' show EditarPerfilWidget;
 export '/todas/notification/notification_widget.dart' show NotificationWidget;
 export '/todas/onboarding01/onboarding01_widget.dart' show Onboarding01Widget;
 export '/todas/onboarding02/onboarding02_widget.dart' show Onboarding02Widget;
-export '/app_profesional/servicios_list/servicios_list_widget.dart'
-    show ServiciosListWidget;
-export '/app_profesional/crearservicio/crearservicio_widget.dart'
+export '/app_profesional/servicios/crearservicio/crearservicio_widget.dart'
     show CrearservicioWidget;
-export '/app_profesional/informacioprofesional/informacioprofesional_widget.dart'
-    show InformacioprofesionalWidget;
+export '/app_profesional/completeprofile/completeprofile_widget.dart'
+    show CompleteprofileWidget;
 export '/todas/home/home_widget.dart' show HomeWidget;
-export '/app_profesional/veridy_identity/veridy_identity_widget.dart'
+export '/app_profesional/verificacion/veridy_identity/veridy_identity_widget.dart'
     show VeridyIdentityWidget;
-export '/app_profesional/subirfotopersonal/subirfotopersonal_widget.dart'
+export '/app_profesional/verificacion/subirfotopersonal/subirfotopersonal_widget.dart'
     show SubirfotopersonalWidget;
-export '/app_profesional/subirfoto_d_n_i/subirfoto_d_n_i_widget.dart'
+export '/app_profesional/verificacion/subirfoto_d_n_i/subirfoto_d_n_i_widget.dart'
     show SubirfotoDNIWidget;
-export '/app_cliente/crear_alerta_de_servicio/crear_alerta_de_servicio_widget.dart'
+export '/app_cliente/alerta_de_servicio/crear_alerta_de_servicio/crear_alerta_de_servicio_widget.dart'
     show CrearAlertaDeServicioWidget;
 export '/app_profesional/payment/payment_widget.dart' show PaymentWidget;
-export '/app_profesional/editarservicio/editarservicio_widget.dart'
+export '/app_profesional/servicios/editarservicio/editarservicio_widget.dart'
     show EditarservicioWidget;
 export '/todas/terminos_condiciones/terminos_condiciones_widget.dart'
     show TerminosCondicionesWidget;
 export '/app_profesional/detalle_alerta_servicio/detalle_alerta_servicio_widget.dart'
     show DetalleAlertaServicioWidget;
-export '/app_cliente/editar_alerta_de_servicio/editar_alerta_de_servicio_widget.dart'
+export '/app_cliente/alerta_de_servicio/editar_alerta_de_servicio/editar_alerta_de_servicio_widget.dart'
     show EditarAlertaDeServicioWidget;
-export '/app_cliente/alertas_de_servicio_profesionales/alertas_de_servicio_profesionales_widget.dart'
+export '/app_cliente/alerta_de_servicio/alertas_de_servicio_profesionales/alertas_de_servicio_profesionales_widget.dart'
     show AlertasDeServicioProfesionalesWidget;
-export '/app_cliente/detalle_profesional/detalle_profesional_widget.dart'
+export '/app_cliente/alerta_de_servicio/detalle_profesional/detalle_profesional_widget.dart'
     show DetalleProfesionalWidget;
-export '/app_cliente/alertas_de_servicio_historia/alertas_de_servicio_historia_widget.dart'
-    show AlertasDeServicioHistoriaWidget;
 export '/todas/chat_alerta/chat_alerta_widget.dart' show ChatAlertaWidget;
 export '/app_profesional/categorias_profesional/categorias_profesional_widget.dart'
     show CategoriasProfesionalWidget;
-export '/app_profesional/verifyinprocess/verifyinprocess_widget.dart'
+export '/app_profesional/verificacion/verifyinprocess/verifyinprocess_widget.dart'
     show VerifyinprocessWidget;
 export '/app_admin/users/users_widget.dart' show UsersWidget;
 export '/app_admin/detalle_usuario_admin/detalle_usuario_admin_widget.dart'
@@ -66,7 +61,7 @@ export '/app_admin/chat_alerta_admin/chat_alerta_admin_widget.dart'
     show ChatAlertaAdminWidget;
 export '/app_admin/chat_service_admin/chat_service_admin_widget.dart'
     show ChatServiceAdminWidget;
-export '/app_profesional/active_suscription/active_suscription_widget.dart'
+export '/app_profesional/suscripcion_activa/active_suscription/active_suscription_widget.dart'
     show ActiveSuscriptionWidget;
 export '/app_admin/send_push/send_push_widget.dart' show SendPushWidget;
 export '/app_admin/notificacionesadmin/notificacionesadmin_widget.dart'
@@ -87,3 +82,4 @@ export '/screens/chat_service_screen/chat_service_screen_widget.dart'
     show ChatServiceScreenWidget;
 export '/screens/crear_alerta_de_servicio_screen/crear_alerta_de_servicio_screen_widget.dart'
     show CrearAlertaDeServicioScreenWidget;
+export '/todas/returnapp/returnapp_widget.dart' show ReturnappWidget;

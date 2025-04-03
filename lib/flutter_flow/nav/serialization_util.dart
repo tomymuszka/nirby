@@ -5,8 +5,8 @@ import 'package:from_css_color/from_css_color.dart';
 
 import '/backend/supabase/supabase.dart';
 
-import '../../flutter_flow/place.dart';
-import '../../flutter_flow/uploaded_file.dart';
+import 'package:ff_commons/flutter_flow/place.dart';
+import 'package:ff_commons/flutter_flow/uploaded_file.dart';
 
 /// SERIALIZATION HELPERS
 
@@ -168,8 +168,8 @@ dynamic deserializeParam<T>(
         return null;
       }
       return paramValues
-          .whereType<String>()
-          .map((p) => p)
+          .where((p) => p is String)
+          .map((p) => p as String)
           .map((p) => deserializeParam<T>(p, paramType, false))
           .where((p) => p != null)
           .map((p) => p! as T)
@@ -217,14 +217,14 @@ dynamic deserializeParam<T>(
             return ChatsRow(data);
           case UsuariosAnaliticasRow:
             return UsuariosAnaliticasRow(data);
+          case NotificationsUsersRow:
+            return NotificationsUsersRow(data);
           case ProfessionalDetailsRow:
             return ProfessionalDetailsRow(data);
           case ServicesRow:
             return ServicesRow(data);
           case RecomendedServicesRow:
             return RecomendedServicesRow(data);
-          case RelevantAlertsRow:
-            return RelevantAlertsRow(data);
           case UsuariosRow:
             return UsuariosRow(data);
           case AlertasRow:
@@ -239,24 +239,24 @@ dynamic deserializeParam<T>(
             return ConversationDetailsRow(data);
           case UsuariosAlertasRow:
             return UsuariosAlertasRow(data);
+          case RelevantAlertsTableRow:
+            return RelevantAlertsTableRow(data);
           case UsuarioCategoriasInteresRow:
             return UsuarioCategoriasInteresRow(data);
           case ServiceChatRow:
             return ServiceChatRow(data);
           case ServiceDetailsRow:
             return ServiceDetailsRow(data);
-          case ChatsFilteredRow:
-            return ChatsFilteredRow(data);
           case ProfessionalReviewSummaryRow:
             return ProfessionalReviewSummaryRow(data);
           case AnaliticasAdminRow:
             return AnaliticasAdminRow(data);
           case InterestedProfessionalsRow:
             return InterestedProfessionalsRow(data);
+          case UnseenMessagesCountRow:
+            return UnseenMessagesCountRow(data);
           case ReviewsRow:
             return ReviewsRow(data);
-          case NotificationsRow:
-            return NotificationsRow(data);
           case ConversationsRow:
             return ConversationsRow(data);
           default:

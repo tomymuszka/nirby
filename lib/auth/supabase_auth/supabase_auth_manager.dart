@@ -27,9 +27,9 @@ class SupabaseAuthManager extends AuthManager with EmailSignInManager {
     } on AuthException {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text(
-                'Hubo un error al iniciar sesión. Por favor, volvé a probar.')),
+        SnackBar(
+            content:
+                Text('Credenciales incorrectas. Por favor, volvé a probar.')),
       );
     }
   }
@@ -48,14 +48,15 @@ class SupabaseAuthManager extends AuthManager with EmailSignInManager {
     } on AuthException {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text(
-                'Hubo un error al iniciar sesión. Por favor, volvé a probar.')),
+        SnackBar(
+            content:
+                Text('Credenciales incorrectas. Por favor, volvé a probar.')),
       );
       return;
     }
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Email change confirmation email sent')),
+      SnackBar(
+          content: Text('Se envió un mail para confirmar tu nuevo correo')),
     );
   }
 
@@ -73,14 +74,15 @@ class SupabaseAuthManager extends AuthManager with EmailSignInManager {
     } on AuthException {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text(
-                'Hubo un error al iniciar sesión. Por favor, volvé a probar.')),
+        SnackBar(
+            content:
+                Text('Credenciales incorrectas. Por favor, volvé a probar.')),
       );
       return;
     }
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Password updated successfully')),
+      SnackBar(
+          content: Text('Se envió un mail para confirmar tu nuevo correo')),
     );
   }
 
@@ -96,14 +98,14 @@ class SupabaseAuthManager extends AuthManager with EmailSignInManager {
     } on AuthException {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text(
-                'Hubo un error al iniciar sesión. Por favor, volvé a probar.')),
+        SnackBar(
+            content:
+                Text('Credenciales incorrectas. Por favor, volvé a probar.')),
       );
       return null;
     }
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
+      SnackBar(
           content: Text('El email para recuperar tu contraseña fue enviado')),
     );
   }
@@ -152,7 +154,7 @@ class SupabaseAuthManager extends AuthManager with EmailSignInManager {
     } on AuthException catch (e) {
       final errorMsg = e.message.contains('User already registered')
           ? 'El email ya se encuentra registrado con otra cuenta'
-          : 'Hubo un error al iniciar sesión. Por favor, volvé a probar.';
+          : 'Credenciales incorrectas. Por favor, volvé a probar.';
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(errorMsg)),

@@ -10,7 +10,7 @@ class UsuariosAlertasTable extends SupabaseTable<UsuariosAlertasRow> {
 }
 
 class UsuariosAlertasRow extends SupabaseDataRow {
-  UsuariosAlertasRow(super.data);
+  UsuariosAlertasRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => UsuariosAlertasTable();

@@ -10,7 +10,7 @@ class ProfessionalDetailsTable extends SupabaseTable<ProfessionalDetailsRow> {
 }
 
 class ProfessionalDetailsRow extends SupabaseDataRow {
-  ProfessionalDetailsRow(super.data);
+  ProfessionalDetailsRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => ProfessionalDetailsTable();

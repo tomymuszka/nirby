@@ -1,5 +1,5 @@
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'empty_notifications_model.dart';
 export 'empty_notifications_model.dart';
@@ -47,7 +47,7 @@ class _EmptyNotificationsWidgetState extends State<EmptyNotificationsWidget> {
           size: 72.0,
         ),
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
           child: Text(
             'No se encontraron notificaciones',
             textAlign: TextAlign.center,

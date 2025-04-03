@@ -1,5 +1,5 @@
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'empty_list_alerts_profesional_model.dart';
 export 'empty_list_alerts_profesional_model.dart';
@@ -48,9 +48,9 @@ class _EmptyListAlertsProfesionalWidgetState
           size: 72.0,
         ),
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
           child: Text(
-            'No se encontraron alertas',
+            'Por ahora, no hay nada aquí.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Inter Tight',
@@ -59,9 +59,9 @@ class _EmptyListAlertsProfesionalWidgetState
           ),
         ),
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
           child: Text(
-            'Cuando un usuario necesite un servicio que coincida con tu oferta, te lo mostraremos aquí para que le puedas hablar',
+            'En esta pantalla aparecerán las alertas que coincidan con las categorías en que hayas elegido publicarte.',
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).labelMedium.override(
                   fontFamily: 'Inter',

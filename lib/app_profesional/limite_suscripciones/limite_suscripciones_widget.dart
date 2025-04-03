@@ -1,6 +1,7 @@
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'limite_suscripciones_model.dart';
 export 'limite_suscripciones_model.dart';
@@ -49,7 +50,7 @@ class _LimiteSuscripcionesWidgetState extends State<LimiteSuscripcionesWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
+      padding: EdgeInsetsDirectional.fromSTEB(24.0, 24.0, 24.0, 24.0),
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -57,7 +58,7 @@ class _LimiteSuscripcionesWidgetState extends State<LimiteSuscripcionesWidget> {
           borderRadius: BorderRadius.circular(16.0),
         ),
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(16.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -96,9 +97,9 @@ class _LimiteSuscripcionesWidgetState extends State<LimiteSuscripcionesWidget> {
                       width: 120.0,
                       height: 40.0,
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                       textStyle:
                           FlutterFlowTheme.of(context).bodyMedium.override(
@@ -116,18 +117,21 @@ class _LimiteSuscripcionesWidgetState extends State<LimiteSuscripcionesWidget> {
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 0.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
-                          context.pushNamed('profile');
+                          FFAppState().PaginaSeleccionada = 'Profile';
+                          FFAppState().update(() {});
+
+                          context.pushNamed(HomeWidget.routeName);
                         },
                         text: 'Suscribirme',
                         options: FFButtonOptions(
                           width: 120.0,
                           height: 40.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                          iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).primary,
                           textStyle:
@@ -137,7 +141,7 @@ class _LimiteSuscripcionesWidgetState extends State<LimiteSuscripcionesWidget> {
                                     letterSpacing: 0.0,
                                   ),
                           elevation: 0.0,
-                          borderSide: const BorderSide(
+                          borderSide: BorderSide(
                             color: Colors.transparent,
                             width: 1.0,
                           ),
@@ -146,9 +150,9 @@ class _LimiteSuscripcionesWidgetState extends State<LimiteSuscripcionesWidget> {
                       ),
                     ),
                   ),
-                ].divide(const SizedBox(width: 12.0)),
+                ].divide(SizedBox(width: 12.0)),
               ),
-            ].divide(const SizedBox(height: 16.0)),
+            ].divide(SizedBox(height: 16.0)),
           ),
         ),
       ),

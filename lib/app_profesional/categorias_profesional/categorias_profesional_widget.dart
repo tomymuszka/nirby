@@ -2,16 +2,21 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_checkbox_group.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/actions/actions.dart' as action_blocks;
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'categorias_profesional_model.dart';
 export 'categorias_profesional_model.dart';
 
 class CategoriasProfesionalWidget extends StatefulWidget {
   const CategoriasProfesionalWidget({super.key});
+
+  static String routeName = 'categorias_profesional';
+  static String routePath = '/categoriasProfesional';
 
   @override
   State<CategoriasProfesionalWidget> createState() =>
@@ -28,6 +33,11 @@ class _CategoriasProfesionalWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => CategoriasProfesionalModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await action_blocks.checkConnection(context);
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -59,7 +69,7 @@ class _CategoriasProfesionalWidgetState
                 height: 50.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    FlutterFlowTheme.of(context).primaryBackground,
                   ),
                 ),
               ),
@@ -86,18 +96,18 @@ class _CategoriasProfesionalWidgetState
             body: SafeArea(
               top: true,
               child: Align(
-                alignment: const AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Container(
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxWidth: 600.0,
                   ),
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 30.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -105,7 +115,7 @@ class _CategoriasProfesionalWidgetState
                               FlutterFlowIconButton(
                                 borderRadius: 8.0,
                                 buttonSize: 40.0,
-                                fillColor: const Color(0x004B39EF),
+                                fillColor: Color(0x004B39EF),
                                 icon: Icon(
                                   Icons.arrow_back,
                                   color:
@@ -117,7 +127,7 @@ class _CategoriasProfesionalWidgetState
                                 },
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     10.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   'Categorías',
@@ -135,7 +145,7 @@ class _CategoriasProfesionalWidgetState
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               15.0, 15.0, 15.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -156,7 +166,7 @@ class _CategoriasProfesionalWidgetState
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 15.0, 20.0, 0.0),
                           child: FutureBuilder<List<CategoriasRow>>(
                             future: CategoriasTable().queryRows(
@@ -174,7 +184,8 @@ class _CategoriasProfesionalWidgetState
                                     height: 50.0,
                                     child: CircularProgressIndicator(
                                       valueColor: AlwaysStoppedAnimation<Color>(
-                                        FlutterFlowTheme.of(context).primary,
+                                        FlutterFlowTheme.of(context)
+                                            .primaryBackground,
                                       ),
                                     ),
                                   ),
@@ -198,7 +209,7 @@ class _CategoriasProfesionalWidgetState
                                               ?.categoriaNombres ??
                                           []),
                                 ),
-                                activeColor: const Color(0xFF3D64FF),
+                                activeColor: Color(0xFF3D64FF),
                                 checkColor: FlutterFlowTheme.of(context).info,
                                 checkboxBorderColor:
                                     FlutterFlowTheme.of(context).secondaryText,
@@ -216,7 +227,7 @@ class _CategoriasProfesionalWidgetState
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 40.0, 20.0, 40.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -250,11 +261,11 @@ class _CategoriasProfesionalWidgetState
                                   text: 'Guardar',
                                   options: FFButtonOptions(
                                     height: 40.0,
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 0.0, 16.0, 0.0),
-                                    iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 0.0),
-                                    color: const Color(0xFF1C2A3A),
+                                    color: Color(0xFF1C2A3A),
                                     textStyle: FlutterFlowTheme.of(context)
                                         .titleSmall
                                         .override(

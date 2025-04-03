@@ -2,17 +2,20 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_radio_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'crear_alerta_de_servicio_screen_model.dart';
 export 'crear_alerta_de_servicio_screen_model.dart';
 
 class CrearAlertaDeServicioScreenWidget extends StatefulWidget {
   const CrearAlertaDeServicioScreenWidget({super.key});
+
+  static String routeName = 'crearAlertaDeServicioScreen';
+  static String routePath = '/crearAlertaDeServicioScreen';
 
   @override
   State<CrearAlertaDeServicioScreenWidget> createState() =>
@@ -67,11 +70,11 @@ class _CrearAlertaDeServicioScreenWidgetState
                       letterSpacing: 0.0,
                     ),
               ),
-            ].divide(const SizedBox(height: 4.0)),
+            ].divide(SizedBox(height: 4.0)),
           ),
           actions: [
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 12.0, 8.0),
               child: FlutterFlowIconButton(
                 borderColor: FlutterFlowTheme.of(context).alternate,
                 borderRadius: 12.0,
@@ -95,12 +98,12 @@ class _CrearAlertaDeServicioScreenWidgetState
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: const AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
-              constraints: const BoxConstraints(
+              constraints: BoxConstraints(
                 maxWidth: 600.0,
               ),
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: Form(
                 key: _model.formKey,
                 autovalidateMode: AutovalidateMode.disabled,
@@ -114,14 +117,14 @@ class _CrearAlertaDeServicioScreenWidgetState
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Align(
-                              alignment: const AlignmentDirectional(0.0, -1.0),
+                              alignment: AlignmentDirectional(0.0, -1.0),
                               child: Container(
-                                constraints: const BoxConstraints(
+                                constraints: BoxConstraints(
                                   maxWidth: 770.0,
                                 ),
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 12.0, 16.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -146,7 +149,7 @@ class _CrearAlertaDeServicioScreenWidgetState
                                         ],
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 20.0, 0.0, 0.0),
                                         child: TextFormField(
                                           controller:
@@ -233,7 +236,7 @@ class _CrearAlertaDeServicioScreenWidgetState
                                                 FlutterFlowTheme.of(context)
                                                     .primaryBackground,
                                             contentPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 16.0, 16.0, 16.0),
                                           ),
                                           style: FlutterFlowTheme.of(context)
@@ -287,7 +290,7 @@ class _CrearAlertaDeServicioScreenWidgetState
                                                       AlwaysStoppedAnimation<
                                                           Color>(
                                                     FlutterFlowTheme.of(context)
-                                                        .primary,
+                                                        .primaryBackground,
                                                   ),
                                                 ),
                                               ),
@@ -329,11 +332,11 @@ class _CrearAlertaDeServicioScreenWidgetState
                                                 FlutterFlowTheme.of(context)
                                                     .primaryBackground,
                                             elevation: 2.0,
-                                            borderColor: const Color(0xFFE0E3E7),
+                                            borderColor: Color(0xFFE0E3E7),
                                             borderWidth: 1.0,
                                             borderRadius: 8.0,
                                             margin:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 12.0, 0.0),
                                             hidesUnderline: true,
                                             isOverButton: false,
@@ -375,10 +378,10 @@ class _CrearAlertaDeServicioScreenWidgetState
                                         ),
                                         child: Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
+                                              AlignmentDirectional(-1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               '',
@@ -411,7 +414,7 @@ class _CrearAlertaDeServicioScreenWidgetState
                                         ],
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             20.0, 7.0, 0.0, 0.0),
                                         child: FlutterFlowRadioButton(
                                           options: [
@@ -438,7 +441,7 @@ class _CrearAlertaDeServicioScreenWidgetState
                                           buttonPosition:
                                               RadioButtonPosition.left,
                                           direction: Axis.vertical,
-                                          radioButtonColor: const Color(0xFF3D64FF),
+                                          radioButtonColor: Color(0xFF3D64FF),
                                           inactiveRadioButtonColor:
                                               FlutterFlowTheme.of(context)
                                                   .secondaryText,
@@ -474,11 +477,11 @@ class _CrearAlertaDeServicioScreenWidgetState
                                               MainAxisAlignment.center,
                                           children: [
                                             Stack(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   1.0, -1.0),
                                               children: [
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 10.0, 0.0),
                                                   child: ClipRRect(
@@ -494,13 +497,13 @@ class _CrearAlertaDeServicioScreenWidgetState
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 10.0, 0.0),
                                                   child: FlutterFlowIconButton(
                                                     borderRadius: 8.0,
                                                     buttonSize: 48.0,
-                                                    icon: const Icon(
+                                                    icon: Icon(
                                                       Icons.delete,
                                                       color: Color(0xFFD32F2F),
                                                       size: 24.0,
@@ -531,7 +534,7 @@ class _CrearAlertaDeServicioScreenWidgetState
                                                 fillColor:
                                                     FlutterFlowTheme.of(context)
                                                         .alternate,
-                                                icon: const Icon(
+                                                icon: Icon(
                                                   Icons.add,
                                                   color: Color(0xFF1C2A3A),
                                                   size: 24.0,
@@ -565,8 +568,8 @@ class _CrearAlertaDeServicioScreenWidgetState
                                         ],
                                       ),
                                     ]
-                                        .divide(const SizedBox(height: 12.0))
-                                        .addToEnd(const SizedBox(height: 32.0)),
+                                        .divide(SizedBox(height: 12.0))
+                                        .addToEnd(SizedBox(height: 32.0)),
                                   ),
                                 ),
                               ),
@@ -576,12 +579,12 @@ class _CrearAlertaDeServicioScreenWidgetState
                       ),
                     ),
                     Container(
-                      constraints: const BoxConstraints(
+                      constraints: BoxConstraints(
                         maxWidth: 770.0,
                       ),
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 12.0, 16.0, 12.0),
                         child: FFButtonWidget(
                           onPressed: () {
@@ -591,11 +594,11 @@ class _CrearAlertaDeServicioScreenWidgetState
                           options: FFButtonOptions(
                             width: double.infinity,
                             height: 48.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: const Color(0xFF1C2A3A),
+                            color: Color(0xFF1C2A3A),
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
@@ -604,7 +607,7 @@ class _CrearAlertaDeServicioScreenWidgetState
                                   letterSpacing: 0.0,
                                 ),
                             elevation: 3.0,
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),

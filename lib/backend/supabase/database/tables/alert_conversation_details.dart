@@ -11,7 +11,7 @@ class AlertConversationDetailsTable
 }
 
 class AlertConversationDetailsRow extends SupabaseDataRow {
-  AlertConversationDetailsRow(super.data);
+  AlertConversationDetailsRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => AlertConversationDetailsTable();

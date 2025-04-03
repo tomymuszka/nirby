@@ -1,6 +1,7 @@
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/todas/navbar/navbar_widget.dart';
+import '/index.dart';
 import 'home_screen_widget.dart' show HomeScreenWidget;
 import 'package:flutter/material.dart';
 

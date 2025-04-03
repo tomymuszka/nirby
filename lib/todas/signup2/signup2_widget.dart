@@ -1,5 +1,5 @@
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'signup2_model.dart';
@@ -47,7 +47,7 @@ class _Signup2WidgetState extends State<Signup2Widget> {
         borderRadius: BorderRadius.circular(48.0),
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -60,7 +60,7 @@ class _Signup2WidgetState extends State<Signup2Widget> {
               animate: true,
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -70,7 +70,7 @@ class _Signup2WidgetState extends State<Signup2Widget> {
                       'Felicidades!',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                             fontFamily: 'Inter',
-                            color: const Color(0xFF1C2A3A),
+                            color: Color(0xFF1C2A3A),
                             fontSize: 20.0,
                             letterSpacing: 0.0,
                             fontWeight: FontWeight.w600,
@@ -81,7 +81,7 @@ class _Signup2WidgetState extends State<Signup2Widget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(25.0, 20.0, 25.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(25.0, 20.0, 25.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,

@@ -10,7 +10,7 @@ class RecomendedServicesTable extends SupabaseTable<RecomendedServicesRow> {
 }
 
 class RecomendedServicesRow extends SupabaseDataRow {
-  RecomendedServicesRow(super.data);
+  RecomendedServicesRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => RecomendedServicesTable();
@@ -24,6 +24,18 @@ class RecomendedServicesRow extends SupabaseDataRow {
   List<String> get coverageAreas => getListField<String>('coverage_areas');
   set coverageAreas(List<String>? value) =>
       setListField<String>('coverage_areas', value);
+
+  bool? get atiendenUrgencias => getField<bool>('atienden_urgencias');
+  set atiendenUrgencias(bool? value) =>
+      setField<bool>('atienden_urgencias', value);
+
+  List<String> get budgetNoCharge => getListField<String>('budget_no_charge');
+  set budgetNoCharge(List<String>? value) =>
+      setListField<String>('budget_no_charge', value);
+
+  String? get professionalId => getField<String>('professional_id');
+  set professionalId(String? value) =>
+      setField<String>('professional_id', value);
 
   double? get averageRating => getField<double>('average_rating');
   set averageRating(double? value) => setField<double>('average_rating', value);

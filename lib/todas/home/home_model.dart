@@ -1,5 +1,10 @@
-import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/alerta_de_servicio_component_widget.dart';
+import '/components/chats_component_widget.dart';
+import '/components/home_component_widget.dart';
+import '/components/profile_component_widget.dart';
+import '/components/servicios_component_widget.dart';
+import '/components/usuarios_component_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/todas/navbar/navbar_widget.dart';
 import 'home_widget.dart' show HomeWidget;
@@ -12,6 +17,8 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
 
   int? index = 0;
 
+  String paginaSeleccionada = 'Home';
+
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Backend Call - Query Rows] action in Home widget.
@@ -20,30 +27,43 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
   bool? hired;
   // Stores action output result for [Backend Call - Query Rows] action in Home widget.
   List<UsuariosRow>? profesional;
-  // State field(s) for TextField widget.
-  final textFieldKey = GlobalKey();
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController;
-  String? textFieldSelectedOption;
-  String? Function(BuildContext, String?)? textControllerValidator;
-  // Stores action output result for [Backend Call - API (buscarservicio)] action in IconButton widget.
-  ApiCallResponse? servicioselected;
-  // Stores action output result for [Backend Call - API (getsusc)] action in Button widget.
-  ApiCallResponse? suscrip2;
-  // Stores action output result for [Backend Call - API (getsusc)] action in Button widget.
-  ApiCallResponse? suscrip22;
+  // Model for HomeComponent component.
+  late HomeComponentModel homeComponentModel;
+  // Model for ChatsComponent component.
+  late ChatsComponentModel chatsComponentModel;
+  // Model for alerta_de_servicio_component component.
+  late AlertaDeServicioComponentModel alertaDeServicioComponentModel;
+  // Model for ProfileComponent component.
+  late ProfileComponentModel profileComponentModel;
+  // Model for ServiciosComponent component.
+  late ServiciosComponentModel serviciosComponentModel;
+  // Model for UsuariosComponent component.
+  late UsuariosComponentModel usuariosComponentModel;
   // Model for navbar component.
   late NavbarModel navbarModel;
 
   @override
   void initState(BuildContext context) {
+    homeComponentModel = createModel(context, () => HomeComponentModel());
+    chatsComponentModel = createModel(context, () => ChatsComponentModel());
+    alertaDeServicioComponentModel =
+        createModel(context, () => AlertaDeServicioComponentModel());
+    profileComponentModel = createModel(context, () => ProfileComponentModel());
+    serviciosComponentModel =
+        createModel(context, () => ServiciosComponentModel());
+    usuariosComponentModel =
+        createModel(context, () => UsuariosComponentModel());
     navbarModel = createModel(context, () => NavbarModel());
   }
 
   @override
   void dispose() {
-    textFieldFocusNode?.dispose();
-
+    homeComponentModel.dispose();
+    chatsComponentModel.dispose();
+    alertaDeServicioComponentModel.dispose();
+    profileComponentModel.dispose();
+    serviciosComponentModel.dispose();
+    usuariosComponentModel.dispose();
     navbarModel.dispose();
   }
 }

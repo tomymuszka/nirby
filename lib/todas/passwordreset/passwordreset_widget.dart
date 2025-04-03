@@ -1,13 +1,20 @@
 import '/auth/supabase_auth/auth_util.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
+import '/components/informationaldialogo_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/actions/actions.dart' as action_blocks;
+import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'passwordreset_model.dart';
 export 'passwordreset_model.dart';
 
 class PasswordresetWidget extends StatefulWidget {
   const PasswordresetWidget({super.key});
+
+  static String routeName = 'passwordreset';
+  static String routePath = '/passwordreset';
 
   @override
   State<PasswordresetWidget> createState() => _PasswordresetWidgetState();
@@ -22,6 +29,11 @@ class _PasswordresetWidgetState extends State<PasswordresetWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PasswordresetModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await action_blocks.checkConnection(context);
+    });
 
     _model.contra1TextController ??= TextEditingController();
     _model.contra1FocusNode ??= FocusNode();
@@ -64,18 +76,18 @@ class _PasswordresetWidgetState extends State<PasswordresetWidget> {
                       letterSpacing: 0.0,
                     ),
               ),
-            ].divide(const SizedBox(height: 4.0)),
+            ].divide(SizedBox(height: 4.0)),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: const AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
-              constraints: const BoxConstraints(
+              constraints: BoxConstraints(
                 maxWidth: 600.0,
               ),
               child: Form(
@@ -83,7 +95,7 @@ class _PasswordresetWidgetState extends State<PasswordresetWidget> {
                 autovalidateMode: AutovalidateMode.disabled,
                 child: Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -104,7 +116,7 @@ class _PasswordresetWidgetState extends State<PasswordresetWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 4.0),
                                 child: Text(
                                   'Nueva contraseña',
@@ -162,7 +174,7 @@ class _PasswordresetWidgetState extends State<PasswordresetWidget> {
                                   fillColor: FlutterFlowTheme.of(context)
                                       .primaryBackground,
                                   contentPadding:
-                                      const EdgeInsetsDirectional.fromSTEB(
+                                      EdgeInsetsDirectional.fromSTEB(
                                           16.0, 16.0, 16.0, 16.0),
                                   suffixIcon: InkWell(
                                     onTap: () => safeSetState(
@@ -195,7 +207,7 @@ class _PasswordresetWidgetState extends State<PasswordresetWidget> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 4.0),
                                 child: Text(
                                   'Confirmar nueva contraseña',
@@ -228,22 +240,23 @@ class _PasswordresetWidgetState extends State<PasswordresetWidget> {
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   focusedBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
-                                      color: Color(0x00000000),
+                                    borderSide: BorderSide(
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   errorBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
-                                      color: Color(0x00000000),
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   focusedErrorBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
-                                      color: Color(0x00000000),
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(12.0),
@@ -252,7 +265,7 @@ class _PasswordresetWidgetState extends State<PasswordresetWidget> {
                                   fillColor: FlutterFlowTheme.of(context)
                                       .primaryBackground,
                                   contentPadding:
-                                      const EdgeInsetsDirectional.fromSTEB(
+                                      EdgeInsetsDirectional.fromSTEB(
                                           16.0, 16.0, 16.0, 16.0),
                                   suffixIcon: InkWell(
                                     onTap: () => safeSetState(
@@ -280,89 +293,111 @@ class _PasswordresetWidgetState extends State<PasswordresetWidget> {
                               ),
                             ],
                           ),
-                        ].divide(const SizedBox(height: 18.0)),
+                        ].divide(SizedBox(height: 18.0)),
                       ),
                       Container(
-                        child: FFButtonWidget(
-                          onPressed: () async {
-                            navigate() {}
-                            if (_model.formKey.currentState == null ||
-                                !_model.formKey.currentState!.validate()) {
-                              return;
-                            }
-                            if (_model.contra1TextController.text ==
-                                _model.contra2TextController.text) {
-                              await authManager.updatePassword(
-                                newPassword: _model.contra1TextController.text,
-                                context: context,
-                              );
-                              safeSetState(() {});
+                        child: Builder(
+                          builder: (context) => FFButtonWidget(
+                            onPressed: () async {
+                              if (_model.formKey.currentState == null ||
+                                  !_model.formKey.currentState!.validate()) {
+                                return;
+                              }
+                              if (_model.contra1TextController.text ==
+                                  _model.contra2TextController.text) {
+                                await authManager.updatePassword(
+                                  newPassword:
+                                      _model.contra1TextController.text,
+                                  context: context,
+                                );
+                                safeSetState(() {});
 
-                              await showDialog(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: const Text('Exito!'),
-                                    content: const Text(
-                                        'Pudiste actualizar tu contraseña con éxito'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () =>
-                                            Navigator.pop(alertDialogContext),
-                                        child: const Text('Ok'),
+                                await showDialog(
+                                  context: context,
+                                  builder: (dialogContext) {
+                                    return Dialog(
+                                      elevation: 0,
+                                      insetPadding: EdgeInsets.zero,
+                                      backgroundColor: Colors.transparent,
+                                      alignment: AlignmentDirectional(0.0, 0.0)
+                                          .resolve(Directionality.of(context)),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          FocusScope.of(dialogContext)
+                                              .unfocus();
+                                          FocusManager.instance.primaryFocus
+                                              ?.unfocus();
+                                        },
+                                        child: InformationaldialogoWidget(
+                                          titulo:
+                                              '¡Tu contraseña ha sido reestablecido con éxito!',
+                                          cuerpo:
+                                              'Ahora puedes iniciar sesión en tu cuenta sin inconvenientes.',
+                                          buttonstring: 'Ok',
+                                        ),
                                       ),
-                                    ],
-                                  );
-                                },
-                              );
-                            } else {
-                              await showDialog(
-                                context: context,
-                                builder: (alertDialogContext) {
-                                  return AlertDialog(
-                                    title: const Text('Contraseñas distintas'),
-                                    content: const Text(
-                                        'Las contraseñas deben ser iguales'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () =>
-                                            Navigator.pop(alertDialogContext),
-                                        child: const Text('Ok'),
-                                      ),
-                                    ],
-                                  );
-                                },
-                              );
-                            }
+                                    );
+                                  },
+                                );
 
-                            navigate();
-                          },
-                          text: 'Cambiar contraseña',
-                          options: FFButtonOptions(
-                            width: double.infinity,
-                            height: 48.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: const Color(0xFF1C2A3A),
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Inter Tight',
-                                  color: Colors.white,
-                                  letterSpacing: 0.0,
-                                ),
-                            elevation: 3.0,
-                            borderSide: const BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
+                                context.pushNamedAuth(
+                                    ReturnappWidget.routeName, context.mounted);
+                              } else {
+                                await showDialog(
+                                  context: context,
+                                  builder: (dialogContext) {
+                                    return Dialog(
+                                      elevation: 0,
+                                      insetPadding: EdgeInsets.zero,
+                                      backgroundColor: Colors.transparent,
+                                      alignment: AlignmentDirectional(0.0, 0.0)
+                                          .resolve(Directionality.of(context)),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          FocusScope.of(dialogContext)
+                                              .unfocus();
+                                          FocusManager.instance.primaryFocus
+                                              ?.unfocus();
+                                        },
+                                        child: InformationaldialogoWidget(
+                                          titulo: 'Contraseñas distintas',
+                                          cuerpo:
+                                              'Las contraseñas deben ser iguales',
+                                          buttonstring: 'Ok',
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
+                              }
+                            },
+                            text: 'Cambiar contraseña',
+                            options: FFButtonOptions(
+                              width: double.infinity,
+                              height: 48.0,
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: Color(0xFF1C2A3A),
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .titleSmall
+                                  .override(
+                                    fontFamily: 'Inter Tight',
+                                    color: Colors.white,
+                                    letterSpacing: 0.0,
+                                  ),
+                              elevation: 3.0,
+                              borderSide: BorderSide(
+                                color: Colors.transparent,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(8.0),
                             ),
-                            borderRadius: BorderRadius.circular(8.0),
                           ),
                         ),
                       ),
-                    ].divide(const SizedBox(height: 24.0)),
+                    ].divide(SizedBox(height: 24.0)),
                   ),
                 ),
               ),

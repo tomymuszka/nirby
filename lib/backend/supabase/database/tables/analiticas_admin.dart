@@ -10,7 +10,7 @@ class AnaliticasAdminTable extends SupabaseTable<AnaliticasAdminRow> {
 }
 
 class AnaliticasAdminRow extends SupabaseDataRow {
-  AnaliticasAdminRow(super.data);
+  AnaliticasAdminRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => AnaliticasAdminTable();

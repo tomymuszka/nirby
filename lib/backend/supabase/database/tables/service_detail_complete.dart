@@ -11,7 +11,7 @@ class ServiceDetailCompleteTable
 }
 
 class ServiceDetailCompleteRow extends SupabaseDataRow {
-  ServiceDetailCompleteRow(super.data);
+  ServiceDetailCompleteRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => ServiceDetailCompleteTable();

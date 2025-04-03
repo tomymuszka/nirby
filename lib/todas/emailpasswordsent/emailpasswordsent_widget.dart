@@ -1,12 +1,18 @@
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/actions/actions.dart' as action_blocks;
+import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'emailpasswordsent_model.dart';
 export 'emailpasswordsent_model.dart';
 
 class EmailpasswordsentWidget extends StatefulWidget {
   const EmailpasswordsentWidget({super.key});
+
+  static String routeName = 'emailpasswordsent';
+  static String routePath = '/emailpasswordsent';
 
   @override
   State<EmailpasswordsentWidget> createState() =>
@@ -22,6 +28,11 @@ class _EmailpasswordsentWidgetState extends State<EmailpasswordsentWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => EmailpasswordsentModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await action_blocks.checkConnection(context);
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -44,9 +55,9 @@ class _EmailpasswordsentWidgetState extends State<EmailpasswordsentWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: Align(
-          alignment: const AlignmentDirectional(0.0, -1.0),
+          alignment: AlignmentDirectional(0.0, -1.0),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(20.0, 100.0, 20.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(20.0, 100.0, 20.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -66,7 +77,7 @@ class _EmailpasswordsentWidgetState extends State<EmailpasswordsentWidget> {
                       borderRadius: BorderRadius.circular(100.0),
                     ),
                     child: Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
+                      padding: EdgeInsetsDirectional.fromSTEB(
                           32.0, 32.0, 32.0, 32.0),
                       child: Image.asset(
                         'assets/images/Diseo_sin_ttulo__1_-removebg-preview.png',
@@ -83,7 +94,7 @@ class _EmailpasswordsentWidgetState extends State<EmailpasswordsentWidget> {
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                       child: Text(
                         '¡Email Enviado!',
                         textAlign: TextAlign.center,
@@ -97,7 +108,7 @@ class _EmailpasswordsentWidgetState extends State<EmailpasswordsentWidget> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
+                      padding: EdgeInsetsDirectional.fromSTEB(
                           10.0, 32.0, 10.0, 32.0),
                       child: Text(
                         'Hemos enviado un link de recuperación a tu correo electrónico.',
@@ -114,7 +125,7 @@ class _EmailpasswordsentWidgetState extends State<EmailpasswordsentWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 32.0),
+                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 32.0),
                       child: Text(
                         'Por favor revisá tu bandeja de entrada y seguí las instrucciones para restablecer tu contraseña.',
                         textAlign: TextAlign.center,
@@ -128,7 +139,7 @@ class _EmailpasswordsentWidgetState extends State<EmailpasswordsentWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 32.0),
+                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 32.0),
                       child: Text(
                         'Si no encontrás el correo, revisá tu carpeta de spam.',
                         textAlign: TextAlign.center,
@@ -142,17 +153,17 @@ class _EmailpasswordsentWidgetState extends State<EmailpasswordsentWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        context.goNamed('login');
+                        context.goNamed(LoginWidget.routeName);
                       },
                       text: 'Iniciar sesión',
                       options: FFButtonOptions(
                         width: double.infinity,
                         height: 48.0,
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: const Color(0xFF1C2A3A),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: Color(0xFF1C2A3A),
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Inter Tight',
@@ -160,16 +171,16 @@ class _EmailpasswordsentWidgetState extends State<EmailpasswordsentWidget> {
                                   letterSpacing: 0.0,
                                 ),
                         elevation: 3.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),
                         borderRadius: BorderRadius.circular(8.0),
                       ),
                     ),
-                  ].divide(const SizedBox(height: 16.0)),
+                  ].divide(SizedBox(height: 16.0)),
                 ),
-              ].divide(const SizedBox(height: 24.0)),
+              ].divide(SizedBox(height: 24.0)),
             ),
           ),
         ),

@@ -1,14 +1,19 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/informationaldialogo_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/todas/signup2/signup2_widget.dart';
 import 'dart:async';
+import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
+import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 import 'signin1_model.dart';
 export 'signin1_model.dart';
@@ -16,6 +21,9 @@ export 'signin1_model.dart';
 /// Pagina del registro de los datos personales del usuario
 class Signin1Widget extends StatefulWidget {
   const Signin1Widget({super.key});
+
+  static String routeName = 'signin1';
+  static String routePath = '/signin1';
 
   @override
   State<Signin1Widget> createState() => _Signin1WidgetState();
@@ -30,6 +38,11 @@ class _Signin1WidgetState extends State<Signin1Widget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => Signin1Model());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await action_blocks.checkConnection(context);
+    });
 
     _model.nombreTextController ??= TextEditingController();
     _model.nombreFocusNode ??= FocusNode();
@@ -70,145 +83,146 @@ class _Signin1WidgetState extends State<Signin1Widget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: const AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
-              constraints: const BoxConstraints(
+              constraints: BoxConstraints(
                 maxWidth: 600.0,
               ),
-              decoration: const BoxDecoration(),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      FlutterFlowIconButton(
-                        borderRadius: 8.0,
-                        buttonSize: 40.0,
-                        fillColor: const Color(0x004B39EF),
-                        icon: const Icon(
-                          Icons.arrow_back,
-                          color: Color(0xFF292D32),
-                          size: 24.0,
-                        ),
-                        onPressed: () async {
-                          context.safePop();
-                        },
-                      ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
-                        child: Text(
-                          'Queremos conocerte',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Inter',
-                                    color: const Color(0xFF374151),
-                                    fontSize: 20.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      final selectedMedia =
-                          await selectMediaWithSourceBottomSheet(
-                        context: context,
-                        storageFolderPath: 'usuarios',
-                        allowPhoto: true,
-                      );
-                      if (selectedMedia != null &&
-                          selectedMedia.every((m) =>
-                              validateFileFormat(m.storagePath, context))) {
-                        safeSetState(() => _model.isDataUploading = true);
-                        var selectedUploadedFiles = <FFUploadedFile>[];
-
-                        var downloadUrls = <String>[];
-                        try {
-                          selectedUploadedFiles = selectedMedia
-                              .map((m) => FFUploadedFile(
-                                    name: m.storagePath.split('/').last,
-                                    bytes: m.bytes,
-                                    height: m.dimensions?.height,
-                                    width: m.dimensions?.width,
-                                    blurHash: m.blurHash,
-                                  ))
-                              .toList();
-
-                          downloadUrls = await uploadSupabaseStorageFiles(
-                            bucketName: 'fotos',
-                            selectedFiles: selectedMedia,
-                          );
-                        } finally {
-                          _model.isDataUploading = false;
-                        }
-                        if (selectedUploadedFiles.length ==
-                                selectedMedia.length &&
-                            downloadUrls.length == selectedMedia.length) {
-                          safeSetState(() {
-                            _model.uploadedLocalFile =
-                                selectedUploadedFiles.first;
-                            _model.uploadedFileUrl = downloadUrls.first;
-                          });
-                        } else {
-                          safeSetState(() {});
-                          return;
-                        }
-                      }
-
-                      if (_model.uploadedFileUrl != '') {
-                        FFAppState().foto = _model.uploadedFileUrl;
-                        safeSetState(() {});
-                      }
-                    },
-                    child: Stack(
-                      alignment: const AlignmentDirectional(1.0, 1.0),
+              decoration: BoxDecoration(),
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
                       children: [
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 20.0, 0.0, 0.0),
-                          child: Image.network(
-                            valueOrDefault<String>(
-                              FFAppState().foto,
-                              'https://hjqqszvninihwpxrknjm.supabase.co/storage/v1/object/public/fotos/imagePlaceHolder.jpeg',
-                            ),
-                            width: 200.0,
-                            height: 200.0,
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) =>
-                                Image.asset(
-                              'assets/images/error_image.jpeg',
-                              width: 200.0,
-                              height: 200.0,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 10.0, 30.0),
-                          child: Icon(
-                            Icons.edit_square,
-                            color: Colors.white,
+                        FlutterFlowIconButton(
+                          borderRadius: 8.0,
+                          buttonSize: 40.0,
+                          fillColor: Color(0x004B39EF),
+                          icon: Icon(
+                            Icons.arrow_back,
+                            color: Color(0xFF292D32),
                             size: 24.0,
+                          ),
+                          onPressed: () async {
+                            context.safePop();
+                          },
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              20.0, 0.0, 0.0, 0.0),
+                          child: Text(
+                            'Queremos conocerte',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Inter',
+                                  color: Color(0xFF374151),
+                                  fontSize: 20.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w600,
+                                ),
                           ),
                         ),
                       ],
                     ),
-                  ),
-                  Flexible(
-                    child: Form(
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        final selectedMedia =
+                            await selectMediaWithSourceBottomSheet(
+                          context: context,
+                          storageFolderPath: 'usuarios',
+                          allowPhoto: true,
+                        );
+                        if (selectedMedia != null &&
+                            selectedMedia.every((m) =>
+                                validateFileFormat(m.storagePath, context))) {
+                          safeSetState(() => _model.isDataUploading = true);
+                          var selectedUploadedFiles = <FFUploadedFile>[];
+
+                          var downloadUrls = <String>[];
+                          try {
+                            selectedUploadedFiles = selectedMedia
+                                .map((m) => FFUploadedFile(
+                                      name: m.storagePath.split('/').last,
+                                      bytes: m.bytes,
+                                      height: m.dimensions?.height,
+                                      width: m.dimensions?.width,
+                                      blurHash: m.blurHash,
+                                    ))
+                                .toList();
+
+                            downloadUrls = await uploadSupabaseStorageFiles(
+                              bucketName: 'fotos',
+                              selectedFiles: selectedMedia,
+                            );
+                          } finally {
+                            _model.isDataUploading = false;
+                          }
+                          if (selectedUploadedFiles.length ==
+                                  selectedMedia.length &&
+                              downloadUrls.length == selectedMedia.length) {
+                            safeSetState(() {
+                              _model.uploadedLocalFile =
+                                  selectedUploadedFiles.first;
+                              _model.uploadedFileUrl = downloadUrls.first;
+                            });
+                          } else {
+                            safeSetState(() {});
+                            return;
+                          }
+                        }
+
+                        if (_model.uploadedFileUrl != '') {
+                          FFAppState().foto = _model.uploadedFileUrl;
+                          safeSetState(() {});
+                        }
+                      },
+                      child: Stack(
+                        alignment: AlignmentDirectional(1.0, 1.0),
+                        children: [
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 20.0, 0.0, 0.0),
+                            child: Image.network(
+                              valueOrDefault<String>(
+                                FFAppState().foto,
+                                'https://hjqqszvninihwpxrknjm.supabase.co/storage/v1/object/public/fotos/imagePlaceHolder.jpeg',
+                              ),
+                              width: 200.0,
+                              height: 200.0,
+                              fit: BoxFit.cover,
+                              errorBuilder: (context, error, stackTrace) =>
+                                  Image.asset(
+                                'assets/images/error_image.jpeg',
+                                width: 200.0,
+                                height: 200.0,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 10.0, 30.0),
+                            child: Icon(
+                              Icons.edit_square,
+                              color: Colors.white,
+                              size: 24.0,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Form(
                       key: _model.formKey,
                       autovalidateMode: AutovalidateMode.disabled,
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             15.0, 20.0, 15.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -228,16 +242,16 @@ class _Signin1WidgetState extends State<Signin1Widget> {
                                       fontFamily: 'Inter',
                                       letterSpacing: 0.0,
                                     ),
-                                hintText: 'Michel',
+                                hintText: 'Nombre...',
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Inter',
-                                      color: const Color(0xFF9CA3AF),
+                                      color: Color(0xFF9CA3AF),
                                       letterSpacing: 0.0,
                                     ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0xFFD1D5DB),
                                     width: 1.0,
                                   ),
@@ -280,7 +294,7 @@ class _Signin1WidgetState extends State<Signin1Widget> {
                                   .asValidator(context),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 15.0, 0.0, 0.0),
                               child: TextFormField(
                                 controller: _model.apellidoTextController,
@@ -292,16 +306,22 @@ class _Signin1WidgetState extends State<Signin1Widget> {
                                 decoration: InputDecoration(
                                   isDense: false,
                                   labelText: 'Apellido',
-                                  hintText: 'Jordan',
+                                  labelStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        letterSpacing: 0.0,
+                                      ),
+                                  hintText: 'Apellido...',
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Inter',
-                                        color: const Color(0xFF9CA3AF),
+                                        color: Color(0xFF9CA3AF),
                                         letterSpacing: 0.0,
                                       ),
                                   enabledBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Color(0xFFD1D5DB),
                                       width: 1.0,
                                     ),
@@ -347,7 +367,7 @@ class _Signin1WidgetState extends State<Signin1Widget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 15.0, 0.0, 0.0),
                               child: TextFormField(
                                 controller: _model.dniTextController,
@@ -359,16 +379,22 @@ class _Signin1WidgetState extends State<Signin1Widget> {
                                 decoration: InputDecoration(
                                   isDense: false,
                                   labelText: 'DNI',
+                                  labelStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        letterSpacing: 0.0,
+                                      ),
                                   hintText: '12345678',
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Inter',
-                                        color: const Color(0xFF9CA3AF),
+                                        color: Color(0xFF9CA3AF),
                                         letterSpacing: 0.0,
                                       ),
                                   enabledBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Color(0xFFD1D5DB),
                                       width: 1.0,
                                     ),
@@ -414,7 +440,7 @@ class _Signin1WidgetState extends State<Signin1Widget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 15.0, 0.0, 0.0),
                               child: TextFormField(
                                 controller: _model.paisResidenciaTextController,
@@ -427,15 +453,21 @@ class _Signin1WidgetState extends State<Signin1Widget> {
                                 decoration: InputDecoration(
                                   isDense: false,
                                   labelText: 'País de residencia',
+                                  labelStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        letterSpacing: 0.0,
+                                      ),
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Inter',
-                                        color: const Color(0xFF9CA3AF),
+                                        color: Color(0xFF9CA3AF),
                                         letterSpacing: 0.0,
                                       ),
                                   enabledBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Color(0xFFD1D5DB),
                                       width: 1.0,
                                     ),
@@ -482,7 +514,7 @@ class _Signin1WidgetState extends State<Signin1Widget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   15.0, 0.0, 15.0, 40.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -490,11 +522,11 @@ class _Signin1WidgetState extends State<Signin1Widget> {
                                   Expanded(
                                     child: Builder(
                                       builder: (context) => Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 20.0, 0.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
-                                            var shouldSetState = false;
+                                            var _shouldSetState = false;
                                             if (_model.formKey.currentState ==
                                                     null ||
                                                 !_model.formKey.currentState!
@@ -508,33 +540,50 @@ class _Signin1WidgetState extends State<Signin1Widget> {
                                                 _model.dniTextController.text,
                                               ),
                                             );
-                                            shouldSetState = true;
+                                            _shouldSetState = true;
                                             if (_model.usuarioexistente !=
                                                     null &&
                                                 (_model.usuarioexistente)!
                                                     .isNotEmpty) {
                                               await showDialog(
                                                 context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title: const Text(
-                                                        'Usuario existente'),
-                                                    content: const Text(
-                                                        'Un usuario ya se registró con este DNI. '),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () =>
-                                                            Navigator.pop(
-                                                                alertDialogContext),
-                                                        child: const Text('Ok'),
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    elevation: 0,
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: GestureDetector(
+                                                      onTap: () {
+                                                        FocusScope.of(
+                                                                dialogContext)
+                                                            .unfocus();
+                                                        FocusManager.instance
+                                                            .primaryFocus
+                                                            ?.unfocus();
+                                                      },
+                                                      child:
+                                                          InformationaldialogoWidget(
+                                                        titulo:
+                                                            'Usuario existente',
+                                                        cuerpo:
+                                                            'Un usuario ya se registró con este DNI. ',
+                                                        buttonstring: 'Ok',
                                                       ),
-                                                    ],
+                                                    ),
                                                   );
                                                 },
                                               );
-                                              if (shouldSetState) {
+
+                                              if (_shouldSetState)
                                                 safeSetState(() {});
-                                              }
                                               return;
                                             }
                                             showDialog(
@@ -546,7 +595,7 @@ class _Signin1WidgetState extends State<Signin1Widget> {
                                                   backgroundColor:
                                                       Colors.transparent,
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                               0.0, 0.0)
                                                           .resolve(
                                                               Directionality.of(
@@ -560,7 +609,7 @@ class _Signin1WidgetState extends State<Signin1Widget> {
                                                           .instance.primaryFocus
                                                           ?.unfocus();
                                                     },
-                                                    child: const Signup2Widget(),
+                                                    child: Signup2Widget(),
                                                   ),
                                                 );
                                               },
@@ -576,7 +625,7 @@ class _Signin1WidgetState extends State<Signin1Widget> {
                                                         .contrasenaRegistro) {
                                                   ScaffoldMessenger.of(context)
                                                       .showSnackBar(
-                                                    const SnackBar(
+                                                    SnackBar(
                                                       content: Text(
                                                         'Las contraseñas no coinciden',
                                                       ),
@@ -604,7 +653,7 @@ class _Signin1WidgetState extends State<Signin1Widget> {
                                             ]);
                                             _model.playerid = await actions
                                                 .getOneSignalPlayerId();
-                                            shouldSetState = true;
+                                            _shouldSetState = true;
                                             await UsuariosTable().insert({
                                               'nombre': _model
                                                   .nombreTextController.text,
@@ -619,35 +668,40 @@ class _Signin1WidgetState extends State<Signin1Widget> {
                                               'foto': FFAppState().foto,
                                               'documento':
                                                   _model.dniTextController.text,
-                                              'player_id': _model.playerid,
+                                              'player_id': functions
+                                                  .returnarrayfromstring(
+                                                      _model.playerid),
                                             });
                                             unawaited(
                                               () async {
                                                 Navigator.pop(context);
                                               }(),
                                             );
+                                            FFAppState().PaginaSeleccionada =
+                                                'Home';
+                                            FFAppState().modovendedor = false;
+                                            FFAppState().update(() {});
 
                                             context.goNamedAuth(
-                                              'Home',
+                                              HomeWidget.routeName,
                                               context.mounted,
                                               ignoreRedirect: true,
                                             );
 
-                                            if (shouldSetState) {
+                                            if (_shouldSetState)
                                               safeSetState(() {});
-                                            }
                                           },
                                           text: 'Guardar',
                                           options: FFButtonOptions(
                                             width: double.infinity,
                                             height: 45.0,
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 0.0, 16.0, 0.0),
                                             iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
-                                            color: const Color(0xFF1C2A3A),
+                                            color: Color(0xFF1C2A3A),
                                             textStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .titleSmall
@@ -673,8 +727,8 @@ class _Signin1WidgetState extends State<Signin1Widget> {
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

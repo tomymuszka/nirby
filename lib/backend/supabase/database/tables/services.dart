@@ -9,7 +9,7 @@ class ServicesTable extends SupabaseTable<ServicesRow> {
 }
 
 class ServicesRow extends SupabaseDataRow {
-  ServicesRow(super.data);
+  ServicesRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => ServicesTable();

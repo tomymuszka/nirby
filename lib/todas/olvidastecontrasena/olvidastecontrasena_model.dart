@@ -1,4 +1,6 @@
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/index.dart';
 import 'olvidastecontrasena_widget.dart' show OlvidastecontrasenaWidget;
 import 'package:flutter/material.dart';
 
@@ -10,6 +12,8 @@ class OlvidastecontrasenaModel
   FocusNode? emailAddressFocusNode;
   TextEditingController? emailAddressTextController;
   String? Function(BuildContext, String?)? emailAddressTextControllerValidator;
+  // Stores action output result for [Backend Call - Query Rows] action in Button-Login widget.
+  List<UsuariosRow>? email;
 
   @override
   void initState(BuildContext context) {}

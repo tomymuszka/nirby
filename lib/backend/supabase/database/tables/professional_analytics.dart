@@ -11,7 +11,7 @@ class ProfessionalAnalyticsTable
 }
 
 class ProfessionalAnalyticsRow extends SupabaseDataRow {
-  ProfessionalAnalyticsRow(super.data);
+  ProfessionalAnalyticsRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => ProfessionalAnalyticsTable();

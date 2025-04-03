@@ -1,14 +1,21 @@
 import '/backend/supabase/supabase.dart';
+import '/components/confirmdialog_widget.dart';
+import '/components/informationaldialogo_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/actions/actions.dart' as action_blocks;
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'ajustes_globales_model.dart';
 export 'ajustes_globales_model.dart';
 
 class AjustesGlobalesWidget extends StatefulWidget {
   const AjustesGlobalesWidget({super.key});
+
+  static String routeName = 'ajustes_globales';
+  static String routePath = '/ajustesGlobales';
 
   @override
   State<AjustesGlobalesWidget> createState() => _AjustesGlobalesWidgetState();
@@ -23,6 +30,11 @@ class _AjustesGlobalesWidgetState extends State<AjustesGlobalesWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AjustesGlobalesModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await action_blocks.checkConnection(context);
+    });
 
     _model.textFieldFocusNode1 ??= FocusNode();
 
@@ -58,7 +70,7 @@ class _AjustesGlobalesWidgetState extends State<AjustesGlobalesWidget> {
                 height: 50.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    FlutterFlowTheme.of(context).primaryBackground,
                   ),
                 ),
               ),
@@ -83,12 +95,12 @@ class _AjustesGlobalesWidgetState extends State<AjustesGlobalesWidget> {
             body: SafeArea(
               top: true,
               child: Align(
-                alignment: const AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Container(
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxWidth: 600.0,
                   ),
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
@@ -99,7 +111,7 @@ class _AjustesGlobalesWidgetState extends State<AjustesGlobalesWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 40.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -109,7 +121,7 @@ class _AjustesGlobalesWidgetState extends State<AjustesGlobalesWidget> {
                                     borderColor: Colors.transparent,
                                     borderRadius: 8.0,
                                     buttonSize: 40.0,
-                                    icon: const Icon(
+                                    icon: Icon(
                                       Icons.arrow_back,
                                       color: Color(0xFF374151),
                                       size: 24.0,
@@ -119,7 +131,7 @@ class _AjustesGlobalesWidgetState extends State<AjustesGlobalesWidget> {
                                     },
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         25.0, 0.0, 0.0, 0.0),
                                     child: Text(
                                       'Ajustes globales',
@@ -128,7 +140,7 @@ class _AjustesGlobalesWidgetState extends State<AjustesGlobalesWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Inter',
-                                            color: const Color(0xFF212121),
+                                            color: Color(0xFF212121),
                                             fontSize: 24.0,
                                             letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
@@ -139,7 +151,7 @@ class _AjustesGlobalesWidgetState extends State<AjustesGlobalesWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   10.0, 40.0, 10.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -150,7 +162,7 @@ class _AjustesGlobalesWidgetState extends State<AjustesGlobalesWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Inter',
-                                          color: const Color(0xFF424242),
+                                          color: Color(0xFF424242),
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
@@ -160,9 +172,9 @@ class _AjustesGlobalesWidgetState extends State<AjustesGlobalesWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 10.0, 20.0, 0.0),
-                              child: SizedBox(
+                              child: Container(
                                 width: double.infinity,
                                 child: TextFormField(
                                   controller: _model.textController1 ??=
@@ -182,11 +194,11 @@ class _AjustesGlobalesWidgetState extends State<AjustesGlobalesWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Inter',
-                                          color: const Color(0xFF9CA3AF),
+                                          color: Color(0xFF9CA3AF),
                                           letterSpacing: 0.0,
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0xFFD1D5DB),
                                         width: 1.0,
                                       ),
@@ -224,7 +236,7 @@ class _AjustesGlobalesWidgetState extends State<AjustesGlobalesWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Inter',
-                                        color: const Color(0xFF212121),
+                                        color: Color(0xFF212121),
                                         letterSpacing: 0.0,
                                       ),
                                   keyboardType:
@@ -238,7 +250,7 @@ class _AjustesGlobalesWidgetState extends State<AjustesGlobalesWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   10.0, 40.0, 10.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -249,7 +261,7 @@ class _AjustesGlobalesWidgetState extends State<AjustesGlobalesWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Inter',
-                                          color: const Color(0xFF424242),
+                                          color: Color(0xFF424242),
                                           fontSize: 16.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
@@ -259,9 +271,9 @@ class _AjustesGlobalesWidgetState extends State<AjustesGlobalesWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 10.0, 20.0, 0.0),
-                              child: SizedBox(
+                              child: Container(
                                 width: double.infinity,
                                 child: TextFormField(
                                   controller: _model.textController2 ??=
@@ -281,11 +293,11 @@ class _AjustesGlobalesWidgetState extends State<AjustesGlobalesWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Inter',
-                                          color: const Color(0xFF9CA3AF),
+                                          color: Color(0xFF9CA3AF),
                                           letterSpacing: 0.0,
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: const BorderSide(
+                                      borderSide: BorderSide(
                                         color: Color(0xFFD1D5DB),
                                         width: 1.0,
                                       ),
@@ -323,7 +335,7 @@ class _AjustesGlobalesWidgetState extends State<AjustesGlobalesWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Inter',
-                                        color: const Color(0xFF212121),
+                                        color: Color(0xFF212121),
                                         letterSpacing: 0.0,
                                       ),
                                   keyboardType:
@@ -340,93 +352,117 @@ class _AjustesGlobalesWidgetState extends State<AjustesGlobalesWidget> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             20.0, 80.0, 20.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Expanded(
-                              child: FFButtonWidget(
-                                onPressed: () async {
-                                  if (_model.formKey.currentState == null ||
-                                      !_model.formKey.currentState!
-                                          .validate()) {
-                                    return;
-                                  }
-                                  var confirmDialogResponse = await showDialog<
-                                          bool>(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return AlertDialog(
-                                            title: const Text('Guardar cambios'),
-                                            content: const Text(
-                                                'Estas seguro que deseas guardar estos cambios? Se actualizara el valor de la suscripción para todos los usuarios?'),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, false),
-                                                child: const Text('No'),
-                                              ),
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext, true),
-                                                child: const Text('Si, Actualizar'),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                      ) ??
-                                      false;
-                                  if (confirmDialogResponse) {
-                                    await GlobalesTable().update(
-                                      data: {
-                                        'suscripcion_mensual': double.tryParse(
-                                            _model.textController1.text),
-                                        'suscripcion_anual': double.tryParse(
-                                            _model.textController2.text),
-                                      },
-                                      matchingRows: (rows) => rows.eqOrNull(
-                                        'id',
-                                        1,
-                                      ),
-                                    );
+                              child: Builder(
+                                builder: (context) => FFButtonWidget(
+                                  onPressed: () async {
+                                    if (_model.formKey.currentState == null ||
+                                        !_model.formKey.currentState!
+                                            .validate()) {
+                                      return;
+                                    }
                                     await showDialog(
                                       context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title: const Text('Cambios guardados'),
-                                          content: const Text(
-                                              'Los cambios fueron gurdados con éxito'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: const Text('Ok'),
+                                      builder: (dialogContext) {
+                                        return Dialog(
+                                          elevation: 0,
+                                          insetPadding: EdgeInsets.zero,
+                                          backgroundColor: Colors.transparent,
+                                          alignment: AlignmentDirectional(
+                                                  0.0, 0.0)
+                                              .resolve(
+                                                  Directionality.of(context)),
+                                          child: GestureDetector(
+                                            onTap: () {
+                                              FocusScope.of(dialogContext)
+                                                  .unfocus();
+                                              FocusManager.instance.primaryFocus
+                                                  ?.unfocus();
+                                            },
+                                            child: ConfirmdialogWidget(
+                                              titulo: 'Guardar cambios',
+                                              cuerpo:
+                                                  'Estas seguro que deseas guardar estos cambios? Se actualizara el valor de la suscripción para todos los usuarios?',
+                                              botonrechazar: 'No',
+                                              botonconfirmar: 'Si, guardar',
                                             ),
-                                          ],
+                                          ),
                                         );
                                       },
-                                    );
-                                  }
-                                },
-                                text: 'Guardar cambios',
-                                options: FFButtonOptions(
-                                  height: 40.0,
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 0.0, 16.0, 0.0),
-                                  iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: const Color(0xFF1976D2),
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Inter',
-                                        color: Colors.white,
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                  elevation: 0.0,
-                                  borderRadius: BorderRadius.circular(8.0),
+                                    ).then((value) => safeSetState(
+                                        () => _model.confirmacion = value));
+
+                                    if (_model.confirmacion == true) {
+                                      await GlobalesTable().update(
+                                        data: {
+                                          'suscripcion_mensual':
+                                              double.tryParse(
+                                                  _model.textController1.text),
+                                          'suscripcion_anual': double.tryParse(
+                                              _model.textController2.text),
+                                        },
+                                        matchingRows: (rows) => rows.eqOrNull(
+                                          'id',
+                                          1,
+                                        ),
+                                      );
+                                      await showDialog(
+                                        context: context,
+                                        builder: (dialogContext) {
+                                          return Dialog(
+                                            elevation: 0,
+                                            insetPadding: EdgeInsets.zero,
+                                            backgroundColor: Colors.transparent,
+                                            alignment: AlignmentDirectional(
+                                                    0.0, 0.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                FocusScope.of(dialogContext)
+                                                    .unfocus();
+                                                FocusManager
+                                                    .instance.primaryFocus
+                                                    ?.unfocus();
+                                              },
+                                              child: InformationaldialogoWidget(
+                                                titulo: 'Cambios guardados',
+                                                cuerpo:
+                                                    'Los cambios fueron gurdados con éxito',
+                                                buttonstring: 'Ok',
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    }
+
+                                    safeSetState(() {});
+                                  },
+                                  text: 'Guardar cambios',
+                                  options: FFButtonOptions(
+                                    height: 40.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 0.0, 16.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color: Color(0xFF1976D2),
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          color: Colors.white,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.w500,
+                                        ),
+                                    elevation: 0.0,
+                                    borderRadius: BorderRadius.circular(8.0),
+                                  ),
                                 ),
                               ),
                             ),

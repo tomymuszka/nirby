@@ -1,11 +1,16 @@
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/actions/actions.dart' as action_blocks;
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'congrats_model.dart';
 export 'congrats_model.dart';
 
 class CongratsWidget extends StatefulWidget {
   const CongratsWidget({super.key});
+
+  static String routeName = 'congrats';
+  static String routePath = '/congrats';
 
   @override
   State<CongratsWidget> createState() => _CongratsWidgetState();
@@ -20,6 +25,11 @@ class _CongratsWidgetState extends State<CongratsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CongratsModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await action_blocks.checkConnection(context);
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -42,14 +52,14 @@ class _CongratsWidgetState extends State<CongratsWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: Align(
-          alignment: const AlignmentDirectional(0.0, -1.0),
+          alignment: AlignmentDirectional(0.0, -1.0),
           child: Container(
-            constraints: const BoxConstraints(
+            constraints: BoxConstraints(
               maxWidth: 600.0,
             ),
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(20.0, 100.0, 20.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(20.0, 100.0, 20.0, 0.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -69,7 +79,7 @@ class _CongratsWidgetState extends State<CongratsWidget> {
                         borderRadius: BorderRadius.circular(100.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             32.0, 32.0, 32.0, 32.0),
                         child: Image.asset(
                           'assets/images/Diseo_sin_ttulo__1_-removebg-preview.png',
@@ -95,7 +105,7 @@ class _CongratsWidgetState extends State<CongratsWidget> {
                                 ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 32.0, 0.0, 32.0),
                         child: Text(
                           'Tu contraseña ha sido actualizada exitosamente.',
@@ -111,7 +121,7 @@ class _CongratsWidgetState extends State<CongratsWidget> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             10.0, 32.0, 10.0, 32.0),
                         child: Text(
                           'Ya podés volver a nuestra app y disfrutar de todos los servicios.',
@@ -127,9 +137,9 @@ class _CongratsWidgetState extends State<CongratsWidget> {
                               ),
                         ),
                       ),
-                    ].divide(const SizedBox(height: 16.0)),
+                    ].divide(SizedBox(height: 16.0)),
                   ),
-                ].divide(const SizedBox(height: 24.0)),
+                ].divide(SizedBox(height: 24.0)),
               ),
             ),
           ),

@@ -1,12 +1,10 @@
-import '/app_cliente/orderby/orderby_widget.dart';
-import '/backend/supabase/supabase.dart';
+import '/app_cliente/servicios/orderby/orderby_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:provider/provider.dart';
 import 'servicios_screen_model.dart';
 export 'servicios_screen_model.dart';
 
@@ -18,6 +16,9 @@ class ServiciosScreenWidget extends StatefulWidget {
   });
 
   final int? categoriaid;
+
+  static String routeName = 'serviciosScreen';
+  static String routePath = '/serviciosScreen';
 
   @override
   State<ServiciosScreenWidget> createState() => _ServiciosScreenWidgetState();
@@ -45,8 +46,6 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).unfocus();
@@ -62,8 +61,8 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
             borderColor: Colors.transparent,
             borderRadius: 8.0,
             buttonSize: 40.0,
-            fillColor: const Color(0x004B39EF),
-            icon: const Icon(
+            fillColor: Color(0x004B39EF),
+            icon: Icon(
               Icons.arrow_back,
               color: Color(0xFF374151),
               size: 24.0,
@@ -77,25 +76,25 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
             textAlign: TextAlign.center,
             style: FlutterFlowTheme.of(context).bodyMedium.override(
                   fontFamily: 'Inter',
-                  color: const Color(0xFF374151),
+                  color: Color(0xFF374151),
                   fontSize: 20.0,
                   letterSpacing: 0.0,
                   fontWeight: FontWeight.w600,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: const AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
-              constraints: const BoxConstraints(
+              constraints: BoxConstraints(
                 maxWidth: 600.0,
               ),
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 children: [
@@ -104,67 +103,23 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               15.0, 25.0, 15.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              FutureBuilder<List<ServiceDetailsRow>>(
-                                future: ServiceDetailsTable().queryRows(
-                                  queryFn: (q) => q
-                                      .eqOrNull(
-                                        'active',
-                                        true,
-                                      )
-                                      .containsOrNull(
-                                        'categoria',
-                                        '{${widget.categoriaid}}',
-                                      )
-                                      .overlapsOrNull(
-                                        'coverage_areas',
-                                        FFAppState().filtrozonacobertura,
-                                      )
-                                      .overlapsOrNull(
-                                        'budget_no_charge',
-                                        FFAppState().presupuesto,
-                                      )
-                                      .order('created_at', ascending: true),
-                                ),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: CircularProgressIndicator(
-                                          valueColor:
-                                              AlwaysStoppedAnimation<Color>(
-                                            FlutterFlowTheme.of(context)
-                                                .primary,
-                                          ),
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  List<ServiceDetailsRow>
-                                      textServiceDetailsRowList =
-                                      snapshot.data!;
-
-                                  return Text(
-                                    '532 encontrados',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Inter',
-                                          color: const Color(0xFF1F2A37),
-                                          fontSize: 16.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                  );
-                                },
+                              Text(
+                                '532 encontrados',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Inter',
+                                      color: Color(0xFF1F2A37),
+                                      fontSize: 16.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.bold,
+                                    ),
                               ),
                               Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -190,7 +145,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                             child: Padding(
                                               padding: MediaQuery.viewInsetsOf(
                                                   context),
-                                              child: SizedBox(
+                                              child: Container(
                                                 height: 600.0,
                                                 child: OrderbyWidget(
                                                   valorInicial: _model.orderby,
@@ -212,7 +167,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 7.0, 0.0),
                                           child: Text(
                                             'Filtros',
@@ -220,12 +175,12 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Inter',
-                                                  color: const Color(0xFF6B7280),
+                                                  color: Color(0xFF6B7280),
                                                   letterSpacing: 0.0,
                                                 ),
                                           ),
                                         ),
-                                        const FaIcon(
+                                        FaIcon(
                                           FontAwesomeIcons.sortAmountUp,
                                           color: Color(0xFF6B7280),
                                           size: 18.0,
@@ -244,7 +199,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                 FlutterFlowTheme.of(context).primaryBackground,
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 15.0, 10.0, 15.0, 0.0),
                             child: ListView(
                               padding: EdgeInsets.zero,
@@ -252,7 +207,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                               scrollDirection: Axis.vertical,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 8.0, 0.0, 0.0),
                                   child: Material(
                                     color: Colors.transparent,
@@ -270,7 +225,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                             BorderRadius.circular(12.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             8.0, 8.0, 8.0, 8.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -296,7 +251,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                             Expanded(
                                               flex: 2,
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         15.0, 0.0, 0.0, 0.0),
                                                 child: Column(
@@ -316,7 +271,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -331,7 +286,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Inter',
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFF1F2A37),
                                                                     fontSize:
                                                                         14.0,
@@ -344,7 +299,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                             ),
                                                           ),
                                                         ),
-                                                        const Icon(
+                                                        Icon(
                                                           Icons.verified,
                                                           color:
                                                               Color(0xFF52ABFF),
@@ -352,7 +307,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                         ),
                                                       ],
                                                     ),
-                                                    const Divider(
+                                                    Divider(
                                                       thickness: 1.0,
                                                       color: Color(0xFFE5E7EB),
                                                     ),
@@ -369,7 +324,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF4B5563),
                                                                   fontSize:
                                                                       14.0,
@@ -387,7 +342,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
-                                                        const Icon(
+                                                        Icon(
                                                           Icons
                                                               .location_on_outlined,
                                                           color:
@@ -403,7 +358,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF4B5563),
                                                                   fontSize:
                                                                       10.0,
@@ -421,7 +376,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
-                                                        const Icon(
+                                                        Icon(
                                                           Icons.star,
                                                           color:
                                                               Color(0xFFFEB052),
@@ -435,7 +390,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Inter',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF4B5563),
                                                                 fontSize: 14.0,
                                                                 letterSpacing:
@@ -445,7 +400,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                         .w500,
                                                               ),
                                                         ),
-                                                        const SizedBox(
+                                                        SizedBox(
                                                           height: 13.0,
                                                           child:
                                                               VerticalDivider(
@@ -463,7 +418,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF6B7280),
                                                                   fontSize:
                                                                       12.0,
@@ -485,7 +440,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 8.0, 0.0, 0.0),
                                   child: Material(
                                     color: Colors.transparent,
@@ -503,7 +458,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                             BorderRadius.circular(12.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             8.0, 8.0, 8.0, 8.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -529,7 +484,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                             Expanded(
                                               flex: 2,
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         15.0, 0.0, 0.0, 0.0),
                                                 child: Column(
@@ -549,7 +504,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -564,7 +519,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Inter',
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFF1F2A37),
                                                                     fontSize:
                                                                         14.0,
@@ -577,7 +532,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                             ),
                                                           ),
                                                         ),
-                                                        const Icon(
+                                                        Icon(
                                                           Icons.verified,
                                                           color:
                                                               Color(0xFF52ABFF),
@@ -585,7 +540,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                         ),
                                                       ],
                                                     ),
-                                                    const Divider(
+                                                    Divider(
                                                       thickness: 1.0,
                                                       color: Color(0xFFE5E7EB),
                                                     ),
@@ -602,7 +557,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF4B5563),
                                                                   fontSize:
                                                                       14.0,
@@ -620,7 +575,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
-                                                        const Icon(
+                                                        Icon(
                                                           Icons
                                                               .location_on_outlined,
                                                           color:
@@ -636,7 +591,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF4B5563),
                                                                   fontSize:
                                                                       10.0,
@@ -654,7 +609,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
-                                                        const Icon(
+                                                        Icon(
                                                           Icons.star,
                                                           color:
                                                               Color(0xFFFEB052),
@@ -668,7 +623,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Inter',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF4B5563),
                                                                 fontSize: 14.0,
                                                                 letterSpacing:
@@ -678,7 +633,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                         .w500,
                                                               ),
                                                         ),
-                                                        const SizedBox(
+                                                        SizedBox(
                                                           height: 13.0,
                                                           child:
                                                               VerticalDivider(
@@ -696,7 +651,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF6B7280),
                                                                   fontSize:
                                                                       12.0,
@@ -718,7 +673,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 8.0, 0.0, 0.0),
                                   child: Material(
                                     color: Colors.transparent,
@@ -736,7 +691,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                             BorderRadius.circular(12.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             8.0, 8.0, 8.0, 8.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -762,7 +717,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                             Expanded(
                                               flex: 2,
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         15.0, 0.0, 0.0, 0.0),
                                                 child: Column(
@@ -782,7 +737,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -797,7 +752,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Inter',
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFF1F2A37),
                                                                     fontSize:
                                                                         14.0,
@@ -810,7 +765,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                             ),
                                                           ),
                                                         ),
-                                                        const Icon(
+                                                        Icon(
                                                           Icons.verified,
                                                           color:
                                                               Color(0xFF52ABFF),
@@ -818,7 +773,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                         ),
                                                       ],
                                                     ),
-                                                    const Divider(
+                                                    Divider(
                                                       thickness: 1.0,
                                                       color: Color(0xFFE5E7EB),
                                                     ),
@@ -835,7 +790,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF4B5563),
                                                                   fontSize:
                                                                       14.0,
@@ -853,7 +808,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
-                                                        const Icon(
+                                                        Icon(
                                                           Icons
                                                               .location_on_outlined,
                                                           color:
@@ -869,7 +824,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF4B5563),
                                                                   fontSize:
                                                                       10.0,
@@ -887,7 +842,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
-                                                        const Icon(
+                                                        Icon(
                                                           Icons.star,
                                                           color:
                                                               Color(0xFFFEB052),
@@ -901,7 +856,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Inter',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF4B5563),
                                                                 fontSize: 14.0,
                                                                 letterSpacing:
@@ -911,7 +866,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                         .w500,
                                                               ),
                                                         ),
-                                                        const SizedBox(
+                                                        SizedBox(
                                                           height: 13.0,
                                                           child:
                                                               VerticalDivider(
@@ -929,7 +884,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF6B7280),
                                                                   fontSize:
                                                                       12.0,
@@ -951,7 +906,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 8.0, 0.0, 0.0),
                                   child: Material(
                                     color: Colors.transparent,
@@ -969,7 +924,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                             BorderRadius.circular(12.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             8.0, 8.0, 8.0, 8.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -995,7 +950,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                             Expanded(
                                               flex: 2,
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         15.0, 0.0, 0.0, 0.0),
                                                 child: Column(
@@ -1015,7 +970,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -1030,7 +985,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Inter',
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFF1F2A37),
                                                                     fontSize:
                                                                         14.0,
@@ -1045,7 +1000,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                         ),
                                                       ],
                                                     ),
-                                                    const Divider(
+                                                    Divider(
                                                       thickness: 1.0,
                                                       color: Color(0xFFE5E7EB),
                                                     ),
@@ -1062,7 +1017,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF4B5563),
                                                                   fontSize:
                                                                       14.0,
@@ -1080,7 +1035,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
-                                                        const Icon(
+                                                        Icon(
                                                           Icons
                                                               .location_on_outlined,
                                                           color:
@@ -1096,7 +1051,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF4B5563),
                                                                   fontSize:
                                                                       10.0,
@@ -1114,7 +1069,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
-                                                        const Icon(
+                                                        Icon(
                                                           Icons.star,
                                                           color:
                                                               Color(0xFFFEB052),
@@ -1128,7 +1083,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Inter',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF4B5563),
                                                                 fontSize: 14.0,
                                                                 letterSpacing:
@@ -1138,7 +1093,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                         .w500,
                                                               ),
                                                         ),
-                                                        const SizedBox(
+                                                        SizedBox(
                                                           height: 13.0,
                                                           child:
                                                               VerticalDivider(
@@ -1156,7 +1111,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF6B7280),
                                                                   fontSize:
                                                                       12.0,
@@ -1178,7 +1133,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 8.0, 0.0, 0.0),
                                   child: Material(
                                     color: Colors.transparent,
@@ -1196,7 +1151,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                             BorderRadius.circular(12.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             8.0, 8.0, 8.0, 8.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -1222,7 +1177,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                             Expanded(
                                               flex: 2,
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         15.0, 0.0, 0.0, 0.0),
                                                 child: Column(
@@ -1242,7 +1197,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -1257,7 +1212,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Inter',
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFF1F2A37),
                                                                     fontSize:
                                                                         14.0,
@@ -1270,7 +1225,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                             ),
                                                           ),
                                                         ),
-                                                        const Icon(
+                                                        Icon(
                                                           Icons.verified,
                                                           color:
                                                               Color(0xFF52ABFF),
@@ -1278,7 +1233,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                         ),
                                                       ],
                                                     ),
-                                                    const Divider(
+                                                    Divider(
                                                       thickness: 1.0,
                                                       color: Color(0xFFE5E7EB),
                                                     ),
@@ -1295,7 +1250,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF4B5563),
                                                                   fontSize:
                                                                       14.0,
@@ -1313,7 +1268,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
-                                                        const Icon(
+                                                        Icon(
                                                           Icons
                                                               .location_on_outlined,
                                                           color:
@@ -1329,7 +1284,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF4B5563),
                                                                   fontSize:
                                                                       10.0,
@@ -1347,7 +1302,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
-                                                        const Icon(
+                                                        Icon(
                                                           Icons.star,
                                                           color:
                                                               Color(0xFFFEB052),
@@ -1361,7 +1316,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Inter',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF4B5563),
                                                                 fontSize: 14.0,
                                                                 letterSpacing:
@@ -1371,7 +1326,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                         .w500,
                                                               ),
                                                         ),
-                                                        const SizedBox(
+                                                        SizedBox(
                                                           height: 13.0,
                                                           child:
                                                               VerticalDivider(
@@ -1389,7 +1344,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF6B7280),
                                                                   fontSize:
                                                                       12.0,
@@ -1411,7 +1366,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 8.0, 0.0, 0.0),
                                   child: Material(
                                     color: Colors.transparent,
@@ -1429,7 +1384,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                             BorderRadius.circular(12.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             8.0, 8.0, 8.0, 8.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -1455,7 +1410,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                             Expanded(
                                               flex: 2,
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         15.0, 0.0, 0.0, 0.0),
                                                 child: Column(
@@ -1475,7 +1430,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                         Expanded(
                                                           child: Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         0.0,
@@ -1490,7 +1445,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                   .override(
                                                                     fontFamily:
                                                                         'Inter',
-                                                                    color: const Color(
+                                                                    color: Color(
                                                                         0xFF1F2A37),
                                                                     fontSize:
                                                                         14.0,
@@ -1505,7 +1460,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                         ),
                                                       ],
                                                     ),
-                                                    const Divider(
+                                                    Divider(
                                                       thickness: 1.0,
                                                       color: Color(0xFFE5E7EB),
                                                     ),
@@ -1522,7 +1477,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF4B5563),
                                                                   fontSize:
                                                                       14.0,
@@ -1540,7 +1495,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
-                                                        const Icon(
+                                                        Icon(
                                                           Icons
                                                               .location_on_outlined,
                                                           color:
@@ -1556,7 +1511,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF4B5563),
                                                                   fontSize:
                                                                       10.0,
@@ -1574,7 +1529,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
-                                                        const Icon(
+                                                        Icon(
                                                           Icons.star,
                                                           color:
                                                               Color(0xFFFEB052),
@@ -1588,7 +1543,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Inter',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF4B5563),
                                                                 fontSize: 14.0,
                                                                 letterSpacing:
@@ -1598,7 +1553,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                         .w500,
                                                               ),
                                                         ),
-                                                        const SizedBox(
+                                                        SizedBox(
                                                           height: 13.0,
                                                           child:
                                                               VerticalDivider(
@@ -1616,7 +1571,7 @@ class _ServiciosScreenWidgetState extends State<ServiciosScreenWidget> {
                                                                 .override(
                                                                   fontFamily:
                                                                       'Inter',
-                                                                  color: const Color(
+                                                                  color: Color(
                                                                       0xFF6B7280),
                                                                   fontSize:
                                                                       12.0,

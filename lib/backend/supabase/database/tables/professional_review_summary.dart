@@ -11,7 +11,7 @@ class ProfessionalReviewSummaryTable
 }
 
 class ProfessionalReviewSummaryRow extends SupabaseDataRow {
-  ProfessionalReviewSummaryRow(super.data);
+  ProfessionalReviewSummaryRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => ProfessionalReviewSummaryTable();

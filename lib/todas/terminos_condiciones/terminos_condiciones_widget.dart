@@ -1,13 +1,18 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/actions/actions.dart' as action_blocks;
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'terminos_condiciones_model.dart';
 export 'terminos_condiciones_model.dart';
 
 /// Pagina de los terminos y condiciones
 class TerminosCondicionesWidget extends StatefulWidget {
   const TerminosCondicionesWidget({super.key});
+
+  static String routeName = 'terminos_condiciones';
+  static String routePath = '/terminosCondiciones';
 
   @override
   State<TerminosCondicionesWidget> createState() =>
@@ -23,6 +28,11 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TerminosCondicionesModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await action_blocks.checkConnection(context);
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -60,7 +70,7 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                     ),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 0.0, 10.0),
+                          EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 0.0, 10.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -70,8 +80,8 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                               FlutterFlowIconButton(
                                 borderRadius: 8.0,
                                 buttonSize: 40.0,
-                                fillColor: const Color(0x004B39EF),
-                                icon: const Icon(
+                                fillColor: Color(0x004B39EF),
+                                icon: Icon(
                                   Icons.arrow_back,
                                   color: Color(0xFF494949),
                                   size: 24.0,
@@ -83,7 +93,7 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                             ],
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -95,7 +105,7 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Inter',
-                                          color: const Color(0xFF494949),
+                                          color: Color(0xFF494949),
                                           fontSize: 24.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.bold,
@@ -106,7 +116,7 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 10.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -117,7 +127,7 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Inter',
-                                        color: const Color(0xFF7C7C7C),
+                                        color: Color(0xFF7C7C7C),
                                         letterSpacing: 0.0,
                                       ),
                                 ),
@@ -131,30 +141,32 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
-                            'Aceptación de los Términos',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Lato',
-                                  color: const Color(0xFF494949),
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                          Flexible(
+                            child: Text(
+                              'Aceptación de los Términos',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lato',
+                                    color: Color(0xFF494949),
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
                           ),
                         ],
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -165,7 +177,7 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Lato',
-                                      color: const Color(0xFF494949),
+                                      color: Color(0xFF494949),
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
@@ -180,30 +192,32 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
-                            'Descripción del Servicio',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Lato',
-                                  color: const Color(0xFF494949),
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                          Flexible(
+                            child: Text(
+                              'Descripción del Servicio',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lato',
+                                    color: Color(0xFF494949),
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
                           ),
                         ],
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -214,7 +228,7 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Lato',
-                                      color: const Color(0xFF494949),
+                                      color: Color(0xFF494949),
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
@@ -229,30 +243,32 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
-                            'Registro y Uso de la Cuenta',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Lato',
-                                  color: const Color(0xFF494949),
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                          Flexible(
+                            child: Text(
+                              'Registro y Uso de la Cuenta',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lato',
+                                    color: Color(0xFF494949),
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
                           ),
                         ],
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -263,7 +279,7 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Lato',
-                                      color: const Color(0xFF494949),
+                                      color: Color(0xFF494949),
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
@@ -278,30 +294,32 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
-                            'Modelo de Suscripción',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Lato',
-                                  color: const Color(0xFF494949),
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                          Flexible(
+                            child: Text(
+                              'Modelo de Suscripción',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lato',
+                                    color: Color(0xFF494949),
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
                           ),
                         ],
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -312,7 +330,7 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Lato',
-                                      color: const Color(0xFF494949),
+                                      color: Color(0xFF494949),
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
@@ -327,30 +345,32 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
-                            'Conducta del Usuario',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Lato',
-                                  color: const Color(0xFF494949),
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                          Flexible(
+                            child: Text(
+                              'Conducta del Usuario',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lato',
+                                    color: Color(0xFF494949),
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
                           ),
                         ],
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -361,7 +381,7 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Lato',
-                                      color: const Color(0xFF494949),
+                                      color: Color(0xFF494949),
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
@@ -376,30 +396,32 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
-                            'Propiedad Intelectual',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Lato',
-                                  color: const Color(0xFF494949),
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                          Flexible(
+                            child: Text(
+                              'Propiedad Intelectual',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lato',
+                                    color: Color(0xFF494949),
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
                           ),
                         ],
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -410,7 +432,7 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Lato',
-                                      color: const Color(0xFF494949),
+                                      color: Color(0xFF494949),
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
@@ -425,30 +447,32 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
-                            'Recopilación y Uso de Datos',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Lato',
-                                  color: const Color(0xFF494949),
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                          Flexible(
+                            child: Text(
+                              'Recopilación y Uso de Datos',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lato',
+                                    color: Color(0xFF494949),
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
                           ),
                         ],
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -459,7 +483,7 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Lato',
-                                      color: const Color(0xFF494949),
+                                      color: Color(0xFF494949),
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
@@ -474,30 +498,32 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
-                            'Feedback de los Usuarios',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Lato',
-                                  color: const Color(0xFF494949),
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                          Flexible(
+                            child: Text(
+                              'Feedback de los Usuarios',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lato',
+                                    color: Color(0xFF494949),
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
                           ),
                         ],
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -508,7 +534,7 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Lato',
-                                      color: const Color(0xFF494949),
+                                      color: Color(0xFF494949),
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
@@ -523,30 +549,32 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
-                            'Responsabilidad y Exenciones',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Lato',
-                                  color: const Color(0xFF494949),
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                          Flexible(
+                            child: Text(
+                              'Responsabilidad y Exenciones',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lato',
+                                    color: Color(0xFF494949),
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
                           ),
                         ],
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -557,7 +585,7 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Lato',
-                                      color: const Color(0xFF494949),
+                                      color: Color(0xFF494949),
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
@@ -572,30 +600,32 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
-                            'Soporte Técnico',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Lato',
-                                  color: const Color(0xFF494949),
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                          Flexible(
+                            child: Text(
+                              'Soporte Técnico',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lato',
+                                    color: Color(0xFF494949),
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
                           ),
                         ],
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -606,7 +636,7 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Lato',
-                                      color: const Color(0xFF494949),
+                                      color: Color(0xFF494949),
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
@@ -621,30 +651,32 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
-                            'Integraciones Externas',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Lato',
-                                  color: const Color(0xFF494949),
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                          Flexible(
+                            child: Text(
+                              'Integraciones Externas',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lato',
+                                    color: Color(0xFF494949),
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
                           ),
                         ],
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -655,7 +687,7 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Lato',
-                                      color: const Color(0xFF494949),
+                                      color: Color(0xFF494949),
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
@@ -670,30 +702,32 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
-                            'Promociones y Sorteos',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Lato',
-                                  color: const Color(0xFF494949),
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                          Flexible(
+                            child: Text(
+                              'Promociones y Sorteos',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lato',
+                                    color: Color(0xFF494949),
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
                           ),
                         ],
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -704,7 +738,7 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Lato',
-                                      color: const Color(0xFF494949),
+                                      color: Color(0xFF494949),
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
@@ -719,30 +753,32 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
-                            'Cambios en los Términos',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Lato',
-                                  color: const Color(0xFF494949),
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                          Flexible(
+                            child: Text(
+                              'Cambios en los Términos',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lato',
+                                    color: Color(0xFF494949),
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
                           ),
                         ],
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -753,7 +789,7 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Lato',
-                                      color: const Color(0xFF494949),
+                                      color: Color(0xFF494949),
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
@@ -768,30 +804,32 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
-                            'Jurisdicción',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Lato',
-                                  color: const Color(0xFF494949),
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                          Flexible(
+                            child: Text(
+                              'Jurisdicción',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lato',
+                                    color: Color(0xFF494949),
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
                           ),
                         ],
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -802,7 +840,7 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Lato',
-                                      color: const Color(0xFF494949),
+                                      color: Color(0xFF494949),
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
@@ -817,30 +855,32 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
-                            'Información de la Compañía',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Lato',
-                                  color: const Color(0xFF494949),
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                          Flexible(
+                            child: Text(
+                              'Información de la Compañía',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lato',
+                                    color: Color(0xFF494949),
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
                           ),
                         ],
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -851,7 +891,7 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Lato',
-                                      color: const Color(0xFF494949),
+                                      color: Color(0xFF494949),
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,
@@ -866,30 +906,32 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(15.0, 20.0, 15.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Text(
-                            'Contacto',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Lato',
-                                  color: const Color(0xFF494949),
-                                  fontSize: 20.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                          Flexible(
+                            child: Text(
+                              'Contacto',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Lato',
+                                    color: Color(0xFF494949),
+                                    fontSize: 20.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                            ),
                           ),
                         ],
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
@@ -900,7 +942,7 @@ class _TerminosCondicionesWidgetState extends State<TerminosCondicionesWidget> {
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Lato',
-                                      color: const Color(0xFF494949),
+                                      color: Color(0xFF494949),
                                       fontSize: 16.0,
                                       letterSpacing: 0.0,
                                       fontWeight: FontWeight.normal,

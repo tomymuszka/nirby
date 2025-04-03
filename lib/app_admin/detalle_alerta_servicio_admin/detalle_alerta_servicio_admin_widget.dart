@@ -1,7 +1,9 @@
 import '/backend/supabase/supabase.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/actions/actions.dart' as action_blocks;
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'detalle_alerta_servicio_admin_model.dart';
 export 'detalle_alerta_servicio_admin_model.dart';
 
@@ -12,6 +14,9 @@ class DetalleAlertaServicioAdminWidget extends StatefulWidget {
   });
 
   final int? id;
+
+  static String routeName = 'detalleAlertaServicioAdmin';
+  static String routePath = '/detalleAlertaServicioAdmin';
 
   @override
   State<DetalleAlertaServicioAdminWidget> createState() =>
@@ -28,6 +33,11 @@ class _DetalleAlertaServicioAdminWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => DetalleAlertaServicioAdminModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await action_blocks.checkConnection(context);
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -59,7 +69,7 @@ class _DetalleAlertaServicioAdminWidgetState
                 height: 50.0,
                 child: CircularProgressIndicator(
                   valueColor: AlwaysStoppedAnimation<Color>(
-                    FlutterFlowTheme.of(context).primary,
+                    FlutterFlowTheme.of(context).primaryBackground,
                   ),
                 ),
               ),
@@ -105,17 +115,17 @@ class _DetalleAlertaServicioAdminWidgetState
                     letterSpacing: 0.0,
                   ),
             ),
-            actions: const [],
+            actions: [],
             centerTitle: false,
             elevation: 0.0,
           ),
           body: Align(
-            alignment: const AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
-              constraints: const BoxConstraints(
+              constraints: BoxConstraints(
                 maxWidth: 600.0,
               ),
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -143,7 +153,7 @@ class _DetalleAlertaServicioAdminWidgetState
                                   List.generate(fotos.length, (fotosIndex) {
                                 final fotosItem = fotos[fotosIndex];
                                 return Padding(
-                                  padding: const EdgeInsets.all(16.0),
+                                  padding: EdgeInsets.all(16.0),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(12.0),
                                     child: Image.network(
@@ -161,13 +171,13 @@ class _DetalleAlertaServicioAdminWidgetState
                       ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 15.0, 0.0, 0.0),
                             child: Material(
                               color: Colors.transparent,
@@ -184,7 +194,7 @@ class _DetalleAlertaServicioAdminWidgetState
                                   borderRadius: BorderRadius.circular(12.0),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 8.0, 8.0, 8.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -212,7 +222,7 @@ class _DetalleAlertaServicioAdminWidgetState
                                       Expanded(
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   15.0, 0.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -236,7 +246,7 @@ class _DetalleAlertaServicioAdminWidgetState
                                                             .override(
                                                               fontFamily:
                                                                   'Inter',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0xFF1F2A37),
                                                               fontSize: 16.0,
                                                               letterSpacing:
@@ -261,73 +271,107 @@ class _DetalleAlertaServicioAdminWidgetState
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 15.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
+                                Icon(
+                                  Icons.location_on,
+                                  color:
+                                      FlutterFlowTheme.of(context).primaryText,
+                                  size: 24.0,
+                                ),
                                 Flexible(
-                                  child: Text(
-                                    'Lugar donde se realizará: ${valueOrDefault<String>(
-                                      detalleAlertaServicioAdminAlertasServicioResumenAdminRow
-                                          .area,
-                                      'area',
-                                    )}',
-                                    style: FlutterFlowTheme.of(context)
-                                        .headlineMedium
-                                        .override(
-                                          fontFamily: 'Inter Tight',
-                                          fontSize: 18.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w500,
-                                        ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 0.0, 0.0),
+                                    child: Text(
+                                      valueOrDefault<String>(
+                                        detalleAlertaServicioAdminAlertasServicioResumenAdminRow
+                                            .area,
+                                        'Sin area',
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .headlineMedium
+                                          .override(
+                                            fontFamily: 'Inter Tight',
+                                            fontSize: 18.0,
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
                                   ),
                                 ),
                               ],
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 8.0, 0.0, 8.0),
-                            child: Text(
-                              'Fecha solicitada: ${valueOrDefault<String>(
-                                dateTimeFormat(
-                                  "MMMEd",
-                                  detalleAlertaServicioAdminAlertasServicioResumenAdminRow
-                                      .fecha,
-                                  locale:
-                                      FFLocalizations.of(context).languageCode,
-                                ),
-                                'Sin fecha',
-                              )}',
-                              style: FlutterFlowTheme.of(context)
-                                  .titleMedium
-                                  .override(
-                                    fontFamily: 'Inter Tight',
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    letterSpacing: 0.0,
+                          if (detalleAlertaServicioAdminAlertasServicioResumenAdminRow
+                                  .fecha !=
+                              null)
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 5.0, 0.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.calendar_today,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    size: 24.0,
                                   ),
-                            ),
-                          ),
-                          Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Flexible(
-                                child: Text(
-                                  valueOrDefault<String>(
-                                    detalleAlertaServicioAdminAlertasServicioResumenAdminRow
-                                        .descripcion,
-                                    'Descripción',
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .labelLarge
-                                      .override(
-                                        fontFamily: 'Inter',
-                                        letterSpacing: 0.0,
+                                  Flexible(
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 0.0, 0.0, 0.0),
+                                      child: Text(
+                                        dateTimeFormat(
+                                          "d/M/y",
+                                          detalleAlertaServicioAdminAlertasServicioResumenAdminRow
+                                              .fecha!,
+                                          locale: FFLocalizations.of(context)
+                                              .languageCode,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .headlineMedium
+                                            .override(
+                                              fontFamily: 'Inter Tight',
+                                              fontSize: 14.0,
+                                              letterSpacing: 0.0,
+                                            ),
                                       ),
-                                ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ],
+                            ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 20.0, 0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    valueOrDefault<String>(
+                                      detalleAlertaServicioAdminAlertasServicioResumenAdminRow
+                                          .descripcion,
+                                      'Descripción',
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .labelLarge
+                                        .override(
+                                          fontFamily: 'Inter',
+                                          letterSpacing: 0.0,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                           Divider(
                             height: 32.0,
@@ -339,7 +383,7 @@ class _DetalleAlertaServicioAdminWidgetState
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 0.0, 0.0),
                       child: Text(
                         'Analíticas',
                         style: FlutterFlowTheme.of(context).labelLarge.override(
@@ -350,7 +394,7 @@ class _DetalleAlertaServicioAdminWidgetState
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 15.0, 20.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 15.0, 20.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         height: 60.0,
@@ -359,12 +403,12 @@ class _DetalleAlertaServicioAdminWidgetState
                               FlutterFlowTheme.of(context).secondaryBackground,
                           borderRadius: BorderRadius.circular(12.0),
                           border: Border.all(
-                            color: const Color(0xFF1976D2),
+                            color: Color(0xFF1976D2),
                             width: 2.0,
                           ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -386,8 +430,8 @@ class _DetalleAlertaServicioAdminWidgetState
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Inter',
-                                              color: const Color(0xFF1976D2),
-                                              fontSize: 30.0,
+                                              color: Color(0xFF1976D2),
+                                              fontSize: 24.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
                                             ),
@@ -399,7 +443,7 @@ class _DetalleAlertaServicioAdminWidgetState
                               Expanded(
                                 flex: 4,
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       10.0, 0.0, 0.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -414,7 +458,8 @@ class _DetalleAlertaServicioAdminWidgetState
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Inter',
-                                                color: const Color(0xFF1976D2),
+                                                color: Color(0xFF1976D2),
+                                                fontSize: 12.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                               ),
@@ -431,7 +476,7 @@ class _DetalleAlertaServicioAdminWidgetState
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 15.0, 20.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 15.0, 20.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         height: 60.0,
@@ -440,12 +485,12 @@ class _DetalleAlertaServicioAdminWidgetState
                               FlutterFlowTheme.of(context).secondaryBackground,
                           borderRadius: BorderRadius.circular(12.0),
                           border: Border.all(
-                            color: const Color(0xFF1976D2),
+                            color: Color(0xFF1976D2),
                             width: 2.0,
                           ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -467,8 +512,8 @@ class _DetalleAlertaServicioAdminWidgetState
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Inter',
-                                              color: const Color(0xFF1976D2),
-                                              fontSize: 30.0,
+                                              color: Color(0xFF1976D2),
+                                              fontSize: 24.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
                                             ),
@@ -480,7 +525,7 @@ class _DetalleAlertaServicioAdminWidgetState
                               Expanded(
                                 flex: 4,
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       10.0, 0.0, 0.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -495,7 +540,8 @@ class _DetalleAlertaServicioAdminWidgetState
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Inter',
-                                                color: const Color(0xFF1976D2),
+                                                color: Color(0xFF1976D2),
+                                                fontSize: 12.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                               ),
@@ -512,7 +558,7 @@ class _DetalleAlertaServicioAdminWidgetState
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 15.0, 20.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(20.0, 15.0, 20.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         height: 60.0,
@@ -521,12 +567,12 @@ class _DetalleAlertaServicioAdminWidgetState
                               FlutterFlowTheme.of(context).secondaryBackground,
                           borderRadius: BorderRadius.circular(12.0),
                           border: Border.all(
-                            color: const Color(0xFF1976D2),
+                            color: Color(0xFF1976D2),
                             width: 2.0,
                           ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -548,8 +594,8 @@ class _DetalleAlertaServicioAdminWidgetState
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Inter',
-                                              color: const Color(0xFF1976D2),
-                                              fontSize: 30.0,
+                                              color: Color(0xFF1976D2),
+                                              fontSize: 24.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
                                             ),
@@ -561,7 +607,7 @@ class _DetalleAlertaServicioAdminWidgetState
                               Expanded(
                                 flex: 4,
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       10.0, 0.0, 0.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -576,7 +622,8 @@ class _DetalleAlertaServicioAdminWidgetState
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Inter',
-                                                color: const Color(0xFF1976D2),
+                                                color: Color(0xFF1976D2),
+                                                fontSize: 12.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                               ),
@@ -592,8 +639,8 @@ class _DetalleAlertaServicioAdminWidgetState
                       ),
                     ),
                     Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 15.0, 20.0, 0.0),
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          20.0, 15.0, 20.0, 20.0),
                       child: Container(
                         width: double.infinity,
                         height: 60.0,
@@ -602,12 +649,12 @@ class _DetalleAlertaServicioAdminWidgetState
                               FlutterFlowTheme.of(context).secondaryBackground,
                           borderRadius: BorderRadius.circular(12.0),
                           border: Border.all(
-                            color: const Color(0xFF1976D2),
+                            color: Color(0xFF1976D2),
                             width: 2.0,
                           ),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               20.0, 0.0, 20.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -629,8 +676,8 @@ class _DetalleAlertaServicioAdminWidgetState
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Inter',
-                                              color: const Color(0xFF1976D2),
-                                              fontSize: 30.0,
+                                              color: Color(0xFF1976D2),
+                                              fontSize: 24.0,
                                               letterSpacing: 0.0,
                                               fontWeight: FontWeight.w600,
                                             ),
@@ -642,7 +689,7 @@ class _DetalleAlertaServicioAdminWidgetState
                               Expanded(
                                 flex: 4,
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       10.0, 0.0, 0.0, 0.0),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
@@ -657,7 +704,8 @@ class _DetalleAlertaServicioAdminWidgetState
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Inter',
-                                                color: const Color(0xFF1976D2),
+                                                color: Color(0xFF1976D2),
+                                                fontSize: 12.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w600,
                                               ),

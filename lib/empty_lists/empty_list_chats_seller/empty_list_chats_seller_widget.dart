@@ -1,5 +1,5 @@
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'empty_list_chats_seller_model.dart';
 export 'empty_list_chats_seller_model.dart';
@@ -48,7 +48,7 @@ class _EmptyListChatsSellerWidgetState
           size: 72.0,
         ),
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
           child: Text(
             'No tenés chats',
             textAlign: TextAlign.center,
@@ -59,7 +59,7 @@ class _EmptyListChatsSellerWidgetState
           ),
         ),
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
           child: Text(
             'Parace que todavía no has iniciado ningún chat.\n\nNo te preocupes, ya comenzarán a llegar :)',
             textAlign: TextAlign.center,

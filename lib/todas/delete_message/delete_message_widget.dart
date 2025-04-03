@@ -1,7 +1,7 @@
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'delete_message_model.dart';
 export 'delete_message_model.dart';
@@ -50,7 +50,7 @@ class _DeleteMessageWidgetState extends State<DeleteMessageWidget> {
       height: 110.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).primaryBackground,
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
           bottomRight: Radius.circular(0.0),
           topLeft: Radius.circular(12.0),
@@ -58,12 +58,12 @@ class _DeleteMessageWidgetState extends State<DeleteMessageWidget> {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
               child: Row(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -80,8 +80,8 @@ class _DeleteMessageWidgetState extends State<DeleteMessageWidget> {
                   FlutterFlowIconButton(
                     borderRadius: 8.0,
                     buttonSize: 40.0,
-                    fillColor: const Color(0x004B39EF),
-                    icon: const Icon(
+                    fillColor: Color(0x004B39EF),
+                    icon: Icon(
                       Icons.close,
                       color: Color(0xFF374151),
                       size: 24.0,
@@ -94,17 +94,14 @@ class _DeleteMessageWidgetState extends State<DeleteMessageWidget> {
               ),
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 0.0),
               child: InkWell(
                 splashColor: Colors.transparent,
                 focusColor: Colors.transparent,
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
-                  await ChatsTable().update(
-                    data: {
-                      'is_deleted': true,
-                    },
+                  await ChatsTable().delete(
                     matchingRows: (rows) => rows.eqOrNull(
                       'id',
                       widget.message,
@@ -116,12 +113,12 @@ class _DeleteMessageWidgetState extends State<DeleteMessageWidget> {
                   width: double.infinity,
                   height: 40.0,
                   decoration: BoxDecoration(
-                    color: const Color(0x8CEEEEEE),
+                    color: Color(0x8CEEEEEE),
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -130,7 +127,7 @@ class _DeleteMessageWidgetState extends State<DeleteMessageWidget> {
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Inter',
-                                    color: const Color(0xFFFF4C4C),
+                                    color: Color(0xFFFF4C4C),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w600,
                                   ),

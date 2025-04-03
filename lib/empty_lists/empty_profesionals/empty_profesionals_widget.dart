@@ -1,5 +1,5 @@
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'empty_profesionals_model.dart';
@@ -48,7 +48,7 @@ class _EmptyProfesionalsWidgetState extends State<EmptyProfesionalsWidget> {
           size: 72.0,
         ),
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
           child: Text(
             'No se encontraron profesionales',
             textAlign: TextAlign.center,
@@ -59,7 +59,7 @@ class _EmptyProfesionalsWidgetState extends State<EmptyProfesionalsWidget> {
           ),
         ),
         Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
           child: Text(
             'Todavía ningún profesional ha respondido a tu alerta de servicio.\n\nA medida que vayan respondiendo, irán apareciendo aquí abajo.',
             textAlign: TextAlign.center,

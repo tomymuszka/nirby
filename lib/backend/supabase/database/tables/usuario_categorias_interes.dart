@@ -11,7 +11,7 @@ class UsuarioCategoriasInteresTable
 }
 
 class UsuarioCategoriasInteresRow extends SupabaseDataRow {
-  UsuarioCategoriasInteresRow(super.data);
+  UsuarioCategoriasInteresRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => UsuarioCategoriasInteresTable();

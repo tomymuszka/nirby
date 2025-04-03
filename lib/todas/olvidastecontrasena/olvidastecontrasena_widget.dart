@@ -1,14 +1,22 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
+import '/components/informationaldialogo_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/actions/actions.dart' as action_blocks;
+import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'olvidastecontrasena_model.dart';
 export 'olvidastecontrasena_model.dart';
 
 class OlvidastecontrasenaWidget extends StatefulWidget {
   const OlvidastecontrasenaWidget({super.key});
+
+  static String routeName = 'olvidastecontrasena';
+  static String routePath = '/olvidastecontrasena';
 
   @override
   State<OlvidastecontrasenaWidget> createState() =>
@@ -24,6 +32,11 @@ class _OlvidastecontrasenaWidgetState extends State<OlvidastecontrasenaWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => OlvidastecontrasenaModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await action_blocks.checkConnection(context);
+    });
 
     _model.emailAddressTextController ??= TextEditingController();
     _model.emailAddressFocusNode ??= FocusNode();
@@ -60,24 +73,24 @@ class _OlvidastecontrasenaWidgetState extends State<OlvidastecontrasenaWidget> {
             context.pop();
           },
         ),
-        actions: const [],
+        actions: [],
         centerTitle: false,
         elevation: 0.0,
       ),
       body: Align(
-        alignment: const AlignmentDirectional(0.0, -1.0),
+        alignment: AlignmentDirectional(0.0, -1.0),
         child: Container(
           width: double.infinity,
-          constraints: const BoxConstraints(
+          constraints: BoxConstraints(
             maxWidth: 600.0,
           ),
-          decoration: const BoxDecoration(),
+          decoration: BoxDecoration(),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                 child: Text(
                   'Olvidaste tu contraseña?',
                   style: FlutterFlowTheme.of(context).headlineMedium.override(
@@ -88,7 +101,7 @@ class _OlvidastecontrasenaWidgetState extends State<OlvidastecontrasenaWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 16.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 8.0, 16.0, 16.0),
                 child: Text(
                   'Te enviaremos un link al email asociado con tu cuenta para poder reestablecerla, ingresá tu email abajo.',
                   style: FlutterFlowTheme.of(context).labelMedium.override(
@@ -98,13 +111,13 @@ class _OlvidastecontrasenaWidgetState extends State<OlvidastecontrasenaWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
-                child: SizedBox(
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 12.0, 16.0, 0.0),
+                child: Container(
                   width: double.infinity,
                   child: TextFormField(
                     controller: _model.emailAddressTextController,
                     focusNode: _model.emailAddressFocusNode,
-                    autofillHints: const [AutofillHints.email],
+                    autofillHints: [AutofillHints.email],
                     obscureText: false,
                     decoration: InputDecoration(
                       labelText: 'Email',
@@ -149,7 +162,7 @@ class _OlvidastecontrasenaWidgetState extends State<OlvidastecontrasenaWidget> {
                       ),
                       filled: true,
                       fillColor: FlutterFlowTheme.of(context).primaryBackground,
-                      contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                      contentPadding: EdgeInsetsDirectional.fromSTEB(
                           24.0, 24.0, 20.0, 24.0),
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -165,50 +178,86 @@ class _OlvidastecontrasenaWidgetState extends State<OlvidastecontrasenaWidget> {
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
-                child: Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
-                  child: FFButtonWidget(
-                    onPressed: () async {
-                      if (_model.emailAddressTextController.text.isEmpty) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text(
-                              'El email es necesario',
-                            ),
+                alignment: AlignmentDirectional(0.0, 0.0),
+                child: Builder(
+                  builder: (context) => Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        var _shouldSetState = false;
+                        _model.email = await UsuariosTable().queryRows(
+                          queryFn: (q) => q.eqOrNull(
+                            'email',
+                            _model.emailAddressTextController.text,
                           ),
                         );
-                        return;
-                      }
-                      await authManager.resetPassword(
-                        email: _model.emailAddressTextController.text,
-                        context: context,
-                      );
+                        _shouldSetState = true;
+                        if (!(_model.email != null &&
+                            (_model.email)!.isNotEmpty)) {
+                          await showDialog(
+                            context: context,
+                            builder: (dialogContext) {
+                              return Dialog(
+                                elevation: 0,
+                                insetPadding: EdgeInsets.zero,
+                                backgroundColor: Colors.transparent,
+                                alignment: AlignmentDirectional(0.0, 0.0)
+                                    .resolve(Directionality.of(context)),
+                                child: InformationaldialogoWidget(
+                                  titulo: 'Correo incorrecto',
+                                  cuerpo:
+                                      'El correo ingresado no se encuentra en nuestra base de datos. Por favor intentá con el correo que hayas utilizado para registrarte.',
+                                  buttonstring: 'Ok',
+                                ),
+                              );
+                            },
+                          );
 
-                      context.pushNamed('emailpasswordsent');
-                    },
-                    text: 'Enviar Link',
-                    options: FFButtonOptions(
-                      width: double.infinity,
-                      height: 50.0,
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      iconPadding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: const Color(0xFF515EEB),
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Inter Tight',
-                                color: Colors.white,
-                                letterSpacing: 0.0,
+                          if (_shouldSetState) safeSetState(() {});
+                          return;
+                        }
+                        if (_model.emailAddressTextController.text.isEmpty) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text(
+                                'El email es necesario',
                               ),
-                      elevation: 3.0,
-                      borderSide: const BorderSide(
-                        color: Colors.transparent,
-                        width: 1.0,
+                            ),
+                          );
+                          return;
+                        }
+                        await authManager.resetPassword(
+                          email: _model.emailAddressTextController.text,
+                          context: context,
+                        );
+
+                        context.pushNamed(EmailpasswordsentWidget.routeName);
+
+                        if (_shouldSetState) safeSetState(() {});
+                      },
+                      text: 'Enviar Link',
+                      options: FFButtonOptions(
+                        width: double.infinity,
+                        height: 50.0,
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: Color(0xFF515EEB),
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Inter Tight',
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                ),
+                        elevation: 3.0,
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(12.0),
                       ),
-                      borderRadius: BorderRadius.circular(12.0),
                     ),
                   ),
                 ),

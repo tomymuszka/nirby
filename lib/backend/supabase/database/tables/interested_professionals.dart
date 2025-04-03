@@ -11,7 +11,7 @@ class InterestedProfessionalsTable
 }
 
 class InterestedProfessionalsRow extends SupabaseDataRow {
-  InterestedProfessionalsRow(super.data);
+  InterestedProfessionalsRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => InterestedProfessionalsTable();
@@ -46,6 +46,10 @@ class InterestedProfessionalsRow extends SupabaseDataRow {
 
   DateTime? get createdAt => getField<DateTime>('created_at');
   set createdAt(DateTime? value) => setField<DateTime>('created_at', value);
+
+  int? get usuariosAlertasId => getField<int>('usuarios_alertas_id');
+  set usuariosAlertasId(int? value) =>
+      setField<int>('usuarios_alertas_id', value);
 
   double? get averageRating => getField<double>('average_rating');
   set averageRating(double? value) => setField<double>('average_rating', value);

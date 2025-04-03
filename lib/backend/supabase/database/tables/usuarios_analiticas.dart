@@ -10,7 +10,7 @@ class UsuariosAnaliticasTable extends SupabaseTable<UsuariosAnaliticasRow> {
 }
 
 class UsuariosAnaliticasRow extends SupabaseDataRow {
-  UsuariosAnaliticasRow(super.data);
+  UsuariosAnaliticasRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => UsuariosAnaliticasTable();
@@ -61,6 +61,9 @@ class UsuariosAnaliticasRow extends SupabaseDataRow {
       getField<DateTime>('fecha_creacion_suscripcion');
   set fechaCreacionSuscripcion(DateTime? value) =>
       setField<DateTime>('fecha_creacion_suscripcion', value);
+
+  bool? get emailconfirmado => getField<bool>('emailconfirmado');
+  set emailconfirmado(bool? value) => setField<bool>('emailconfirmado', value);
 
   int? get totalAlertasCreadas => getField<int>('total_alertas_creadas');
   set totalAlertasCreadas(int? value) =>
