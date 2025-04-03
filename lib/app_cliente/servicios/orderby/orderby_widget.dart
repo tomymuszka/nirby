@@ -1,10 +1,9 @@
-import '';
 import '/flutter_flow/flutter_flow_checkbox_group.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -588,7 +587,7 @@ class _OrderbyWidgetState extends State<OrderbyWidget>
                             ),
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 10.0, 20.0, 0.0),
+                                  20.0, 10.0, 20.0, 15.0),
                               child: FlutterFlowCheckboxGroup(
                                 options: ['Sin cargo'],
                                 onChanged: (val) => safeSetState(
@@ -624,52 +623,46 @@ class _OrderbyWidgetState extends State<OrderbyWidget>
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Expanded(
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 15.0, 0.0, 15.0),
-                                      child: FFButtonWidget(
-                                        onPressed: () async {
-                                          FFAppState().filtrozonacobertura =
-                                              _model.zonaValues!
-                                                  .toList()
-                                                  .cast<String>();
-                                          FFAppState().presupuesto = _model
-                                                      .presupuestoValues
-                                                      ?.length ==
-                                                  2
-                                              ? functions.returnarrayfromstring(
-                                                  'Sin cargo')!
-                                              : functions
-                                                  .returnarrayfromstring(
-                                                      'Sin cargo,Con cargo')!
-                                                  .toList()
-                                                  .cast<String>();
-                                          _model.updatePage(() {});
-                                          Navigator.pop(context);
-                                        },
-                                        text: 'Guardar',
-                                        options: FFButtonOptions(
-                                          height: 50.0,
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 16.0, 0.0),
-                                          iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          color: Color(0xFF1C2A3A),
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .override(
-                                                    fontFamily: 'Inter',
-                                                    color: Colors.white,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                          elevation: 0.0,
-                                          borderRadius:
-                                              BorderRadius.circular(55.0),
-                                        ),
+                                    child: FFButtonWidget(
+                                      onPressed: () async {
+                                        FFAppState().filtrozonacobertura =
+                                            _model.zonaValues!
+                                                .toList()
+                                                .cast<String>();
+                                        FFAppState().presupuesto = _model
+                                                    .presupuestoValues
+                                                    ?.length ==
+                                                2
+                                            ? functions.returnarrayfromstring(
+                                                'Sin cargo')!
+                                            : functions
+                                                .returnarrayfromstring(
+                                                    'Sin cargo,Con cargo')!
+                                                .toList()
+                                                .cast<String>();
+                                        _model.updatePage(() {});
+                                        Navigator.pop(context);
+                                      },
+                                      text: 'Guardar',
+                                      options: FFButtonOptions(
+                                        height: 50.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 0.0, 16.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: Color(0xFF1C2A3A),
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Inter',
+                                              color: Colors.white,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w500,
+                                            ),
+                                        elevation: 0.0,
+                                        borderRadius:
+                                            BorderRadius.circular(55.0),
                                       ),
                                     ),
                                   ),

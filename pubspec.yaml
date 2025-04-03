@@ -15,7 +15,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.0.23+33
+version: 1.0.32+43
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -41,6 +41,10 @@ dependencies:
   dropdown_button2: 2.3.9
   easy_debounce: 2.0.1
   equatable: 2.0.5
+  ff_commons:
+    path: ./dependencies/ff_commons # 1.0.32+43
+  ff_theme:
+    path: ./dependencies/ff_theme # 1.0.32+43
   file_picker: 8.1.2
   flutter_animate: 4.5.0
   flutter_cache_manager: 3.4.1
@@ -76,6 +80,8 @@ dependencies:
   intl_phone_field: ^3.2.0
   json_path: 0.7.2
   lottie: 2.7.0
+  marketplace_check_internet_connection_library_vrjzhi:
+    path: ./dependencies/marketplace_check_internet_connection_library_vrjzhi # 1.0.1
   mime_type: 1.0.0
   onesignal_flutter: ^5.2.3
   page_transition: 2.1.0
@@ -135,8 +141,8 @@ dependencies:
 
 dependency_overrides:
   http: 1.2.2
-  rxdart: 0.27.7
   uuid: ^4.0.0
+  rxdart: 0.27.7
   win32: 5.5.1
 
 dev_dependencies:
@@ -178,6 +184,13 @@ flutter:
     - assets/rive_animations/
     - assets/pdfs/
     - assets/jsons/
+    - dependencies/marketplace_check_internet_connection_library_vrjzhi/assets/fonts/
+    - dependencies/marketplace_check_internet_connection_library_vrjzhi/assets/images/
+    - dependencies/marketplace_check_internet_connection_library_vrjzhi/assets/videos/
+    - dependencies/marketplace_check_internet_connection_library_vrjzhi/assets/audios/
+    - dependencies/marketplace_check_internet_connection_library_vrjzhi/assets/rive_animations/
+    - dependencies/marketplace_check_internet_connection_library_vrjzhi/assets/pdfs/
+    - dependencies/marketplace_check_internet_connection_library_vrjzhi/assets/jsons/
 
 
 

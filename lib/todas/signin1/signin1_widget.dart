@@ -2,7 +2,6 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/informationaldialogo_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
@@ -12,6 +11,7 @@ import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -453,6 +453,12 @@ class _Signin1WidgetState extends State<Signin1Widget> {
                                 decoration: InputDecoration(
                                   isDense: false,
                                   labelText: 'País de residencia',
+                                  labelStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        letterSpacing: 0.0,
+                                      ),
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -671,6 +677,10 @@ class _Signin1WidgetState extends State<Signin1Widget> {
                                                 Navigator.pop(context);
                                               }(),
                                             );
+                                            FFAppState().PaginaSeleccionada =
+                                                'Home';
+                                            FFAppState().modovendedor = false;
+                                            FFAppState().update(() {});
 
                                             context.goNamedAuth(
                                               HomeWidget.routeName,

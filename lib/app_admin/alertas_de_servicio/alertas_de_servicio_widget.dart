@@ -1,10 +1,10 @@
 import '/backend/supabase/supabase.dart';
 import '/empty_lists/empty_list_alerts_admin/empty_list_alerts_admin_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -117,7 +117,10 @@ class _AlertasDeServicioWidgetState extends State<AlertasDeServicioWidget> {
                           EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 20.0),
                       child: FutureBuilder<List<AlertasRow>>(
                         future: AlertasTable().queryRows(
-                          queryFn: (q) => q,
+                          queryFn: (q) => q.eqOrNull(
+                            'is_deleted',
+                            false,
+                          ),
                         ),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
@@ -323,8 +326,7 @@ class _AlertasDeServicioWidgetState extends State<AlertasDeServicioWidget> {
                                                       children: [
                                                         Flexible(
                                                           child: Text(
-                                                            valueOrDefault<
-                                                                String>(
+                                                            'Fecha de creación: ${valueOrDefault<String>(
                                                               dateTimeFormat(
                                                                 "d/M H:mm",
                                                                 listViewAlertasRow
@@ -334,7 +336,7 @@ class _AlertasDeServicioWidgetState extends State<AlertasDeServicioWidget> {
                                                                     .languageCode,
                                                               ),
                                                               'Sin fecha',
-                                                            ),
+                                                            )}',
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium

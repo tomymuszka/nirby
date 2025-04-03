@@ -1,6 +1,8 @@
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:marketplace_check_internet_connection_library_vrjzhi/custom_code/actions/index.dart'
+    as marketplace_check_internet_connection_library_vrjzhi_actions;
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'noconnection_model.dart';
 export 'noconnection_model.dart';
@@ -75,7 +77,16 @@ class _NoconnectionWidgetState extends State<NoconnectionWidget> {
                     ),
               ),
               FFButtonWidget(
-                onPressed: () async {},
+                onPressed: () async {
+                  _model.internet =
+                      await marketplace_check_internet_connection_library_vrjzhi_actions
+                          .checkInternetConnection();
+                  if (_model.internet!) {
+                    Navigator.pop(context);
+                  }
+
+                  safeSetState(() {});
+                },
                 text: 'Reintentar',
                 options: FFButtonOptions(
                   width: 200.0,

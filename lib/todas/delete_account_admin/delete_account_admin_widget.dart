@@ -1,7 +1,8 @@
 import '/backend/supabase/supabase.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
+import '/components/informationaldialogo_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'delete_account_admin_model.dart';
 export 'delete_account_admin_model.dart';
@@ -172,53 +173,56 @@ class _DeleteAccountAdminWidgetState extends State<DeleteAccountAdminWidget> {
                       borderRadius: BorderRadius.circular(25.0),
                     ),
                   ),
-                  FFButtonWidget(
-                    onPressed: () async {
-                      await UsuariosTable().update(
-                        data: {
-                          'is_deleted': true,
-                        },
-                        matchingRows: (rows) => rows.eqOrNull(
-                          'id',
-                          widget.id,
-                        ),
-                      );
-                      await showDialog(
-                        context: context,
-                        builder: (alertDialogContext) {
-                          return AlertDialog(
-                            title: Text('Cuenta eliminada'),
-                            content:
-                                Text('Se ha eliminado la cuenta con éxito'),
-                            actions: [
-                              TextButton(
-                                onPressed: () =>
-                                    Navigator.pop(alertDialogContext),
-                                child: Text('Ok'),
+                  Builder(
+                    builder: (context) => FFButtonWidget(
+                      onPressed: () async {
+                        await UsuariosTable().update(
+                          data: {
+                            'is_deleted': true,
+                          },
+                          matchingRows: (rows) => rows.eqOrNull(
+                            'id',
+                            widget.id,
+                          ),
+                        );
+                        await showDialog(
+                          context: context,
+                          builder: (dialogContext) {
+                            return Dialog(
+                              elevation: 0,
+                              insetPadding: EdgeInsets.zero,
+                              backgroundColor: Colors.transparent,
+                              alignment: AlignmentDirectional(0.0, 0.0)
+                                  .resolve(Directionality.of(context)),
+                              child: InformationaldialogoWidget(
+                                titulo: 'Cuenta eliminada',
+                                cuerpo: 'Se ha eliminado la cuenta con éxito',
+                                buttonstring: 'Ok',
                               ),
-                            ],
-                          );
-                        },
-                      );
-                      context.safePop();
-                    },
-                    text: 'Sí, eliminar',
-                    options: FFButtonOptions(
-                      width: 140.0,
-                      height: 40.0,
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-                      iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: Color(0xFFDC1111),
-                      textStyle:
-                          FlutterFlowTheme.of(context).titleSmall.override(
-                                fontFamily: 'Inter Tight',
-                                color: Colors.white,
-                                letterSpacing: 0.0,
-                              ),
-                      elevation: 0.0,
-                      borderRadius: BorderRadius.circular(25.0),
+                            );
+                          },
+                        );
+
+                        context.safePop();
+                      },
+                      text: 'Sí, eliminar',
+                      options: FFButtonOptions(
+                        width: 140.0,
+                        height: 40.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            16.0, 0.0, 16.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: Color(0xFFDC1111),
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Inter Tight',
+                                  color: Colors.white,
+                                  letterSpacing: 0.0,
+                                ),
+                        elevation: 0.0,
+                        borderRadius: BorderRadius.circular(25.0),
+                      ),
                     ),
                   ),
                 ],

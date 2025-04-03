@@ -1,6 +1,6 @@
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:badges/badges.dart' as badges;
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -59,6 +59,13 @@ class _NavbarWidgetState extends State<NavbarWidget> {
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
+          Container(
+            width: double.infinity,
+            height: 2.0,
+            decoration: BoxDecoration(
+              color: Color(0x33000000),
+            ),
+          ),
           if (!widget.admin!)
             Expanded(
               child: Row(

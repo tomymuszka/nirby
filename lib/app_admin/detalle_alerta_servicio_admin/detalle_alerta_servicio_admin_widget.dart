@@ -1,7 +1,7 @@
 import '/backend/supabase/supabase.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/actions/actions.dart' as action_blocks;
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'detalle_alerta_servicio_admin_model.dart';
@@ -331,28 +331,6 @@ class _DetalleAlertaServicioAdminWidgetState
                                       child: Text(
                                         dateTimeFormat(
                                           "d/M/y",
-                                          detalleAlertaServicioAdminAlertasServicioResumenAdminRow
-                                              .fecha!,
-                                          locale: FFLocalizations.of(context)
-                                              .languageCode,
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .headlineMedium
-                                            .override(
-                                              fontFamily: 'Inter Tight',
-                                              fontSize: 14.0,
-                                              letterSpacing: 0.0,
-                                            ),
-                                      ),
-                                    ),
-                                  ),
-                                  Flexible(
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          5.0, 0.0, 0.0, 0.0),
-                                      child: Text(
-                                        dateTimeFormat(
-                                          "Hm",
                                           detalleAlertaServicioAdminAlertasServicioResumenAdminRow
                                               .fecha!,
                                           locale: FFLocalizations.of(context)

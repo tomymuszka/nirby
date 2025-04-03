@@ -1,13 +1,14 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/alertaeliminada_widget.dart';
+import '/components/bigger_image_widget.dart';
 import '/components/informationaldialogo_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/index.dart';
 import 'dart:async';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'detalle_alerta_servicio_model.dart';
@@ -18,9 +19,11 @@ class DetalleAlertaServicioWidget extends StatefulWidget {
   const DetalleAlertaServicioWidget({
     super.key,
     required this.id,
-  });
+    bool? comesfromnotifications,
+  }) : this.comesfromnotifications = comesfromnotifications ?? false;
 
   final int? id;
+  final bool comesfromnotifications;
 
   static String routeName = 'detalleAlertaServicio';
   static String routePath = '/detalleAlertaServicio';
@@ -102,7 +105,27 @@ class _DetalleAlertaServicioWidgetState
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,
               onTap: () async {
-                context.safePop();
+                if (widget.comesfromnotifications) {
+                  context.goNamed(
+                    NotificationWidget.routeName,
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.leftToRight,
+                      ),
+                    },
+                  );
+                } else {
+                  context.goNamed(
+                    HomeWidget.routeName,
+                    extra: <String, dynamic>{
+                      kTransitionInfoKey: TransitionInfo(
+                        hasTransition: true,
+                        transitionType: PageTransitionType.leftToRight,
+                      ),
+                    },
+                  );
+                }
               },
               child: Icon(
                 Icons.chevron_left_rounded,
@@ -251,16 +274,50 @@ class _DetalleAlertaServicioWidgetState
                                         children: List.generate(fotos.length,
                                             (fotosIndex) {
                                           final fotosItem = fotos[fotosIndex];
-                                          return Padding(
-                                            padding: EdgeInsets.all(16.0),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(12.0),
-                                              child: Image.network(
-                                                fotosItem,
-                                                width: 200.0,
-                                                height: 200.0,
-                                                fit: BoxFit.fill,
+                                          return Builder(
+                                            builder: (context) => Padding(
+                                              padding: EdgeInsets.all(16.0),
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder: (dialogContext) {
+                                                      return Dialog(
+                                                        elevation: 0,
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        child:
+                                                            BiggerImageWidget(
+                                                          url: fotosItem,
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                },
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          12.0),
+                                                  child: Image.network(
+                                                    fotosItem,
+                                                    width: 200.0,
+                                                    height: 200.0,
+                                                    fit: BoxFit.fill,
+                                                  ),
+                                                ),
                                               ),
                                             ),
                                           );
@@ -498,36 +555,6 @@ class _DetalleAlertaServicioWidgetState
                                                   valueOrDefault<String>(
                                                     dateTimeFormat(
                                                       "d/M/y",
-                                                      detalleAlertaServicioAlertasRow
-                                                          .dateComplete,
-                                                      locale:
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .languageCode,
-                                                    ),
-                                                    'Sin fecha',
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .headlineMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Inter Tight',
-                                                        fontSize: 14.0,
-                                                        letterSpacing: 0.0,
-                                                      ),
-                                                ),
-                                              ),
-                                            ),
-                                            Flexible(
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        5.0, 0.0, 0.0, 0.0),
-                                                child: Text(
-                                                  valueOrDefault<String>(
-                                                    dateTimeFormat(
-                                                      "Hm",
                                                       detalleAlertaServicioAlertasRow
                                                           .dateComplete,
                                                       locale:

@@ -1,4 +1,4 @@
-export '../../../flutter_flow/lat_lng.dart';
+export 'package:ff_commons/flutter_flow/lat_lng.dart';
 export 'package:supabase_flutter/supabase_flutter.dart' hide Provider;
 
 export '../supabase.dart';
@@ -15,7 +15,6 @@ export 'tables/notifications_users.dart';
 export 'tables/professional_details.dart';
 export 'tables/services.dart';
 export 'tables/recomended_services.dart';
-export 'tables/relevant_alerts.dart';
 export 'tables/usuarios.dart';
 export 'tables/alertas.dart';
 export 'tables/reviews_with_user_info.dart';
@@ -23,6 +22,7 @@ export 'tables/service_detail_complete.dart';
 export 'tables/categorias.dart';
 export 'tables/conversation_details.dart';
 export 'tables/usuarios_alertas.dart';
+export 'tables/relevant_alerts_table.dart';
 export 'tables/usuario_categorias_interes.dart';
 export 'tables/service_chat.dart';
 export 'tables/service_details.dart';

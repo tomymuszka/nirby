@@ -1,11 +1,14 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/emailmercadopago_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/todas/loading/loading_widget.dart';
+import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'payment_model.dart';
@@ -500,143 +503,311 @@ class _PaymentWidgetState extends State<PaymentWidget> {
                                                   MainAxisAlignment.start,
                                               children: [
                                                 Expanded(
-                                                  child: FFButtonWidget(
-                                                    onPressed: () async {
-                                                      _model.user =
-                                                          await UsuariosTable()
-                                                              .queryRows(
-                                                        queryFn: (q) =>
-                                                            q.eqOrNull(
-                                                          'id',
-                                                          currentUserUid,
-                                                        ),
-                                                      );
-                                                      _model.crearsuscripcion =
-                                                          await EdgeFunctionsGroup
-                                                              .createsuscriptionCall
-                                                              .call(
-                                                        amount: _model
-                                                                .switchValue!
-                                                            ? paymentGlobalesRow
-                                                                ?.suscripcionAnual
-                                                            : paymentGlobalesRow
-                                                                ?.suscripcionMensual,
-                                                        frecuencia:
-                                                            _model.switchValue!
-                                                                ? 12
-                                                                : 1,
-                                                        userId: currentUserUid,
-                                                        payerEmail: _model
-                                                            .user
-                                                            ?.firstOrNull
-                                                            ?.email,
-                                                      );
-
-                                                      if ((_model
-                                                              .crearsuscripcion
-                                                              ?.succeeded ??
-                                                          true)) {
-                                                        await launchURL(
-                                                            EdgeFunctionsGroup
-                                                                .createsuscriptionCall
-                                                                .initpoint(
-                                                          (_model.crearsuscripcion
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                        )!);
-                                                      } else {
-                                                        if (EdgeFunctionsGroup
-                                                                .createsuscriptionCall
-                                                                .errormessage(
-                                                              (_model.crearsuscripcion
-                                                                      ?.jsonBody ??
-                                                                  ''),
-                                                            ) ==
-                                                            'Invalid value for payer_email, must be a valid email address') {
-                                                          await showDialog(
-                                                            context: context,
-                                                            builder:
-                                                                (alertDialogContext) {
-                                                              return AlertDialog(
-                                                                title: Text(
-                                                                    'Problema con mercadopago'),
-                                                                content: Text(
-                                                                    'El email es inválido'),
-                                                                actions: [
-                                                                  TextButton(
-                                                                    onPressed: () =>
-                                                                        Navigator.pop(
-                                                                            alertDialogContext),
-                                                                    child: Text(
-                                                                        'Ok'),
-                                                                  ),
-                                                                ],
-                                                              );
-                                                            },
-                                                          );
-                                                        } else {
-                                                          await showDialog(
-                                                            context: context,
-                                                            builder:
-                                                                (alertDialogContext) {
-                                                              return AlertDialog(
-                                                                title: Text(
-                                                                    'Problema con mercadopago'),
-                                                                content: Text((_model
-                                                                        .crearsuscripcion
-                                                                        ?.bodyText ??
-                                                                    '')),
-                                                                actions: [
-                                                                  TextButton(
-                                                                    onPressed: () =>
-                                                                        Navigator.pop(
-                                                                            alertDialogContext),
-                                                                    child: Text(
-                                                                        'Ok'),
-                                                                  ),
-                                                                ],
-                                                              );
-                                                            },
-                                                          );
-                                                        }
-                                                      }
-
-                                                      safeSetState(() {});
-                                                    },
-                                                    text: 'Suscribirme',
-                                                    options: FFButtonOptions(
-                                                      height: 40.0,
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  16.0,
-                                                                  0.0,
-                                                                  16.0,
-                                                                  0.0),
-                                                      iconPadding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      color: Color(0xFF1C2A3A),
-                                                      textStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .titleSmall
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Inter',
-                                                                color: Colors
-                                                                    .white,
-                                                                letterSpacing:
-                                                                    0.0,
+                                                  child: Builder(
+                                                    builder: (context) =>
+                                                        FFButtonWidget(
+                                                      onPressed: () async {
+                                                        showDialog(
+                                                          barrierDismissible:
+                                                              false,
+                                                          context: context,
+                                                          builder:
+                                                              (dialogContext) {
+                                                            return Dialog(
+                                                              elevation: 0,
+                                                              insetPadding:
+                                                                  EdgeInsets
+                                                                      .zero,
+                                                              backgroundColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              alignment: AlignmentDirectional(
+                                                                      0.0, 0.0)
+                                                                  .resolve(
+                                                                      Directionality.of(
+                                                                          context)),
+                                                              child:
+                                                                  GestureDetector(
+                                                                onTap: () {
+                                                                  FocusScope.of(
+                                                                          dialogContext)
+                                                                      .unfocus();
+                                                                  FocusManager
+                                                                      .instance
+                                                                      .primaryFocus
+                                                                      ?.unfocus();
+                                                                },
+                                                                child:
+                                                                    LoadingWidget(),
                                                               ),
-                                                      elevation: 0.0,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
+                                                            );
+                                                          },
+                                                        );
+
+                                                        await Future.delayed(
+                                                            const Duration(
+                                                                milliseconds:
+                                                                    2000));
+                                                        _model.user =
+                                                            await UsuariosTable()
+                                                                .queryRows(
+                                                          queryFn: (q) =>
+                                                              q.eqOrNull(
+                                                            'id',
+                                                            currentUserUid,
+                                                          ),
+                                                        );
+                                                        if (_model
+                                                                    .user
+                                                                    ?.firstOrNull
+                                                                    ?.emailMercadopago !=
+                                                                null &&
+                                                            _model
+                                                                    .user
+                                                                    ?.firstOrNull
+                                                                    ?.emailMercadopago !=
+                                                                '') {
+                                                          _model.emailmp = _model
+                                                              .user
+                                                              ?.firstOrNull
+                                                              ?.emailMercadopago;
+                                                          safeSetState(() {});
+                                                        } else {
+                                                          Navigator.pop(
+                                                              context);
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (dialogContext) {
+                                                              return Dialog(
+                                                                elevation: 0,
+                                                                insetPadding:
+                                                                    EdgeInsets
+                                                                        .zero,
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                alignment: AlignmentDirectional(
+                                                                        0.0,
+                                                                        0.0)
+                                                                    .resolve(
+                                                                        Directionality.of(
+                                                                            context)),
+                                                                child:
+                                                                    GestureDetector(
+                                                                  onTap: () {
+                                                                    FocusScope.of(
+                                                                            dialogContext)
+                                                                        .unfocus();
+                                                                    FocusManager
+                                                                        .instance
+                                                                        .primaryFocus
+                                                                        ?.unfocus();
+                                                                  },
+                                                                  child:
+                                                                      EmailmercadopagoWidget(
+                                                                    emailregistrado: _model
+                                                                        .user!
+                                                                        .firstOrNull!
+                                                                        .email,
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            },
+                                                          ).then((value) =>
+                                                              safeSetState(() =>
+                                                                  _model.email =
+                                                                      value));
+
+                                                          showDialog(
+                                                            barrierDismissible:
+                                                                false,
+                                                            context: context,
+                                                            builder:
+                                                                (dialogContext) {
+                                                              return Dialog(
+                                                                elevation: 0,
+                                                                insetPadding:
+                                                                    EdgeInsets
+                                                                        .zero,
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                alignment: AlignmentDirectional(
+                                                                        0.0,
+                                                                        0.0)
+                                                                    .resolve(
+                                                                        Directionality.of(
+                                                                            context)),
+                                                                child:
+                                                                    GestureDetector(
+                                                                  onTap: () {
+                                                                    FocusScope.of(
+                                                                            dialogContext)
+                                                                        .unfocus();
+                                                                    FocusManager
+                                                                        .instance
+                                                                        .primaryFocus
+                                                                        ?.unfocus();
+                                                                  },
+                                                                  child:
+                                                                      LoadingWidget(),
+                                                                ),
+                                                              );
+                                                            },
+                                                          );
+
+                                                          await UsuariosTable()
+                                                              .update(
+                                                            data: {
+                                                              'email_mercadopago':
+                                                                  _model.email,
+                                                            },
+                                                            matchingRows:
+                                                                (rows) => rows
+                                                                    .eqOrNull(
+                                                              'id',
+                                                              currentUserUid,
+                                                            ),
+                                                          );
+                                                          _model.emailmp =
+                                                              _model.email;
+                                                          safeSetState(() {});
+                                                        }
+
+                                                        unawaited(
+                                                          () async {
+                                                            Navigator.pop(
+                                                                context);
+                                                          }(),
+                                                        );
+                                                        _model.crearsuscripcion =
+                                                            await EdgeFunctionsGroup
+                                                                .createsuscriptionCall
+                                                                .call(
+                                                          amount: _model
+                                                                  .switchValue!
+                                                              ? paymentGlobalesRow
+                                                                  ?.suscripcionAnual
+                                                              : paymentGlobalesRow
+                                                                  ?.suscripcionMensual,
+                                                          frecuencia: _model
+                                                                  .switchValue!
+                                                              ? 12
+                                                              : 1,
+                                                          userId:
+                                                              currentUserUid,
+                                                          payerEmail:
+                                                              _model.emailmp,
+                                                        );
+
+                                                        if ((_model
+                                                                .crearsuscripcion
+                                                                ?.succeeded ??
+                                                            true)) {
+                                                          await launchURL(
+                                                              EdgeFunctionsGroup
+                                                                  .createsuscriptionCall
+                                                                  .initpoint(
+                                                            (_model.crearsuscripcion
+                                                                    ?.jsonBody ??
+                                                                ''),
+                                                          )!);
+                                                        } else {
+                                                          if (EdgeFunctionsGroup
+                                                                  .createsuscriptionCall
+                                                                  .errormessage(
+                                                                (_model.crearsuscripcion
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                              ) ==
+                                                              'Invalid value for payer_email, must be a valid email address') {
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return AlertDialog(
+                                                                  title: Text(
+                                                                      'Problema con mercadopago'),
+                                                                  content: Text(
+                                                                      'El email es inválido'),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed:
+                                                                          () =>
+                                                                              Navigator.pop(alertDialogContext),
+                                                                      child: Text(
+                                                                          'Ok'),
+                                                                    ),
+                                                                  ],
+                                                                );
+                                                              },
+                                                            );
+                                                          } else {
+                                                            await showDialog(
+                                                              context: context,
+                                                              builder:
+                                                                  (alertDialogContext) {
+                                                                return AlertDialog(
+                                                                  title: Text(
+                                                                      'Problema con mercadopago'),
+                                                                  content: Text((_model
+                                                                          .crearsuscripcion
+                                                                          ?.bodyText ??
+                                                                      '')),
+                                                                  actions: [
+                                                                    TextButton(
+                                                                      onPressed:
+                                                                          () =>
+                                                                              Navigator.pop(alertDialogContext),
+                                                                      child: Text(
+                                                                          'Ok'),
+                                                                    ),
+                                                                  ],
+                                                                );
+                                                              },
+                                                            );
+                                                          }
+                                                        }
+
+                                                        safeSetState(() {});
+                                                      },
+                                                      text: 'Suscribirme',
+                                                      options: FFButtonOptions(
+                                                        height: 40.0,
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    16.0,
+                                                                    0.0,
+                                                                    16.0,
+                                                                    0.0),
+                                                        iconPadding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        color:
+                                                            Color(0xFF1C2A3A),
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleSmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter',
+                                                                  color: Colors
+                                                                      .white,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        elevation: 0.0,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                      ),
                                                     ),
                                                   ),
                                                 ),

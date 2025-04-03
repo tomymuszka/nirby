@@ -3,11 +3,11 @@ import '/backend/supabase/supabase.dart';
 import '/components/confirmdialog_widget.dart';
 import '/empty_lists/empty_list_alerts_client/empty_list_alerts_client_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/index.dart';
 import 'dart:async';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'alerta_de_servicio_component_model.dart';
 export 'alerta_de_servicio_component_model.dart';
@@ -81,7 +81,8 @@ class _AlertaDeServicioComponentWidgetState
                 ),
                 onPressed: () async {
                   FFAppState().fotossubidas = [];
-                  safeSetState(() {});
+                  FFAppState().fechaNacimiento = null;
+                  FFAppState().update(() {});
 
                   context.pushNamed(CrearAlertaDeServicioWidget.routeName);
                 },

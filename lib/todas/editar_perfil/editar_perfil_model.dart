@@ -87,6 +87,10 @@ class EditarPerfilModel extends FlutterFlowModel<EditarPerfilWidget> {
   }
 
   DateTime? datePicked;
+  // State field(s) for emailmp widget.
+  FocusNode? emailmpFocusNode;
+  TextEditingController? emailmpTextController;
+  String? Function(BuildContext, String?)? emailmpTextControllerValidator;
 
   @override
   void initState(BuildContext context) {
@@ -118,5 +122,8 @@ class EditarPerfilModel extends FlutterFlowModel<EditarPerfilWidget> {
 
     anosexperienciaFocusNode?.dispose();
     anosexperienciaTextController?.dispose();
+
+    emailmpFocusNode?.dispose();
+    emailmpTextController?.dispose();
   }
 }

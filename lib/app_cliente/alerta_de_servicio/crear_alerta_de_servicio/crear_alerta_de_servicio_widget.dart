@@ -1,4 +1,3 @@
-import '';
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/confirmdialog_widget.dart';
@@ -6,7 +5,6 @@ import '/components/informationaldialogo_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_radio_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
@@ -15,6 +13,7 @@ import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
 import '/index.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -389,8 +388,15 @@ class _CrearAlertaDeServicioWidgetState
                                           final _datePickedDate =
                                               await showDatePicker(
                                             context: context,
-                                            initialDate: getCurrentTimestamp,
-                                            firstDate: getCurrentTimestamp,
+                                            initialDate: ((FFAppState()
+                                                            .fechaNacimiento !=
+                                                        null
+                                                    ? FFAppState()
+                                                        .fechaNacimiento
+                                                    : getCurrentTimestamp) ??
+                                                DateTime.now()),
+                                            firstDate: (getCurrentTimestamp ??
+                                                DateTime(1900)),
                                             lastDate: DateTime(2050),
                                             builder: (context, child) {
                                               return wrapInMaterialDatePickerTheme(
@@ -444,9 +450,17 @@ class _CrearAlertaDeServicioWidgetState
                                           } else if (_model.datePicked !=
                                               null) {
                                             safeSetState(() {
-                                              _model.datePicked =
-                                                  getCurrentTimestamp;
+                                              _model.datePicked = (FFAppState()
+                                                          .fechaNacimiento !=
+                                                      null
+                                                  ? FFAppState().fechaNacimiento
+                                                  : getCurrentTimestamp);
                                             });
+                                          }
+                                          if (_model.datePicked != null) {
+                                            FFAppState().fechaNacimiento =
+                                                _model.datePicked;
+                                            safeSetState(() {});
                                           }
                                         },
                                         child: Container(
@@ -939,41 +953,59 @@ class _CrearAlertaDeServicioWidgetState
                               if (_model.dropDownValue == null) {
                                 await showDialog(
                                   context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('Falta categoría'),
-                                      content:
-                                          Text('Debés indicar una categoría'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
+                                  builder: (dialogContext) {
+                                    return Dialog(
+                                      elevation: 0,
+                                      insetPadding: EdgeInsets.zero,
+                                      backgroundColor: Colors.transparent,
+                                      alignment: AlignmentDirectional(0.0, 0.0)
+                                          .resolve(Directionality.of(context)),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          FocusScope.of(dialogContext)
+                                              .unfocus();
+                                          FocusManager.instance.primaryFocus
+                                              ?.unfocus();
+                                        },
+                                        child: InformationaldialogoWidget(
+                                          titulo: 'Falta categoría',
+                                          cuerpo: 'Debés indicar una categoría',
+                                          buttonstring: 'Ok',
                                         ),
-                                      ],
+                                      ),
                                     );
                                   },
                                 );
+
                                 return;
                               }
                               if (_model.radioButtonValue == null) {
                                 await showDialog(
                                   context: context,
-                                  builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text('Falta zona'),
-                                      content:
-                                          Text('Debés seleciconar una zona'),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: Text('Ok'),
+                                  builder: (dialogContext) {
+                                    return Dialog(
+                                      elevation: 0,
+                                      insetPadding: EdgeInsets.zero,
+                                      backgroundColor: Colors.transparent,
+                                      alignment: AlignmentDirectional(0.0, 0.0)
+                                          .resolve(Directionality.of(context)),
+                                      child: GestureDetector(
+                                        onTap: () {
+                                          FocusScope.of(dialogContext)
+                                              .unfocus();
+                                          FocusManager.instance.primaryFocus
+                                              ?.unfocus();
+                                        },
+                                        child: InformationaldialogoWidget(
+                                          titulo: 'Falta zona',
+                                          cuerpo: 'Debés seleciconar una zona',
+                                          buttonstring: 'Ok',
                                         ),
-                                      ],
+                                      ),
                                     );
                                   },
                                 );
+
                                 return;
                               }
                               _model.catregoriaseleccionada =

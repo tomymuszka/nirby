@@ -1,17 +1,16 @@
-import '';
 import '/backend/supabase/supabase.dart';
 import '/components/confirmdialog_widget.dart';
 import '/components/informationaldialogo_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_radio_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -490,9 +489,16 @@ class _EditarAlertaDeServicioWidgetState
                                               final _datePickedDate =
                                                   await showDatePicker(
                                                 context: context,
-                                                initialDate:
-                                                    getCurrentTimestamp,
-                                                firstDate: getCurrentTimestamp,
+                                                initialDate: ((FFAppState()
+                                                                .fechaNacimiento !=
+                                                            null
+                                                        ? FFAppState()
+                                                            .fechaNacimiento
+                                                        : getCurrentTimestamp) ??
+                                                    DateTime.now()),
+                                                firstDate:
+                                                    (getCurrentTimestamp ??
+                                                        DateTime(1900)),
                                                 lastDate: DateTime(2050),
                                                 builder: (context, child) {
                                                   return wrapInMaterialDatePickerTheme(
@@ -556,8 +562,13 @@ class _EditarAlertaDeServicioWidgetState
                                               } else if (_model.datePicked !=
                                                   null) {
                                                 safeSetState(() {
-                                                  _model.datePicked =
-                                                      getCurrentTimestamp;
+                                                  _model
+                                                      .datePicked = (FFAppState()
+                                                              .fechaNacimiento !=
+                                                          null
+                                                      ? FFAppState()
+                                                          .fechaNacimiento
+                                                      : getCurrentTimestamp);
                                                 });
                                               }
                                               if (_model.datePicked != null) {

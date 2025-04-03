@@ -26,10 +26,6 @@ class AlertasRow extends SupabaseDataRow {
   int get category => getField<int>('category')!;
   set category(int value) => setField<int>('category', value);
 
-  DateTime? get dateComplete => getField<DateTime>('date_complete');
-  set dateComplete(DateTime? value) =>
-      setField<DateTime>('date_complete', value);
-
   String get area => getField<String>('area')!;
   set area(String value) => setField<String>('area', value);
 
@@ -45,4 +41,8 @@ class AlertasRow extends SupabaseDataRow {
 
   bool? get active => getField<bool>('active');
   set active(bool? value) => setField<bool>('active', value);
+
+  DateTime? get dateComplete => getField<DateTime>('date_complete');
+  set dateComplete(DateTime? value) =>
+      setField<DateTime>('date_complete', value);
 }

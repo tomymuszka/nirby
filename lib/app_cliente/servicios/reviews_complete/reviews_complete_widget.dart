@@ -1,8 +1,8 @@
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/actions/actions.dart' as action_blocks;
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -336,63 +336,84 @@ class _ReviewsCompleteWidgetState extends State<ReviewsCompleteWidget> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                '${reviewRowReviewsWithUserInfoRow.nombre} ${reviewRowReviewsWithUserInfoRow.apellido}',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .titleLarge
-                                                        .override(
-                                                          fontFamily:
-                                                              'Inter Tight',
-                                                          letterSpacing: 0.0,
-                                                        ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 4.0, 0.0, 4.0),
-                                                child: RatingBarIndicator(
-                                                  itemBuilder:
-                                                      (context, index) => Icon(
-                                                    Icons.star_rounded,
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .warning,
+                                          Expanded(
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Flexible(
+                                                      child: Text(
+                                                        '${reviewRowReviewsWithUserInfoRow.nombre} ${reviewRowReviewsWithUserInfoRow.apellido}',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .titleLarge
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Inter Tight',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 4.0, 0.0, 4.0),
+                                                  child: RatingBarIndicator(
+                                                    itemBuilder:
+                                                        (context, index) =>
+                                                            Icon(
+                                                      Icons.star_rounded,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .warning,
+                                                    ),
+                                                    direction: Axis.horizontal,
+                                                    rating:
+                                                        reviewRowReviewsWithUserInfoRow
+                                                            .estrellas!
+                                                            .toDouble(),
+                                                    unratedColor:
+                                                        Color(0xFF95A1AC),
+                                                    itemCount: 5,
+                                                    itemSize: 24.0,
                                                   ),
-                                                  direction: Axis.horizontal,
-                                                  rating:
-                                                      reviewRowReviewsWithUserInfoRow
-                                                          .estrellas!
-                                                          .toDouble(),
-                                                  unratedColor:
-                                                      Color(0xFF95A1AC),
-                                                  itemCount: 5,
-                                                  itemSize: 24.0,
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
-                                          Column(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: Image.network(
-                                                  reviewRowReviewsWithUserInfoRow
-                                                      .foto!,
-                                                  width: 50.0,
-                                                  height: 50.0,
-                                                  fit: BoxFit.fill,
+                                          if (reviewRowReviewsWithUserInfoRow
+                                                      .foto !=
+                                                  null &&
+                                              reviewRowReviewsWithUserInfoRow
+                                                      .foto !=
+                                                  '')
+                                            Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  child: Image.network(
+                                                    reviewRowReviewsWithUserInfoRow
+                                                        .foto!,
+                                                    width: 50.0,
+                                                    height: 50.0,
+                                                    fit: BoxFit.fill,
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
-                                          ),
+                                              ],
+                                            ),
                                         ],
                                       ),
                                     ),
@@ -408,7 +429,7 @@ class _ReviewsCompleteWidgetState extends State<ReviewsCompleteWidget> {
                                               reviewRowReviewsWithUserInfoRow
                                                       .comment !=
                                                   '')
-                                            Expanded(
+                                            Flexible(
                                               child: Text(
                                                 valueOrDefault<String>(
                                                   reviewRowReviewsWithUserInfoRow

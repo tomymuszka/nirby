@@ -2,12 +2,12 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/informationaldialogo_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -824,7 +824,7 @@ class _ServicioDetalleWidgetState extends State<ServicioDetalleWidget> {
                                   child: Container(
                                     decoration: BoxDecoration(),
                                     child: Column(
-                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Padding(
                                           padding:
@@ -846,123 +846,129 @@ class _ServicioDetalleWidgetState extends State<ServicioDetalleWidget> {
                                                   fit: BoxFit.cover,
                                                 ),
                                               ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        15.0, 0.0, 0.0, 0.0),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  5.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Text(
-                                                            '${servicioDetalleServiceDetailCompleteRow.clientNombre} ${servicioDetalleServiceDetailCompleteRow.clientApellido}',
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Inter',
-                                                                  color: Color(
-                                                                      0xFF374151),
-                                                                  fontSize:
-                                                                      16.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  5.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Text(
-                                                            valueOrDefault<
-                                                                String>(
-                                                              servicioDetalleServiceDetailCompleteRow
-                                                                  .bestReviewStars
-                                                                  ?.toString(),
-                                                              '0',
+                                              Expanded(
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          15.0, 0.0, 0.0, 0.0),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    5.0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Flexible(
+                                                              child: Text(
+                                                                '${servicioDetalleServiceDetailCompleteRow.clientNombre} ${servicioDetalleServiceDetailCompleteRow.clientApellido}',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Inter',
+                                                                      color: Color(
+                                                                          0xFF374151),
+                                                                      fontSize:
+                                                                          16.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                    ),
+                                                              ),
                                                             ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Inter',
-                                                                  color: Color(
-                                                                      0xFF6B7280),
-                                                                  fontSize:
-                                                                      12.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w600,
-                                                                ),
-                                                          ),
-                                                          RatingBar.builder(
-                                                            onRatingUpdate: (newValue) =>
-                                                                safeSetState(() =>
-                                                                    _model.ratingBarValue =
-                                                                        newValue),
-                                                            itemBuilder:
-                                                                (context,
-                                                                        index) =>
-                                                                    Icon(
-                                                              Icons
-                                                                  .star_rounded,
-                                                              color: Color(
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    5.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Text(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                servicioDetalleServiceDetailCompleteRow
+                                                                    .bestReviewStars
+                                                                    ?.toString(),
+                                                                '0',
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Inter',
+                                                                    color: Color(
+                                                                        0xFF6B7280),
+                                                                    fontSize:
+                                                                        12.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w600,
+                                                                  ),
+                                                            ),
+                                                            RatingBar.builder(
+                                                              onRatingUpdate: (newValue) =>
+                                                                  safeSetState(() =>
+                                                                      _model.ratingBarValue =
+                                                                          newValue),
+                                                              itemBuilder:
+                                                                  (context,
+                                                                          index) =>
+                                                                      Icon(
+                                                                Icons
+                                                                    .star_rounded,
+                                                                color: Color(
+                                                                    0xFFFEB052),
+                                                              ),
+                                                              direction: Axis
+                                                                  .horizontal,
+                                                              initialRating: _model
+                                                                      .ratingBarValue ??=
+                                                                  servicioDetalleServiceDetailCompleteRow
+                                                                      .bestReviewStars!
+                                                                      .toDouble(),
+                                                              unratedColor:
+                                                                  FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .accent1,
+                                                              itemCount: 5,
+                                                              itemSize: 18.0,
+                                                              glowColor: Color(
                                                                   0xFFFEB052),
                                                             ),
-                                                            direction:
-                                                                Axis.horizontal,
-                                                            initialRating: _model
-                                                                    .ratingBarValue ??=
-                                                                servicioDetalleServiceDetailCompleteRow
-                                                                    .bestReviewStars!
-                                                                    .toDouble(),
-                                                            unratedColor:
-                                                                FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .accent1,
-                                                            itemCount: 5,
-                                                            itemSize: 18.0,
-                                                            glowColor: Color(
-                                                                0xFFFEB052),
-                                                          ),
-                                                        ],
+                                                          ],
+                                                        ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
                                             ],
@@ -1009,204 +1015,211 @@ class _ServicioDetalleWidgetState extends State<ServicioDetalleWidget> {
                       Expanded(
                         child: Container(
                           width: double.infinity,
-                          height: 80.0,
                           decoration: BoxDecoration(
                             color:
                                 FlutterFlowTheme.of(context).primaryBackground,
-                            boxShadow: [
-                              BoxShadow(
-                                blurRadius: 1.0,
-                                color: Color(0x33000000),
-                                offset: Offset(
-                                  0.0,
-                                  -1.0,
-                                ),
-                                spreadRadius: 1.0,
-                              )
-                            ],
                           ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                20.0, 0.0, 20.0, 0.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Expanded(
-                                  child: Builder(
-                                    builder: (context) => Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 10.0, 0.0, 10.0),
-                                      child: FFButtonWidget(
-                                        onPressed: () async {
-                                          var _shouldSetState = false;
-                                          if (!loggedIn) {
-                                            context.pushNamed(
-                                                SigninWidget.routeName);
-
-                                            if (_shouldSetState)
-                                              safeSetState(() {});
-                                            return;
-                                          }
-                                          if (servicioDetalleServiceDetailCompleteRow
-                                                  .professionalId ==
-                                              currentUserUid) {
-                                            await showDialog(
-                                              context: context,
-                                              builder: (dialogContext) {
-                                                return Dialog(
-                                                  elevation: 0,
-                                                  insetPadding: EdgeInsets.zero,
-                                                  backgroundColor:
-                                                      Colors.transparent,
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                              0.0, 0.0)
-                                                          .resolve(
-                                                              Directionality.of(
-                                                                  context)),
-                                                  child: GestureDetector(
-                                                    onTap: () {
-                                                      FocusScope.of(
-                                                              dialogContext)
-                                                          .unfocus();
-                                                      FocusManager
-                                                          .instance.primaryFocus
-                                                          ?.unfocus();
-                                                    },
-                                                    child:
-                                                        InformationaldialogoWidget(
-                                                      titulo: 'Mismo usuario',
-                                                      cuerpo:
-                                                          'No podés iniciar un chat con vos mismo',
-                                                      buttonstring: 'Ok',
-                                                    ),
-                                                  ),
-                                                );
-                                              },
-                                            );
-
-                                            if (_shouldSetState)
-                                              safeSetState(() {});
-                                            return;
-                                          }
-                                          _model.conversacionExistente =
-                                              await ConversationsTable()
-                                                  .queryRows(
-                                            queryFn: (q) => q
-                                                .eqOrNull(
-                                                  'buyer_id',
-                                                  currentUserUid,
-                                                )
-                                                .eqOrNull(
-                                                  'seller_id',
-                                                  servicioDetalleServiceDetailCompleteRow
-                                                      .professionalId,
-                                                )
-                                                .eqOrNull(
-                                                  'servicio',
-                                                  servicioDetalleServiceDetailCompleteRow
-                                                      .serviceId,
-                                                ),
-                                          );
-                                          _shouldSetState = true;
-                                          if (_model.conversacionExistente !=
-                                                  null &&
-                                              (_model.conversacionExistente)!
-                                                  .isNotEmpty) {
-                                            context.pushNamed(
-                                              ChatServiceWidget.routeName,
-                                              queryParameters: {
-                                                'conversationId':
-                                                    serializeParam(
-                                                  _model.conversacionExistente
-                                                      ?.firstOrNull?.id,
-                                                  ParamType.int,
-                                                ),
-                                                'recipentId': serializeParam(
-                                                  servicioDetalleServiceDetailCompleteRow
-                                                      .professionalId,
-                                                  ParamType.String,
-                                                ),
-                                                'serviceId': serializeParam(
-                                                  servicioDetalleServiceDetailCompleteRow
-                                                      .serviceId,
-                                                  ParamType.int,
-                                                ),
-                                              }.withoutNulls,
-                                            );
-                                          } else {
-                                            _model.conversation =
-                                                await ConversationsTable()
-                                                    .insert({
-                                              'conversation_members':
-                                                  functions.fromlistreturnarray(
-                                                      currentUserUid,
-                                                      servicioDetalleServiceDetailCompleteRow
-                                                          .professionalId),
-                                              'servicio':
-                                                  servicioDetalleServiceDetailCompleteRow
-                                                      .serviceId,
-                                              'buyer_id': currentUserUid,
-                                              'seller_id':
-                                                  servicioDetalleServiceDetailCompleteRow
-                                                      .professionalId,
-                                            });
-                                            _shouldSetState = true;
-
-                                            context.pushNamed(
-                                              ChatServiceWidget.routeName,
-                                              queryParameters: {
-                                                'conversationId':
-                                                    serializeParam(
-                                                  _model.conversation?.id,
-                                                  ParamType.int,
-                                                ),
-                                                'recipentId': serializeParam(
-                                                  servicioDetalleServiceDetailCompleteRow
-                                                      .professionalId,
-                                                  ParamType.String,
-                                                ),
-                                                'serviceId': serializeParam(
-                                                  servicioDetalleServiceDetailCompleteRow
-                                                      .serviceId,
-                                                  ParamType.int,
-                                                ),
-                                              }.withoutNulls,
-                                            );
-                                          }
-
-                                          if (_shouldSetState)
-                                            safeSetState(() {});
-                                        },
-                                        text: 'Contactar',
-                                        options: FFButtonOptions(
-                                          height: 55.0,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Container(
+                                width: double.infinity,
+                                height: 1.0,
+                                decoration: BoxDecoration(
+                                  color: Color(0x33000000),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    20.0, 0.0, 20.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Expanded(
+                                      child: Builder(
+                                        builder: (context) => Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 0.0, 16.0, 0.0),
-                                          iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 0.0, 0.0, 0.0),
-                                          color: Color(0xFF1C2A3A),
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .titleSmall
-                                                  .override(
-                                                    fontFamily: 'Inter',
-                                                    color: Colors.white,
-                                                    letterSpacing: 0.0,
-                                                    fontWeight: FontWeight.w500,
-                                                  ),
-                                          elevation: 0.0,
-                                          borderRadius:
-                                              BorderRadius.circular(55.0),
+                                                  0.0, 10.0, 0.0, 10.0),
+                                          child: FFButtonWidget(
+                                            onPressed: () async {
+                                              var _shouldSetState = false;
+                                              if (!loggedIn) {
+                                                context.pushNamed(
+                                                    SigninWidget.routeName);
+
+                                                if (_shouldSetState)
+                                                  safeSetState(() {});
+                                                return;
+                                              }
+                                              if (servicioDetalleServiceDetailCompleteRow
+                                                      .professionalId ==
+                                                  currentUserUid) {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: GestureDetector(
+                                                        onTap: () {
+                                                          FocusScope.of(
+                                                                  dialogContext)
+                                                              .unfocus();
+                                                          FocusManager.instance
+                                                              .primaryFocus
+                                                              ?.unfocus();
+                                                        },
+                                                        child:
+                                                            InformationaldialogoWidget(
+                                                          titulo:
+                                                              'Mismo usuario',
+                                                          cuerpo:
+                                                              'No podés iniciar un chat con vos mismo',
+                                                          buttonstring: 'Ok',
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+
+                                                if (_shouldSetState)
+                                                  safeSetState(() {});
+                                                return;
+                                              }
+                                              _model.conversacionExistente =
+                                                  await ConversationsTable()
+                                                      .queryRows(
+                                                queryFn: (q) => q
+                                                    .eqOrNull(
+                                                      'buyer_id',
+                                                      currentUserUid,
+                                                    )
+                                                    .eqOrNull(
+                                                      'seller_id',
+                                                      servicioDetalleServiceDetailCompleteRow
+                                                          .professionalId,
+                                                    )
+                                                    .eqOrNull(
+                                                      'servicio',
+                                                      servicioDetalleServiceDetailCompleteRow
+                                                          .serviceId,
+                                                    ),
+                                              );
+                                              _shouldSetState = true;
+                                              if (_model.conversacionExistente !=
+                                                      null &&
+                                                  (_model.conversacionExistente)!
+                                                      .isNotEmpty) {
+                                                context.pushNamed(
+                                                  ChatServiceWidget.routeName,
+                                                  queryParameters: {
+                                                    'conversationId':
+                                                        serializeParam(
+                                                      _model
+                                                          .conversacionExistente
+                                                          ?.firstOrNull
+                                                          ?.id,
+                                                      ParamType.int,
+                                                    ),
+                                                    'recipentId':
+                                                        serializeParam(
+                                                      servicioDetalleServiceDetailCompleteRow
+                                                          .professionalId,
+                                                      ParamType.String,
+                                                    ),
+                                                    'serviceId': serializeParam(
+                                                      servicioDetalleServiceDetailCompleteRow
+                                                          .serviceId,
+                                                      ParamType.int,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
+                                              } else {
+                                                _model.conversation =
+                                                    await ConversationsTable()
+                                                        .insert({
+                                                  'conversation_members': functions
+                                                      .fromlistreturnarray(
+                                                          currentUserUid,
+                                                          servicioDetalleServiceDetailCompleteRow
+                                                              .professionalId),
+                                                  'servicio':
+                                                      servicioDetalleServiceDetailCompleteRow
+                                                          .serviceId,
+                                                  'buyer_id': currentUserUid,
+                                                  'seller_id':
+                                                      servicioDetalleServiceDetailCompleteRow
+                                                          .professionalId,
+                                                });
+                                                _shouldSetState = true;
+
+                                                context.pushNamed(
+                                                  ChatServiceWidget.routeName,
+                                                  queryParameters: {
+                                                    'conversationId':
+                                                        serializeParam(
+                                                      _model.conversation?.id,
+                                                      ParamType.int,
+                                                    ),
+                                                    'recipentId':
+                                                        serializeParam(
+                                                      servicioDetalleServiceDetailCompleteRow
+                                                          .professionalId,
+                                                      ParamType.String,
+                                                    ),
+                                                    'serviceId': serializeParam(
+                                                      servicioDetalleServiceDetailCompleteRow
+                                                          .serviceId,
+                                                      ParamType.int,
+                                                    ),
+                                                  }.withoutNulls,
+                                                );
+                                              }
+
+                                              if (_shouldSetState)
+                                                safeSetState(() {});
+                                            },
+                                            text: 'Contactar',
+                                            options: FFButtonOptions(
+                                              height: 50.0,
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      16.0, 0.0, 16.0, 0.0),
+                                              iconPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color: Color(0xFF1C2A3A),
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        color: Colors.white,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                      ),
+                                              elevation: 0.0,
+                                              borderRadius:
+                                                  BorderRadius.circular(55.0),
+                                            ),
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
+                                  ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ),

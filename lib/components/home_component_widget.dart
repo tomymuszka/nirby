@@ -8,7 +8,6 @@ import '/empty_lists/empty_list_alerts_profesional/empty_list_alerts_profesional
 import '/empty_lists/empty_list_services_destacados/empty_list_services_destacados_widget.dart';
 import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/todas/buscandoprofesional/buscandoprofesional_widget.dart';
@@ -16,6 +15,7 @@ import '/todas/loading/loading_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
 import 'package:badges/badges.dart' as badges;
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -112,7 +112,20 @@ class _HomeComponentWidgetState extends State<HomeComponentWidget> {
                               children: [
                                 Expanded(
                                   child: Container(
-                                    decoration: BoxDecoration(),
+                                    decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                          blurRadius: 4.0,
+                                          color: Color(0x17000000),
+                                          offset: Offset(
+                                            0.0,
+                                            0.0,
+                                          ),
+                                          spreadRadius: 0.0,
+                                        )
+                                      ],
+                                      borderRadius: BorderRadius.circular(25.0),
+                                    ),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
@@ -468,6 +481,10 @@ class _HomeComponentWidgetState extends State<HomeComponentWidget> {
                                           .eqOrNull(
                                             'seen',
                                             false,
+                                          )
+                                          .neqOrNull(
+                                            'accion',
+                                            'nuevo_mensaje',
                                           ),
                                     ),
                                     builder: (context, snapshot) {
@@ -755,7 +772,8 @@ class _HomeComponentWidgetState extends State<HomeComponentWidget> {
                               highlightColor: Colors.transparent,
                               onTap: () async {
                                 FFAppState().fotossubidas = [];
-                                safeSetState(() {});
+                                FFAppState().fechaNacimiento = null;
+                                FFAppState().update(() {});
 
                                 context.pushNamed(
                                     CrearAlertaDeServicioWidget.routeName);
@@ -1166,6 +1184,10 @@ class _HomeComponentWidgetState extends State<HomeComponentWidget> {
                                                 .eqOrNull(
                                                   'seen',
                                                   false,
+                                                )
+                                                .neqOrNull(
+                                                  'accion',
+                                                  'nuevo_mensaje',
                                                 ),
                                           ),
                                           builder: (context, snapshot) {
@@ -1922,6 +1944,7 @@ class _HomeComponentWidgetState extends State<HomeComponentWidget> {
                                             width: 147.0,
                                             constraints: BoxConstraints(
                                               minWidth: 100.0,
+                                              minHeight: 120.0,
                                               maxWidth: 150.0,
                                             ),
                                             decoration: BoxDecoration(
@@ -2019,6 +2042,7 @@ class _HomeComponentWidgetState extends State<HomeComponentWidget> {
                                             width: 147.0,
                                             constraints: BoxConstraints(
                                               minWidth: 100.0,
+                                              minHeight: 120.0,
                                               maxWidth: 150.0,
                                             ),
                                             decoration: BoxDecoration(
@@ -2127,6 +2151,7 @@ class _HomeComponentWidgetState extends State<HomeComponentWidget> {
                                             width: 147.0,
                                             constraints: BoxConstraints(
                                               minWidth: 100.0,
+                                              minHeight: 120.0,
                                               maxWidth: 150.0,
                                             ),
                                             decoration: BoxDecoration(
@@ -2225,6 +2250,7 @@ class _HomeComponentWidgetState extends State<HomeComponentWidget> {
                                           child: Container(
                                             constraints: BoxConstraints(
                                               minWidth: 100.0,
+                                              minHeight: 120.0,
                                               maxWidth: 150.0,
                                             ),
                                             decoration: BoxDecoration(
@@ -2335,15 +2361,27 @@ class _HomeComponentWidgetState extends State<HomeComponentWidget> {
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       15.0, 10.0, 15.0, 10.0),
-                                  child: FutureBuilder<List<RelevantAlertsRow>>(
-                                    future: RelevantAlertsTable().queryRows(
-                                      queryFn: (q) => q
-                                          .eqOrNull(
-                                            'profesional_id',
-                                            currentUserUid,
-                                          )
-                                          .order('created_at', ascending: true),
-                                    ),
+                                  child: StreamBuilder<
+                                      List<RelevantAlertsTableRow>>(
+                                    stream: _model
+                                            .alertasservicioSupabaseStream ??=
+                                        SupaFlow.client
+                                            .from("relevant_alerts_table")
+                                            .stream(primaryKey: [
+                                              'alerta_id',
+                                              'profesional_id'
+                                            ])
+                                            .eqOrNull(
+                                              'profesional_id',
+                                              currentUserUid,
+                                            )
+                                            .order('created_at',
+                                                ascending: true)
+                                            .map((list) => list
+                                                .map((item) =>
+                                                    RelevantAlertsTableRow(
+                                                        item))
+                                                .toList()),
                                     builder: (context, snapshot) {
                                       // Customize what your widget looks like when it's loading.
                                       if (!snapshot.hasData) {
@@ -2361,11 +2399,11 @@ class _HomeComponentWidgetState extends State<HomeComponentWidget> {
                                           ),
                                         );
                                       }
-                                      List<RelevantAlertsRow>
-                                          alertasservicioRelevantAlertsRowList =
+                                      List<RelevantAlertsTableRow>
+                                          alertasservicioRelevantAlertsTableRowList =
                                           snapshot.data!;
 
-                                      if (alertasservicioRelevantAlertsRowList
+                                      if (alertasservicioRelevantAlertsTableRowList
                                           .isEmpty) {
                                         return Center(
                                           child:
@@ -2379,12 +2417,12 @@ class _HomeComponentWidgetState extends State<HomeComponentWidget> {
                                         shrinkWrap: true,
                                         scrollDirection: Axis.vertical,
                                         itemCount:
-                                            alertasservicioRelevantAlertsRowList
+                                            alertasservicioRelevantAlertsTableRowList
                                                 .length,
                                         itemBuilder:
                                             (context, alertasservicioIndex) {
-                                          final alertasservicioRelevantAlertsRow =
-                                              alertasservicioRelevantAlertsRowList[
+                                          final alertasservicioRelevantAlertsTableRow =
+                                              alertasservicioRelevantAlertsTableRowList[
                                                   alertasservicioIndex];
                                           return Padding(
                                             padding:
@@ -2402,7 +2440,7 @@ class _HomeComponentWidgetState extends State<HomeComponentWidget> {
                                                       .routeName,
                                                   queryParameters: {
                                                     'id': serializeParam(
-                                                      alertasservicioRelevantAlertsRow
+                                                      alertasservicioRelevantAlertsTableRow
                                                           .alertaId,
                                                       ParamType.int,
                                                     ),
@@ -2436,7 +2474,7 @@ class _HomeComponentWidgetState extends State<HomeComponentWidget> {
                                                       mainAxisSize:
                                                           MainAxisSize.max,
                                                       children: [
-                                                        if (alertasservicioRelevantAlertsRow
+                                                        if (alertasservicioRelevantAlertsTableRow
                                                             .images.isNotEmpty)
                                                           Padding(
                                                             padding:
@@ -2453,7 +2491,7 @@ class _HomeComponentWidgetState extends State<HomeComponentWidget> {
                                                                           8.0),
                                                               child:
                                                                   Image.network(
-                                                                alertasservicioRelevantAlertsRow
+                                                                alertasservicioRelevantAlertsTableRow
                                                                     .images
                                                                     .firstOrNull!,
                                                                 width: 60.0,
@@ -2490,7 +2528,7 @@ class _HomeComponentWidgetState extends State<HomeComponentWidget> {
                                                                           Text(
                                                                         valueOrDefault<
                                                                             String>(
-                                                                          alertasservicioRelevantAlertsRow
+                                                                          alertasservicioRelevantAlertsTableRow
                                                                               .descripcion,
                                                                           'descripcion',
                                                                         ).maybeHandleOverflow(
@@ -2527,7 +2565,7 @@ class _HomeComponentWidgetState extends State<HomeComponentWidget> {
                                                                             Text(
                                                                           valueOrDefault<
                                                                               String>(
-                                                                            alertasservicioRelevantAlertsRow.area,
+                                                                            alertasservicioRelevantAlertsTableRow.area,
                                                                             'sin area',
                                                                           ),
                                                                           style: FlutterFlowTheme.of(context)
@@ -2549,7 +2587,7 @@ class _HomeComponentWidgetState extends State<HomeComponentWidget> {
                                                                       MainAxisAlignment
                                                                           .end,
                                                                   children: [
-                                                                    if (alertasservicioRelevantAlertsRow
+                                                                    if (alertasservicioRelevantAlertsTableRow
                                                                             .dateComplete !=
                                                                         null)
                                                                       Flexible(
@@ -2557,7 +2595,7 @@ class _HomeComponentWidgetState extends State<HomeComponentWidget> {
                                                                             Text(
                                                                           dateTimeFormat(
                                                                             "d/M",
-                                                                            alertasservicioRelevantAlertsRow.dateComplete!,
+                                                                            alertasservicioRelevantAlertsTableRow.dateComplete!,
                                                                             locale:
                                                                                 FFLocalizations.of(context).languageCode,
                                                                           ),
@@ -2755,6 +2793,9 @@ class _HomeComponentWidgetState extends State<HomeComponentWidget> {
                                         ),
                                         child: Container(
                                           width: 147.0,
+                                          constraints: BoxConstraints(
+                                            minHeight: 120.0,
+                                          ),
                                           decoration: BoxDecoration(
                                             color: Colors.white,
                                             borderRadius:
@@ -2848,6 +2889,9 @@ class _HomeComponentWidgetState extends State<HomeComponentWidget> {
                                         ),
                                         child: Container(
                                           width: 147.0,
+                                          constraints: BoxConstraints(
+                                            minHeight: 120.0,
+                                          ),
                                           decoration: BoxDecoration(
                                             color: Colors.white,
                                             borderRadius:
@@ -2952,6 +2996,9 @@ class _HomeComponentWidgetState extends State<HomeComponentWidget> {
                                         ),
                                         child: Container(
                                           width: 147.0,
+                                          constraints: BoxConstraints(
+                                            minHeight: 120.0,
+                                          ),
                                           decoration: BoxDecoration(
                                             color: Colors.white,
                                             borderRadius:
@@ -3045,6 +3092,9 @@ class _HomeComponentWidgetState extends State<HomeComponentWidget> {
                                         ),
                                         child: Container(
                                           width: 147.0,
+                                          constraints: BoxConstraints(
+                                            minHeight: 120.0,
+                                          ),
                                           decoration: BoxDecoration(
                                             color: Colors.white,
                                             borderRadius:
@@ -3150,6 +3200,9 @@ class _HomeComponentWidgetState extends State<HomeComponentWidget> {
                                         child: Container(
                                           width: 147.0,
                                           height: 120.0,
+                                          constraints: BoxConstraints(
+                                            minHeight: 120.0,
+                                          ),
                                           decoration: BoxDecoration(
                                             color: Colors.white,
                                             borderRadius:

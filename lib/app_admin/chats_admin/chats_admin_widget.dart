@@ -2,11 +2,10 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/empty_lists/empty_list_chats_seller/empty_list_chats_seller_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/todas/navbar/navbar_widget.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'chats_admin_model.dart';
@@ -828,22 +827,6 @@ class _ChatsAdminWidgetState extends State<ChatsAdminWidget>
                               ),
                             ),
                           ],
-                        ),
-                      ),
-                      Container(
-                        width: double.infinity,
-                        height: 70.0,
-                        decoration: BoxDecoration(
-                          color:
-                              FlutterFlowTheme.of(context).secondaryBackground,
-                        ),
-                        child: wrapWithModel(
-                          model: _model.navbarModel,
-                          updateCallback: () => safeSetState(() {}),
-                          child: NavbarWidget(
-                            admin: chatsAdminUsuariosRow!.admin!,
-                            photo: chatsAdminUsuariosRow.foto!,
-                          ),
                         ),
                       ),
                     ],

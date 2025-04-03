@@ -1,11 +1,11 @@
 import '/backend/supabase/supabase.dart';
 import '/components/informationaldialogo_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -732,6 +732,10 @@ class _SigninWidgetState extends State<SigninWidget>
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
+                                        FFAppState().PaginaSeleccionada =
+                                            'Home';
+                                        safeSetState(() {});
+
                                         context.pushNamed(HomeWidget.routeName);
                                       },
                                       child: Text(

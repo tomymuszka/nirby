@@ -100,4 +100,8 @@ class UsuariosRow extends SupabaseDataRow {
 
   List<String> get playerId => getListField<String>('player_id');
   set playerId(List<String>? value) => setListField<String>('player_id', value);
+
+  String? get emailMercadopago => getField<String>('email_mercadopago');
+  set emailMercadopago(String? value) =>
+      setField<String>('email_mercadopago', value);
 }

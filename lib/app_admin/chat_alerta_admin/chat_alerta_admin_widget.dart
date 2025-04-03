@@ -1,10 +1,10 @@
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'chat_alerta_admin_model.dart';
@@ -213,7 +213,7 @@ class _ChatAlertaAdminWidgetState extends State<ChatAlertaAdminWidget> {
                                                                   .fromSTEB(
                                                                       15.0,
                                                                       0.0,
-                                                                      0.0,
+                                                                      15.0,
                                                                       0.0),
                                                           child: Column(
                                                             mainAxisSize:

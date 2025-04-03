@@ -2,11 +2,11 @@ import '/backend/api_requests/api_calls.dart';
 import '/components/confirmdialog_widget.dart';
 import '/components/informationaldialogo_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'active_suscription_model.dart';
@@ -433,8 +433,8 @@ class _ActiveSuscriptionWidgetState extends State<ActiveSuscriptionWidget> {
                                                   titulo:
                                                       'Cancelar suscripción',
                                                   cuerpo:
-                                                      'Estás seguro que deseas cancelar la suscripción? Perderas acceso a todos los beneficios.',
-                                                  botonrechazar: 'No',
+                                                      '¿Estás seguro de cancelar tu suscripción? Recuerda que perderás acceso a todos los beneficios.',
+                                                  botonrechazar: 'No, mantener',
                                                   botonconfirmar:
                                                       'Si, cancelar',
                                                 ),

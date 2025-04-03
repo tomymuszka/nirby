@@ -1,6 +1,6 @@
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'no_contrato_profesional_model.dart';
 export 'no_contrato_profesional_model.dart';
@@ -115,12 +115,14 @@ class _NoContratoProfesionalWidgetState
                     ),
                   ),
                   FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
+                    onPressed: () async {
+                      await launchURL(
+                          'https://wa.me/5491168551414?text=Me%20gustaría%20compartir%20los%20motivos%20por%20los%20cuales%20decidí%20no%20contratar%20al%20profesional.');
+                      Navigator.pop(context);
                     },
                     text: 'Comentar',
                     options: FFButtonOptions(
-                      width: 160.0,
+                      width: 120.0,
                       height: 40.0,
                       padding: EdgeInsets.all(8.0),
                       iconPadding:

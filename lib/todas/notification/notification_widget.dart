@@ -2,12 +2,12 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/empty_lists/empty_notifications/empty_notifications_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/todas/delete_notification/delete_notification_widget.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/index.dart';
 import 'dart:async';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'notification_model.dart';
@@ -72,7 +72,15 @@ class _NotificationWidgetState extends State<NotificationWidget> {
               size: 24.0,
             ),
             onPressed: () async {
-              context.pop();
+              context.goNamed(
+                HomeWidget.routeName,
+                extra: <String, dynamic>{
+                  kTransitionInfoKey: TransitionInfo(
+                    hasTransition: true,
+                    transitionType: PageTransitionType.leftToRight,
+                  ),
+                },
+              );
             },
           ),
           title: Text(
@@ -113,7 +121,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                     'accion',
                                     'nuevo_mensaje',
                                   )
-                                  .order('created_at'),
+                                  .order('id'),
                             )))
                       .future,
                   builder: (context, snapshot) {
@@ -180,6 +188,10 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                                       notificacionesNotificationsUsersRow
                                           .idAlertaServicio,
                                       ParamType.int,
+                                    ),
+                                    'comesfromnotifications': serializeParam(
+                                      true,
+                                      ParamType.bool,
                                     ),
                                   }.withoutNulls,
                                 );

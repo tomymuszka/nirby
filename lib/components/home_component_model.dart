@@ -1,6 +1,7 @@
 import '/app_cliente/home/categoriaindividual/categoriaindividual_widget.dart';
 import '/app_cliente/home/profesionalesrecomendados/profesionalesrecomendados_widget.dart';
 import '/backend/api_requests/api_calls.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'home_component_widget.dart' show HomeComponentWidget;
 import 'package:flutter/material.dart';
@@ -30,6 +31,7 @@ class HomeComponentModel extends FlutterFlowModel<HomeComponentWidget> {
   ApiCallResponse? suscrip2;
   // Stores action output result for [Backend Call - API (getsusc)] action in Button widget.
   ApiCallResponse? suscrip22;
+  Stream<List<RelevantAlertsTableRow>>? alertasservicioSupabaseStream;
 
   @override
   void initState(BuildContext context) {

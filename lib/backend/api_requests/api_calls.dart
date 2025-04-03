@@ -2,9 +2,10 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
-import 'api_manager.dart';
+import 'package:ff_commons/api_requests/api_manager.dart';
 
-export 'api_manager.dart' show ApiCallResponse;
+
+export 'package:ff_commons/api_requests/api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
@@ -103,7 +104,7 @@ class BuscarusuariosCall {
     return ApiManager.instance.makeApiCall(
       callName: 'buscarusuarios',
       apiUrl:
-          '${baseUrl}/rest/v1/usuarios?or=(nombre.ilike.%${searchString}%,apellido.ilike.%${searchString}%)&select=id',
+          '${baseUrl}/rest/v1/usuarios?or=(nombre.ilike.%25${searchString}%25,apellido.ilike.%25${searchString}%25)&select=id',
       callType: ApiCallType.GET,
       headers: {
         'apikey':
@@ -472,22 +473,6 @@ class SendEmailCall {
 }
 
 /// End Sendpulse Group Code
-
-class ApiPagingParams {
-  int nextPageNumber = 0;
-  int numItems = 0;
-  dynamic lastResponse;
-
-  ApiPagingParams({
-    required this.nextPageNumber,
-    required this.numItems,
-    required this.lastResponse,
-  });
-
-  @override
-  String toString() =>
-      'PagingParams(nextPageNumber: $nextPageNumber, numItems: $numItems, lastResponse: $lastResponse,)';
-}
 
 String _toEncodable(dynamic item) {
   return item;

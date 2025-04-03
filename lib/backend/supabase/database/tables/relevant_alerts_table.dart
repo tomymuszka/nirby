@@ -1,28 +1,28 @@
 import '../database.dart';
 
-class RelevantAlertsTable extends SupabaseTable<RelevantAlertsRow> {
+class RelevantAlertsTableTable extends SupabaseTable<RelevantAlertsTableRow> {
   @override
-  String get tableName => 'relevant_alerts';
+  String get tableName => 'relevant_alerts_table';
 
   @override
-  RelevantAlertsRow createRow(Map<String, dynamic> data) =>
-      RelevantAlertsRow(data);
+  RelevantAlertsTableRow createRow(Map<String, dynamic> data) =>
+      RelevantAlertsTableRow(data);
 }
 
-class RelevantAlertsRow extends SupabaseDataRow {
-  RelevantAlertsRow(Map<String, dynamic> data) : super(data);
+class RelevantAlertsTableRow extends SupabaseDataRow {
+  RelevantAlertsTableRow(Map<String, dynamic> data) : super(data);
 
   @override
-  SupabaseTable get table => RelevantAlertsTable();
+  SupabaseTable get table => RelevantAlertsTableTable();
 
-  int? get alertaId => getField<int>('alerta_id');
-  set alertaId(int? value) => setField<int>('alerta_id', value);
+  int get alertaId => getField<int>('alerta_id')!;
+  set alertaId(int value) => setField<int>('alerta_id', value);
 
   String? get descripcion => getField<String>('descripcion');
   set descripcion(String? value) => setField<String>('descripcion', value);
 
-  int? get category => getField<int>('category');
-  set category(int? value) => setField<int>('category', value);
+  String? get category => getField<String>('category');
+  set category(String? value) => setField<String>('category', value);
 
   DateTime? get dateComplete => getField<DateTime>('date_complete');
   set dateComplete(DateTime? value) =>
@@ -41,8 +41,8 @@ class RelevantAlertsRow extends SupabaseDataRow {
   DateTime? get createdAt => getField<DateTime>('created_at');
   set createdAt(DateTime? value) => setField<DateTime>('created_at', value);
 
-  String? get profesionalId => getField<String>('profesional_id');
-  set profesionalId(String? value) => setField<String>('profesional_id', value);
+  String get profesionalId => getField<String>('profesional_id')!;
+  set profesionalId(String value) => setField<String>('profesional_id', value);
 
   String? get nombre => getField<String>('nombre');
   set nombre(String? value) => setField<String>('nombre', value);

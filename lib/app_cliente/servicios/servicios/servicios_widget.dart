@@ -1,14 +1,13 @@
-import '';
 import '/app_cliente/servicios/orderby/orderby_widget.dart';
 import '/app_cliente/servicios/servicios_list_component/servicios_list_component_widget.dart';
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/empty_lists/empty_list_services/empty_list_services_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -267,7 +266,7 @@ class _ServiciosWidgetState extends State<ServiciosWidget> {
                                               padding: MediaQuery.viewInsetsOf(
                                                   context),
                                               child: Container(
-                                                height: 400.0,
+                                                height: 500.0,
                                                 child: OrderbyWidget(
                                                   valorInicial: _model.orderby,
                                                 ),

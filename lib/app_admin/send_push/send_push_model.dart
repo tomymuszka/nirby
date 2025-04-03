@@ -40,6 +40,7 @@ class SendPushModel extends FlutterFlowModel<SendPushWidget> {
 
   ///  State fields for stateful widgets in this page.
 
+  final formKey = GlobalKey<FormState>();
   // State field(s) for titulo widget.
   FocusNode? tituloFocusNode;
   TextEditingController? tituloTextController;

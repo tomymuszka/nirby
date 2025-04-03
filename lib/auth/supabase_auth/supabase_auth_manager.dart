@@ -28,8 +28,8 @@ class SupabaseAuthManager extends AuthManager with EmailSignInManager {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-            content: Text(
-                'Hubo un error al iniciar sesión. Por favor, volvé a probar.')),
+            content:
+                Text('Credenciales incorrectas. Por favor, volvé a probar.')),
       );
     }
   }
@@ -49,8 +49,8 @@ class SupabaseAuthManager extends AuthManager with EmailSignInManager {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-            content: Text(
-                'Hubo un error al iniciar sesión. Por favor, volvé a probar.')),
+            content:
+                Text('Credenciales incorrectas. Por favor, volvé a probar.')),
       );
       return;
     }
@@ -75,8 +75,8 @@ class SupabaseAuthManager extends AuthManager with EmailSignInManager {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-            content: Text(
-                'Hubo un error al iniciar sesión. Por favor, volvé a probar.')),
+            content:
+                Text('Credenciales incorrectas. Por favor, volvé a probar.')),
       );
       return;
     }
@@ -99,8 +99,8 @@ class SupabaseAuthManager extends AuthManager with EmailSignInManager {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-            content: Text(
-                'Hubo un error al iniciar sesión. Por favor, volvé a probar.')),
+            content:
+                Text('Credenciales incorrectas. Por favor, volvé a probar.')),
       );
       return null;
     }
@@ -154,7 +154,7 @@ class SupabaseAuthManager extends AuthManager with EmailSignInManager {
     } on AuthException catch (e) {
       final errorMsg = e.message.contains('User already registered')
           ? 'El email ya se encuentra registrado con otra cuenta'
-          : 'Hubo un error al iniciar sesión. Por favor, volvé a probar.';
+          : 'Credenciales incorrectas. Por favor, volvé a probar.';
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(errorMsg)),

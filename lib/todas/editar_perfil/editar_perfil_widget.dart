@@ -2,11 +2,11 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/informationaldialogo_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/actions/actions.dart' as action_blocks;
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
@@ -50,6 +50,8 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
     _model.titleFocusNode ??= FocusNode();
 
     _model.anosexperienciaFocusNode ??= FocusNode();
+
+    _model.emailmpFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
@@ -755,7 +757,7 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                               focusNode: _model.titleFocusNode,
                                               autofocus: false,
                                               textCapitalization:
-                                                  TextCapitalization.none,
+                                                  TextCapitalization.sentences,
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 isDense: false,
@@ -851,10 +853,13 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                                   .asValidator(context),
                                             ),
                                           ),
-                                        if (editarPerfilUsuariosRow
-                                                ?.anosexperiencia
-                                                .toString() !=
-                                            '0')
+                                        if ((editarPerfilUsuariosRow
+                                                    ?.anosexperiencia
+                                                    .toString() !=
+                                                '0') &&
+                                            (editarPerfilUsuariosRow
+                                                    ?.anosexperiencia !=
+                                                null))
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -1005,9 +1010,13 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                                     await showDatePicker(
                                                   context: context,
                                                   initialDate:
-                                                      getCurrentTimestamp,
+                                                      (editarPerfilUsuariosRow
+                                                              ?.fechaNacimiento ??
+                                                          DateTime.now()),
                                                   firstDate: DateTime(1900),
-                                                  lastDate: getCurrentTimestamp,
+                                                  lastDate:
+                                                      (getCurrentTimestamp ??
+                                                          DateTime(2050)),
                                                   builder: (context, child) {
                                                     return wrapInMaterialDatePickerTheme(
                                                       context,
@@ -1072,7 +1081,8 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                                     null) {
                                                   safeSetState(() {
                                                     _model.datePicked =
-                                                        getCurrentTimestamp;
+                                                        editarPerfilUsuariosRow
+                                                            ?.fechaNacimiento;
                                                   });
                                                 }
                                                 if (_model.datePicked != null) {
@@ -1130,6 +1140,125 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                               ),
                                             ),
                                           ),
+                                        if (editarPerfilUsuariosRow
+                                                    ?.emailMercadopago !=
+                                                null &&
+                                            editarPerfilUsuariosRow
+                                                    ?.emailMercadopago !=
+                                                '')
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 15.0, 0.0, 0.0),
+                                            child: TextFormField(
+                                              controller: _model
+                                                      .emailmpTextController ??=
+                                                  TextEditingController(
+                                                text: editarPerfilUsuariosRow
+                                                    ?.emailMercadopago,
+                                              ),
+                                              focusNode:
+                                                  _model.emailmpFocusNode,
+                                              autofocus: false,
+                                              textCapitalization:
+                                                  TextCapitalization.none,
+                                              obscureText: false,
+                                              decoration: InputDecoration(
+                                                isDense: false,
+                                                labelText:
+                                                    'Email de mercadopago',
+                                                labelStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                alignLabelWithHint: false,
+                                                hintText:
+                                                    'Profesor de educación física',
+                                                hintStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Inter',
+                                                          color:
+                                                              Color(0xFF9CA3AF),
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: Color(0xFFD1D5DB),
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primary,
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                errorBorder: OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .error,
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                focusedErrorBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: BorderSide(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .error,
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                ),
+                                                filled: true,
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBackground,
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Inter',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                              maxLength: 2,
+                                              buildCounter: (context,
+                                                      {required currentLength,
+                                                      required isFocused,
+                                                      maxLength}) =>
+                                                  null,
+                                              keyboardType:
+                                                  TextInputType.number,
+                                              cursorColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              validator: _model
+                                                  .emailmpTextControllerValidator
+                                                  .asValidator(context),
+                                            ),
+                                          ),
                                       ],
                                     ),
                                   ),
@@ -1176,6 +1305,9 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                                         int.tryParse(_model
                                                             .anosexperienciaTextController
                                                             .text),
+                                                    'email_mercadopago': _model
+                                                        .emailmpTextController
+                                                        .text,
                                                   },
                                                   matchingRows: (rows) =>
                                                       rows.eqOrNull(
@@ -1206,6 +1338,9 @@ class _EditarPerfilWidgetState extends State<EditarPerfilWidget> {
                                                         int.tryParse(_model
                                                             .anosexperienciaTextController
                                                             .text),
+                                                    'email_mercadopago': _model
+                                                        .emailmpTextController
+                                                        .text,
                                                   },
                                                   matchingRows: (rows) =>
                                                       rows.eqOrNull(

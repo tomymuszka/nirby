@@ -1,12 +1,11 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/todas/delete_account/delete_account_widget.dart';
 import '/todas/loading/loading_widget.dart';
 import '/todas/log_out/log_out_widget.dart';
 import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -238,59 +237,7 @@ class _ProfileComponentWidgetState extends State<ProfileComponentWidget> {
                         EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 20.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        FFButtonWidget(
-                          onPressed: () async {
-                            if (FFAppState().modovendedor) {
-                              FFAppState().modovendedor = false;
-                              FFAppState().update(() {});
-                            } else {
-                              if ((widget.parameter5 != null) &&
-                                  (widget.parameter6 != null) &&
-                                  (widget.parameter7 != null &&
-                                      widget.parameter7 != '')) {
-                                FFAppState().modovendedor = true;
-                                FFAppState().update(() {});
-                              } else {
-                                context
-                                    .goNamed(CompleteprofileWidget.routeName);
-
-                                return;
-                              }
-                            }
-                          },
-                          text: FFAppState().modovendedor
-                              ? 'Pasar a modo cliente'
-                              : 'Pasar a modo vendedor',
-                          options: FFButtonOptions(
-                            height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 16.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: Color(0xFF3D64FF),
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Inter Tight',
-                                  color: Colors.white,
-                                  letterSpacing: 0.0,
-                                ),
-                            elevation: 0.0,
-                            borderRadius: BorderRadius.circular(8.0),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                if (currentUserUid == 'tgh')
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 20.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
@@ -320,6 +267,9 @@ class _ProfileComponentWidgetState extends State<ProfileComponentWidget> {
                                 FFAppState().modovendedor = true;
                                 FFAppState().update(() {});
                               } else {
+                                FFAppState().fechaNacimiento = null;
+                                safeSetState(() {});
+
                                 context
                                     .goNamed(CompleteprofileWidget.routeName);
 
@@ -596,7 +546,8 @@ class _ProfileComponentWidgetState extends State<ProfileComponentWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      await launchURL('https://wa.me/5491168551414');
+                      await launchURL(
+                          'https://wa.me/5491168551414?text=Necesito%20ayuda%20o%20soporte%20con%20el%20uso%20de%20la%20plataforma.');
                     },
                     child: Material(
                       color: Colors.transparent,
@@ -1284,7 +1235,7 @@ class _ProfileComponentWidgetState extends State<ProfileComponentWidget> {
             child: Align(
               alignment: AlignmentDirectional(0.0, 0.0),
               child: Text(
-                'Versión 1.0.22',
+                'Versión 1.0.31',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Inter',
                       color: FlutterFlowTheme.of(context).secondaryText,

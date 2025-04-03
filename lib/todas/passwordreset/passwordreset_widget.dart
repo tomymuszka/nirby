@@ -1,9 +1,10 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/components/informationaldialogo_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/actions/actions.dart' as action_blocks;
+import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'passwordreset_model.dart';
@@ -240,21 +241,22 @@ class _PasswordresetWidgetState extends State<PasswordresetWidget> {
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(0x00000000),
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   errorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(0x00000000),
+                                      color: FlutterFlowTheme.of(context).error,
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(12.0),
                                   ),
                                   focusedErrorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color: Color(0x00000000),
+                                      color: FlutterFlowTheme.of(context).error,
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(12.0),
@@ -297,7 +299,6 @@ class _PasswordresetWidgetState extends State<PasswordresetWidget> {
                         child: Builder(
                           builder: (context) => FFButtonWidget(
                             onPressed: () async {
-                              Function() _navigate = () {};
                               if (_model.formKey.currentState == null ||
                                   !_model.formKey.currentState!.validate()) {
                                 return;
@@ -338,6 +339,9 @@ class _PasswordresetWidgetState extends State<PasswordresetWidget> {
                                     );
                                   },
                                 );
+
+                                context.pushNamedAuth(
+                                    ReturnappWidget.routeName, context.mounted);
                               } else {
                                 await showDialog(
                                   context: context,
@@ -366,8 +370,6 @@ class _PasswordresetWidgetState extends State<PasswordresetWidget> {
                                   },
                                 );
                               }
-
-                              _navigate();
                             },
                             text: 'Cambiar contraseña',
                             options: FFButtonOptions(

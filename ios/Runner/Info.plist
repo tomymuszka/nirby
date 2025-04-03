@@ -50,6 +50,7 @@
     <string>La aplicación desea enviarte notificaciones push opara que estes al tanto de todos los eventos.</string>
 
 
+
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

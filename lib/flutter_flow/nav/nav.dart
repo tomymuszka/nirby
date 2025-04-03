@@ -235,6 +235,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               'id',
               ParamType.int,
             ),
+            comesfromnotifications: params.getParam(
+              'comesfromnotifications',
+              ParamType.bool,
+            ),
           ),
         ),
         FFRoute(
@@ -517,6 +521,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: CrearAlertaDeServicioScreenWidget.routeName,
           path: CrearAlertaDeServicioScreenWidget.routePath,
           builder: (context, params) => CrearAlertaDeServicioScreenWidget(),
+        ),
+        FFRoute(
+          name: ReturnappWidget.routeName,
+          path: ReturnappWidget.routePath,
+          builder: (context, params) => ReturnappWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

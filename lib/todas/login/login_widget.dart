@@ -1,13 +1,14 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/informationaldialogo_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/index.dart';
+import 'package:ff_theme/flutter_flow/flutter_flow_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -356,83 +357,131 @@ class _LoginWidgetState extends State<LoginWidget>
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 10.0, 0.0, 16.0),
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    if (_model.formKey.currentState == null ||
-                                        !_model.formKey.currentState!
-                                            .validate()) {
-                                      return;
-                                    }
-                                    FFAppState().modovendedor = false;
-                                    FFAppState().PaginaSeleccionada = 'Home';
-                                    safeSetState(() {});
-                                    _model.playerid =
-                                        await actions.getOneSignalPlayerId();
-                                    GoRouter.of(context).prepareAuthEvent();
+                              Builder(
+                                builder: (context) => Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 10.0, 0.0, 16.0),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      var _shouldSetState = false;
+                                      if (_model.formKey.currentState == null ||
+                                          !_model.formKey.currentState!
+                                              .validate()) {
+                                        return;
+                                      }
+                                      FFAppState().modovendedor = false;
+                                      FFAppState().PaginaSeleccionada = 'Home';
+                                      safeSetState(() {});
+                                      _model.playerid =
+                                          await actions.getOneSignalPlayerId();
+                                      _shouldSetState = true;
+                                      GoRouter.of(context).prepareAuthEvent();
 
-                                    final user =
-                                        await authManager.signInWithEmail(
-                                      context,
-                                      _model.emailAddressTextController.text,
-                                      _model.passwordTextController.text,
-                                    );
-                                    if (user == null) {
-                                      return;
-                                    }
+                                      final user =
+                                          await authManager.signInWithEmail(
+                                        context,
+                                        _model.emailAddressTextController.text,
+                                        _model.passwordTextController.text,
+                                      );
+                                      if (user == null) {
+                                        return;
+                                      }
 
-                                    _model.user =
-                                        await UsuariosTable().queryRows(
-                                      queryFn: (q) => q.eqOrNull(
-                                        'id',
-                                        currentUserUid,
-                                      ),
-                                    );
-                                    if (!_model.user!.firstOrNull!.playerId
-                                        .contains(_model.playerid)) {
-                                      await UsuariosTable().update(
-                                        data: {
-                                          'player_id': functions.additemtoarray(
-                                              _model.user?.firstOrNull?.playerId
-                                                  .toList(),
-                                              _model.playerid),
-                                        },
-                                        matchingRows: (rows) => rows.eqOrNull(
+                                      _model.user =
+                                          await UsuariosTable().queryRows(
+                                        queryFn: (q) => q.eqOrNull(
                                           'id',
                                           currentUserUid,
                                         ),
                                       );
-                                    }
+                                      _shouldSetState = true;
+                                      if (_model.user?.firstOrNull?.isDeleted ==
+                                          true) {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (dialogContext) {
+                                            return Dialog(
+                                              elevation: 0,
+                                              insetPadding: EdgeInsets.zero,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              alignment:
+                                                  AlignmentDirectional(0.0, 0.0)
+                                                      .resolve(
+                                                          Directionality.of(
+                                                              context)),
+                                              child: GestureDetector(
+                                                onTap: () {
+                                                  FocusScope.of(dialogContext)
+                                                      .unfocus();
+                                                  FocusManager
+                                                      .instance.primaryFocus
+                                                      ?.unfocus();
+                                                },
+                                                child:
+                                                    InformationaldialogoWidget(
+                                                  titulo: 'Cuenta eliminada ❌',
+                                                  cuerpo:
+                                                      'Tu cuenta ha sido eliminada y ya no podés iniciar sesión. Si creés que esto fue un error o necesitás ayuda, contactanos para más información.',
+                                                  buttonstring: 'Ok',
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        );
 
-                                    context.pushNamedAuth(
-                                        HomeWidget.routeName, context.mounted);
+                                        if (_shouldSetState)
+                                          safeSetState(() {});
+                                        return;
+                                      }
+                                      if (!_model.user!.firstOrNull!.playerId
+                                          .contains(_model.playerid)) {
+                                        await UsuariosTable().update(
+                                          data: {
+                                            'player_id':
+                                                functions.additemtoarray(
+                                                    _model.user?.firstOrNull
+                                                        ?.playerId
+                                                        .toList(),
+                                                    _model.playerid),
+                                          },
+                                          matchingRows: (rows) => rows.eqOrNull(
+                                            'id',
+                                            currentUserUid,
+                                          ),
+                                        );
+                                      }
 
-                                    safeSetState(() {});
-                                  },
-                                  text: 'Iniciar sesión',
-                                  options: FFButtonOptions(
-                                    width: double.infinity,
-                                    height: 44.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: Color(0xFF515EEB),
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Inter',
-                                          color: Colors.white,
-                                          letterSpacing: 0.0,
-                                        ),
-                                    elevation: 3.0,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
+                                      context.pushNamedAuth(
+                                          HomeWidget.routeName,
+                                          context.mounted);
+
+                                      if (_shouldSetState) safeSetState(() {});
+                                    },
+                                    text: 'Iniciar sesión',
+                                    options: FFButtonOptions(
+                                      width: double.infinity,
+                                      height: 44.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: Color(0xFF515EEB),
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Inter',
+                                            color: Colors.white,
+                                            letterSpacing: 0.0,
+                                          ),
+                                      elevation: 3.0,
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(12.0),
                                     ),
-                                    borderRadius: BorderRadius.circular(12.0),
                                   ),
                                 ),
                               ),
